@@ -1,4 +1,6 @@
-@extends('website.layouts.app')
+@extends('layouts.app')
+
+@section('title', ucwords('ektml'))
 
 @section('content')
     <div>
