@@ -219,50 +219,23 @@
                     <a class="nav-link" href="#">Contact</a>
                 </li>
             </ul>
+
             <ul class="navbar-nav nav-buttons ml-auto list-unstyled">
-                <li class="nav-lang nav-item dropdown js-dropdown-links">
-                    <a class="nav-link dropdown-toggle" href="#" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        EN
-                    </a>
-                    <div class="dropdown-menu" >
-                        <a class="dropdown-item dropdown-link" href="#">
-                            <div class="link-ico">
-                                <span class="flag-icon flag-icon-sa"></span>
-                                <span class="title">Arabic</span>
-                            </div>
-                        </a>
-                        <a class="dropdown-item dropdown-link" href="#">
-                            <div class="link-ico">
-                                <span class="flag-icon flag-icon-us"></span>
-                                <span class="title">English</span>
-                            </div>
-                        </a>
-                        <a class="dropdown-item dropdown-link" href="#">
-                            <div class="link-ico">
-                                <span class="flag-icon flag-icon-fr"></span>
-                                <span class="title">French</span>
-                            </div>
-                        </a>
-                        <a class="dropdown-item dropdown-link" href="#">
-                            <div class="link-ico">
-                                <span class="flag-icon flag-icon-es"></span>
-                                <span class="title">Spanish</span>
-                            </div>
-                        </a>
-                        <a class="dropdown-item dropdown-link" href="#">
-                            <div class="link-ico">
-                                <span class="flag-icon flag-icon-de"></span>
-                                <span class="title">German</span>
-                            </div>
-                        </a>
-                        <span class="bg-gray hover-state js-hover-state"></span>
-                    </div>
-                </li>
+                <ul>
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <li>
+                            <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                {{ $properties['native'] }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+
                 <li class="nav-item nav-trial">
                     <a class="nav-link" href="#">Free Trial</a>
                 </li>
             </ul>
+
         </div>
     </div>
 </nav>

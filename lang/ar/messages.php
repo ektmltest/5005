@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'hello' => 'hello world',
-    
+    'hello' => 'مرحبا',
+
 ];

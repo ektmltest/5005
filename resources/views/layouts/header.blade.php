@@ -9,8 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- IE Browser Support -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <!-- Page Title -->
-    <title>@yield('title')</title>
+    @if (App::getLocale() == 'en')
+        <title>{{ __('main_trans.name') }} {{ '- Main Page' }}</title>
+    @else
+        <title>{{ __('main_trans.name') }} {{ '- الرئيسية' }}</title>
+    @endif
+
     <!-- Favicon-->
     <link rel="shortcut icon" type="image/x-icon" href="http://placehold.it/32x32">
     <!-- Google Font -->
@@ -18,6 +24,7 @@
         rel="stylesheet">
     <!-- =========== CSS Files =========== -->
     <!-- Bootstrap -->
+    <link rel="stylesheet" href="{{ asset('assets/vendors/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/bootstrap/css/bootstrap.min.css') }}">
     <!-- Box Icons -->
     <link rel="stylesheet" href="{{ asset('assets/css/boxicons.min.css') }}">
@@ -28,6 +35,12 @@
     <link rel="stylesheet" href="{{ asset('assets/vendors/lity/css/lity.min.css') }}">
     <!-- Main Style -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <!-- Style Css -->
+    @if (App::getLocale() == 'en')
+        <link rel="stylesheet" href="{{ URL::asset('assets/css/style.css') }}">
+    @else
+        <link rel="stylesheet" href="{{ URL::asset('assets/css/style_ar.css') }}">
+    @endif
     <!-- Modernizer Script for old Browsers -->
     <script src="{{ asset('assets/js/modernizr-2.6.2.min.js') }}"></script>
 
