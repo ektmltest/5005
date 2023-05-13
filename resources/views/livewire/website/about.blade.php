@@ -4,7 +4,7 @@
 
 @section('content')
     <!-- Start Inner Page Content -->
-    <div class="">
+    <div class="my-page-content">
         <!-- Start Random Post -->
         <section id="random-post" class="random-post">
             <div class="container">
@@ -12,7 +12,7 @@
                     <div class="row row-aligns">
                         <div class="col-md-6">
                             <div class="post-img">
-                                <img class="img-fluid" src="img/undraw_mobile_development_8gyo.svg" alt="Hotan Template">
+                                <img class="img-fluid" src="{{('assets/img/undraw_mobile_development_8gyo.svg')}}" alt="Hotan Template">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -59,7 +59,7 @@
                         </div>
                         <div class="col-md-6 order-1 order-md-2">
                             <div class="post-img">
-                                <img class="img-fluid" src="img/undraw_unDraw_1000_gty8.svg" alt="Hotan Template">
+                                <img class="img-fluid" src="{{('assets/img/undraw_unDraw_1000_gty8.svg')}}" alt="Hotan Template">
                             </div>
                         </div>
                     </div>
@@ -90,6 +90,4 @@
         </section>
         <!-- End Question -->
     </div>
-
-    @include('layouts.preloader')
 @endsection

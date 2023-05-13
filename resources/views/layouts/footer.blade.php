@@ -71,7 +71,8 @@
             <div class="row">
                 <div class="col-xl-6">
                     <div class="copyright-txt">
-                        <span>Copyright ©2020  <a href="https://www.templatemonster.com/vendors/AlaaAhmed/" target="_blank">Alaa Ahmed</a>.
+                        <span>Copyright ©2020 <a href="https://www.templatemonster.com/vendors/AlaaAhmed/"
+                                target="_blank">Alaa Ahmed</a>.
                             All
                             Rights Reserved.</span>
                     </div>
@@ -91,6 +92,27 @@
     </div>
 </footer>
 <!-- End Footer -->
+<!-- Start Preloader -->
+<div id="loading-mask">
+    <div class="loader-wrapper">
+        <div class="loader">
+            <div class="roller"></div>
+            <div class="roller"></div>
+        </div>
+
+        <div id="loader2" class="loader">
+            <div class="roller"></div>
+            <div class="roller"></div>
+        </div>
+
+        <div id="loader3" class="loader">
+            <div class="roller"></div>
+            <div class="roller"></div>
+        </div>
+    </div>
+</div>
+<!-- End Preloader -->
+
 <!-- Start Back To Top-->
 <div id="scroll-top"><i class='bx bxs-chevron-up'></i></div>
 <!-- End Back To Top-->
@@ -115,4 +137,5 @@
 
 @livewireScripts()
 </body>
+
 </html>

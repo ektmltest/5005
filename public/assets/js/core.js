@@ -146,8 +146,8 @@ $(document).ready(function () {
 // :: Preloader
 // ---------------------
 
-$('#page-content').on("load", function () {
-    console.log('hi from loading event')
+$(window).ready(function () {
+    // console.log('hi from loading event')
     $('body').css('overflow-y', 'visible');
     $(".loader-wrapper").fadeOut(function () {
         $("#loading-mask").fadeOut("slow");
