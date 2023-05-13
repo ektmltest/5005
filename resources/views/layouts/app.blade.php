@@ -1,6 +1,8 @@
 @include('layouts.header')
 @include('layouts.nav')
 
-    @yield('content')
+    <div id="page-content">
+        @yield('content')
+    </div>
 
 @include('layouts.footer')

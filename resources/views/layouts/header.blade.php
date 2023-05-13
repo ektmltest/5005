@@ -11,6 +11,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Page Title -->
     <title>@yield('title')</title>
+
+    <!-- Turbo JS -->
+    <script type="module">
+        import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';
+    </script>
+
+    <!-- WOW JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        new WOW().init();
+    </script>
+
     <!-- Favicon-->
     <link rel="shortcut icon" type="image/x-icon" href="http://placehold.it/32x32">
     <!-- Google Font -->
@@ -28,6 +40,8 @@
     <link rel="stylesheet" href="{{ asset('assets/vendors/lity/css/lity.min.css') }}">
     <!-- Main Style -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <!-- Modernizer Script for old Browsers -->
     <script src="{{ asset('assets/js/modernizr-2.6.2.min.js') }}"></script>
 

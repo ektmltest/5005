@@ -91,26 +91,6 @@
     </div>
 </footer>
 <!-- End Footer -->
-<!-- Start Preloader -->
-<div id="loading-mask">
-    <div class="loader-wrapper">
-        <div class="loader">
-            <div class="roller"></div>
-            <div class="roller"></div>
-        </div>
-
-        <div id="loader2" class="loader">
-            <div class="roller"></div>
-            <div class="roller"></div>
-        </div>
-
-        <div id="loader3" class="loader">
-            <div class="roller"></div>
-            <div class="roller"></div>
-        </div>
-    </div>
-</div>
-<!-- End Preloader -->
 <!-- Start Back To Top-->
 <div id="scroll-top"><i class='bx bxs-chevron-up'></i></div>
 <!-- End Back To Top-->
@@ -128,8 +108,8 @@
 <!-- Parallax -->
 <script src="{{ asset('assets/vendors/parallax/js/jquery-parallax.js') }}"></script>
 <!-- Google Map js-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2oKnoBeDDRxl3hqwuoyx7k8lKrjPRf0w"></script>
-<script src="{{ asset('assets/js/google.js') }}"></script>
+{{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2oKnoBeDDRxl3hqwuoyx7k8lKrjPRf0w"></script> --}}
+{{-- <script src="{{ asset('assets/js/google.js') }}"></script> --}}
 <!-- Core JS -->
 <script src="{{ asset('assets/js/core.js') }}"></script>
 
