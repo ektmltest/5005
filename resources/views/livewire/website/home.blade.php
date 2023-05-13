@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', ucwords('ektml'))
+@section('title', ucwords(__('main_trans.app_name')) . ' - ' . __('pages.home'))
 
 @section('content')
-    <div>
+    <div id="my-page-content">
         <!-- Start Header Content -->
         <div class="head-content">
             <div class="container">
@@ -25,7 +25,7 @@
                     </div>
                     <div class="col-md-6 order-1 order-md-2">
                         <div class="head-img">
-                            <img class="img-fluid" src="img/chicago.svg" alt="Hotan Template">
+                            <img class="img-fluid" src="{{ asset('assets/img/chicago.svg') }}" alt="Hotan Template">
                         </div>
                     </div>
                 </div>
@@ -147,7 +147,8 @@
                     <div class="row row-aligns">
                         <div class="col-md-6">
                             <div class="post-img">
-                                <img class="img-fluid" src="img/undraw_mobile_development_8gyo.svg" alt="Hotan Template">
+                                <img class="img-fluid" src="{{ asset('assets/img/undraw_mobile_development_8gyo.svg') }}"
+                                    alt="Hotan Template">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -194,7 +195,8 @@
                         </div>
                         <div class="col-md-6 order-1 order-md-2">
                             <div class="post-img">
-                                <img class="img-fluid" src="img/undraw_unDraw_1000_gty8.svg" alt="Hotan Template">
+                                <img class="img-fluid" src="{{ asset('assets/img/undraw_unDraw_1000_gty8.svg') }}"
+                                    alt="Hotan Template">
                             </div>
                         </div>
                     </div>
@@ -252,7 +254,8 @@
                     Free 30 Days Trial
                     <i class='bx bx-right-arrow-alt'></i>
                 </a>
-                <img class="img-fluid" src="img/undraw_landscape_mode_53ej.svg" alt="Hotan Template">
+                <img class="img-fluid" src="{{ asset('assets/img/undraw_landscape_mode_53ej.svg') }}"
+                    alt="Hotan Template">
             </div>
         </section>
         <!-- End Try Our Trial -->
@@ -480,7 +483,7 @@
                     <!-- Start Price Item -->
                     <div class="col-md-4">
                         <div class="price-item active">
-                            <img src="img/blob-shape-1.svg" alt="Hotan Template">
+                            <img src="{{ asset('assets/img/blob-shape-1.svg') }}" alt="Hotan Template">
                             <div class="table-ico">
                                 <i class='bx bx-briefcase'></i>
                             </div>

@@ -1,6 +1,5 @@
 <?php
 
 return [
-    'name' => 'اكتمل',
-
+    'app_name' => 'اكتمل',
 ];

@@ -71,7 +71,8 @@
             <div class="row">
                 <div class="col-xl-6">
                     <div class="copyright-txt">
-                        <span>Copyright ©2020  <a href="https://www.templatemonster.com/vendors/AlaaAhmed/" target="_blank">Alaa Ahmed</a>.
+                        <span>Copyright ©2020 <a href="https://www.templatemonster.com/vendors/AlaaAhmed/"
+                                target="_blank">Alaa Ahmed</a>.
                             All
                             Rights Reserved.</span>
                     </div>
@@ -111,6 +112,7 @@
     </div>
 </div>
 <!-- End Preloader -->
+
 <!-- Start Back To Top-->
 <div id="scroll-top"><i class='bx bxs-chevron-up'></i></div>
 <!-- End Back To Top-->
@@ -128,11 +130,12 @@
 <!-- Parallax -->
 <script src="{{ asset('assets/vendors/parallax/js/jquery-parallax.js') }}"></script>
 <!-- Google Map js-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2oKnoBeDDRxl3hqwuoyx7k8lKrjPRf0w"></script>
-<script src="{{ asset('assets/js/google.js') }}"></script>
+{{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2oKnoBeDDRxl3hqwuoyx7k8lKrjPRf0w"></script> --}}
+{{-- <script src="{{ asset('assets/js/google.js') }}"></script> --}}
 <!-- Core JS -->
 <script src="{{ asset('assets/js/core.js') }}"></script>
 
 @livewireScripts()
 </body>
+
 </html>

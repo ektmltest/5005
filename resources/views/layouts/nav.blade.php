@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="{{route('home')}}">
             <!-- Logo -->
             <img src="http://placehold.it/360x416" alt="Hotan Template" title="Hotan">
         </a>
@@ -216,7 +216,7 @@
                     <a class="nav-link" href="#">Pricing</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="{{route('about')}}">About Us</a>
                 </li>
             </ul>
 
