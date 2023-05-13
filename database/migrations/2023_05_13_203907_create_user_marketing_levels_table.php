@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('marketing_coupons', function (Blueprint $table) {
-            $table->id();
-            $table->string('key')->unique();
-            $table->integer('num_of_transactions')->default(0);
+        Schema::create('user_marketing_levels', function (Blueprint $table) {
             $table->timestamps();
 
             // foreign keys
-            $table->foreignId('ready_project_id')->constrained('ready_projects')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('marketing_level_id')->constrained('marketing_levels')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
+
+            // contrains
+            $table->primary(['marketing_level_id', 'user_id']);
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('marketing_coupons');
+        Schema::dropIfExists('user_marketing_levels');
     }
 };
