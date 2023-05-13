@@ -1,0 +1,174 @@
+/**
+ * Icon list
+ */
+
+body {
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+/* Glyphicons */
+.glyphicons-list {
+  list-style: none;
+  padding: 0;
+}
+
+.glyphicons-list li {
+  display: inline-block;
+  float: left;
+  width: 12.5%;
+  height: 115px;
+  background-color: #f8f8f8;
+  border: 1px solid #fff;
+  padding: 10px;
+  transition: .3s ease;
+}
+
+.glyphicons-list li:hover {
+  background-color: #eee;
+}
+
+.glyphicons-list .glyphicon {
+  display: block;
+  text-align: center;
+  font-size: 25px;
+  color: #222;
+}
+
+.glyphicons-list .glyphicon-class {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  line-height: 16px;
+  font-size: 13px;
+}
+
+/* Font Awesome */
+.fa-page-header {
+  font-size: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.fontawesome-icon-list .fa-hover {
+  margin-bottom: 5px;
+  transition: .3s ease;
+}
+
+.fontawesome-icon-list .fa-hover:hover {
+  background-color: #f8f8f8;
+}
+
+.fontawesome-icon-list .fa-hover .fa {
+  width: 25px;
+  color: #222;
+}
+
+
+@media (max-width: 767px) {
+  .glyphicons-list li {
+    width: 25%;
+  }
+}
+
+
+/**
+ * Prism supported languages
+ */
+.prism-languages {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.prism-languages li {
+  width: 33.3333%;
+  float: left;
+}
+
+.prism-languages li code {
+  margin-left: 8px;
+}
+
+@media (max-width: 991px) {
+
+  .prism-languages li {
+    width: 50%;
+  }
+
+}
+
+
+/**
+ * Code window spacer
+ */
+.window-content .btn {
+  margin-bottom: 6px;
+}
+
+/* My Edits */
+
+a, a:focus, a:hover {
+    color:#6f9a37
+}
+
+.item-info {
+    background-color: #f9f9f9;
+    padding: 20px;
+    color: #333;
+    font-size: 14px;
+        position: relative;
+    top: 30px;
+}
+
+.item-info img {
+    padding: 5px;
+    box-shadow: 0px 1px 7px rgba(0,0,0,.1);
+    width: 100%
+}
+
+.item-info p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    padding-top:10px;
+    margin-bottom: 0px;
+    border-top: 1px dashed #ddd;
+}
+
+.item-info ul li {
+    margin-bottom: 10px;
+}
+
+.item-info ul li b {
+    margin-right:20px
+}
+
+.mark, mark {
+    background:#ff0;
+    color:#000;
+}
+
+.thank p {
+    margin-top:30px
+}
+
+.sidebar-boxed .sidebar-brand img {
+  width: 80px
+}
+
+p {
+  font-size: 15px !important
+}
+
+.sidenav li:first-child {
+  margin-top: 10px
+}
+
+.sidenav h4 {
+  color: #fff;
+  font-size: 17px;
+  margin-top: 20px;
+  background: #1e262f;
+  padding: 15px;
+  font-weight: 600;
+}
