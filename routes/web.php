@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Website\Home;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('admin')->group(function () {
-    
+
 });
 
-Route::get('/', function () {
-    return trans('messages.hello');
-});
+
+Route::get('/', Home::class);
+
+Route::get('/home', Home::class);
