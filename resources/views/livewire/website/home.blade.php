@@ -3,9 +3,8 @@
 @section('title', ucwords(__('main_trans.app_name')) . ' - ' . __('pages.home'))
 
 @section('content')
-@component('livewire.website.components.links')
-@endcomponent
-
+    @component('livewire.website.components.links')
+    @endcomponent
     <div id="my-page-content">
         <!-- Start Header Content -->
         <div class="head-content">

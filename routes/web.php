@@ -11,8 +11,9 @@ Route::group([
     ], function(){
 
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-    Route::get('/', Home::class);
-    Route::get('/home', Home::class);
+    Route::get('/', Home::class)->name('index');
+    Route::get('/home', Home::class)->name('home');
+    Route::get('/about', About::class)->name('about');
 
     Route::get('letsStart', function(){
         return view('livewire.website.letsStart');

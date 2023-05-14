@@ -54,5 +54,3 @@
 </head>
 
 <body>
-    <!-- Start Header -->
-    <header id="header" class="header">
