@@ -129,11 +129,12 @@
 <script src="{{ asset('assets/vendors/lity/js/lity.min.js') }}"></script>
 <!-- Parallax -->
 <script src="{{ asset('assets/vendors/parallax/js/jquery-parallax.js') }}"></script>
-<!-- Google Map js-->
-{{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2oKnoBeDDRxl3hqwuoyx7k8lKrjPRf0w"></script> --}}
-{{-- <script src="{{ asset('assets/js/google.js') }}"></script> --}}
-<!-- Core JS -->
+<!-- Parallax -->
 <script src="{{ asset('assets/js/core.js') }}"></script>
+
+@if (App::getLocale() == 'ar')
+<script src="{{ asset('assets/js/core_rtl.js') }}"></script>
+@endif
 
 @livewireScripts()
 </body>

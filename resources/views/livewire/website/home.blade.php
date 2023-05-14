@@ -3,6 +3,7 @@
 @section('title', ucwords(__('main_trans.app_name')) . ' - ' . __('pages.home'))
 
 @section('content')
+    @include('layouts.styles_ar_links')
     <div id="my-page-content">
         <!-- Start Header Content -->
         <div class="head-content">

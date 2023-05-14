@@ -11,225 +11,101 @@
         </button>
         <div class="collapse navbar-collapse justify-content-md-center" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{ucwords(__('nav.home_page'))}}</a>
+                </li>
                 <li class="nav-item dropdown js-dropdown-links">
                     <a class="nav-link dropdown-toggle" href="#" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Pages
+                        {{ucwords(__('nav.options'))}}
                     </a>
-                    <div class="dropdown-menu dropdown-grid" >
-                        <div class="row">
-                            <div class="col-md-6">
-                                <a class="dropdown-item dropdown-link" href="pricing.html">
-                                    <div class="link-ico">
-                                        <span class="title">Pricing</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item dropdown-link" href="services.html">
-                                    <div class="link-ico">
-                                        <span class="title">Services</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item dropdown-link" href="about-us.html">
-                                    <div class="link-ico">
-                                        <span class="title">About Us</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item dropdown-link" href="portfolio.html">
-                                    <div class="link-ico">
-                                        <span class="title">Portfolio</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item dropdown-link" href="blog-full-width.html">
-                                    <div class="link-ico">
-                                        <span class="title">Blog Full Width</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item dropdown-link" href="blog-2column.html">
-                                    <div class="link-ico">
-                                        <span class="title">Blog 2 Column</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item dropdown-link" href="blog-left-sidebar.html">
-                                    <div class="link-ico">
-                                        <span class="title">Blog Left Sidebar</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item dropdown-link" href="blog-right-sidebar.html">
-                                    <div class="link-ico">
-                                        <span class="title">Blog Right Sidebar</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item dropdown-link" href="team.html">
-                                    <div class="link-ico">
-                                        <span class="title">Team</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item dropdown-link" href="signup.html">
-                                    <div class="link-ico">
-                                        <span class="title">SignUp</span>
-                                    </div>
-                                </a>
+                    <div class="dropdown-menu" >
+                        <a class="dropdown-item dropdown-link" href="#">
+                            <div class="link-ico">
+                                <i class='bx bx-message-detail'></i>
+                                <span class="title">{{ucwords(__('nav.options.tickets_system'))}}</span>
                             </div>
-                            <div class="col-md-6">
-                                <a class="dropdown-item dropdown-link" href="careers.html">
-                                    <div class="link-ico">
-                                        <span class="title">Careers</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item dropdown-link" href="job.html">
-                                    <div class="link-ico">
-                                        <span class="title">Single Job</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item dropdown-link" href="faqs.html">
-                                    <div class="link-ico">
-                                        <span class="title">Faqs</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item dropdown-link" href="post-full-width.html">
-                                    <div class="link-ico">
-                                        <span class="title">Post Full Width</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item dropdown-link" href="post-left-sidebar.html">
-                                    <div class="link-ico">
-                                        <span class="title">Post Left Sidebar</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item dropdown-link" href="post-right-sidebar.html">
-                                    <div class="link-ico">
-                                        <span class="title">Post Right Sidebar</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item dropdown-link" href="404page.html">
-                                    <div class="link-ico">
-                                        <span class="title">404 Page</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item dropdown-link" href="coming-soon.html">
-                                    <div class="link-ico">
-                                        <span class="title">Coming Soon</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item dropdown-link" href="login.html">
-                                    <div class="link-ico">
-                                        <span class="title">Login</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item dropdown-link" href="contact-us.html">
-                                    <div class="link-ico">
-                                        <span class="title">Contact Us</span>
-                                    </div>
-                                </a>
+                        </a>
+                        <a class="dropdown-item dropdown-link" href="#">
+                            <div class="link-ico">
+                                <i class='bx bx-book-add'></i>
+                                <span class="title">{{ucwords(__('nav.options.project_request'))}}</span>
                             </div>
-                        </div>
+                        </a>
+                        <a class="dropdown-item dropdown-link" href="#">
+                            <div class="link-ico">
+                                <i class='bx bx-spreadsheet'></i>
+                                <span class="title">{{ucwords(__('nav.options.my_projects'))}}</span>
+                            </div>
+                        </a>
+                        <span class="bg-gray hover-state js-hover-state"></span>
                     </div>
                 </li>
                 <li class="nav-item dropdown js-dropdown-links">
                     <a class="nav-link dropdown-toggle" href="#" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Platform
+                        {{ucwords(__('nav.platforms'))}}
                     </a>
                     <div class="dropdown-menu" >
                         <a class="dropdown-item dropdown-link" href="#">
                             <div class="link-ico">
-                                <i class='bx bx-crosshair'></i>
-                                <span class="title">Content Hub</span>
+                                <i class='bx bx-game'></i>
+                                <span class="title">{{ucwords(__('nav.platforms.pgxpo'))}}</span>
                             </div>
                         </a>
                         <a class="dropdown-item dropdown-link" href="#">
                             <div class="link-ico">
-                                <i class='bx bx-tachometer'></i>
-                                <span class="title">Content Management</span>
+                                <i class='bx bx-detail'></i>
+                                <span class="title">{{ucwords(__('nav.platforms.forbit'))}}</span>
                             </div>
                         </a>
                         <a class="dropdown-item dropdown-link" href="#">
                             <div class="link-ico">
-                                <i class='bx bx-list-check'></i>
-                                <span class="title">Content Planning</span>
+                                <i class='bx bx-data'></i>
+                                <span class="title">{{ucwords(__('nav.platforms.rqoom'))}}</span>
                             </div>
                         </a>
                         <a class="dropdown-item dropdown-link" href="#">
                             <div class="link-ico">
-                                <i class='bx bx-trim'></i>
-                                <span class="title">Content Templates</span>
-                            </div>
-                        </a>
-                        <a class="dropdown-item dropdown-link" href="#">
-                            <div class="link-ico">
-                                <i class='bx bx-book-content'></i>
-                                <span class="title">Content Style Guides</span>
-                            </div>
-                        </a>
-                        <a class="dropdown-item dropdown-link" href="#">
-                            <div class="link-ico">
-                                <i class='bx bx-vector'></i>
-                                <span class="title">Content Workflow</span>
+                                <i class='bx bx-pointer'></i>
+                                <span class="title">{{ucwords(__('nav.platforms.nqrat'))}}</span>
                             </div>
                         </a>
                         <span class="bg-gray hover-state js-hover-state"></span>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Customers</a>
-                </li>
-                <li class="nav-item dropdown js-dropdown-links">
-                    <a class="nav-link dropdown-toggle" href="#" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Why Us?
-                    </a>
-                    <div class="dropdown-menu" >
-                        <a class="dropdown-item dropdown-link" href="#">
-                            <div class="link-ico">
-                                <i class='bx bx-code-block'></i>
-                                <span class="title">Website Builds</span>
-                            </div>
-                        </a>
-                        <a class="dropdown-item dropdown-link" href="#">
-                            <div class="link-ico">
-                                <i class='bx bx-window-alt'></i>
-                                <span class="title">Website Content</span>
-                            </div>
-                        </a>
-                        <a class="dropdown-item dropdown-link" href="#">
-                            <div class="link-ico">
-                                <i class='bx bx-donate-heart'></i>
-                                <span class="title">Marketing Content</span>
-                            </div>
-                        </a>
-                        <a class="dropdown-item dropdown-link" href="#">
-                            <div class="link-ico">
-                                <i class='bx bx-pencil'></i>
-                                <span class="title">Articles & Editorial Content</span>
-                            </div>
-                        </a>
-                        <a class="dropdown-item dropdown-link" href="#">
-                            <div class="link-ico">
-                                <i class='bx bx-help-circle'></i>
-                                <span class="title">Help Content</span>
-                            </div>
-                        </a>
-                        <span class="bg-gray hover-state js-hover-state"></span>
-                    </div>
+                    <a class="nav-link" href="#">{{ucwords(__('nav.store'))}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="#">{{ucwords(__('nav.gallery'))}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('about')}}">About Us</a>
+                    <a class="nav-link" href="#">{{ucwords(__('nav.faq'))}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{ucwords(__('nav.about'))}}</a>
                 </li>
             </ul>
 
             <ul class="navbar-nav nav-buttons ml-auto list-unstyled">
-                <ul>
-                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                        <li>
-                            <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                {{ $properties['native'] }}
+                <li class="nav-item dropdown js-dropdown-links">
+                    <a class="nav-link dropdown-toggle" href="#" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ucwords(__('nav.lang'))}}
+                    </a>
+                    <div class="dropdown-menu" >
+                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <a class="dropdown-item dropdown-link" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                <div class="link-ico">
+                                    <span class='flag-icon flag-icon-{{$localeCode == 'en' ? 'us' : 'sa'}}'></span>
+                                    <span class="title">{{ $properties['native'] }}</span>
+                                </div>
                             </a>
-                        </li>
-                    @endforeach
-                </ul>
+                        @endforeach
+                        <span class="bg-gray hover-state js-hover-state"></span>
+                    </div>
+                </li>
 
                 <li class="nav-item nav-trial">
                     <a class="nav-link" href="#">Free Trial</a>

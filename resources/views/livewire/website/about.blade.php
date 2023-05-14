@@ -3,6 +3,7 @@
 @section('title', ucwords(__('main_trans.app_name')) . ' - ' . __('pages.about'))
 
 @section('content')
+    @include('layouts.styles_ar_links')
     <!-- Start Inner Page Content -->
     <div class="my-page-content">
         <!-- Start Random Post -->

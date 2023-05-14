@@ -12,6 +12,7 @@ Route::group([
 
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
     Route::get('/', Home::class);
+    Route::get('/home', Home::class);
 
     Route::get('hi', function()
     {
