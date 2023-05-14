@@ -3,7 +3,9 @@
 @section('title', ucwords(__('main_trans.app_name')) . ' - ' . __('pages.home'))
 
 @section('content')
-    @include('layouts.styles_ar_links')
+@component('livewire.website.components.links')
+@endcomponent
+
     <div id="my-page-content">
         <!-- Start Header Content -->
         <div class="head-content">
@@ -11,16 +13,14 @@
                 <div class="row row-aligns">
                     <div class="col-md-6 order-2 order-md-1">
                         <div class="head-txt">
-                            <h2 class="h1">It's time to amplify your <span class="co-purple">online business</span></h2>
-                            <p>With Hotan you get components and examples, including tons of variables that will help
-                                you customize this theme with ease.</p>
+                            <h2 class="h1">{{ __("main_trans.title1") }} <span class="co-purple">{{ __("main_trans.title2") }}</span></h2>
+                            <p>{{ __("main_trans.title3") }}</p>
                             <div class="head-buttons">
                                 <a class="bttn btn-purple" href="#">
                                     Get Started
                                     <i class='bx bx-right-arrow-alt'></i>
                                 </a>
-                                <a class="bttn btn-empty" href="https://www.youtube.com/watch?v=afj3WB44lko" data-lity>Watch
-                                    Video <i class='bx bx-right-arrow'></i></a>
+                                <a class="bttn btn-empty" href="https://www.youtube.com/watch?v=afj3WB44lko" data-lity>{{ __('main_trans.Watch Video') }} <i class='bx bx-right-arrow'></i></a>
                             </div>
                         </div>
                     </div>

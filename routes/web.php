@@ -25,9 +25,6 @@ Route::group([
 
 
 
-
-
-
 Route::prefix('admin')->group(function () {
 
 });

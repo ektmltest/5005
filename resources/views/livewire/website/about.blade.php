@@ -3,7 +3,8 @@
 @section('title', ucwords(__('main_trans.app_name')) . ' - ' . __('pages.about'))
 
 @section('content')
-    @include('layouts.styles_ar_links')
+@component('livewire.website.components.links')
+@endcomponent
     <!-- Start Inner Page Content -->
     <div class="my-page-content">
         <!-- Start Random Post -->
