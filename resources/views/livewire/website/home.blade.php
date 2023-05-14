@@ -16,8 +16,8 @@
                             <h2 class="h1">{{ __("main_trans.title1") }} <span class="co-purple">{{ __("main_trans.title2") }}</span></h2>
                             <p>{{ __("main_trans.title3") }}</p>
                             <div class="head-buttons">
-                                <a class="bttn btn-purple" href="#">
-                                    Get Started
+                                <a class="bttn btn-purple" href="{{ URL('letsStart') }}">
+                                    {{ __('main_trans.Get Started') }}
                                     <i class='bx bx-right-arrow-alt'></i>
                                 </a>
                                 <a class="bttn btn-empty" href="https://www.youtube.com/watch?v=afj3WB44lko" data-lity>{{ __('main_trans.Watch Video') }} <i class='bx bx-right-arrow'></i></a>

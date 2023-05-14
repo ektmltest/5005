@@ -14,10 +14,13 @@ Route::group([
     Route::get('/', Home::class);
     Route::get('/home', Home::class);
 
-    Route::get('hi', function()
-    {
-        return __('messages.hello');
+    Route::get('letsStart', function(){
+        return view('livewire.website.letsStart');
     });
+
+
+
+
 });
 
 
