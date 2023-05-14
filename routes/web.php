@@ -1,6 +1,7 @@
 <?php
 use App\Http\Livewire\Website\About;
 use App\Http\Livewire\Website\Home;
+use App\Http\Livewire\Website\LetsStart;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -15,9 +16,7 @@ Route::group([
     Route::get('/home', Home::class)->name('home');
     Route::get('/about', About::class)->name('about');
 
-    Route::get('letsStart', function(){
-        return view('livewire.website.letsStart');
-    });
+    Route::get('letsStart', LetsStart::class)->name('letsStart');
 
 
 

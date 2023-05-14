@@ -1,43 +1,15 @@
 @extends('layouts.app')
 @section('content')
-@component('livewire.website.components.links')
+
+@component('layouts.components.links')
 @endcomponent
 
-<header id="inner-header" class="inner-header parallax">
-    <div class="overlay"></div>
-    <!-- Start Header Content -->
-    <div class="container">
-        <div class="box-inner">
-            <div class="box-content">
-                <div class="page-title">
-                    <h2 class="h1">{{ __('headers.lesstart.header') }}</h2>
-                    <p>{{ __('headers.lesstart.body')}} </p>
-                </div>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('headers.home') }}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ __('headers.lesstart.header') }}</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-    <!-- End Header Content -->
-    <!-- Background Shape-->
-    <div class="background-shapes">
-        <div class="box1"></div>
-        <div class="box2"></div>
-        <div class="box3"></div>
-        <div class="dot1"></div>
-        <div class="dot2"></div>
-        <div class="heart1"><i class='bx bx-message-square'></i></div>
-        <div class="heart2"><i class='bx bx-heart'></i></div>
-        <div class="circle2"></div>
-    </div>
-</header>
-<!-- End Header -->
-<!-- Start Inner Page Content -->
-<!-- Start Pricing Table -->
+@include('layouts.header', [
+    'header' => True,
+    'header_head' => ucwords(__('headers.lesstart.header')),
+    'header_body' => ucwords(__('headers.lesstart.body')),
+])
+
 <section id="pricing-table" class="pricing-table">
     <div class="container">
         <div class="section-pricing">

@@ -8,7 +8,7 @@
             </div>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">{{ucwords(__('headers.about.home'))}}</a></li>
+                    <li class="breadcrumb-item"><a href="index.html">{{ucwords(__('headers.home'))}}</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{$header_title}}</li>
                 </ol>
             </nav>
