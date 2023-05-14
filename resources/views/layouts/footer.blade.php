@@ -137,6 +137,3 @@
 @endif
 
 @livewireScripts()
-</body>
-
-</html>
