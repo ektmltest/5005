@@ -3,7 +3,6 @@
 @component('livewire.website.components.links')
 @endcomponent
 
-
 <header id="inner-header" class="inner-header parallax">
     <div class="overlay"></div>
     <!-- Start Header Content -->
@@ -11,13 +10,13 @@
         <div class="box-inner">
             <div class="box-content">
                 <div class="page-title">
-                    <h2 class="h1">{{ __('main_trans.Request a project') }}</h2>
-                    <p>{{ __('main_trans.smalltitle')}} </p>
+                    <h2 class="h1">{{ __('headers.lesstart.header') }}</h2>
+                    <p>{{ __('headers.lesstart.body')}} </p>
                 </div>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Pricing</li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('headers.home') }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ __('headers.lesstart.header') }}</li>
                     </ol>
                 </nav>
             </div>

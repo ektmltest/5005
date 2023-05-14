@@ -2,7 +2,7 @@
     <div class="container">
         <a class="navbar-brand" href="{{route('home')}}">
             <!-- Logo -->
-            <img src="http://placehold.it/360x416" alt="Hotan Template" title="Hotan">
+            <img src="{{ asset('assets/img/logo_ektml.webp') }}" alt="Hotan Template" title="Hotan">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"

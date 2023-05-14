@@ -33,7 +33,7 @@ Route::prefix('admin')->group(function () {
 
 });
 
-Route::get('/home', Home::class);
-Route::get('/', Home::class)->name('index');
-Route::get('/home', Home::class)->name('home');
-Route::get('/about', About::class)->name('about');
+// Route::get('/home', Home::class);
+// Route::get('/', Home::class)->name('index');
+// Route::get('/home', Home::class)->name('home');
+// Route::get('/about', About::class)->name('about');
