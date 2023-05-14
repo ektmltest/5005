@@ -3,13 +3,15 @@
 @section('title', ucwords(__('main_trans.app_name')) . ' - ' . __('pages.about'))
 
 @section('content')
-    @component('livewire.website.components.links')
+    @component('layouts.components.links')
     @endcomponent
 
-    @component('livewire.website.components.header-content', [
-        'header_title' => __('')
+    @include('layouts.header', [
+        'header' => True,
+        'header_head' => ucwords(__('headers.about.header')),
+        'header_body' => ucwords(__('headers.about.body')),
     ])
-    @endcomponent
+    
     <!-- Start Inner Page Content -->
     <div class="my-page-content">
         <!-- Start Random Post -->
