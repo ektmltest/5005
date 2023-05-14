@@ -108,7 +108,7 @@
                 </li>
 
                 <li class="nav-item nav-trial">
-                    <a class="nav-link" href="#">Free Trial</a>
+                    <a class="nav-link" href="#">{{ __('main_trans.Free Trial') }}</a>
                 </li>
             </ul>
 
