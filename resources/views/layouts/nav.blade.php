@@ -84,7 +84,7 @@
                     <a class="nav-link" href="#">{{ucwords(__('nav.faq'))}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ucwords(__('nav.about'))}}</a>
+                    <a class="nav-link" href="{{route('about')}}">{{ucwords(__('nav.about'))}}</a>
                 </li>
             </ul>
 
