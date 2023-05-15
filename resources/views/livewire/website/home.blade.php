@@ -53,7 +53,7 @@
         <!-- Start Clients -->
         <section id="clients" class="clients">
             <div class="container">
-                <h5>Over 2,000 teams manage their content operations with Hotan</h5>
+                <h5>{{ __('') }}</h5>
                 <div class="clients-logos">
                     <div class="row">
                         <div class="col">

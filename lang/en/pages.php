@@ -3,5 +3,6 @@
 return [
     'home' => 'home page',
     'about' => 'about us',
-    'lets_start' => 'request a project',
+    'letsStart' => 'Request Project',
+    'gallary' => 'Our work gallery',
 ];

@@ -2,10 +2,10 @@
 namespace App\Http\Livewire\Website;
 use Livewire\Component;
 
-class LetsStart extends Component
+class Gallary extends Component
 {
     public function render()
     {
-        return view('livewire.website.lets-start');
+        return view('livewire.website.gallary');
     }
 }
