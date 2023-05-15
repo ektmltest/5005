@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@section('title', ucwords(__('main_trans.app_name')) . ' - ' . __('pages.letsStart'))
 
 @component('layouts.components.links')
 @endcomponent
@@ -13,38 +14,64 @@
 <section id="pricing-table" class="pricing-table">
     <div class="container">
         <div class="section-pricing">
-            <h3>Let's find a way together</h3>
-            <p>Entry Level Plans <br> Pay as you go pricing</p>
+            <h3>{{ __('request_project_trans.bodyTitle')}}</h3>
+            <p>{{ __('request_project_trans.bodysTitle')}}</p>
         </div>
         <div class="row">
             <!-- Start Price Item -->
             <div class="col-md-4">
                 <div class="price-item">
                     <div class="table-ico">
-                        <i class='bx bx-user'></i>
+                        <i class='bx bx-code-alt'></i>
                     </div>
-                    <h4>Start Up</h4>
+                    <h4>{{ __('request_project_trans.Programming Section') }}</h4>
                     <div class="price-value">
-                        <span>forever</span>
-                        <h5>Free</h5>
+                        <span>{{ __('request_project_trans.des1') }}</span>
                     </div>
                     <div class="price-details">
                         <ul class="list-unstyled">
-                            <li class="co-green"><i class="bx bx-check"></i>Disk Space</li>
-                            <li class="co-green"><i class="bx bx-check"></i>Email Accounts</li>
-                            <li class="co-green"><i class="bx bx-check"></i>Monthly Bandwidth</li>
-                            <li class="co-red"><i class="bx bx-x"></i>Subdomains</li>
-                            <li class="co-red"><i class="bx bx-x"></i>Domains</li>
+                            <li class="co-green"><i class="bx bx-laptop"></i>{{ __('request_project_trans.Websites Programming')}}</li>
+                            <li class="co-green"><i class="bx bx-mobile-alt"></i>{{ __('request_project_trans.Mobile Apps Programming') }}</li>
+                            <li class="co-green"><i class="bx bx-edit"></i>{{ __('request_project_trans.Software modification') }}</li>
                         </ul>
                     </div>
                     <div class="price-btn">
                         <a class="bttn btn-purple" href="#">
-                            Buy Now
+                            {{ __('request_project_trans.Choose the section') }}
                         </a>
                     </div>
                 </div>
             </div>
             <!-- End Price Item -->
+
+
+
+            <!-- Start Price Item -->
+            <div class="col-md-4">
+                <div class="price-item">
+                    <div class="table-ico">
+                        <i class='bx bx-diamond'></i>
+                    </div>
+                    <h4>{{ __('request_project_trans.Graphic Design Section') }}</h4>
+                    <div class="price-value">
+                        <span>{{ __('request_project_trans.des2') }}</span>
+                    </div>
+                    <div class="price-details">
+                        <ul class="list-unstyled">
+                            <li class="co-green"><i class="bx bx-photo-album"></i>{{ __('request_project_trans.Infographic images') }}</li>
+                            <li class="co-green"><i class="bx bx-slider-alt"></i>{{ __('request_project_trans.UI UX Designer') }}</li>
+                            <li class="co-green"><i class="bx bx-badge-check"></i>{{ __('request_project_trans.Logos and brands') }}</li>
+                        </ul>
+                    </div>
+                    <div class="price-btn">
+                        <a class="bttn btn-purple" href="#">
+                            {{ __('request_project_trans.Choose the section') }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- End Price Item -->
+
             <!-- Start Price Item -->
             <div class="col-md-4">
                 <div class="price-item active">
@@ -52,74 +79,44 @@
                     <div class="table-ico">
                         <i class='bx bx-briefcase'></i>
                     </div>
-                    <h4>Small Business</h4>
+                    <h4>{{ __('request_project_trans.Project management') }}</h4>
                     <div class="price-value">
-                        <span>Starting at</span>
-                        <h5>$29/mo</h5>
+                        <span>{{ __('request_project_trans.des3') }}</span>
                     </div>
                     <div class="price-details">
                         <ul class="list-unstyled">
-                            <li class="co-green"><i class="bx bx-check"></i>Disk Space</li>
-                            <li class="co-green"><i class="bx bx-check"></i>Email Accounts</li>
-                            <li class="co-green"><i class="bx bx-check"></i>Monthly Bandwidth</li>
-                            <li class="co-green"><i class="bx bx-check"></i>Subdomains</li>
-                            <li class="co-red"><i class="bx bx-x"></i>Domains</li>
+                            <li class="co-green"><i class="bx bx-support"></i>{{ __('request_project_trans.Technical support for the project') }}</li>
+                            <li class="co-green"><i class="bx bx-refresh"></i>{{ __('request_project_trans.Maintenance and updates') }}</li>
+                            <li class="co-green"><i class="bx bx-highlight"></i>{{ __('request_project_trans.Feasibility study') }}</li>
                         </ul>
                     </div>
                     <div class="price-btn">
                         <a class="bttn btn-purple" href="#">
-                            Buy Now
+                            {{ __('request_project_trans.Choose the section') }}
                         </a>
                     </div>
                 </div>
             </div>
             <!-- End Price Item -->
-            <!-- Start Price Item -->
-            <div class="col-md-4">
-                <div class="price-item">
-                    <div class="table-ico">
-                        <i class='bx bx-rocket'></i>
-                    </div>
-                    <h4>Enterprise</h4>
-                    <div class="price-value">
-                        <span>Starting at</span>
-                        <h5>$499/mo</h5>
-                    </div>
-                    <div class="price-details">
-                        <ul class="list-unstyled">
-                            <li class="co-green"><i class="bx bx-check"></i>Disk Space</li>
-                            <li class="co-green"><i class="bx bx-check"></i>Email Accounts</li>
-                            <li class="co-green"><i class="bx bx-check"></i>Monthly Bandwidth</li>
-                            <li class="co-green"><i class="bx bx-check"></i>Subdomains</li>
-                            <li class="co-green"><i class="bx bx-check"></i>Domains</li>
-                        </ul>
-                    </div>
-                    <div class="price-btn">
-                        <a class="bttn btn-purple" href="#">
-                            Buy Now
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- End Price Item -->
+
         </div>
     </div>
 </section>
-<!-- End Pricing Table -->
-<!-- End Inner Page Content -->
+
+
 <!-- Start Question -->
 <section id="question" class="question">
     <div class="container">
         <div class="row row-aligns">
             <div class="col-lg-8">
                 <div class="question-txt">
-                    <h3><span>1,693,752</span> User have been using <br> our Services successfully.</h3>
+                    <h3><span>663</span> {{ __('main_trans.User has used') }} <br> {{ __('main_trans.Our services successfullly.') }}</h3>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="question-action">
                     <a class="bttn btn-purple" href="#">
-                        Free 30 Days Trial
+                        {{ __('main_trans.Start with us now!') }}
                         <i class='bx bx-right-arrow-alt'></i>
                     </a>
                 </div>
