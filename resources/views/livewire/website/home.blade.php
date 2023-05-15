@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', ucwords(__('main_trans.app_name')) . ' - ' . __('pages.home'))
+@section('title', ucwords(__('main_trans.app_name')) . ' - ' . ucwords(__('pages.home')))
 
 @section('content')
     @component('layouts.components.links')
