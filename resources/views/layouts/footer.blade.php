@@ -122,23 +122,7 @@
 <div id="scroll-top"><i class='bx bxs-chevron-up'></i></div>
 <!-- End Back To Top-->
 
-<!-- JS Files -->
-<script src="{{ asset('assets/vendors/jquery/jquery-3.4.1.min.js') }}"></script>
-<!-- Bootstrap v4 -->
-<script src="{{ asset('assets/vendors/bootstrap/js/bootstrap.min.js') }}"></script>
-<!-- Owl Carousel -->
-<script src="{{ asset('assets/vendors/owl-carousel/js/owl.carousel.min.js') }}"></script>
-<!-- Appear -->
-<script src="{{ asset('assets/vendors/appear/js/jquery.appear.js') }}"></script>
-<!-- Lity -->
-<script src="{{ asset('assets/vendors/lity/js/lity.min.js') }}"></script>
-<!-- Parallax -->
-<script src="{{ asset('assets/vendors/parallax/js/jquery-parallax.js') }}"></script>
-<!-- Parallax -->
-<script src="{{ asset('assets/js/core.js') }}"></script>
-
-@if (App::getLocale() == 'ar')
-<script src="{{ asset('assets/js/core_rtl.js') }}"></script>
-@endif
+@component('layouts.components.scripts-links')
+@endcomponent
 
 @livewireScripts()

@@ -255,13 +255,13 @@
             <div class="row row-aligns">
                 <div class="col-lg-8">
                     <div class="question-txt">
-                        <h3><span>663</span> {{__('about_trans.question_section')}}</h3>
+                        <h3><span>663</span> {{ __('about_trans.question_section') }}</h3>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="question-action">
                         <a class="bttn btn-purple" href="#">
-                            {{__('main_trans.Get Started')}}
+                            {{ __('main_trans.Get Started') }}
                             <i class='bx bx-right-arrow-alt'></i>
                         </a>
                     </div>
@@ -270,5 +270,4 @@
         </div>
     </section>
     <!-- End Question -->
-    </div>
 @endsection

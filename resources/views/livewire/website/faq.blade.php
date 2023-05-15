@@ -21,9 +21,9 @@
                     <aside class="aside-bar">
                         <div class="faq-control">
                             <ul class="list-unstyled">
-                                <li><a data-scroll href="#faq-general"><i class='bx bx-globe'></i>{{ucwords(__('faq_trans.general_inquiries'))}}</a></li>
-                                <li><a data-scroll href="#faq-sales"><i class="bx bx-money"></i>{{ucwords(__('faq_trans.sales_plans'))}}</a></li>
-                                <li><a data-scroll href="#faq-warranties"><i class="bx bx-shield-quarter"></i>{{ucwords(__('faq_trans.warranties'))}}</a></li>
+                                <li><a href="#faq-general"><i class='bx bx-globe'></i>{{ucwords(__('faq_trans.general_inquiries'))}}</a></li>
+                                <li><a href="#faq-sales"><i class="bx bx-money"></i>{{ucwords(__('faq_trans.sales_plans'))}}</a></li>
+                                <li><a href="#faq-warranties"><i class="bx bx-shield-quarter"></i>{{ucwords(__('faq_trans.warranties'))}}</a></li>
                             </ul>
                         </div>
                     </aside>
@@ -39,13 +39,13 @@
                                 <div class="card">
                                     <div class="card-header" id="headingOne">
                                         <h5 class="mb-0">
-                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
-                                                aria-expanded="true" aria-controls="collapseOne">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne"
+                                                aria-expanded="false" aria-controls="collapseOne">
                                                 {{__('faq_trans.general_inquiries.q1')}}
                                             </button>
                                         </h5>
                                     </div>
-                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
                                         data-parent="#accordion">
                                         <div class="card-body">
                                             <p>{{__('faq_trans.general_inquiries.ans1')}}</p>
@@ -80,7 +80,7 @@
                                     <div class="card-header" id="heading4">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-toggle="collapse"
-                                                data-target="#collapse4" aria-expanded="true" aria-controls="collapse4">
+                                                data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
                                                 {{__('faq_trans.sales_plans.q1')}}
                                             </button>
                                         </h5>
@@ -103,7 +103,7 @@
                                     <div class="card-header" id="heading8">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-toggle="collapse"
-                                                data-target="#collapse8" aria-expanded="true" aria-controls="collapse8">
+                                                data-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
                                                 {{__('faq_trans.warranties.q1')}}
                                             </button>
                                         </h5>
