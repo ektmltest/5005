@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', ucwords(__('main_trans.app_name')) . ' - ' . ucwords(__('pages.lets_start')))
+@section('title', ucwords(__('main_trans.app_name')) . ' - ' . ucwords(__('pages.letsStart')))
 
 @section('content')
 @section('title', ucwords(__('main_trans.app_name')) . ' - ' . __('pages.letsStart'))

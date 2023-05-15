@@ -26,7 +26,7 @@
                                 <span class="title">{{ucwords(__('nav.options.tickets_system'))}}</span>
                             </div>
                         </a>
-                        <a class="dropdown-item dropdown-link" href="#">
+                        <a class="dropdown-item dropdown-link" href="{{ route('letsStart') }}">
                             <div class="link-ico">
                                 <i class='bx bx-book-add'></i>
                                 <span class="title">{{ucwords(__('nav.options.project_request'))}}</span>
@@ -78,7 +78,7 @@
                     <a class="nav-link" href="#">{{ucwords(__('nav.store'))}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ucwords(__('nav.gallery'))}}</a>
+                    <a class="nav-link" href="{{ route('gallary') }}">{{ucwords(__('nav.gallery'))}}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('faq')}}">{{ucwords(__('nav.faq'))}}</a>
