@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse justify-content-md-center" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ucwords(__('nav.home_page'))}}</a>
+                    <a class="nav-link" href="{{route('home')}}">{{ucwords(__('nav.home_page'))}}</a>
                 </li>
                 <li class="nav-item dropdown js-dropdown-links">
                     <a class="nav-link dropdown-toggle" href="#" role="button"
@@ -81,7 +81,7 @@
                     <a class="nav-link" href="#">{{ucwords(__('nav.gallery'))}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ucwords(__('nav.faq'))}}</a>
+                    <a class="nav-link" href="{{route('faq')}}">{{ucwords(__('nav.faq'))}}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('about')}}">{{ucwords(__('nav.about'))}}</a>

@@ -1,5 +1,6 @@
 <?php
 use App\Http\Livewire\Website\About;
+use App\Http\Livewire\Website\Faq;
 use App\Http\Livewire\Website\Home;
 use App\Http\Livewire\Website\LetsStart;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,7 @@ Route::group([
     Route::get('/', Home::class)->name('index');
     Route::get('/home', Home::class)->name('home');
     Route::get('/about', About::class)->name('about');
+    Route::get('/faq', Faq::class)->name('faq');
 
     Route::get('letsStart', LetsStart::class)->name('letsStart');
 

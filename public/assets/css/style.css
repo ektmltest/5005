@@ -3663,6 +3663,7 @@ input, button {
 
 .faqs-pp {
     padding: 70px 0;
+    transition: all 0.5s ease-in-out;
 }
 
 .faq-control {
