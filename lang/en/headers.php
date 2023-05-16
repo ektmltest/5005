@@ -15,4 +15,12 @@ return [
     'gallary.header' => 'Our Creativity',
     'gallary.body' => 'we are a group of young people with a technical passion !! We gathered to design and create creative works that we are proud of, works to advance our society and our nation in the technical field and we believe in our ability to do so. Some of our creativity, works that we put our hearts in every part of it.',
 
+    'store.header' => 'Catalog Projects',
+    'store.body' => 'If you want to start an e-commerce and launch a new project, but you are confused about the idea of ​​the project, here you will find a set of ready-made projects at the lowest costs, all you have to do is buy the right project for you and start your e-commerce.',
+
+    'profile.header' => 'My Profile',
+    'profile.body' => 'From here you can edit your profile and view your personal data.',
+
+
+
 ];

@@ -6,4 +6,9 @@ return [
     'faq' => 'faq',
     'letsStart' => 'Request Project',
     'gallary' => 'Our work gallery',
+    'store' => 'Store',
+    'myprojects' => 'My Projects',
+    'profile' => 'My Profile',
+
+
 ];

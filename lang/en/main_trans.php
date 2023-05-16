@@ -13,6 +13,9 @@ return [
     'Our services successfullly.' => 'Our services successfullly.',
     'Start with us now!' => 'Start with us now!',
 
+    'Your Profile' => 'Your Profile',
+    'Sign Out' => 'Sign Out',
+
     // Footer
     'Sitemap' => 'Site Map',
     'Home' => 'Home',
