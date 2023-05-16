@@ -8,7 +8,7 @@
 @include('layouts.header', [
     'header' => True,
     'header_head' => ucwords(__('headers.gallary.header')),
-    'header_body' => ucwords(__('headers.gallary.body')),
+    'header_body' => __('headers.gallary.body'),
 ])
 
 

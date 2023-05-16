@@ -9,7 +9,7 @@
     @include('layouts.header', [
         'header' => true,
         'header_head' => ucwords(__('headers.faq.header')),
-        'header_body' => ucwords(__('headers.faq.body')),
+        'header_body' => __('headers.faq.body'),
     ])
 
     <!-- Start Faqs -->

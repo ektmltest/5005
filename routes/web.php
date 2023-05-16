@@ -5,6 +5,8 @@ use App\Http\Livewire\Website\Home;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Website\Gallary;
 use App\Http\Livewire\Website\LetsStart;
+use App\Http\Livewire\Website\Ticket;
+use App\Http\Livewire\Website\TicketShow;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 // Localization
@@ -18,6 +20,8 @@ Route::group([
     Route::get('/home', Home::class)->name('home');
     Route::get('/about', About::class)->name('about');
     Route::get('/faq', Faq::class)->name('faq');
+    Route::get('/tickets', Ticket::class)->name('tickets');
+    Route::get('/tickets/1', TicketShow::class)->name('tickets.show');
 
     Route::get('letsStart', LetsStart::class)->name('letsStart');
     Route::get('gallary', Gallary::class)->name('gallary');

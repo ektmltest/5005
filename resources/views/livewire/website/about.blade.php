@@ -9,7 +9,7 @@
     @include('layouts.header', [
         'header' => true,
         'header_head' => ucwords(__('headers.about.header')),
-        'header_body' => ucwords(__('headers.about.body')),
+        'header_body' => __('headers.about.body'),
     ])
 
     <!-- Start Inner Page Content -->

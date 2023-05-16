@@ -1,3 +1,25 @@
+<!-- Start Question -->
+<section id="question" class="question">
+    <div class="container">
+        <div class="row row-aligns">
+            <div class="col-lg-8">
+                <div class="question-txt">
+                    <h3><span>663</span> {{ __('main_trans.User has used') }} <br> {{ __('main_trans.Our services successfullly.') }}</h3>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="question-action">
+                    <a class="bttn btn-purple" href="#">
+                        {{ __('main_trans.Start with us now!') }}
+                        <i class='bx bx-right-arrow-alt'></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Question -->
+
 <footer id="footer" class="footer">
     <div class="container">
         <div class="footer-box">
