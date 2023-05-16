@@ -19,4 +19,12 @@ return [
     'ticket.body' => 'We are in your service 24/7. If you have a question or you need something specific we are always here for you. Just create a ticket.',
 
     'ticket.show.header' => 'Show Tickets',
+    'store.header' => 'Catalog Projects',
+    'store.body' => 'If you want to start an e-commerce and launch a new project, but you are confused about the idea of ​​the project, here you will find a set of ready-made projects at the lowest costs, all you have to do is buy the right project for you and start your e-commerce.',
+
+    'profile.header' => 'My Profile',
+    'profile.body' => 'From here you can edit your profile and view your personal data.',
+
+
+
 ];

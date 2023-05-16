@@ -7,6 +7,9 @@ use App\Http\Livewire\Website\Gallary;
 use App\Http\Livewire\Website\LetsStart;
 use App\Http\Livewire\Website\Ticket;
 use App\Http\Livewire\Website\TicketShow;
+use App\Http\Livewire\Website\MyProjects;
+use App\Http\Livewire\Website\Profile;
+use App\Http\Livewire\Website\Store;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 // Localization
@@ -25,6 +28,9 @@ Route::group([
 
     Route::get('letsStart', LetsStart::class)->name('letsStart');
     Route::get('gallary', Gallary::class)->name('gallary');
+    Route::get('store', Store::class)->name('store');
+    Route::get('myProjects', MyProjects::class)->name('myProjects');
+    Route::get('myProfile', Profile::class)->name('myProfile');
 
 
 

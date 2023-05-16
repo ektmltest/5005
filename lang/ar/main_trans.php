@@ -14,6 +14,10 @@ return [
     'Our services successfullly.' => 'خدماتنا بنجاح.',
     'Start with us now!' => 'ابدأ الان',
 
+    'Your Profile' => 'الملف الشخصي',
+    'Sign Out' => 'تسجيل الخروج',
+
+
     // Footer
     'Sitemap' => 'خريطة الموقع',
     'Home' => 'الرئيسية',
