@@ -20,7 +20,7 @@
                         {{ucwords(__('nav.options'))}}
                     </a>
                     <div class="dropdown-menu" >
-                        <a class="dropdown-item dropdown-link" href="#">
+                        <a class="dropdown-item dropdown-link" href="{{route('tickets')}}">
                             <div class="link-ico">
                                 <i class='bx bx-message-detail'></i>
                                 <span class="title">{{ucwords(__('nav.options.tickets_system'))}}</span>

@@ -21,9 +21,9 @@
                 <aside class="aside-bar">
                     <div class="faq-control">
                         <ul class="list-unstyled">
-                            <li class="active"><a id="ticketsCreateLink" style="cursor: pointer"><i class='bx bx-globe'></i>{{ucwords(__('faq_trans.general_inquiries'))}}</a></li>
-                            <li><a id="ticketsAvailableLink" style="cursor: pointer"><i class="bx bx-money"></i>{{ucwords(__('faq_trans.sales_plans'))}}</a></li>
-                            <li><a id="ticketsClosedLink" style="cursor: pointer"><i class="bx bx-shield-quarter"></i>{{ucwords(__('faq_trans.warranties'))}}</a></li>
+                            <li class="active"><a id="ticketsCreateLink" style="cursor: pointer"><i class='bx bx-message-rounded-add'></i>{{ucwords(__('tickets_trans.create_ticket'))}}</a></li>
+                            <li><a id="ticketsAvailableLink" style="cursor: pointer"><i class="bx bx-list-ul"></i>{{ucwords(__('tickets_trans.available_ticket'))}}</a></li>
+                            <li><a id="ticketsClosedLink" style="cursor: pointer"><i class="bx bx-lock"></i>{{ucwords(__('tickets_trans.closed_ticket'))}}</a></li>
                         </ul>
                     </div>
                 </aside>
@@ -85,7 +85,7 @@
                     </form>
 
                     <div id="ticketsAvailable" class="d-none faq-control p-3">
-                        <a href="#" class="job-post shadow-none">
+                        <a href="{{route('tickets.show')}}" class="job-post shadow-none">
                             <div class="row">
                                 <div class="col-xl-5 col-lg-5">
                                     <div class="job-title">
@@ -109,7 +109,7 @@
                     </div>
 
                     <div id="ticketsClosed" class="d-none faq-control p-3">
-                        <a href="#" class="job-post shadow-none">
+                        <a href="{{route('tickets.show')}}" class="job-post shadow-none">
                             <div class="row">
                                 <div class="col-xl-5 col-lg-5">
                                     <div class="job-title">
@@ -236,9 +236,15 @@ function handleCreateLinkClick() {
 
     ticketsCreateLink.parentElement.classList = 'active';
 
-    ticketsCreate.classList.remove('d-none');
-    ticketsAvailable.classList.add('d-none');
-    ticketsClosed.classList.add('d-none');
+    // ticketsCreate.classList.remove('d-none');
+    // ticketsAvailable.classList.add('d-none');
+    // ticketsClosed.classList.add('d-none');
+    ticketsAvailable.classList.remove('d-none');
+    ticketsClosed.classList.remove('d-none');
+    $(ticketsAvailable).hide();
+    $(ticketsClosed).hide();
+    $(ticketsCreate).hide();
+    $(ticketsCreate).fadeIn(1000);
 }
 
 function handleAvailableLinkClick() {
@@ -253,9 +259,15 @@ function handleAvailableLinkClick() {
 
     ticketsAvailableLink.parentElement.classList = 'active';
 
-    ticketsCreate.classList.add('d-none');
+    // ticketsCreate.classList.add('d-none');
+    // ticketsAvailable.classList.remove('d-none');
+    // ticketsClosed.classList.add('d-none');
     ticketsAvailable.classList.remove('d-none');
-    ticketsClosed.classList.add('d-none');
+    ticketsClosed.classList.remove('d-none');
+    $(ticketsClosed).hide();
+    $(ticketsCreate).hide();
+    $(ticketsAvailable).hide();
+    $(ticketsAvailable).fadeIn(1000);
 }
 
 function handleClosedLinkClick() {
@@ -270,10 +282,18 @@ function handleClosedLinkClick() {
 
     ticketsClosedLink.parentElement.classList = 'active';
 
-    ticketsCreate.classList.add('d-none');
-    ticketsAvailable.classList.add('d-none');
+    // ticketsCreate.classList.add('d-none');
+    // ticketsAvailable.classList.add('d-none');
+    // ticketsClosed.classList.remove('d-none');
+    ticketsAvailable.classList.remove('d-none');
     ticketsClosed.classList.remove('d-none');
+    $(ticketsCreate).hide();
+    $(ticketsAvailable).hide();
+    $(ticketsClosed).hide();
+    $(ticketsClosed).fadeIn(1000);
 }
+
+
 </script>
 
 @endsection
