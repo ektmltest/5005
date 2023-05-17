@@ -3,7 +3,7 @@
 @section('title', ucwords(__('main_trans.app_name')) . ' - ' . ucwords(__('pages.profile')))
 
 @section('content')
-@component('layouts.components.links')
+@component('layouts.components.rtl-links-css')
 @endcomponent
 
 @include('layouts.header', [
@@ -620,5 +620,6 @@ timeout = setTimeout(async () => {
 }, 750);
 })
 </script>
-
+@component('layouts.components.rtl-links-js')
+@endcomponent
 @endsection

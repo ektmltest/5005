@@ -1,8 +1,9 @@
 @extends('layouts.app')
-@section('content')
+
 @section('title', ucwords(__('main_trans.app_name')) . ' - ' . __('pages.gallary'))
 
-@component('layouts.components.links')
+@section('content')
+@component('layouts.components.rtl-links-css')
 @endcomponent
 
 @include('layouts.header', [
@@ -217,5 +218,7 @@
     </div>
 </section>
 <!-- End Question -->
+@component('layouts.components.rtl-links-js')
+@endcomponent
 @endsection
 

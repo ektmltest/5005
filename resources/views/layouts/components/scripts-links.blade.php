@@ -17,7 +17,3 @@
 <script type="module">
     import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';
 </script>
-
-@if (App::getLocale() == 'ar')
-<script src="{{ asset('assets/js/core_rtl.js') }}"></script>
-@endif

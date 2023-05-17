@@ -3,9 +3,8 @@
 @section('title', ucwords(__('main_trans.app_name')) . ' - ' . ucwords(__('pages.store')))
 
 @section('content')
-@section('title', ucwords(__('main_trans.app_name')) . ' - ' . __('pages.letsStart'))
 
-@component('layouts.components.links')
+@component('layouts.components.rtl-links-css')
 @endcomponent
 
 @include('layouts.header', [
@@ -1318,5 +1317,8 @@
     </div>
 </div>
 </section>
+
+@component('layouts.components.rtl-links-js')
+@endcomponent
 
 @endsection
