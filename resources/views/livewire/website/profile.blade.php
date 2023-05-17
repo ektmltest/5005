@@ -120,7 +120,7 @@
 <form action="https://www.ektml.com/profile/changeData" mu-updateProfile method="POST"
     name='changeData'>
     <div class="card-body">
-        <h5 style="color: #4b3da7;"><i class="bx bx-edit mb-4"></i> Edit profile                                    </h5>
+        <h5 style="color: #4b3da7;"><i class="bx bx-edit mb-4"></i> {{ __('profile_trans.Edit profile') }}                                    </h5>
         <div class="row mb-4">
             <div class="col-sm-12 input-box">
                 <div class="floating-label-wrap">
@@ -128,7 +128,7 @@
                         id="firstName" firstName name="firstName"
                         value="Omar">
                     <label for="firstName"
-                        class="floating-label">First Name</label>
+                        class="floating-label">{{ __('profile_trans.First Name') }}</label>
                 </div>
             </div>
         </div>
@@ -139,7 +139,7 @@
                         id="lastName" name="lastName" lastName
                         value="elgohary">
                     <label for="lastName"
-                        class="floating-label">Last Name</label>
+                        class="floating-label">{{ __('profile_trans.Last Name') }}</label>
                 </div>
             </div>
         </div>
@@ -150,7 +150,7 @@
                         id="phoneNumber" name="phoneNumber" phoneNumber
                         value="+20115651366">
                     <label for="phoneNumber"
-                        class="floating-label">Phone Number</label>
+                        class="floating-label">{{ __('profile_trans.Phone Number') }}</label>
                 </div>
             </div>
         </div>
@@ -158,7 +158,7 @@
             <div class="col-sm-12 text-secondary">
                 <div class="form-buttons">
                     <input style="padding-right: 2.5rem; padding-left: 2.5rem;"
-                        type="submit" value="Change">
+                        type="submit" value="{{ __('profile_trans.Change') }}">
                 </div>
             </div>
         </div>
@@ -170,7 +170,8 @@
 
 <div class="card">
 <div class="card-body">
-    <h5 style="color: #4b3da7;"><i class="bx bx-edit mb-4"></i> Profile Picture                                </h5>
+    <h5 style="color: #4b3da7;"><i class="bx bx-edit mb-4"></i> {{ __('profile_trans.Profile Picture') }}
+    </h5>
     <form action="https://www.ektml.com/profile/avatar" pImfForm method="POST">
         <div class="row mb-4">
             <div class="col-sm-12 input-box">
@@ -178,7 +179,7 @@
                     <input type="file" name="file" pImgInput
                         onchange="setProfileImage(this)"
                         class="floating-label-field floating-label-field--s3">
-                    <label for="fileImg" class="floating-label">Image</label>
+                    <label for="fileImg" class="floating-label">{{ __('profile_trans.Image') }}</label>
                 </div>
             </div>
         </div>
@@ -188,7 +189,7 @@
                 <div class="form-buttons">
                     <input style="padding-right: 2.5rem; padding-left: 2.5rem;"
                         type="submit"
-                        value="Save Changes">
+                        value="{{ __('profile_trans.Save Changes') }}">
                 </div>
             </div>
         </div>
@@ -201,38 +202,42 @@
 <div class="card">
 <div class="card-body">
     <h5 style="color: #4b3da7;"><i class='bx bx-credit-card mb-4'></i>
-        Recharge money                                </h5>
-        <p style="color: #34d8be;">اولا : قم بتحويل المال الى أحد الحسابات التالية</p>
+        {{ __('profile_trans.Recharge money') }}
+    </h5>
+        <p style="color: #34d8be;">{{ __('profile_trans.smalltitle') }}</p>
     <div class="row">
         <div class="col-sm-6 mb-3 mb-md-0">
             <div class="card text-purple mb-3">
-                <div class="card-header">Al Rajhi Bank</div>
+                <div class="card-header">{{ __('profile_trans.Al Rajhi Bank') }}</div>
                 <div class="card-body">
-                    <div>Account Holder's Name : أحمد يحي شراحيلي</div>
-                    <div>IBan : SA4380000246608016064127</div>
-                    <div>account number : 246608016064127</div>
+                    <div>{{ __("profile_trans.Account Holder's Name") }} : {{ __('profile_trans.name') }}</div>
+                    <div>{{ __('profile_trans.IBan') }} : SA4380000246608016064127</div>
+                    <div>{{ __('profile_trans.account number') }} : 246608016064127</div>
                 </div>
             </div>
         </div>
 
         <div class="col-sm-6">
             <div class="card text-purple mb-3">
-                <div class="card-header">Bank Al Bilad</div>
+                <div class="card-header">{{ __('profile_trans.Bank Al Bilad') }}</div>
                 <div class="card-body">
-                    <div>Account Holder's Name : أحمد يحي شراحيلي</div>
-                    <div>IBan : SA2915000434121839970005</div>
-                    <div>account number : 434121839970005</div>
+                    <div>{{ __("profile_trans.Account Holder's Name") }} : {{ __('profile_trans.name') }}</div>
+                    <div>
+                        <p class="text-success">{{ __('profile_trans.IBan') }} </p>
+                        <p class="text-danger">: SA2915000434121839970005</p>
+                    </div>
+                    <div>{{ __('profile_trans.account number') }} : 434121839970005</div>
                 </div>
             </div>
         </div>
     </div>
-    <p style="color: #34d8be;">ثانيا : قم بكتابة المبلغ الذي تم تحويله ورفع صورة من الحواله</p>
+    <p style="color: #34d8be;">{{ __('profile_trans.smalltitle2') }}</p>
     <div class="row">
         <div class="col-12 justify-content-center">
             <div class="floating-label-wrap">
                 <input type="number" class="floating-label-field floating-label-field--s3"
                     id="reCost" name="reCost" value="0" />
-                <label for="reCost" class="floating-label">Money to recharge</label>
+                <label for="reCost" class="floating-label">{{ __('profile_trans.Money to recharge') }}</label>
             </div>
         </div>
     </div>
@@ -243,7 +248,7 @@
                 <input type="file" onchange="set7wala(this)"
                     class="floating-label-field floating-label-field--s3">
                 <label for="fileImg"
-                    class="floating-label">Add a bank transfer photo</label>
+                    class="floating-label">{{ __('profile_trans.Add a bank transfer photo') }}</label>
             </div>
         </div>
     </div>
@@ -253,7 +258,7 @@
             <div class="form-buttons">
                 <input req-recharge style="padding-right: 2.5rem; padding-left: 2.5rem;"
                     type="submit"
-                    value="Request recharge">
+                    value="{{ __('profile_trans.Request recharge') }}">
             </div>
         </div>
     </div>
@@ -267,7 +272,8 @@
 <form action="https://www.ektml.com/profile/passwordChange" method="POST" name='passwordChange'>
     <div class="card-body">
         <h5 style="color: #4b3da7;"><i class="bx bx-lock mb-4"></i>
-            Change Password                                    </h5>
+            {{ __('profile_trans.Change Password') }}
+        </h5>
         <div class="row mb-4">
             <div class="col-sm-12 input-box">
                 <div class="floating-label-wrap">
@@ -275,7 +281,7 @@
                         id="oldPassword" name="oldPassword"
                         value="">
                     <label for="oldPassword"
-                        class="floating-label">Old Password</label>
+                        class="floating-label">{{ __('profile_trans.Old Password') }}</label>
                 </div>
             </div>
         </div>
@@ -286,7 +292,7 @@
                         id="newPassword" name="newPassword"
                         value="">
                     <label for="newPassword"
-                        class="floating-label">New Password</label>
+                        class="floating-label">{{ __('profile_trans.New Password') }}</label>
                 </div>
             </div>
         </div>
@@ -297,7 +303,7 @@
                         id="newPasswordConfirm" name="newPasswordConfirm"
                         value="">
                     <label for="newPasswordConfirm"
-                        class="floating-label">Confirm the new password</label>
+                        class="floating-label">{{ __('profile_trans.Confirm the new password') }}</label>
                 </div>
             </div>
         </div>
@@ -305,7 +311,7 @@
             <div class="col-sm-12 text-secondary">
                 <div class="form-buttons">
                     <input style="padding-right: 2.5rem; padding-left: 2.5rem;"
-                        type="submit" value="Change">
+                        type="submit" value="{{ __('profile_trans.Change') }}">
                 </div>
             </div>
         </div>
@@ -321,13 +327,13 @@
     <li role="presentation" class="active">
         <a href="#withdraw" aria-controls="withraw" role="tab" data-toggle="tab"
             aria-expanded="true">
-            <i class="bx bx-money"></i> Withdraw</a>
+            <i class="bx bx-money"></i> {{ __('profile_trans.Withdraw')}}</a>
     </li>
 
     <li role="presentation" class="mx-3">
         <a href="#history" aria-controls="history" role="tab" data-toggle="tab"
             aria-expanded="false">
-            <i class="bx bx-clipboard"></i> History</a>
+            <i class="bx bx-clipboard"></i> {{ __('profile_trans.History')}}</a>
     </li>
 </ul>
 <div class="tab-content my-4">
@@ -337,7 +343,7 @@
                 <div class="floating-label-wrap">
                     <input type="text" class="floating-label-field floating-label-field--s3"
                         id="name" name="name">
-                    <label for="name" class="floating-label">Name</label>
+                    <label for="name" class="floating-label">{{ __('profile_trans.Name')}}</label>
                 </div>
             </div>
         </div>
@@ -347,7 +353,7 @@
                     <input type="text" class="floating-label-field floating-label-field--s3"
                         id="bank" name="bank">
                     <label for="bank"
-                        class="floating-label">Bank name</label>
+                        class="floating-label">{{ __('profile_trans.Bank name')}}</label>
                 </div>
             </div>
         </div>
@@ -358,7 +364,7 @@
                         class="floating-label-field floating-label-field--s3" id="balance"
                         name="money">
                     <label for="balance"
-                        class="floating-label">Amount to be withdrawn</label>
+                        class="floating-label">{{ __('profile_trans.Amount to be withdrawn')}}</label>
                 </div>
             </div>
         </div>
@@ -367,7 +373,7 @@
                 <div class="floating-label-wrap">
                     <input type="text" class="floating-label-field floating-label-field--s3"
                         id="iban" name="iban">
-                    <label for="bank" class="floating-label">IBan</label>
+                    <label for="bank" class="floating-label">{{ __('profile_trans.IBan')}}</label>
                 </div>
             </div>
         </div>
@@ -375,7 +381,7 @@
             <div class="col-sm-12 text-secondary">
                 <div class="form-buttons">
                     <input style="padding-right: 2.5rem; padding-left: 2.5rem;"
-                        type="submit" req-with value="سحب">
+                        type="submit" req-with value="{{ __('profile_trans.Withdraw') }}">
                 </div>
             </div>
         </div>
@@ -405,25 +411,7 @@
 </div>
 </section>
 
-<section id="question" class="question">
-    <div class="container">
-        <div class="row row-aligns">
-            <div class="col-lg-8">
-                <div class="question-txt">
-                    <h3><span>663</span> {{ __('main_trans.User has used') }} <br> {{ __('main_trans.Our services successfullly.') }}</h3>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="question-action">
-                    <a class="bttn btn-purple" href="https://www.ektml.com/projects/create">
-                        {{ __('main_trans.Start with us now!') }}
-                        <i class='bx bx-right-arrow-alt'></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 
 <div id="scroll-top"><i class='bx bxs-chevron-up'></i></div>
 <!-- End Back To Top-->

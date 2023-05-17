@@ -1,4 +1,3 @@
-<!-- Start Question -->
 <section id="question" class="question">
     <div class="container">
         <div class="row row-aligns">
@@ -43,19 +42,19 @@
                     <div class="foot-box sitemap">
                         <h4>{{ __('main_trans.Sitemap') }}</h4>
                         <ul class="list-unstyled">
-                            <li><a href="#">{{ __('main_trans.Home') }}</a></li>
+                            <li><a href="{{ route('home') }}">{{ __('main_trans.Home') }}</a></li>
                         </ul>
 
                         <ul class="list-unstyled">
-                            <li><a href="#">{{ __('main_trans.Our work gallery') }}</a></li>
+                            <li><a href="{{ route('gallary') }}">{{ __('main_trans.Our work gallery') }}</a></li>
                         </ul>
 
                         <ul class="list-unstyled">
-                            <li><a href="#">{{ __('main_trans.FAQ') }}</a></li>
+                            <li><a href="{{ route('faq') }}">{{ __('main_trans.FAQ') }}</a></li>
                         </ul>
 
                         <ul class="list-unstyled">
-                            <li><a href="#">{{ __('main_trans.About us') }}</a></li>
+                            <li><a href="{{ route('about') }}">{{ __('main_trans.About us') }}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -108,7 +107,7 @@
                 <div class="col-xl-6">
                     <div class="fast-links">
                         <ul class="list-unstyled">
-                            <li><a href="#">{{ __('main_trans.Home') }}</a></li>
+                            <li><a href="{{ route('home') }}">{{ __('main_trans.Home') }}</a></li>
                             <li><a href="#">{{ __('main_trans.Terms Of Service') }}</a></li>
                             <li><a href="#">{{ __('main_trans.Privacy policy') }}</a></li>
                         </ul>
@@ -119,6 +118,7 @@
     </div>
 </footer>
 <!-- End Footer -->
+
 <!-- Start Preloader -->
 <div id="loading-mask">
     <div class="loader-wrapper">
