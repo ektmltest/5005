@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -17,11 +18,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -41,4 +38,69 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // ranks relationship
+    public function rank() {
+        return $this->belongsTo(Rank::class);
+    }
+
+    //
+    public function projects() {
+        return $this->hasMany(Project::class);
+    }
+
+    public function projectReplies() {
+        return $this->hasMany(ProjectReply::class);
+    }
+
+    public function readyProjectOpinions() {
+        return $this->hasMany(Opinion::class);
+    }
+
+    public function marketingCoupons() {
+        return $this->hasMany(MarketingCoupon::class);
+    }
+
+    public function payments() {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function marketingLevels() {
+        return $this->belongsToMany(MarketingLevel::class, 'user_marketing_levels');
+    }
+
+    public function tickets() {
+        return $this->hasMany(Ticket::class);
+    }
+
+    public function ticketReplies() {
+        return $this->hasMany(TicketReply::class);
+    }
+
+    public function galleryProjects() {
+        return $this->hasMany(GalleryProject::class);
+    }
+
+    public function galleryTypes() {
+        return $this->hasMany(GalleryProjectType::class);
+    }
+
+    public function newspapers() {
+        return $this->hasMany(Newspaper::class);
+    }
+
+    //////* attributes *//////
+    protected function fname(): Attribute {
+        return Attribute::make(
+            get: fn ($value) => json_decode($value, true),
+            set: fn ($value) => json_encode($value)
+        );
+    }
+
+    protected function lname(): Attribute {
+        return Attribute::make(
+            get: fn ($value) => json_decode($value, true),
+            set: fn ($value) => json_encode($value)
+        );
+    }
 }
