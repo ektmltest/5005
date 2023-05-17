@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,5 +22,13 @@ class Addon extends Model
 
     public function payments() {
         return $this->belongsToMany(Payment::class, 'payment_addons');
+    }
+
+    //////* attributes *//////
+    public function name(): Attribute {
+        return Attribute::make(
+            get: fn ($value) => json_decode($value, true),
+            set: fn ($value) => json_encode($value)
+        );
     }
 }

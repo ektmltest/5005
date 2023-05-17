@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,5 +14,13 @@ class AddonType extends Model
 
     public function addons() {
         return $this->hasMany(Addon::class);
+    }
+
+    //////* attributes *//////
+    public function name(): Attribute {
+        return Attribute::make(
+            get: fn ($value) => json_decode($value, true),
+            set: fn ($value) => json_encode($value)
+        );
     }
 }

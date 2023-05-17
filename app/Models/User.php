@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -81,10 +82,25 @@ class User extends Authenticatable
     }
 
     public function galleryTypes() {
-        return $this->hasMany(GalleryType::class);
+        return $this->hasMany(GalleryProjectType::class);
     }
 
     public function newspapers() {
         return $this->hasMany(Newspaper::class);
+    }
+
+    //////* attributes *//////
+    protected function fname(): Attribute {
+        return Attribute::make(
+            get: fn ($value) => json_decode($value, true),
+            set: fn ($value) => json_encode($value)
+        );
+    }
+
+    protected function lname(): Attribute {
+        return Attribute::make(
+            get: fn ($value) => json_decode($value, true),
+            set: fn ($value) => json_encode($value)
+        );
     }
 }

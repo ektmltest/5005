@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GalleryType extends Model
+class GalleryProjectType extends Model
 {
     use HasFactory;
 
@@ -17,5 +18,13 @@ class GalleryType extends Model
 
     public function galleryProjects() {
         return $this->hasMany(GalleryProject::class);
+    }
+
+    //////* attributes *//////
+    public function name(): Attribute {
+        return Attribute::make(
+            get: fn ($value) => json_decode($value, true),
+            set: fn ($value) => json_encode($value)
+        );
     }
 }
