@@ -47,4 +47,44 @@ class User extends Authenticatable
     public function projects() {
         return $this->hasMany(Project::class);
     }
+
+    public function projectReplies() {
+        return $this->hasMany(ProjectReply::class);
+    }
+
+    public function readyProjectOpinions() {
+        return $this->hasMany(Opinion::class);
+    }
+
+    public function marketingCoupons() {
+        return $this->hasMany(MarketingCoupon::class);
+    }
+
+    public function payments() {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function marketingLevels() {
+        return $this->belongsToMany(MarketingLevel::class, 'user_marketing_levels');
+    }
+
+    public function tickets() {
+        return $this->hasMany(Ticket::class);
+    }
+
+    public function ticketReplies() {
+        return $this->hasMany(TicketReply::class);
+    }
+
+    public function galleryProjects() {
+        return $this->hasMany(GalleryProject::class);
+    }
+
+    public function galleryTypes() {
+        return $this->hasMany(GalleryType::class);
+    }
+
+    public function newspapers() {
+        return $this->hasMany(Newspaper::class);
+    }
 }
