@@ -1,7 +1,8 @@
 <?php
 
 return [
-    'home' => 'home page',
+    'home' => 'Ektml Platform',
+    // 'home' => 'home page',
     'about' => 'about us',
     'faq' => 'faq',
     'letsStart' => 'Request Project',

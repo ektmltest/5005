@@ -20,17 +20,18 @@ Route::group([
 
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
     Route::get('/', Home::class)->name('index');
+    Route::get('/faq', Faq::class)->name('faq');
     Route::get('/home', Home::class)->name('home');
     Route::get('/about', About::class)->name('about');
-    Route::get('/faq', Faq::class)->name('faq');
     Route::get('/tickets', Ticket::class)->name('tickets');
     Route::get('/tickets/1', TicketShow::class)->name('tickets.show');
 
-    Route::get('letsStart', LetsStart::class)->name('letsStart');
-    Route::get('gallary', Gallary::class)->name('gallary');
+    
     Route::get('store', Store::class)->name('store');
-    Route::get('myProjects', MyProjects::class)->name('myProjects');
+    Route::get('gallary', Gallary::class)->name('gallary');
     Route::get('myProfile', Profile::class)->name('myProfile');
+    Route::get('letsStart', LetsStart::class)->name('letsStart');
+    Route::get('myProjects', MyProjects::class)->name('myProjects');
 
 
 
