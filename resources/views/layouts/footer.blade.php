@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="theme-details">
-                        <a href="index.html">
+                        <a href="{{ route('home') }}">
                             <img src="{{ asset('assets/img/logo_ektml.webp') }}" alt="Hotan Template" title="Hotan" style="width: 100px !important">
                         </a>
                         <p>{{ __('main_trans.FooterTitle')}}</p>
@@ -38,6 +38,7 @@
                         </ul>
                     </div>
                 </div>
+
                 <div class="col-lg-3 col-md-6">
                     <div class="foot-box sitemap">
                         <h4>{{ __('main_trans.Sitemap') }}</h4>

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
 <div class="container">
 <a class="navbar-brand" href="{{route('home')}}">
-    <img src="{{ asset('assets/img/logo_ektml.webp') }}" alt="Hotan Template" title="Hotan" style="width: 100px !important">
+    <img src="{{ asset('assets/img/logo_ektml.webp') }}" alt="Hotan Template" title="Hotan" style="width: 90px !important">
 </a>
 
 <button class="navbar-toggler" type="button" data-toggle="collapse"
