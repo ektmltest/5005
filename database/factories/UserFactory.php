@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Rank;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
@@ -18,11 +20,15 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'fname' => fake()->name(),
+            'lname' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
+            'phone' => fake()->regexify('01[0125][0-9]{8}'),
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => Hash::make('123456879'), // 123456879
             'remember_token' => Str::random(10),
+            'state' => fake()->randomElement(['pending', 'activated', 'blocked']),
+            'rank_id' => Rank::inRandomOrder()->first()->id,
         ];
     }
 
