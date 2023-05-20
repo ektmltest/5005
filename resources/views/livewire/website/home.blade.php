@@ -239,10 +239,6 @@
                         <span class="label label-purple">{{ __('home_trans.The bright feature') }}</span>
                         <h4 class="co-purple">{{ __('home_trans.brightlg') }}</h4>
                         <p>{{ __('home_trans.brightsm') }}</p>
-                        <a href="#">Learn More
-                            <i class='bx bx-right-arrow-alt btn_icon btn_icon_1'></i>
-                            <i class='bx bx-right-arrow-alt btn_icon btn_icon_2'></i>
-                        </a>
                     </div>
                 </div>
             </div>
@@ -256,11 +252,6 @@
                         <span class="label label-purple">{{ __('home_trans.The bright feature') }}</span>
                         <h4 class="co-purple">{{ __('home_trans.brightlg2') }}</h4>
                         <p>{{ __('home_trans.brightsm2') }}</p>
-                        <a href="#">
-                            Learn More
-                            <i class='bx bx-right-arrow-alt btn_icon btn_icon_1'></i>
-                            <i class='bx bx-right-arrow-alt btn_icon btn_icon_2'></i>
-                        </a>
                         <span class="dots">
                             <i class="dot dot1"></i>
                             <i class="dot dot2"></i>
@@ -374,40 +365,40 @@
 
 <!-- Start Working -->
 <section id="start-working pt-5" class="start-working">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row row-aligns">
-            <div class="col-lg-7">
-                <div class="video-place">
-                    <a href="https://www.youtube.com/watch?v=4RynX087iBA" data-lity>
-                        <i class='bx bx-right-arrow'></i>
-                    </a>
-                    <img width="640" height="360" class="img-fluid lazyload" src="https://www.ektml.com/static/img/home/global.svg" loading="lazy" alt="Ektml Platform">
-                </div>
+<div class="overlay"></div>
+<div class="container">
+    <div class="row row-aligns">
+        <div class="col-lg-7">
+            <div class="video-place">
+                <a href="https://www.youtube.com/watch?v=4RynX087iBA" data-lity>
+                    <i class='bx bx-right-arrow'></i>
+                </a>
+                <img width="640" height="360" class="img-fluid lazyload" src="https://www.ektml.com/static/img/home/global.svg" loading="lazy" alt="Ektml Platform">
             </div>
-            <div class="col-lg-5">
-                <div class="video-txt">
-                    <span>{{ __('home_trans.Why_Us') }}</span>
-                    <h3>{{ __('home_trans.headtitle') }}</h3>
-                    <p>{{ __('home_trans.headdes2') }}</p>
-                    <ul class="list-unstyled">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <li><i class='bx bx-bulb'></i> {{ __('home_trans.title1')}}</li>
-                                <li><i class='bx bx-vector'></i> {{ __('home_trans.title2')}}</li>
-                                <li class="active"><i class='bx bx-rocket'></i> {{ __('home_trans.title3')}}</li>
-                            </div>
-                            <div class="col-md-6">
-                                <li><i class='bx bx-check-double'></i> {{ __('home_trans.title4')}}</li>
-                                <li><i class='bx bx-collection'></i> {{ __('home_trans.title5')}}</li>
-                                <li><i class='bx bx-support'></i> {{ __('home_trans.title6')}}</li>
-                            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="video-txt">
+                <span>{{ __('home_trans.Why_Us') }}</span>
+                <h3>{{ __('home_trans.headtitle') }}</h3>
+                <p>{{ __('home_trans.headdes2') }}</p>
+                <ul class="list-unstyled">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <li><i class='bx bx-bulb'></i> {{ __('home_trans.title1')}}</li>
+                            <li><i class='bx bx-vector'></i> {{ __('home_trans.title2')}}</li>
+                            <li class="active"><i class='bx bx-rocket'></i> {{ __('home_trans.title3')}}</li>
                         </div>
-                    </ul>
-                </div>
+                        <div class="col-md-6">
+                            <li><i class='bx bx-check-double'></i> {{ __('home_trans.title4')}}</li>
+                            <li><i class='bx bx-collection'></i> {{ __('home_trans.title5')}}</li>
+                            <li><i class='bx bx-support'></i> {{ __('home_trans.title6')}}</li>
+                        </div>
+                    </div>
+                </ul>
             </div>
         </div>
     </div>
+</div>
 </section>
 <!-- End Working -->
 
@@ -755,7 +746,7 @@
                     <li>المهندس احمد شراحيلي</li>
                     <li>16 نوفمبر, 2021 - 7:53 صباحاً</li>
                 </ul>
-                <p>تعلن منصة إكتمل عن إكتمال برمجة مكتبة إمام الدعوة الرقميةوالذي يشرف عليهمعالي الشيخ \ عبد الرحمن السديس إمام وخطيب الحرم المكيوبإذن الله سيتم تدشين الموقع في حفل يرئسةمعالي الشيخ \ عبد الرحمن السديسمع حضورالمهندس أحمد شراحيلي ( مؤسس منصة اكتمل )وذلك ...</p>
+                <p>تعلن منصة إكتمل عن إكتمال برمجة مكتبة إمام الدعوة الرقميةوالذي يشرف عليهمعالي الشيخ \ عبد الرحمن السديس إمام وخطيب الحرم المكي وبإذن الله سيتم تدشين الموقع في حفل يرئسةمعالي الشيخ \ عبد الرحمن السديسمع حضورالمهندس أحمد شراحيلي ( مؤسس منصة اكتمل )وذلك ...</p>
                 <div class="footer-post">
                     <div class="tags">
                         <a href="https://www.ektml.com/blog/31/imam-library">{{ __('home_trans.read') }}</a>
@@ -862,26 +853,7 @@
                                     </div><!-- .floating-label-wrap -->
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <div class="floating-label-wrap">
-                                        <input type="email"
-                                            class="floating-label-field floating-label-field--s3" id="field-2"
-                                            placeholder="E-Mail Address">
-                                        <label for="field-2" class="floating-label">{{ __('home_trans.Email')}}</label>
-                                    </div><!-- .floating-label-wrap -->
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <div class="floating-label-wrap">
-                                        <input type="text"
-                                            class="floating-label-field floating-label-field--s3" id="field-3"
-                                            placeholder="Subject">
-                                        <label for="field-3" class="floating-label">{{ __('home_trans.Subject')}}</label>
-                                    </div><!-- .floating-label-wrap -->
-                                </div>
-                            </div>
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="floating-label-wrap">
@@ -892,6 +864,18 @@
                                     </div><!-- .floating-label-wrap -->
                                 </div>
                             </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="floating-label-wrap">
+                                        <input type="email"
+                                            class="floating-label-field floating-label-field--s3" id="field-2"
+                                            placeholder="E-Mail Address">
+                                        <label for="field-2" class="floating-label">{{ __('home_trans.Email')}}</label>
+                                    </div><!-- .floating-label-wrap -->
+                                </div>
+                            </div>
+
                             <div class="col-xl-12">
                                 <div class="form-group">
                                     <div class="floating-label-wrap">
