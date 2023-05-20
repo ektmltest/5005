@@ -24,7 +24,7 @@ Route::group([
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
     // Auth
     Route::get('login', Login::class)->name('login');
-    Route::get('login', Register::class)->name('register');
+    Route::get('register', Register::class)->name('register');
 
     Route::get('/', Home::class)->name('index');
     Route::get('/faq', Faq::class)->name('faq');
