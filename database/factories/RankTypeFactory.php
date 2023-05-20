@@ -24,7 +24,7 @@ class RankTypeFactory extends Factory
         ];
 
         return [
-            'name' => json_encode($this->faker->randomElement($names)),
+            'name' => $this->faker->randomElement($names),
         ];
     }
 }

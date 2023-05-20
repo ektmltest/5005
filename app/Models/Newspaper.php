@@ -10,6 +10,8 @@ class Newspaper extends Model
 {
     use HasFactory;
 
+    protected $table = 'news';
+
     protected $guarded = [];
 
     public function user() {
