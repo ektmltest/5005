@@ -52,35 +52,8 @@
 </header>
 <!-- End Header -->
 
-<!-- Start Clients -->
-<section id="clients" class="clients">
-    <div class="container">
-        <h5>{{ __('') }}</h5>
-        <div class="clients-logos">
-            <div class="row">
-                <div class="col">
-                    <img src="http://placehold.it/150x51" alt="Hotan Template">
-                </div>
-                <div class="col">
-                    <img src="http://placehold.it/150x51" alt="Hotan Template">
-                </div>
-                <div class="col">
-                    <img src="http://placehold.it/150x51" alt="Hotan Template">
-                </div>
-                <div class="col">
-                    <img src="http://placehold.it/150x51" alt="Hotan Template">
-                </div>
-                <div class="col">
-                    <img src="http://placehold.it/150x51" alt="Hotan Template">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End Clients -->
-
 <!-- Start Services -->
-<section id="services" class="services">
+<section id="services" class="services mt-5">
     <div class="container">
         <div class="services-box">
             <div class="section-title">
@@ -145,6 +118,104 @@
 </section>
 <!-- End Services -->
 
+<!-- Start Catalog -->
+<section id="portfolio" class="portfolio">
+    <div class="container">
+    <div class="trial">
+    <div class="container">
+        <h4 style="color:#4b3da7">{{ __('home_trans.projramming Projects') }}</h4></div>
+    </div>
+    &nbsp;
+<div id="portfolio-grid" class="row no-gutter">
+                <div class="item prj-3 col-md-4 mb-4">
+        <div class="post-item">
+            <div class="post-img">
+                <img class="img-fluid" mu-open mu-link="/prj/1"
+                    style="border-radius: 16px; cursor: pointer;"
+                    src="https://www.ektml.com/catalog/image/1" alt >
+            </div>
+            <div class="post-txt">
+                <a class="post-title" href="/prj/1">Business Blog</a>
+                <ul class="list-unstyled post-details">
+                    <li></li>
+                    <li>2022/04/20</li>
+                    <li>9 Liked</li>
+                </ul>
+                <p>Own a site to publish news and general articles, and ea...</p>
+                <div class="footer-post">
+                    <div class="tags">
+                            <a href="/prj/1">950 ريال</a>
+                        </div>
+                    <div class="action-post">
+                        <a href="#"><i class="bx bx-heart loveProject" mu-notlogged="" mu-id="1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+        <div class="item prj-3 col-md-4 mb-4">
+        <div class="post-item">
+            <div class="post-img">
+                <img class="img-fluid" mu-open mu-link="/prj/2"
+                    style="border-radius: 16px; cursor: pointer;"
+                    src="https://www.ektml.com/catalog/image/2" alt >
+            </div>
+            <div class="post-txt">
+                <a class="post-title" href="/prj/2">Discount Coupons Project</a>
+                <ul class="list-unstyled post-details">
+                    <li></li>
+                    <li>2022/04/22</li>
+                    <li>9 Liked</li>
+                </ul>
+                <p>A specialized site to display discount coupons for any ...</p>
+                <div class="footer-post">
+                    <div class="tags">
+                            <a href="/prj/2">1300 ريال</a>
+                        </div>
+                    <div class="action-post">
+                        <a href="#"><i class="bx bx-heart loveProject" mu-notlogged="" mu-id="2"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+                <div class="item prj-3 col-md-4 mb-4">
+        <div class="post-item">
+            <div class="post-img">
+                <img class="img-fluid" mu-open mu-link="/prj/3"
+                    style="border-radius: 16px; cursor: pointer;"
+                    src="https://www.ektml.com/catalog/image/3" alt >
+            </div>
+            <div class="post-txt">
+                <a class="post-title" href="/prj/3">Hotel booking site</a>
+                <ul class="list-unstyled post-details">
+                    <li></li>
+                    <li>2022/04/23</li>
+                    <li>4 Liked</li>
+                </ul>
+                <p>A project like Almosafer and Booking.com for hotel rese...</p>
+                <div class="footer-post">
+                    <div class="tags">
+                            <a href="/prj/3">1700 ريال</a>
+                        </div>
+                    <div class="action-post">
+                        <a href="#"><i class="bx bx-heart loveProject" mu-notlogged="" mu-id="3"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            &nbsp;
+
+    <div class="container" style="text-align: center;">
+        <a class="bttn btn-purple" href="{{ route('store') }}">{{ __('home_trans.more Details') }} <i class='bx bx-left-arrow-alt'></i></a>
+    </div>
+</section>
+<!-- End Catalog -->
+
+
 <!-- Start Random Post -->
 <section id="random-post" class="random-post">
     <div class="container">
@@ -156,6 +227,7 @@
                             alt="Hotan Template">
                     </div>
                 </div>
+
                 <div class="col-md-6">
                     <div class="post-txt">
                         <span class="top-ico co-purple"><i class='bx bx-transfer-alt'></i></span>
@@ -164,12 +236,10 @@
                             <i class="dot dot2"></i>
                             <i class="dot dot3"></i>
                         </span>
-                        <span class="label label-purple">The bright feature</span>
-                        <h4 class="co-purple">Be unique with multiple hotan pages</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque praesentium harum
-                            iure eos, Quas sequi repudiandae nostrum saepe excepturi maiores modi.</p>
-                        <a href="#">
-                            Learn More
+                        <span class="label label-purple">{{ __('home_trans.The bright feature') }}</span>
+                        <h4 class="co-purple">{{ __('home_trans.brightlg') }}</h4>
+                        <p>{{ __('home_trans.brightsm') }}</p>
+                        <a href="#">Learn More
                             <i class='bx bx-right-arrow-alt btn_icon btn_icon_1'></i>
                             <i class='bx bx-right-arrow-alt btn_icon btn_icon_2'></i>
                         </a>
@@ -177,15 +247,15 @@
                 </div>
             </div>
         </div>
+
         <div class="second-post">
             <div class="row row-aligns">
                 <div class="col-md-6 order-2 order-md-1">
                     <div class="post-txt">
                         <span class="top-ico co-purple"><i class='bx bx-like'></i></span>
-                        <span class="label label-purple">The bright feature</span>
-                        <h4 class="co-purple">Be unique with multiple hotan pages</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque praesentium harum
-                            iure eos, Quas sequi repudiandae nostrum saepe excepturi maiores modi.</p>
+                        <span class="label label-purple">{{ __('home_trans.The bright feature') }}</span>
+                        <h4 class="co-purple">{{ __('home_trans.brightlg2') }}</h4>
+                        <p>{{ __('home_trans.brightsm2') }}</p>
                         <a href="#">
                             Learn More
                             <i class='bx bx-right-arrow-alt btn_icon btn_icon_1'></i>
@@ -210,6 +280,43 @@
 </section>
 <!-- End Random Post -->
 
+<section id="trial" class="trial">
+    <div class="container">
+        <h4>{{ __('home_trans.goal') }}</h4>
+        <p>{{ __('home_trans.goalDes') }}</p>
+        <div class="line-sepa"></div>
+            <div class="row mt-5 mb-5">
+            <div class="col-md-4">
+                <div class="counter">
+                    <div class="counter-icon">
+                        <i class="bx bx-wrench"></i>
+                    </div>
+                    <span class="counter-value">18</span>
+                    <h3>{{ __('home_trans.shap1') }}</h3>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="counter active">
+                    <div class="counter-icon">
+                        <i class="bx bxs-star-half"></i>
+                    </div>
+                    <span class="counter-value">50</span>
+                    <h3>{{ __('home_trans.shap2') }}</h3>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="counter">
+                    <div class="counter-icon">
+                        <i class="bx bx-check-double"></i>
+                    </div>
+                    <span class="counter-value">36</span>
+                    <h3>{{ __('home_trans.shap3') }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Start Statistics -->
 <section id="statistics" class="statistics">
     <div class="container">
@@ -221,7 +328,7 @@
                             <i class='bx bx-group'></i>
                         </div>
                         <span class="counter-value">6142</span>
-                        <h3>Users</h3>
+                        <h3>{{ __('home_trans.shap4') }}</h3>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -230,7 +337,7 @@
                             <i class='bx bx-briefcase-alt'></i>
                         </div>
                         <span class="counter-value">1002</span>
-                        <h3>Projects</h3>
+                        <h3>{{ __('home_trans.shap5') }}</h3>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -239,7 +346,7 @@
                             <i class='bx bx-like'></i>
                         </div>
                         <span class="counter-value">45215</span>
-                        <h3>Subscribers</h3>
+                        <h3>{{ __('home_trans.shap6') }}</h3>
                     </div>
                 </div>
             </div>
@@ -251,14 +358,12 @@
 <!-- Start Try Our Trial -->
 <section id="trial" class="trial">
     <div class="container">
-        <h4>Get the brand new <br>
-            Hotan Service today</h4>
-        <p>With Hotan you get components and examples, including tons of variables that will help you customize this
-            theme with ease.</p>
+        <h4>{{ __('home_trans.headt') }}</h4>
+        <p>>{{ __('home_trans.headb') }}</p>
         <div class="line-sepa"></div>
-        <h3><span>1,693,752</span> User have been using our Services successfully.</h3>
-        <a class="bttn btn-purple" href="#">
-            Free 30 Days Trial
+        <h3><span>1,693,752</span> >{{ __('home_trans.headdes') }}</h3>
+        <a class="bttn btn-purple" href="{{ route('myProfile') }}">
+            {{ __('home_trans.button') }}
             <i class='bx bx-right-arrow-alt'></i>
         </a>
         <img class="img-fluid" src="{{ asset('assets/img/undraw_landscape_mode_53ej.svg') }}"
@@ -268,35 +373,34 @@
 <!-- End Try Our Trial -->
 
 <!-- Start Working -->
-<section id="start-working" class="start-working">
+<section id="start-working pt-5" class="start-working">
     <div class="overlay"></div>
     <div class="container">
         <div class="row row-aligns">
             <div class="col-lg-7">
                 <div class="video-place">
-                    <a href="https://www.youtube.com/watch?v=afj3WB44lko" data-lity>
+                    <a href="https://www.youtube.com/watch?v=4RynX087iBA" data-lity>
                         <i class='bx bx-right-arrow'></i>
                     </a>
-                    <img class="img-fluid" src="http://placehold.it/1280x800" alt="Hotan Template">
+                    <img width="640" height="360" class="img-fluid lazyload" src="https://www.ektml.com/static/img/home/global.svg" loading="lazy" alt="Ektml Platform">
                 </div>
             </div>
             <div class="col-lg-5">
                 <div class="video-txt">
-                    <span>Why Us?</span>
-                    <h3>Beautiful Place for your Great Journey</h3>
-                    <p>We tried to make very high-quality product and so our code is very neat and clean. Whatever
-                        anyone could improve and modify the template to your liking.</p>
+                    <span>{{ __('home_trans.Why_Us') }}</span>
+                    <h3>{{ __('home_trans.headtitle') }}</h3>
+                    <p>{{ __('home_trans.headdes2') }}</p>
                     <ul class="list-unstyled">
                         <div class="row">
                             <div class="col-md-6">
-                                <li><i class='bx bx-bulb'></i> Modern Design</li>
-                                <li><i class='bx bx-vector'></i> Easy To Customize</li>
-                                <li class="active"><i class='bx bx-rocket'></i> Super Fast Load</li>
+                                <li><i class='bx bx-bulb'></i> {{ __('home_trans.title1')}}</li>
+                                <li><i class='bx bx-vector'></i> {{ __('home_trans.title2')}}</li>
+                                <li class="active"><i class='bx bx-rocket'></i> {{ __('home_trans.title3')}}</li>
                             </div>
                             <div class="col-md-6">
-                                <li><i class='bx bx-check-double'></i> Clean & Valid Code</li>
-                                <li><i class='bx bx-collection'></i> Multipurpose Layout</li>
-                                <li><i class='bx bx-support'></i> 24/7 Support</li>
+                                <li><i class='bx bx-check-double'></i> {{ __('home_trans.title4')}}</li>
+                                <li><i class='bx bx-collection'></i> {{ __('home_trans.title5')}}</li>
+                                <li><i class='bx bx-support'></i> {{ __('home_trans.title6')}}</li>
                             </div>
                         </div>
                     </ul>
@@ -307,158 +411,97 @@
 </section>
 <!-- End Working -->
 
-<!-- Start Testimonials -->
+
+<section id="clients" class="clients">
+<div class="container">
+<h5>{{ __('home_trans.clientH')}}</h5>
+<div class="">
+<div class="row">
+    <div class="col mt-2">
+        <img src="{{ asset('assets/img/logo1.png') }}" alt="فور بت avatar" loading="lazy" class="grey-animate lazyload" width="100" height="56">
+    </div>
+
+    <div class="col mt-2">
+        <img src="{{ asset('assets/img/logo2.png') }}" alt="رقوم avatar" loading="lazy" class="grey-animate lazyload" width="100" height="56">
+    </div>
+
+    <div class="col mt-2">
+        <img src="{{ asset('assets/img/logo3.png') }}" alt="مؤسسة إمام الدعوة avatar" loading="lazy" class="grey-animate lazyload" width="100" height="56">
+    </div>
+
+    <div class="col mt-2">
+        <img src="{{ asset('assets/img/logo4.png') }}" alt="PayTaps avatar" loading="lazy" class="grey-animate lazyload" width="100" height="56">
+    </div>
+
+    <div class="col mt-2">
+        <img src="{{ asset('assets/img/logo5.png') }}" alt="Discord Partner avatar" loading="lazy" class="grey-animate lazyload" width="100" height="56">
+    </div>
+
+    <div class="col mt-2">
+        <img src="{{ asset('assets/img/logo6.png') }}" alt="للـون avatar" loading="lazy" class="grey-animate lazyload" width="100" height="56">
+    </div>
+
+    <div class="col mt-2">
+        <img src="{{ asset('assets/img/logo7.png') }}" alt="ولي مول avatar" loading="lazy" class="grey-animate lazyload" width="100" height="56">
+    </div>
+
+    <div class="col mt-2">
+        <img src="{{ asset('assets/img/logo8.png') }}" alt="للمليون avatar" loading="lazy" class="grey-animate lazyload" width="100" height="56">
+    </div>
+
+    {{-- <div class="col mt-2">
+        <img src="{{ asset('assets/img/logo9.png') }}" alt="منصة نقرات avatar" loading="lazy" class="grey-animate lazyload" width="100" height="56">
+    </div> --}}
+
+    <div class="col mt-2">
+        <img src="{{ asset('assets/img/logo9.png') }}" alt="مجلة واك avatar" loading="lazy" class="grey-animate lazyload" width="100" height="56">
+    </div>
+    </div>
+    </div>
+</div>
+</section>
+
+{{-- <!-- Start Testimonials -->
 <section id="testimonials" class="testimonials">
-    <div class="container">
-        <div class="section-title">
-            <span>testimonials</span>
-            <h3>248K+ happy clients</h3>
+<div class="container">
+    <div class="section-title">
+        <span>{{ __('home_trans.OPINIONS') }}</span>
+        <h3>{{ __('home_trans.248K+ happy clients') }}</h3>
+    </div>
+
+    <div class="testimonial-slider owl-carousel owl-theme">
+        <!-- Start Item -->
+                    <div class="item">
+            <div class="open-st">
+                <i class='bx bx-message-detail'></i>
+            </div>
+            <div class="rate-star">
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+                <i class='bx bxs-star'></i>
+            </div>
+
+            <div class="txt-item">
+                <p>الصراحه قدمت لي منصة إكتمل أفضل الأعمال لشركتي وساهمت في تطويرها (رسالة تجريبية)</p>
+                <div class="person-details">
+                    <div class="img-person">
+                        <img width="640" height="360" class="img-fluid lazyload" data-src="https://www.ektml.com/avatar/user/8" loading="lazy" alt="User profile avatar">
+                    </div>
+                    <div class="txt-person">
+                        <h6>فارس الهرف</h6>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="testimonial-slider owl-carousel owl-theme">
-            <!-- Start Item -->
-            <div class="item">
-                <div class="open-st">
-                    <i class='bx bx-message-detail'></i>
-                </div>
-                <div class="rate-star">
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star-half'></i>
-                </div>
-                <div class="txt-item">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Atque praesentium harum iure eos.
-                        Quas sequi repudiandae nostrum, saepe excepturi maiores, modi.</p>
-                    <div class="person-details">
-                        <div class="img-person">
-                            <img class="img-fluid" src="http://placehold.it/327x334" alt="Hotan Template">
-                        </div>
-                        <div class="txt-person">
-                            <h6>Maria C. Blanton</h6>
-                            <span>Business Development Specialist</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Item -->
 
-            <!-- Start Item -->
-            <div class="item">
-                <div class="open-st">
-                    <i class='bx bx-message-detail'></i>
-                </div>
-                <div class="rate-star">
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                </div>
-                <div class="txt-item">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Atque praesentium harum iure eos.
-                        Quas sequi repudiandae nostrum, saepe excepturi maiores, modi.</p>
-                    <div class="person-details">
-                        <div class="img-person">
-                            <img class="img-fluid" src="http://placehold.it/327x334" alt="Hotan Template">
-                        </div>
-                        <div class="txt-person">
-                            <h6>Brian K. Schultz</h6>
-                            <span>Product designer</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Item -->
-
-            <!-- Start Item -->
-            <div class="item">
-                <div class="open-st">
-                    <i class='bx bx-message-detail'></i>
-                </div>
-                <div class="rate-star">
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                </div>
-                <div class="txt-item">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Atque praesentium harum iure eos.
-                        Quas sequi repudiandae nostrum, saepe excepturi maiores, modi.</p>
-                    <div class="person-details">
-                        <div class="img-person">
-                            <img class="img-fluid" src="http://placehold.it/327x334" alt="Hotan Template">
-                        </div>
-                        <div class="txt-person">
-                            <h6>Robert D. Odegaard</h6>
-                            <span>Flight service specialist</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Item -->
-
-            <!-- Start Item -->
-            <div class="item">
-                <div class="open-st">
-                    <i class='bx bx-message-detail'></i>
-                </div>
-                <div class="rate-star">
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star-half'></i>
-                </div>
-                <div class="txt-item">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Atque praesentium harum iure eos.
-                        Quas sequi repudiandae nostrum, saepe excepturi maiores, modi.</p>
-                    <div class="person-details">
-                        <div class="img-person">
-                            <img class="img-fluid" src="http://placehold.it/327x334" alt="Hotan Template">
-                        </div>
-                        <div class="txt-person">
-                            <h6>Olivia J. Yates</h6>
-                            <span>Android Developer</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Item -->
-
-            <!-- Start Item -->
-            <div class="item">
-                <div class="open-st">
-                    <i class='bx bx-message-detail'></i>
-                </div>
-                <div class="rate-star">
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star-half'></i>
-                </div>
-                <div class="txt-item">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Atque praesentium harum iure eos.
-                        Quas sequi repudiandae nostrum, saepe excepturi maiores, modi.</p>
-                    <div class="person-details">
-                        <div class="img-person">
-                            <img class="img-fluid" src="http://placehold.it/327x334" alt="Hotan Template">
-                        </div>
-                        <div class="txt-person">
-                            <h6>James K. Miller</h6>
-                            <span>Image designer</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Item -->
-        </div>
+    </div>
     </div>
 </section>
-<!-- End Testimonials -->
+<!-- End Testimonials --> --}}
 
-<!-- Start Pricing Table -->
+{{-- <!-- Start Pricing Table -->
 <section id="pricing-table" class="pricing-table">
     <div class="container">
         <div class="section-pricing">
@@ -556,32 +599,31 @@
         </div>
     </div>
 </section>
-<!-- End Pricing Table -->
+<!-- End Pricing Table --> --}}
 
 <!-- Start Download App -->
-<section id="download" class="download parallax">
+<section id="download" class="download parallax my-5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
                 <div class="txt-phone">
                     <i class='bx bx-cloud-download'></i>
-                    <h3>Download our app</h3>
-                    <p>We tried to make very high-quality product and so our code is very neat and clean. Whatever
-                        anyone could improve and modify the template to your liking.</p>
+                    <h3>{{ __('home_trans.download')}}</h3>
+                    <p>{{ __('home_trans.downloadb') }}</p>
                     <div class="download-bttn">
                         <a href="#" class="play-store">
                             <i class='bx bxl-play-store'></i>
                             <div class="txt-btn">
-                                <span>Get it on</span>
-                                <span>Play Store</span>
+                                <span>{{ __('home_trans.Soon On') }}</span>
+                                <span>{{ __('home_trans.Google Play') }}</span>
                             </div>
                         </a>
                         <a href="#" class="apple-store">
                             <i class='bx bxl-apple'></i>
                             <div class="txt-btn">
-                                <span>Get it on</span>
-                                <span>Apple Store</span>
+                                <span>{{ __('home_trans.Soon On') }}</span>
+                                <span>{{ __('home_trans.Apple Store') }}</span>
                             </div>
                         </a>
                     </div>
@@ -589,7 +631,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="img-phone">
-                    <img class="img-fluid" src="http://placehold.it/350x595" alt="Hotan Template">
+                    <img class="img-fluid lazyload" src="https://www.ektml.com/static/img/our_app.webp" loading="lazy" alt="Ektml mobile application">
                 </div>
             </div>
         </div>
@@ -597,7 +639,7 @@
 </section>
 <!-- End Download App -->
 
-<!-- Start Our Team -->
+{{-- <!-- Start Our Team -->
 <section id="our-team" class="our-team">
     <div class="container">
         <div class="main-title">
@@ -691,84 +733,101 @@
         </div>
     </div>
 </section>
-<!-- End Our Team -->
+<!-- End Our Team --> --}}
 
 <!-- Start Blog -->
-<section id="blog" class="blog">
+<section id="blog" class="blog mt-5">
+<div class="container">
+    <div class="main-title">
+        <h3>{{ __('home_trans.Last News') }}</h3>
+        <p>{{ __('home_trans.Newsb') }}</p>
+    </div>
+
+    <div class="row">
+    <div class="col-md-6">
+        <div class="post-item">
+            <div class="post-img">
+                <img class="img-fluid lazyload" src="https://www.ektml.com/blog/image/31" loading="lazy" alt="إكتمال برمجة موقع مكتبة إمام الدعوة الرقمية Blog image">
+            </div>
+            <div class="post-txt">
+                <a class="post-title" href="https://www.ektml.com/blog/31/imam-library">إكتمال برمجة موقع مكتبة إمام الدعوة الرقمية</a>
+                <ul class="list-unstyled post-details">
+                    <li>المهندس احمد شراحيلي</li>
+                    <li>16 نوفمبر, 2021 - 7:53 صباحاً</li>
+                </ul>
+                <p>تعلن منصة إكتمل عن إكتمال برمجة مكتبة إمام الدعوة الرقميةوالذي يشرف عليهمعالي الشيخ \ عبد الرحمن السديس إمام وخطيب الحرم المكيوبإذن الله سيتم تدشين الموقع في حفل يرئسةمعالي الشيخ \ عبد الرحمن السديسمع حضورالمهندس أحمد شراحيلي ( مؤسس منصة اكتمل )وذلك ...</p>
+                <div class="footer-post">
+                    <div class="tags">
+                        <a href="https://www.ektml.com/blog/31/imam-library">{{ __('home_trans.read') }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Post Item -->
+
+    <!-- Start Post Item -->
+    <div class="col-md-6">
+        <div class="post-item">
+            <div class="post-img">
+                <img class="img-fluid lazyload" src="https://www.ektml.com/blog/image/30" loading="lazy" alt="مود دارك - فور بت Blog image">
+            </div>
+            <div class="post-txt">
+                <a class="post-title" href="https://www.ektml.com/blog/30/forbit-dark">مود دارك - فور بت</a>
+                <ul class="list-unstyled post-details">
+                    <li>المهندس احمد شراحيلي</li>
+                    <li>09 نوفمبر, 2021 - 12:06 صباحاً</li>
+                </ul>
+                <p>السلام عليكم ورحمة الله وبركاته
+اليوم وبفضل الله قمنا بإضافة مود الدارك ( المظلم ) في شبكة فور بت التابعة لنا
+وذلك بعد تلقي العديد من طلبات المستخدمين والزوار
+ونحن دائما نبذل قصارى جهدنا لتوفير بيئة عمل مناسبة لعملائنا
+دمتم في أمان الله</p>
+                <div class="footer-post">
+                    <div class="tags">
+                        <a href="https://www.ektml.com/blog/30/forbit-dark">{{ __('home_trans.read') }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+</section>
+<!-- End Blog -->
+
+<section id="random-post mt-4" class="random-post my-4">
     <div class="container">
         <div class="main-title">
-            <h3>Recent News</h3>
-            <p>Here's some thoughts <br> from our blog</p>
+            <h3>{{ __('home_trans.CEO word') }}</h3>
         </div>
-        <div class="row">
-            <!-- Start Post Item -->
-            <div class="col-md-6">
-                <div class="post-item">
+        <div class="first-post">
+            <div class="row row-aligns">
+                <div class="col-md-4">
                     <div class="post-img">
-                        <img class="img-fluid" src="http://placehold.it/700x450" alt="Hotan Template">
+                        <img width="640" height="360" class="img-fluid" src="https://www.ektml.com/static/img/home/ceo_image.svg" alt="Ektml Platform">
                     </div>
+                </div>
+                <div class="col-md-8">
                     <div class="post-txt">
-                        <a class="post-title" href="#">Beautiful Place for your Great Journey</a>
-                        <ul class="list-unstyled post-details">
-                            <li>John Doe</li>
-                            <li>9 Sep, 2020</li>
-                            <li>326 Comments</li>
-                        </ul>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur quam facere accusamus
-                            dolore eos rerum ducimus eveniet vero at laborum quod quasi est odit nobis minima, earum
-                            laudantium, ad quia.</p>
-                        <div class="footer-post">
-                            <div class="tags">
-                                <a href="#">Mobile</a>
-                            </div>
-                            <div class="action-post">
-                                <a href="#"><i class='bx bx-bookmark'></i></a>
-                                <a href="#"><i class='bx bx-heart'></i></a>
-                            </div>
-                        </div>
+                        <span class="dots">
+                        <i class="dot dot1"></i>
+                        <i class="dot dot2"></i>
+                        <i class="dot dot3"></i>
+                    </span>
+                        <h4 class="co-purple">{{ __('home_trans.Ahmed')}}</h4>
+                        <span class="label label-purple mt-3">{{ __('home_trans.ceodes') }}</span>
+                        <p class="mt-3">{{ __('home_trans.ceodes2') }}</p>
                     </div>
                 </div>
             </div>
-            <!-- End Post Item -->
-
-            <!-- Start Post Item -->
-            <div class="col-md-6">
-                <div class="post-item mb-mob-0">
-                    <div class="post-img">
-                        <img class="img-fluid" src="http://placehold.it/700x450" alt="Hotan Template">
-                    </div>
-                    <div class="post-txt">
-                        <a class="post-title" href="#">Beautiful Place for your Great Journey</a>
-                        <ul class="list-unstyled post-details">
-                            <li>John Doe</li>
-                            <li>9 Sep, 2020</li>
-                            <li>326 Comments</li>
-                        </ul>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur quam facere accusamus
-                            dolore eos rerum ducimus eveniet vero at laborum quod quasi est odit nobis minima, earum
-                            laudantium, ad quia.</p>
-                        <div class="footer-post">
-                            <div class="tags">
-                                <a href="#">Development</a>
-                            </div>
-                            <div class="action-post">
-                                <a href="#"><i class='bx bx-bookmark'></i></a>
-                                <a href="#"><i class='bx bx-heart'></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Post Item -->
         </div>
     </div>
 </section>
-<!-- End Blog -->
 
 <!-- Start Contact Us -->
 <section id="contact-us" class="contact-us">
     <div class="map-area" id="contacts">
-        <div id="googleMap" style="width:100%;"></div>
     </div>
     <div class="form-area">
         <div class="form-inner">
@@ -786,9 +845,10 @@
             <div class="container">
                 <div class="form-box">
                     <div class="main-title">
-                        <h3>Get In Touch</h3>
-                        <p>Please feel free to contact us <br> if you need any further information</p>
+                        <h3>{{ __('home_trans.Get In Touch') }}</h3>
+                        <p>{{ __('home_trans.Please feel free to contact us') }}</p>
                     </div>
+
                     <form autocomplete="off" action="#">
                         <div class="row">
                             <div class="col-md-6">
@@ -797,7 +857,7 @@
                                         <input type="text"
                                             class="floating-label-field floating-label-field--s3" id="field-1"
                                             placeholder="Full Name">
-                                        <label for="field-1" class="floating-label">Full Name</label>
+                                        <label for="field-1" class="floating-label">{{ __('home_trans.Name')}}</label>
                                     </div><!-- .floating-label-wrap -->
                                 </div>
                             </div>
@@ -807,7 +867,7 @@
                                         <input type="email"
                                             class="floating-label-field floating-label-field--s3" id="field-2"
                                             placeholder="E-Mail Address">
-                                        <label for="field-2" class="floating-label">E-Mail Address</label>
+                                        <label for="field-2" class="floating-label">{{ __('home_trans.Email')}}</label>
                                     </div><!-- .floating-label-wrap -->
                                 </div>
                             </div>
@@ -817,7 +877,7 @@
                                         <input type="text"
                                             class="floating-label-field floating-label-field--s3" id="field-3"
                                             placeholder="Subject">
-                                        <label for="field-3" class="floating-label">Subject</label>
+                                        <label for="field-3" class="floating-label">{{ __('home_trans.Subject')}}</label>
                                     </div><!-- .floating-label-wrap -->
                                 </div>
                             </div>
@@ -827,7 +887,7 @@
                                         <input type="text"
                                             class="floating-label-field floating-label-field--s3" id="field-4"
                                             placeholder="Phone Number">
-                                        <label for="field-4" class="floating-label">Phone Number</label>
+                                        <label for="field-4" class="floating-label">{{ __('home_trans.Phone')}}</label>
                                     </div><!-- .floating-label-wrap -->
                                 </div>
                             </div>
@@ -835,13 +895,13 @@
                                 <div class="form-group">
                                     <div class="floating-label-wrap">
                                         <textarea class="floating-label-field floating-label-field--s3" id="field-5" placeholder="Your Message"></textarea>
-                                        <label for="field-5" class="floating-label">Your Message</label>
+                                        <label for="field-5" class="floating-label">{{ __('home_trans.Message')}}</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-12">
                                 <div class="form-buttons">
-                                    <input type="submit" value="Submit">
+                                    <input type="submit" value="{{ __('home_trans.Submit') }}">
                                 </div>
                             </div>
                         </div>
