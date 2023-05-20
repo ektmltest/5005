@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\Addon;
 use App\Models\AddonType;
 use App\Models\BankCard;
+use App\Models\Contact;
 use App\Models\Facility;
 use App\Models\GalleryProject;
 use App\Models\GalleryProjectType;
@@ -120,6 +121,8 @@ class DatabaseSeeder extends Seeder
             Project::factory()->count(10)->create();
             ProjectReply::factory()->count(10)->create();
             ProjectReplyAttachment::factory()->count(20)->create();
+
+            Contact::factory()->count(5)->create();
 
             DB::commit();
         } catch (\Throwable $e) {
