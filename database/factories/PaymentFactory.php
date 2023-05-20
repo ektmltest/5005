@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\BankCard;
+use App\Models\ReadyProject;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,10 +20,11 @@ class PaymentFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => [
-                'ar' => 'اسم',
-                'en' => fake()->randomElement(['accepted', 'rejected']),
-            ],
+            'state' => fake()->randomElement(['accepted', 'rejected']),
+            'invoice_image' => fake()->imageUrl(),
+            'user_id' => User::inRandomOrder()->first()->id,
+            'project_id' => ReadyProject::inRandomOrder()->first()->id,
+            'bank_card_id' => BankCard::inRandomOrder()->first()->id,
         ];
     }
 }

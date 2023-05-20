@@ -24,8 +24,14 @@ class ReadyProjectFactory extends Factory
             ],
             'price' => fake()->randomFloat(min: 500, max: 10000),
             'marketing_discount_ratio' => fake()->numberBetween(0, 100),
-            'description' => fake()->paragraph(),
-            'body' => fake()->paragraphs(10),
+            'description' => [
+                'ar' => 'براجراف',
+                'en' => fake()->paragraph(),
+            ],
+            'body' => [
+                'ar' => 'براجراف',
+                'en' => fake()->paragraph(),
+            ],
             'image' => fake()->imageUrl(),
             'ready_project_department_id' => ReadyProjectDepartment::inRandomOrder()->first()->id,
         ];

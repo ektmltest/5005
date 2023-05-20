@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BankCard>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ProjectDepartment>
  */
-class BankCardFactory extends Factory
+class ProjectDepartmentFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,12 +17,11 @@ class BankCardFactory extends Factory
     public function definition(): array
     {
         return [
-            'iban' => fake()->randomNumber(),
-            'account_number' => fake()->randomNumber(),
-            'bank_name' => [
+            'name' => [
                 'ar' => 'اسم',
                 'en' => fake()->unique()->name(),
             ],
+            'icon' => fake()->slug(),
         ];
     }
 }

@@ -6,12 +6,22 @@ namespace Database\Seeders;
 
 use App\Models\Addon;
 use App\Models\AddonType;
+use App\Models\BankCard;
 use App\Models\Facility;
 use App\Models\GalleryProject;
 use App\Models\GalleryProjectType;
+use App\Models\MarketingCoupon;
 use App\Models\MarketingLevel;
 use App\Models\Newspaper;
+use App\Models\Opinion;
+use App\Models\Payment;
 use App\Models\Permission;
+use App\Models\Project;
+use App\Models\ProjectCategory;
+use App\Models\ProjectDepartment;
+use App\Models\ProjectReply;
+use App\Models\ProjectReplyAttachment;
+use App\Models\ProjectState;
 use App\Models\Rank;
 use App\Models\RankType;
 use App\Models\ReadyProject;
@@ -91,6 +101,25 @@ class DatabaseSeeder extends Seeder
                 ->each(function ($facility) use ($readyProjects) {
                     $facility->readyProjects()->attach($readyProjects->random(1)->first()->id);
                 });
+
+            BankCard::factory()->count(3)->create();
+            Payment::factory()
+                ->count(5)
+                ->create()
+                ->each(function ($payment) use ($addons) {
+                    $payment->addons()->attach($addons->random(1)->first()->id);
+                });
+
+            MarketingCoupon::factory()->count(10)->create();
+
+            Opinion::factory()->count(10)->create();
+
+            ProjectDepartment::factory()->count(5)->create();
+            ProjectCategory::factory()->count(5)->create();
+            ProjectState::factory()->count(2)->create();
+            Project::factory()->count(10)->create();
+            ProjectReply::factory()->count(10)->create();
+            ProjectReplyAttachment::factory()->count(20)->create();
 
             DB::commit();
         } catch (\Throwable $e) {

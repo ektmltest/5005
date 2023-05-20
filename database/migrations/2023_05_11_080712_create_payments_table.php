@@ -19,7 +19,7 @@ return new class extends Migration
 
             // foreign keys
             $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate();
-            $table->foreignId('project_id')->constrained('projects')->cascadeOnUpdate();
+            $table->foreignId('project_id')->constrained('ready_projects')->cascadeOnUpdate();
             $table->foreignId('bank_card_id')->constrained('bank_cards')->cascadeOnUpdate();
         });
     }
