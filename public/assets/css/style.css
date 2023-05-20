@@ -47,7 +47,8 @@ Style Index
 ==================================================================*/
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Cairo', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
     overflow-y: hidden;
 }
 
@@ -815,20 +816,20 @@ input, button {
 }
 
 .side-service.left .service-item .plus-icon {
-    right: -40%;
-    bottom: 20%;
+    /* right: -40%;
+    bottom: 20%; */
 }
 
 .side-service.right .service-item .plus-icon {
-    left: -40%;
-    top: 10%;
+    /* left: -40%;
+    top: 10%; */
 }
 
 .service-txt {
     -webkit-transition: all .3s ease-in-out;
     -o-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
-    padding: 15px 20px;
+    padding: 30px 30px;
     border-radius: 5px;
     background: transparent;
     border: 1px dashed transparent;

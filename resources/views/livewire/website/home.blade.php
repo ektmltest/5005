@@ -144,8 +144,8 @@
                 <p>Own a site to publish news and general articles, and ea...</p>
                 <div class="footer-post">
                     <div class="tags">
-                            <a href="/prj/1">950 ريال</a>
-                        </div>
+                        <a href="/prj/1">950 {{ __('home_trans.SAR') }}</a>
+                    </div>
                     <div class="action-post">
                         <a href="#"><i class="bx bx-heart loveProject" mu-notlogged="" mu-id="1"></i></a>
                     </div>
@@ -171,7 +171,7 @@
                 <p>A specialized site to display discount coupons for any ...</p>
                 <div class="footer-post">
                     <div class="tags">
-                            <a href="/prj/2">1300 ريال</a>
+                            <a href="/prj/2">1300 {{ __('home_trans.SAR') }}</a>
                         </div>
                     <div class="action-post">
                         <a href="#"><i class="bx bx-heart loveProject" mu-notlogged="" mu-id="2"></i></a>
@@ -198,7 +198,7 @@
                 <p>A project like Almosafer and Booking.com for hotel rese...</p>
                 <div class="footer-post">
                     <div class="tags">
-                            <a href="/prj/3">1700 ريال</a>
+                            <a href="/prj/3">1700 {{ __('home_trans.SAR') }}</a>
                         </div>
                     <div class="action-post">
                         <a href="#"><i class="bx bx-heart loveProject" mu-notlogged="" mu-id="3"></i></a>
@@ -849,7 +849,8 @@
                         <p>{{ __('home_trans.Please feel free to contact us') }}</p>
                     </div>
 
-                    <form autocomplete="off" action="#">
+                    <form action="#" autocomplete="off">
+                        @csrf
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">

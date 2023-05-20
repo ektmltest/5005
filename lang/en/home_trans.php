@@ -5,6 +5,8 @@ return [
     'All in one place' => 'All In One Place',
     'powered by technology' => 'Powered By Technology',
 
+    'SAR' => 'ريال سعودي',
+
     'MT1' => 'Website and Mobile Apps Programming',
     'DT1' => 'Programming integrated websites with professional designs providing the highest standards of protection and quality under the hands of elite specialized people in the technical field who have programmed over 750 sites',
 
@@ -78,7 +80,7 @@ return [
     'Message' => 'Your Message',
     'Submit' => 'Send',
 
-    'CEO word' => 'CEO word',
+    'CEO word' => 'CEO WORD',
     'Ahmed' => 'Ahmed Yahya Shraheli',
     'ceodes' => 'CEO OF EKTML AND EAST ELITE COMPANY',
     'ceodes2' => 'a In the name of God, and prayers and peace be upon the best of the people, and after, with the Kingdom of Saudi Arabia’s aspiration towards digital development, we have drawn a clear path to contribute to achieving the growth of the digital renaissance in the Kingdom of Saudi Arabia. The implementation of digital projects for institutions and individuals is a simple matter, God willing',

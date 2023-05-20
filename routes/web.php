@@ -19,6 +19,7 @@ Route::group([
     ], function(){
 
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
+    
     Route::get('/', Home::class)->name('index');
     Route::get('/faq', Faq::class)->name('faq');
     Route::get('/home', Home::class)->name('home');
@@ -26,7 +27,7 @@ Route::group([
     Route::get('/tickets', Ticket::class)->name('tickets');
     Route::get('/tickets/1', TicketShow::class)->name('tickets.show');
 
-    
+
     Route::get('store', Store::class)->name('store');
     Route::get('gallary', Gallary::class)->name('gallary');
     Route::get('myProfile', Profile::class)->name('myProfile');
