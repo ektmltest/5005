@@ -13,6 +13,11 @@
 <!-- Favicon-->
 <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/logo_ektml.webp')}}">
 
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;500&display=swap" rel="stylesheet">
+
 {{-- styles --}}
 @component('layouts.components.styles-links')
 @endcomponent
