@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Auth\ForgetPassword;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Website\About;
@@ -24,7 +25,8 @@ Route::group([
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
     // Auth
     Route::get('login', Login::class)->name('login');
-    Route::get('login', Register::class)->name('register');
+    Route::get('register', Register::class)->name('register');
+    Route::get('password/forget', ForgetPassword::class)->name('password.forget');
 
     Route::get('/', Home::class)->name('index');
     Route::get('/faq', Faq::class)->name('faq');
