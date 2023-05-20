@@ -1,4 +1,7 @@
 <?php
+
+use App\Http\Livewire\Auth\Login;
+use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Website\About;
 use App\Http\Livewire\Website\Faq;
 use App\Http\Livewire\Website\Home;
@@ -19,7 +22,10 @@ Route::group([
     ], function(){
 
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-    
+    // Auth
+    Route::get('login', Login::class)->name('login');
+    Route::get('login', Register::class)->name('register');
+
     Route::get('/', Home::class)->name('index');
     Route::get('/faq', Faq::class)->name('faq');
     Route::get('/home', Home::class)->name('home');
