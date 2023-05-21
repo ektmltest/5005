@@ -108,5 +108,5 @@
     </div>
 </form>
 <div class="account-link">
-    {{__('register_trans.register.haveAccount')}}<a href="signin"> {{__('register_trans.register.signin')}}</a>
+    {{__('register_trans.register.haveAccount')}}<a href="{{route('login')}}"> {{__('register_trans.register.signin')}}</a>
 </div>

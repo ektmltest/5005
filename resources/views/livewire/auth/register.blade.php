@@ -10,7 +10,7 @@
         'header' => false,
     ])
 
-<section id="signup" class="signup parallax" style="background: url(&quot;white&quot;) 0% 0px no-repeat fixed;">
+<section id="signup" class="signup parallax">
     <div class="overlay"></div>
     <div class="container">
         <div class="row row-aligns">
