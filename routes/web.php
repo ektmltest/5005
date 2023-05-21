@@ -26,6 +26,9 @@ Route::group([
     // Auth
     Route::get('login', Login::class)->name('login');
     Route::get('register', Register::class)->name('register');
+
+
+
     Route::get('password/forget', ForgetPassword::class)->name('password.forget');
 
     Route::get('/', Home::class)->name('index');
