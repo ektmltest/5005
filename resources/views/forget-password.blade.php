@@ -1,17 +1,16 @@
-@extends('layouts.app', ['auth' => true])
+@extends('layouts.app')
 
-@section('title', ucwords(__('main_trans.app_name')) . ' - ' . ucwords(__('pages.login')))
+@section('title', ucwords(__('main_trans.app_name')) . ' - ' . ucwords(__('pages.about')))
 
 @section('content')
-
     @component('layouts.components.rtl-links-css')
     @endcomponent
 
     @include('layouts.header', [
-        'header' => false,
+    'header' => false,
     ])
 
-    <livewire:auth.login />
+    <livewire:auth.forget-password />
 
     @component('layouts.components.rtl-links-js')
     @endcomponent

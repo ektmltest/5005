@@ -20,33 +20,31 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 Route::group([
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
-    ], function(){
+    ],
+    function () {
 
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
     // Auth
-    Route::get('login', fn () => view('login'))->name('login');
-    Route::get('register', Register::class)->name('register');
+    Route::get('/login', fn () => view('login'))->name('login');
+    Route::get('/register', Register::class)->name('register');
 
 
 
-    Route::get('password/forget', ForgetPassword::class)->name('password.forget');
+    Route::get('password/forget', fn () => view('forget-password'))->name('password.forget');
 
-    Route::get('/', Home::class)->name('index');
-    Route::get('/faq', Faq::class)->name('faq');
-    Route::get('/home', Home::class)->name('home');
-    Route::get('/about', About::class)->name('about');
-    Route::get('/tickets', Ticket::class)->name('tickets');
-    Route::get('/tickets/1', TicketShow::class)->name('tickets.show');
-
-
-    Route::get('store', Store::class)->name('store');
-    Route::get('gallary', Gallary::class)->name('gallary');
-    Route::get('myProfile', Profile::class)->name('myProfile');
-    Route::get('letsStart', LetsStart::class)->name('letsStart');
-    Route::get('myProjects', MyProjects::class)->name('myProjects');
+    Route::get('/', fn () => view('home'))->name('index');
+    Route::get('/faq', fn () => view('faq'))->name('faq');
+    Route::get('/home', fn () => view('home'))->name('home');
+    Route::get('/about', fn () => view('about'))->name('about');
+    Route::get('/tickets', fn () => view('ticket'))->name('tickets');
+    Route::get('/tickets/1', fn () => view('ticket-show'))->name('tickets.show');
 
 
-
+    Route::get('store', fn () => view('store'))->name('store');
+    Route::get('gallary', fn () => view('gallary'))->name('gallary');
+    Route::get('myProfile', fn () => view('my-projects'))->name('myProfile');
+    Route::get('letsStart', fn () => view('lets-start'))->name('letsStart');
+    Route::get('myProjects', fn () => view('my-projects'))->name('myProjects');
 
 });
 

@@ -1,3 +1,5 @@
+
+
 <section id="signin" class="signup signin parallax">
     <div class="overlay"></div>
     <div class="container">
@@ -9,9 +11,11 @@
                         <li>
                             <i class="bx bx-check-double"></i>
                             {{__('main_trans.upgrade_your_project')}}
+                        </li>
                         <li>
                             <i class="bx bx-check-double"></i>
                             {{__('main_trans.connect_with_people')}}
+                        </li>
                         <li>
                             <i class="bx bx-check-double"></i>
                             {{__('main_trans.pro_projects')}}
@@ -21,8 +25,6 @@
             </div>
             <div class="col-xl-5 col-md-6">
                 <div class="signup-form">
-                    <input type="text" wire:model='test'>
-                    <div>{{$test}}</div>
                     @component('livewire.auth.components.login-form', [
                     'email' => $email
                     ])

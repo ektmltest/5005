@@ -7,7 +7,7 @@ class Login extends Component
 {
     public $email;
     public $password;
-    public $test;
+    public $rememberme;
 
     // * to define rules for all post requests comming to this component
     public function rules(): array {

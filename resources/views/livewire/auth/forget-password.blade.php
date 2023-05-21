@@ -1,15 +1,3 @@
-@extends('layouts.app')
-
-@section('title', ucwords(__('main_trans.app_name')) . ' - ' . ucwords(__('pages.about')))
-
-@section('content')
-@component('layouts.components.rtl-links-css')
-@endcomponent
-
-@include('layouts.header', [
-'header' => false,
-])
-
 <section id="signup" class="signup parallax" style="background: url(&quot;white&quot;) 0% 0px no-repeat fixed;">
     <div class="overlay"></div>
     <div class="container">
@@ -55,5 +43,3 @@
         </div>
     </div>
 </section>
-
-@endsection

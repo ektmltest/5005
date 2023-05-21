@@ -1,16 +1,5 @@
-@extends('layouts.app')
 
-@section('title', ucwords(__('main_trans.app_name')) . ' - ' . ucwords(__('pages.profile')))
 
-@section('content')
-@component('layouts.components.rtl-links-css')
-@endcomponent
-
-@include('layouts.header', [
-    'header' => True,
-    'header_head' => ucwords(__('headers.profile.header')),
-    'header_body' => ucwords(__('headers.profile.body')),
-])
 
 
 <section id="services" class="single-job inner-services">
@@ -608,6 +597,3 @@ timeout = setTimeout(async () => {
 }, 750);
 })
 </script>
-@component('layouts.components.rtl-links-js')
-@endcomponent
-@endsection
