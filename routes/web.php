@@ -23,9 +23,10 @@ Route::group([
     ], function(){
 
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
+
     // Auth
     Route::get('login', fn () => view('login'))->name('login');
-    Route::get('register', Register::class)->name('register');
+    Route::get('register', fn () => view('register'))->name('register');
 
 
 

@@ -24,7 +24,7 @@
                     <input type="text" wire:model='test'>
                     <div>{{$test}}</div>
                     @component('livewire.auth.components.login-form', [
-                    'email' => $email
+                        'email' => $email
                     ])
                     @endcomponent
                 </div>

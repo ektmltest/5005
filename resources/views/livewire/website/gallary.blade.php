@@ -32,7 +32,7 @@
         <div class="zoom-gallery">
             <a href="{{ asset('assets/img/gallary1') }}" class="item-wrap">
                 <i class='bx bx-search-alt'></i>
-                <img class="img-fluid" src="{{ asset('assets/img/gallary1') }}">
+                <img class="img-fluid" target="_blank" src="{{ asset('assets/img/gallary1') }}">
             </a>
         </div>
     </div>
@@ -237,7 +237,7 @@
     <!-- Core JS -->
         <script>const translate = {"added":"You have added","toprojectcategories":"To your project categories","areyousure":"Are you sure?","norevert":"You won't be able to revert this!","yesCloseTheTicket":"Yes, Close the Ticket","cancel":"Cancel","ticketcategory":"Please choose a ticket type","ticketsubject":"Please write the Ticket subject","ticketcontent":"Please write the Ticket content","yesdeletethepost":"Yes, delete","edit":"Edit","rateTheProject":"Select a rate","attachMessageWithRate":"Attach a letter with the rate","writeMessageHere":"Write your message here","sendRate":"Rate","sweetAlertBtnJS":"Okay","dataAlreadySaved":"This data is already saved","name_ar":"Arabic name","name_en":"English name","icon":"Icon","priceStartFrom":"Prices start from"}; const token = $("meta[name=token]").attr("content");</script>    <script> const google_site_key = "6LegyqUaAAAAAP1kX1yUg2_iEi2GoSQObBkp0Vo2";</script>
             <script src="https://www.ektml.com/static/js/core.js"></script>
-        <script src="https://www.ektml.com/static/js/portfolio.js"></script>   
+        <script src="https://www.ektml.com/static/js/portfolio.js"></script>
 
 @component('layouts.components.rtl-links-js')
 @endcomponent

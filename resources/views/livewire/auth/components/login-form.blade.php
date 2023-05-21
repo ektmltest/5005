@@ -28,6 +28,7 @@
                 </div><!-- .floating-label-wrap -->
             </div>
         </div>
+
         <div class="col-xl-12">
             <div class="checkbox-group">
                 <input type="checkbox" id="box-3" name="rememberme" value="" data-parsley-multiple="rememberme">
