@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.app', ['auth' => true])
 
-@section('title', ucwords(__('main_trans.app_name')) . ' - ' . ucwords(__('pages.about')))
+@section('title', ucwords(__('main_trans.app_name')) . ' - ' . ucwords(__('pages.login')))
 
 @section('content')
     @component('layouts.components.rtl-links-css')
@@ -52,5 +52,4 @@
         </div>
     </section>
 
->>>>>>> kareem
 @endsection

@@ -15,7 +15,7 @@
 
     @yield('content')
 
-    @include('layouts.footer')
+    @include('layouts.footer', ['auth' => isset($auth)])
 </body>
 
 </html>
