@@ -1,3 +1,4 @@
+@if($auth == true)
 <section id="question" class="question">
     <div class="container">
         <div class="row row-aligns">
@@ -18,6 +19,7 @@
     </div>
 </section>
 <!-- End Question -->
+@endif
 
 <footer id="footer" class="footer">
     <div class="container">

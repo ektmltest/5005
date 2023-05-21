@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'register' => 'register',
+    'login' => 'login',
+
     'home' => 'Ektml Platform',
     // 'home' => 'home page',
     'about' => 'about us',
