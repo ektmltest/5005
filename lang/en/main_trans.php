@@ -42,7 +42,8 @@ return [
     'UI/UX' => 'UI/UX',
     'Plugins' => 'Plugins',
 
-
-
-
+    'start_your_project' => 'See what\'s happening in the world now',
+    'upgrade_your_project' => 'Follow your interests',
+    'connect_with_people' => 'Hear what people are talking about',
+    'pro_projects' => 'Professional technical projects',
 ];

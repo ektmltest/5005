@@ -253,17 +253,18 @@ if ('loading' in HTMLImageElement.prototype) {
             <div class="row row-aligns">
                 <div class="col-xl-7 col-md-6">
                     <div class="txt-signup">
-                        <h2>ابدأ مشروعك التقني الآن</h2>
+                        <h2>{{__('main_trans.start_your_project')}}</h2>
                         <ul class="list-unstyled">
                             <li>
                                 <i class="bx bx-check-double"></i>
-                                ارتقي بمشروعك الآن                            </li>
+                                {{__('main_trans.upgrade_your_project')}}
                             <li>
                                 <i class="bx bx-check-double"></i>
-                                أوصل لأكبر عدد من الناس                            </li>
+                                {{__('main_trans.connect_with_people')}}
                             <li>
                                 <i class="bx bx-check-double"></i>
-                                مشاريع تقنية إحترافية                            </li>
+                                {{__('main_trans.pro_projects')}}
+                            </li>
                         </ul>
                     </div>
                 </div>
