@@ -52,6 +52,7 @@
                 <div class="row row-aligns">
                     <div class="col-lg-4 col-md-12">
                         <div class="side-service left">
+
                             <div class="service-item">
                                 <div class="plus-icon">
                                     <i class='bx bx-code-block'></i>
@@ -61,6 +62,7 @@
                                     <p>{{ __('home_trans.DT1') }}</p>
                                 </div>
                             </div>
+
                             <div class="service-item">
                                 <div class="plus-icon">
                                     <i class='bx bx-donate-heart'></i>
@@ -70,11 +72,11 @@
                                     <p>{{ __('home_trans.DT2') }}</p>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <div class="col-lg-4 d-none d-lg-block">
                         <div class="service-box center">
-
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">

@@ -26,9 +26,9 @@ Route::group([
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
 
     // Auth
-    Route::get('login', fn () => view('login'))->name('login');
     Route::get('register', fn () => view('register'))->name('register');
-
+    Route::get('login', fn () => view('login'))->name('login');
+    Route::get('logout', fn () => view('login'))->name('logout');
 
 
     Route::get('password/forget', fn () => view('forget-password'))->name('password.forget');
