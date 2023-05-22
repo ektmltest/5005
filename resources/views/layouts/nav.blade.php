@@ -112,7 +112,7 @@
             </div>
         </li>
 
-    @if(auth()->user())
+    @if(Auth::user())
         <li class="nav-item nav-trial item dropdown js-dropdown-links">
             <a class="nav-link dropdown-toggle" id="clientoptions" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ auth()->user()->name }}

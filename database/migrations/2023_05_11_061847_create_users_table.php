@@ -14,7 +14,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('phone')->nullable();
+            $table->string('phone');
+            $table->string('country_code')->default('+20');
             $table->enum('state', ['pending', 'activated', 'blocked'])->default('pending');
             $table->rememberToken();
             $table->timestamps();
