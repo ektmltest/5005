@@ -1,6 +1,6 @@
-@extends('layouts.app', ['auth' => true])
+@extends('layouts.app')
 
-@section('title', ucwords(__('main_trans.app_name')) . ' - ' . ucwords(__('pages.login')))
+@section('title', ucwords(__('pages.home')))
 
 @section('content')
 
@@ -8,10 +8,10 @@
     @endcomponent
 
     @include('layouts.header', [
-        'header' => false,
+        'header' => False,
     ])
 
-    <livewire:auth.login />
+    <livewire:website.home />
 
     @component('layouts.components.rtl-links-js')
     @endcomponent

@@ -1,15 +1,3 @@
-@extends('layouts.app')
-
-@section('title', ucwords(__('pages.home')))
-
-@section('content')
-    @component('layouts.components.rtl-links-css')
-    @endcomponent
-
-    @include('layouts.header', [
-        'header' => False,
-    ])
-
 <div id="my-page-content">
 <div class="head-content">
     <div class="container">
@@ -897,7 +885,3 @@
     </div>
 </section>
 </div>
-
-@component('layouts.components.rtl-links-js')
-@endcomponent
-@endsection

@@ -1,16 +1,4 @@
-@extends('layouts.app')
 
-@section('title', ucwords(__('main_trans.app_name')) . ' - ' . ucwords(__('pages.ticket')))
-
-@section('content')
-@component('layouts.components.rtl-links-css')
-@endcomponent
-
-@include('layouts.header', [
-'header' => true,
-'header_head' => ucwords(__('headers.ticket.show.header')),
-'header_body' => '',
-])
 
 <section id="blog-pp" class="blog-pp single-pp">
     <div class="container">
@@ -80,8 +68,3 @@
     </div>
 
 </section>
-
-@component('layouts.components.rtl-links-js')
-@endcomponent
-
-@endsection
