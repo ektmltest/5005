@@ -28,7 +28,7 @@ Route::group([
     // Auth
     Route::get('register', fn () => view('register'))->name('register');
     Route::get('login', fn () => view('login'))->name('login');
-    Route::get('logout', fn () => view('login'))->name('logout');
+    Route::get('logout', fn () => view('home'))->name('logout');
 
 
     Route::get('password/forget', fn () => view('forget-password'))->name('password.forget');

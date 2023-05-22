@@ -112,10 +112,10 @@
             </div>
         </li>
 
-    @if(Auth::user())
+    @auth
         <li class="nav-item nav-trial item dropdown js-dropdown-links">
             <a class="nav-link dropdown-toggle" id="clientoptions" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{ auth()->user()->name }}
+                {{ Auth::user()->fname }}
             </a>
             <div class="dropdown-menu">
                 <a class="dropdown-item dropdown-link" href="{{ route('myProfile') }}">
@@ -124,7 +124,7 @@
                         <span class="title">{{ __('main_trans.Your Profile') }}</span>
                     </div>
                 </a>
-                    <a class="dropdown-item dropdown-link" href="#">
+                    <a class="dropdown-item dropdown-link" href="{{ route('logout') }}">
                     <div class="link-ico">
                         <i class='bx bx-power-off'></i>
                         <span class="title">{{ __('main_trans.Sign Out') }}</span>
@@ -133,11 +133,12 @@
                 <span class="bg-gray hover-state js-hover-state"></span>
             </div>
         </li>
-    @else
+    @endauth
+    @guest
         <li class="nav-item nav-trial">
             <a class="nav-link" href="#">{{ __('main_trans.Free Trial') }}</a>
         </li>
-    @endif
+    @endguest
     </ul>
 </div>
 </div>

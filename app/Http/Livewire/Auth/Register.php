@@ -36,7 +36,7 @@ class Register extends Component
         $this->validate();
 
         if($this->iAgree){
-            User::create([
+            $user = User::create([
                 'fname' => $this->fname,
                 'lname' => $this->lname,
                 'email' => $this->email,
@@ -46,6 +46,8 @@ class Register extends Component
                 'state' => 'pending',
                 'rank_id' => 1,
             ]);
+
+            auth()->login($user);
 
             return redirect()->route('home');
         }else{
