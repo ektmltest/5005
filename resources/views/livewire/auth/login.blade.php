@@ -26,7 +26,8 @@
             <div class="col-xl-5 col-md-6">
                 <div class="signup-form">
                     @component('livewire.auth.components.login-form', [
-                        'email' => $email
+                        'email' => $email,
+                        'password' => $password,
                     ])
                     @endcomponent
                 </div>
