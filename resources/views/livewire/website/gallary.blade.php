@@ -20,7 +20,7 @@
         <div class="zoom-gallery">
             <a href="{{ asset('assets/img/gallary1') }}" target="_blank" class="item-wrap">
                 <i class='bx bx-search-alt'></i>
-                <img class="img-fluid" src="{{ asset('assets/img/gallary1') }}">
+                <img class="img-fluid" target="_blank" src="{{ asset('assets/img/gallary1') }}">
             </a>
         </div>
     </div>
