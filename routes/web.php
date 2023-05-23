@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Livewire\Website\Home;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 

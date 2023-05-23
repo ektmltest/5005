@@ -1,3 +1,11 @@
+<div>
+    @if (session()->has('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
+</div>
+
 <div id="my-page-content">
 <div class="head-content">
     <div class="container">
@@ -830,57 +838,66 @@
                         <p>{{ __('home_trans.Please feel free to contact us') }}</p>
                     </div>
 
-                    <form action="#" autocomplete="off">
-                        @csrf
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <div class="floating-label-wrap">
-                                        <input type="text"
-                                            class="floating-label-field floating-label-field--s3" id="field-1"
-                                            placeholder="Full Name">
-                                        <label for="field-1" class="floating-label">{{ __('home_trans.Name')}}</label>
-                                    </div><!-- .floating-label-wrap -->
-                                </div>
-                            </div>
 
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <div class="floating-label-wrap">
-                                        <input type="text"
-                                            class="floating-label-field floating-label-field--s3" id="field-4"
-                                            placeholder="Phone Number">
-                                        <label for="field-4" class="floating-label">{{ __('home_trans.Phone')}}</label>
-                                    </div><!-- .floating-label-wrap -->
-                                </div>
-                            </div>
+{{-- contact-us form --}}
+<form wire:submit.prevent='contact'>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="floating-label-wrap">
+                    <input type="text" wire:model="name" class="floating-label-field floating-label-field--s3" id="field-1" placeholder="Full Name">
+                    <label for="field-1" class="floating-label">{{ __('home_trans.Name')}}</label>
+                    @error('name')
+                    <span class="text-danger">* {{$message}}</span>
+                    @enderror
+                </div>
+            </div>
+        </div>
 
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <div class="floating-label-wrap">
-                                        <input type="email"
-                                            class="floating-label-field floating-label-field--s3" id="field-2"
-                                            placeholder="E-Mail Address">
-                                        <label for="field-2" class="floating-label">{{ __('home_trans.Email')}}</label>
-                                    </div><!-- .floating-label-wrap -->
-                                </div>
-                            </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="floating-label-wrap">
+                    <input type="text" wire:model="phone" class="floating-label-field floating-label-field--s3" id="field-4" placeholder="Phone Number">
+                    <label for="field-4" class="floating-label">{{ __('home_trans.Phone')}}</label>
+                    @error('phone')
+                        <span class="text-danger">* {{$message}}</span>
+                    @enderror
+                </div><!-- .floating-label-wrap -->
+            </div>
+        </div>
 
-                            <div class="col-xl-12">
-                                <div class="form-group">
-                                    <div class="floating-label-wrap">
-                                        <textarea class="floating-label-field floating-label-field--s3" id="field-5" placeholder="Your Message"></textarea>
-                                        <label for="field-5" class="floating-label">{{ __('home_trans.Message')}}</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-12">
-                                <div class="form-buttons">
-                                    <input type="submit" value="{{ __('home_trans.Submit') }}">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="floating-label-wrap">
+                    <input type="email" wire:model="email" class="floating-label-field floating-label-field--s3" id="field-2" placeholder="E-Mail Address">
+                    <label for="field-2" class="floating-label">{{ __('home_trans.Email')}}</label>
+                    @error('email')
+                        <span class="text-danger">* {{$message}}</span>
+                    @enderror
+                </div><!-- .floating-label-wrap -->
+            </div>
+        </div>
+
+        <div class="col-xl-12">
+            <div class="form-group">
+                <div class="floating-label-wrap">
+                    <textarea wire:model="message" class="floating-label-field floating-label-field--s3" id="field-5" placeholder="Your Message"></textarea>
+                    <label for="field-5" class="floating-label">{{ __('home_trans.Message')}}</label>
+                    @error('message')
+                        <span class="text-danger">* {{$message}}</span>
+                    @enderror
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-12">
+            <div class="form-buttons">
+                <button type="submit" class="btn bttn btn-purple">{{ __('home_trans.Submit') }}</button>
+            </div>
+        </div>
+    </div>
+</form>
+
                 </div>
             </div>
         </div>
