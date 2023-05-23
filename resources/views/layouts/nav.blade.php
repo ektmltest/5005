@@ -99,7 +99,7 @@
                 {{ ucwords(__('nav.lang')) }}
             </a>
 
-            <div class="dropdown-menu" >
+            <div class="dropdown-menu">
                 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                     <a data-turbo="false" class="dropdown-item dropdown-link" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, Route::current()->getName(), [], true) }}"
                         wire:click="reloadPageContent">
