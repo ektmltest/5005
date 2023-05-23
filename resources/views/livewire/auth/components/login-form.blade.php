@@ -45,7 +45,7 @@
 
         <div class="col-xl-12">
             <div class="form-buttons">
-                <a href="forgetPassword">{{ucwords(__('login_trans.login.forgetpass'))}}</a>
+                <a href="{{route('password.forget')}}" data-turbo="false">{{ucwords(__('login_trans.login.forgetpass'))}}</a>
                 <button type="submit" class="btn bttn btn-purple">{{ucwords(__('login_trans.login'))}}</button>
             </div>
         </div>

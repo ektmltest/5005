@@ -16,11 +16,14 @@ class ValidationRequest extends FormRequest
         return $rules;
     }
 
-    protected function emailRule($update = false) {
+    protected function emailRule($update = false, $exists = false) {
         $rules = ['email'];
 
         if (!$update)
             $rules[] = 'required';
+
+        if ($exists)
+            $rules[] = 'exists:users,email';
 
         return $rules;
     }

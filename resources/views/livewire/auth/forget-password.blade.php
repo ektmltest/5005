@@ -1,4 +1,18 @@
-<section id="signup" class="signup parallax" style="background: url(&quot;white&quot;) 0% 0px no-repeat fixed;">
+<section id="signup" class="signup parallax">
+    @if (Session::has('done'))
+        <div id="alert" class="w-100" style="position: absolute; z-index: 99999; text-align: center; top: 65px">
+            <div class="alert alert-success m-auto w-50">
+                {{Session::get('done')}}
+            </div>
+        </div>
+
+        <script>
+            setTimeout(() => {
+                var alert = document.getElementById('alert');
+                alert.style.display = 'none';
+            }, 3000);
+        </script>
+    @endif
     <div class="overlay"></div>
     <div class="container">
         <div class="row row-aligns">
@@ -8,16 +22,19 @@
             <div class="col-xl-6 col-lg-6 col-md-6">
                 <div class="signup-form">
                     <h3>Reset your password</h3>
-                    <form action="forgetPassword/send" name="forgotPassword">
+                    <form wire:submit.prevent='submit' name="forgotPassword">
                         <div class="row">
                             <input type="hidden" name="reCAPTCHA" value="">
                             <div class="col-xl-12">
                                 <div class="form-group">
                                     <div class="floating-label-wrap">
-                                        <input type="email" autocomplete="on"
+                                        <input wire:model='email' type="email" autocomplete="on"
                                             class="floating-label-field floating-label-field--s3" id="field-1"
-                                            name="email" placeholder="E-mail">
-                                        <label for="field-3" class="floating-label">E-mail</label>
+                                            name="email" placeholder="{{ucwords(__('login_trans.login.input1'))}}">
+                                        <label for="field-3" class="floating-label">{{ucwords(__('login_trans.login.input1'))}}</label>
+                                        @error('email')
+                                            <span class="text-danger">* {{$message}}</span>
+                                        @enderror
                                     </div><!-- .floating-label-wrap -->
                                 </div>
                             </div>
@@ -25,6 +42,20 @@
                             <div class="col-xl-8">
                                 <button type="submit" class="btn bttn btn-purple">Submit a reset link</button>
                             </div>
+
+                            <script>
+                                topbar.show();
+                            </script>
+
+                            {{-- <script wire:loading>
+                                topbar.show();
+                            </script> --}}
+
+                            {{-- <script>
+                                var srcShow = document.getElementById('src-show')
+                                if (!srcShow)
+                                    topbar.hide();
+                            </script> --}}
                         </div>
                     </form>
                 </div>
