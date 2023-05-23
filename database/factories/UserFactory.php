@@ -15,7 +15,7 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'phone' => fake()->regexify('01[0125][0-9]{8}'),
             'email_verified_at' => now(),
-            'password' => Hash::make('123456879'), // 123456879
+            'password' => Hash::make('123456789'), // 123456789
             'remember_token' => Str::random(10),
             'state' => fake()->randomElement(['pending', 'activated', 'blocked']),
             'rank_id' => Rank::inRandomOrder()->first()->id,

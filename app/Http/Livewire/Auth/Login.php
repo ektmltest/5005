@@ -40,12 +40,15 @@ class Login extends Component
             if (!Hash::check($this->password, $user->password)) {
                 $this->addError('credentials', trans('errors.credentials'));
             } else {
+                auth()->login($user);
                 return redirect()->route('home');
             }
         }
     }
 
     public function render() {
+        // if (auth()->check())
+        //     auth()->logout();
         return view('livewire.auth.login');
     }
 }

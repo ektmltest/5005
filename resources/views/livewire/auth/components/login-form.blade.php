@@ -52,5 +52,5 @@
     </div>
 </form>
 <div class="account-link">
-    {{ucwords(__('login_trans.login.notHaveAccount'))}} <a href="{{route('register')}}">{{ucwords(__('login_trans.login.createAccount'))}}</a>
+    {{ucwords(__('login_trans.login.notHaveAccount'))}} <a href="{{route('register')}}" data-turbo="false">{{ucwords(__('login_trans.login.createAccount'))}}</a>
 </div>

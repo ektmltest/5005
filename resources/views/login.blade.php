@@ -11,7 +11,7 @@
         'header' => false,
     ])
 
-    <livewire:auth.login />
+    <livewire:auth.login wire:init="loadComponent"/>
 
     @component('layouts.components.rtl-links-js')
     @endcomponent

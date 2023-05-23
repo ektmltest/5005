@@ -101,7 +101,7 @@
 
             <div class="dropdown-menu" >
                 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                    <a data-turbo-action="replace" target="_top" class="dropdown-item dropdown-link" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, Route::current()->getName(), [], true) }}"
+                    <a data-turbo="false" class="dropdown-item dropdown-link" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, Route::current()->getName(), [], true) }}"
                         wire:click="reloadPageContent">
                         <div class="link-ico">
                             <span class='flag-icon flag-icon-{{$localeCode == 'en' ? 'us' : 'sa'}}'></span>
@@ -125,19 +125,14 @@
                         <span class="title">{{ __('main_trans.Your Profile') }}</span>
                     </div>
                 </a>
-                    <a class="dropdown-item dropdown-link" href="{{ route('logout') }}">
-                    <div class="link-ico">
-                        <i class='bx bx-power-off'></i>
-                        <span class="title">{{ __('main_trans.Sign Out') }}</span>
-                    </div>
-                </a>
+                <livewire:website.logout />
                 <span class="bg-gray hover-state js-hover-state"></span>
             </div>
         </li>
     @endauth
     @guest
         <li class="nav-item nav-trial">
-            <a class="nav-link" href="{{ route('login') }}">{{ __('main_trans.Sign in') }}</a>
+            <a class="nav-link" href="{{ route('login') }}" data-turbo="false">{{ __('main_trans.Sign in') }}</a>
         </li>
     @endguest
     </ul>
