@@ -1,19 +1,6 @@
 <?php
 
-use App\Http\Livewire\Auth\ForgetPassword;
-use App\Http\Livewire\Auth\Login;
-use App\Http\Livewire\Auth\Register;
-use App\Http\Livewire\Website\About;
-use App\Http\Livewire\Website\Faq;
-use App\Http\Livewire\Website\Home;
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Website\Gallary;
-use App\Http\Livewire\Website\LetsStart;
-use App\Http\Livewire\Website\Ticket;
-use App\Http\Livewire\Website\TicketShow;
-use App\Http\Livewire\Website\MyProjects;
-use App\Http\Livewire\Website\Profile;
-use App\Http\Livewire\Website\Store;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 // Localization

@@ -101,7 +101,8 @@
 
             <div class="dropdown-menu" >
                 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                    <a class="dropdown-item dropdown-link" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                    <a data-turbo-action="replace" target="_top" class="dropdown-item dropdown-link" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, Route::current()->getName(), [], true) }}"
+                        wire:click="reloadPageContent">
                         <div class="link-ico">
                             <span class='flag-icon flag-icon-{{$localeCode == 'en' ? 'us' : 'sa'}}'></span>
                             <span class="title">{{ $properties['native'] }}</span>
