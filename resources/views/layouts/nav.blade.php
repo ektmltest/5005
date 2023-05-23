@@ -137,7 +137,7 @@
     @endauth
     @guest
         <li class="nav-item nav-trial">
-            <a class="nav-link" href="#">{{ __('main_trans.Free Trial') }}</a>
+            <a class="nav-link" href="{{ route('login') }}">{{ __('main_trans.Sign in') }}</a>
         </li>
     @endguest
     </ul>
