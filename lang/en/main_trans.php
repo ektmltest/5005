@@ -2,6 +2,7 @@
 
 return [
     'app_name' => 'Ektml',
+    'Sign in' => 'Sign in',
     'Free Trial' => 'Free Trial',
     'title1' => "It's time to start your business",
     'title2' => 'electronic',
