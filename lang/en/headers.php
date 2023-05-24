@@ -25,6 +25,7 @@ return [
     'profile.header' => 'My Profile',
     'profile.body' => 'From here you can edit your profile and view your personal data.',
 
-
+    'project.header' => 'ملفي الشخصي',
+    'project.body' => 'من هنا يمكنك تعديل ملفك الشخصي والإطلاع على بياناتك الشخصية.',
 
 ];

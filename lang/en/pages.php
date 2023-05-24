@@ -14,6 +14,7 @@ return [
     'store' => 'Store',
     'myprojects' => 'My Projects',
     'profile' => 'My Profile',
+    'project' => '',
 
 
 ];

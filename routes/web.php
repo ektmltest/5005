@@ -1,5 +1,6 @@
 <?php
 use App\Http\Livewire\Website\Home;
+use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -27,12 +28,13 @@ Route::group([
     Route::get('/tickets', fn () => view('ticket'))->name('tickets');
     Route::get('/tickets/1', fn () => view('ticket-show'))->name('tickets.show');
 
-
     Route::get('store', fn () => view('store'))->name('store');
     Route::get('gallary', fn () => view('gallary'))->name('gallary');
     Route::get('myProfile', fn () => view('my-projects'))->name('myProfile');
     Route::get('letsStart', fn () => view('lets-start'))->name('letsStart');
     Route::get('myProjects', fn () => view('my-projects'))->name('myProjects');
+    Route::get('project/{id}', fn () => view('project'))->name('project');
+
 
 });
 

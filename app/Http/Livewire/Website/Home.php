@@ -31,11 +31,8 @@ class Home extends Component
             'message' => $this->message,
         ]);
 
-        // $this->reset();
-        // $this->emit('Your Message Sent Successfully.!');
-        // session()->flash('message', 'Your Message Sent Successfully.!');
-
-        return redirect()->route('home');
+        $this->reset();
+        session()->flash('message', 'Your Message Sent Successfully.!');
     }
 
     public function render()
