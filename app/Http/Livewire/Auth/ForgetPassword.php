@@ -12,7 +12,7 @@ class ForgetPassword extends Component
 {
     use Mailer;
 
-    public $loading = true;
+    // public $loading = true;
     public $email;
     protected $userRepository;
 
@@ -23,7 +23,7 @@ class ForgetPassword extends Component
 
     // * mount
     public function mount() {
-        $this->loading = true;
+        // $this->loading = true;
     }
 
     // * to define rules for all post requests comming to this component
@@ -50,12 +50,13 @@ class ForgetPassword extends Component
             session()->flash('done', trans('mails.forget-password.done'));
         }
 
-        $this->loading = false;
+        // $this->loading = false;
+        $this->dispatchBrowserEvent('loaded');
     }
 
     public function render()
     {
-        $this->loading = true;
+        // $this->loading = true;
         return view('livewire.auth.forget-password');
     }
 }

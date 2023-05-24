@@ -19,6 +19,7 @@ Route::group([
 
 
     Route::get('password/forget', fn () => view('forget-password'))->name('password.forget');
+    Route::get('password/forget/{token}', fn ($token) => view('forget-password-form')->with('token', $token))->name('password.forget.form');
 
     Route::get('/', fn () => view('home'))->name('index');
     Route::get('/faq', fn () => view('faq'))->name('faq');

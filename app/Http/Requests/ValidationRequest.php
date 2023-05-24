@@ -16,14 +16,14 @@ class ValidationRequest extends FormRequest
         return $rules;
     }
 
-    protected function emailRule($update = false, $exists = false) {
+    protected function emailRule($update = false, $exists = false, $table='users') {
         $rules = ['email'];
 
         if (!$update)
             $rules[] = 'required';
 
         if ($exists)
-            $rules[] = 'exists:users,email';
+            $rules[] = "exists:$table,email";
 
         return $rules;
     }
@@ -40,10 +40,13 @@ class ValidationRequest extends FormRequest
                     ->mixedCase()
                     ->numbers()
                     ->symbols()
-                    ->uncompromised()
             ]);
         }
 
         return $rules;
+    }
+
+    protected function resetPasswordTokenRule() {
+        return ['required', 'exists:password_reset_tokens,token'];
     }
 }

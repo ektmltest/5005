@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
-class ForgetPasswordRequest extends ValidationRequest
+use Illuminate\Foundation\Http\FormRequest;
+
+class ForgetPasswordFormRequest extends ValidationRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -20,7 +22,9 @@ class ForgetPasswordRequest extends ValidationRequest
     public function rules(): array
     {
         return [
-            'email' => parent::emailRule(exists: true),
+            'email' => parent::emailRule(exists: true, table: 'password_reset_tokens'),
+            'password' => parent::passwordRule('register'),
+            'token' => parent::resetPasswordTokenRule(),
         ];
     }
 }

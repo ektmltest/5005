@@ -13,6 +13,7 @@
             }, 3000);
         </script>
     @endif
+
     <div class="overlay"></div>
     <div class="container">
         <div class="row row-aligns">
@@ -22,7 +23,7 @@
             <div class="col-xl-6 col-lg-6 col-md-6">
                 <div class="signup-form">
                     <h3>Reset your password</h3>
-                    <form wire:submit.prevent='submit' name="forgotPassword">
+                    <form wire:submit.prevent='submit' id="forgetPasswordForm" name="forgotPassword">
                         <div class="row">
                             <input type="hidden" name="reCAPTCHA" value="">
                             <div class="col-xl-12">
@@ -42,10 +43,6 @@
                             <div class="col-xl-8">
                                 <button type="submit" class="btn bttn btn-purple">Submit a reset link</button>
                             </div>
-
-                            <script>
-                                topbar.show();
-                            </script>
 
                             {{-- <script wire:loading>
                                 topbar.show();
@@ -73,4 +70,14 @@
             <div class="circle2"></div>
         </div>
     </div>
+
+    <script>
+        $('#forgetPasswordForm').on('submit', () => {
+            topbar.show();
+        });
+
+        $(window).on('loaded', () => {
+            topbar.hide();
+        });
+    </script>
 </section>
