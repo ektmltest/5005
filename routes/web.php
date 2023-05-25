@@ -1,7 +1,8 @@
 <?php
-use App\Http\Livewire\Website\Home;
 use App\Models\Contact;
+use App\Http\Livewire\Website\Home;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Website\Project;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 // Localization
@@ -33,6 +34,7 @@ Route::group([
     Route::get('myProfile', fn () => view('my-projects'))->name('myProfile');
     Route::get('letsStart', fn () => view('lets-start'))->name('letsStart');
     Route::get('myProjects', fn () => view('my-projects'))->name('myProjects');
+    // Route::get('project/{id}', fn ($id) => view('project', )->with('id', $id))->name('project');
     Route::get('project/{id}', fn () => view('project'))->name('project');
 
 
