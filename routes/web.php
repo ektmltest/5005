@@ -13,13 +13,16 @@ Route::group([
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
 
     // Auth
-    Route::get('register', fn () => view('register'))->name('register');
-    Route::get('login', fn () => view('login'))->name('login');
-    Route::get('logout', fn () => view('home'))->name('logout');
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('logout', fn () => view('home'))->name('logout');
+    });
 
-
-    Route::get('password/forget', fn () => view('forget-password'))->name('password.forget');
-    Route::get('password/forget/{token}', fn ($token) => view('forget-password-form')->with('token', $token))->name('password.forget.form');
+    Route::group(['middleware' => ['guest']], function () {
+        Route::get('register', fn () => view('register'))->name('register');
+        Route::get('login', fn () => view('login'))->name('login');
+        Route::get('password/forget', fn () => view('forget-password'))->name('password.forget');
+        Route::get('password/forget/{token}', fn ($token) => view('forget-password-form')->with('token', $token))->name('password.forget.form');
+    });
 
     Route::get('/', fn () => view('home'))->name('index');
     Route::get('/faq', fn () => view('faq'))->name('faq');

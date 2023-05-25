@@ -4,21 +4,22 @@ namespace App\Http\Livewire\Auth;
 
 use App\Helpers\Mailer;
 use App\Http\Requests\ForgetPasswordRequest;
+use App\Repositories\ResetPasswordTokenRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class ForgetPassword extends Component
 {
-    use Mailer;
-
     // public $loading = true;
     public $email;
+    protected $resetPasswordRepository;
     protected $userRepository;
 
     // * constructor
     public function __construct() {
         $this->userRepository = new UserRepository;
+        $this->resetPasswordRepository = new ResetPasswordTokenRepository;
     }
 
     // * mount
@@ -45,7 +46,8 @@ class ForgetPassword extends Component
         if (!$user) {
             $this->addError('credentials', trans('errors.credentials'));
         } else {
-            if (!$this->sendMail('mails.forget-password', $user->email))
+            $resetPasswordModel = $this->resetPasswordRepository->generate($this->email);
+            if (!$this->resetPasswordRepository->sendMail('mails.forget-password', $resetPasswordModel))
                 $this->addError('credentials', trans('errors.mail-send'));
             session()->flash('done', trans('mails.forget-password.done'));
         }

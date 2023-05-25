@@ -12,17 +12,19 @@ use Illuminate\Queue\SerializesModels;
 
 class ForgetPasswordMail extends Mailable
 {
-    use Queueable, SerializesModels, ResetPassword;
+    use Queueable, SerializesModels;
 
+    public $token;
     public $email;
     public $view;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($view, $email)
+    public function __construct($view, $token, $email)
     {
         $this->email = $email;
+        $this->token = $token;
         $this->view = $view;
     }
 
@@ -44,7 +46,7 @@ class ForgetPasswordMail extends Mailable
         return new Content(
             view: $this->view,
             with: [
-                'link' => $this->generateResetPasswordToken($this->email),
+                'link' => env('APP_URL') . "/password/forget/{$this->token}?email={$this->email}",
             ],
         );
     }

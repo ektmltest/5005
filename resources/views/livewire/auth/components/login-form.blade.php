@@ -1,9 +1,9 @@
 <h3>{{ucwords(__('login_trans.login.header'))}}</h3>
 <div id="validerrors" class="alert alert-danger" style="display:none;"></div>
 @error('credentials')
-<div class="alert alert-danger">
-    {{$message}}
-</div>
+    <div class="alert alert-danger">
+        {{$message}}
+    </div>
 @enderror
 <form wire:submit.prevent='submit' name="signinForm" data-parsley-errors-container="#validerrors" novalidate="">
     <div class="row">

@@ -37,7 +37,7 @@
                                 {{__('errors.url_error') . ': ' . $message}}
                             </div>
                         @enderror
-                        <form wire:submit.prevent='submit' name="signinForm" data-parsley-errors-container="#validerrors" novalidate="">
+                        <form wire:submit.prevent='submit' id="forgetPasswordForm" data-parsley-errors-container="#validerrors" novalidate="">
                             <div class="row">
                                 <input type="hidden" name="reCAPTCHA" value="">
                                 <input type="hidden" name="email" value="{{$email}}">
@@ -95,6 +95,7 @@
 
     <script>
         $('#forgetPasswordForm').on('submit', () => {
+            console.log('test');
             topbar.show();
         });
 

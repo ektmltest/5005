@@ -15,7 +15,7 @@ class ForgetPasswordForm extends Component
     public $password;
     public $password_confirmation;
     public $email;
-    protected $model;
+    protected $resetPasswordModel;
     protected $resetPasswordTokenRepository;
     protected $userRepository;
 
@@ -34,8 +34,10 @@ class ForgetPasswordForm extends Component
             $this->email = null;
         }
 
-        $this->model = $this->resetPasswordTokenRepository->find($this->email, $this->token);
-        if (!$this->model) {
+        $this->resetPasswordModel = $this->resetPasswordTokenRepository->find($this->email, $this->token);
+
+        // dd($this->resetPasswordModel);
+        if (!$this->resetPasswordModel) {
             $this->addError('url', trans('errors.url_error'));
         }
     }
@@ -53,7 +55,8 @@ class ForgetPasswordForm extends Component
     public function submit() {
         $this->validate();
 
-        if ($this->model) {
+        $this->resetPasswordModel = $this->resetPasswordTokenRepository->find($this->email, $this->token);
+        if ($this->resetPasswordModel) {
             DB::beginTransaction();
             try {
                 $user = $this->userRepository->changePassword($this->password, $this->email);
@@ -61,17 +64,23 @@ class ForgetPasswordForm extends Component
                 if (!$user)
                     throw new Exception('Error while getting user by email!');
 
-                $this->model->delete();
+
+                $this->resetPasswordTokenRepository->delete($this->email, $this->token);
 
                 DB::commit();
 
-                return redirect()->route('login')->with('done', trans('done'));
+                session()->flash('done', trans('messages.done'));
+
+                $this->dispatchBrowserEvent('loaded');
+
+                return redirect()->route('login');
+                
             } catch (\Throwable $th) {
                 DB::rollBack();
                 throw $th;
             }
         } else {
-            throw new Exception('Error while getting reset password token model!');
+            throw new Exception('Error while getting reset password token resetPasswordModel!');
         }
     }
 

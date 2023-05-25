@@ -38,7 +38,8 @@ class Login extends Component
             $this->addError('credentials', trans('errors.credentials'));
         } else {
             if (!Hash::check($this->password, $user->password)) {
-                $this->addError('credentials', trans('errors.credentials'));
+                // dd('test');
+                $this->addError('credentials',trans ('errors.credentials'));
             } else {
                 auth()->login($user);
                 return redirect()->route('home');
