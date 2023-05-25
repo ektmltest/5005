@@ -1,8 +1,3 @@
-
-
-
-
-
 <section id="portfolio" class="portfolio">
 <div class="container">
 <div class="list-control">
@@ -12,432 +7,46 @@
         <li data-filter=".prj-5" class="">{{ __('store_trans.Management Projects') }}</li>
     </ul>
 </div>
+
+
 <div id="portfolio-grid" class="row no-gutter">
-                <div class="item prj-3 col-md-4 mb-4">
+
+@foreach (App\Models\ReadyProject::get() as $project)
+    <div class="item prj-5 col-md-4 mb-4">
         <div class="post-item">
             <div class="post-img">
-                <img class="img-fluid" mu-open mu-link="/prj/1"
-                    style="border-radius: 16px; cursor: pointer;"
-                    src="https://www.ektml.com/catalog/image/1" alt>
+                <img class="img-fluid" mu-open mu-link="/prj/15" style="border-radius: 16px; cursor: pointer;" src="https://www.ektml.com/catalog/image/15" alt>
             </div>
+
             <div class="post-txt">
-                <a class="post-title" href="/prj/1">{{ __('store_trans.Business Projects') }}</a>
+                <a class="post-title" href="{{ route('project', $project->id) }}">{{ $project->name }}</a>
+
                 <ul class="list-unstyled post-details">
                     <li></li>
-                    <li>2022/04/20</li>
-                    <li>9 {{ __('store_trans.likes') }}</li>
-                </ul>
-                <p>إمتلك موقع لنشر الأخبار والمقالات العامه , وإكسب المال ...</p>
-                <div class="footer-post">
-                                                <div class="tags">
-                                                        <a href="/prj/1">950 ريال</a>
-                                                    </div>
-                                                <div class="action-post">
-                                                        <a href="#"><i class="bx bx-heart loveProject"
-                                mu-notlogged=""
-                                mu-id="1"></i></a>
-                                                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-                <div class="item prj-3 col-md-4 mb-4">
-        <div class="post-item">
-            <div class="post-img">
-                <img class="img-fluid" mu-open mu-link="/prj/2"
-                    style="border-radius: 16px; cursor: pointer;"
-                    src="https://www.ektml.com/catalog/image/2" alt>
-            </div>
-            <div class="post-txt">
-                <a class="post-title" href="/prj/2">مشروع كوبونات الخصم</a>
-                <ul class="list-unstyled post-details">
-                    <li></li>
-                    <li>2022/04/22</li>
-                    <li>9 إعجاب</li>
-                </ul>
-                <p>موقع متخصص لعرض كوبونات خصم اي متجر الكتروني ويمكنك اضا...</p>
-                <div class="footer-post">
-                                                <div class="tags">
-                                                        <a href="/prj/2">1300 ريال</a>
-                                                    </div>
-                                                <div class="action-post">
-                                                        <a href="#"><i class="bx bx-heart loveProject"
-                                mu-notlogged=""
-                                mu-id="2"></i></a>
-                                                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-                <div class="item prj-3 col-md-4 mb-4">
-        <div class="post-item">
-            <div class="post-img">
-                <img class="img-fluid" mu-open mu-link="/prj/3"
-                    style="border-radius: 16px; cursor: pointer;"
-                    src="https://www.ektml.com/catalog/image/3" alt>
-            </div>
-            <div class="post-txt">
-                <a class="post-title" href="/prj/3">موقع حجوزات الفنادق</a>
-                <ul class="list-unstyled post-details">
-                    <li></li>
-                    <li>2022/04/23</li>
-                    <li>4 إعجاب</li>
-                </ul>
-                <p>مشروع مثل موقع المسافر و بوكينق لحجز الفنادق...</p>
-                <div class="footer-post">
-                                                <div class="tags">
-                                                        <a href="/prj/3">1700 ريال</a>
-                                                    </div>
-                                                <div class="action-post">
-                                                        <a href="#"><i class="bx bx-heart loveProject"
-                                mu-notlogged=""
-                                mu-id="3"></i></a>
-                                                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-                <div class="item prj-3 col-md-4 mb-4">
-        <div class="post-item">
-            <div class="post-img">
-                <img class="img-fluid" mu-open mu-link="/prj/4"
-                    style="border-radius: 16px; cursor: pointer;"
-                    src="https://www.ektml.com/catalog/image/4" alt>
-            </div>
-            <div class="post-txt">
-                <a class="post-title" href="/prj/4">مشروع الدورات التدريبية</a>
-                <ul class="list-unstyled post-details">
-                    <li></li>
-                    <li>2022/04/26</li>
-                    <li>6 إعجاب</li>
-                </ul>
-                <p>موقع لعرض وبيع الدورات التدريبيه وكذلك إكتساب عموله من ...</p>
-                <div class="footer-post">
-                                                <div class="tags">
-                                                        <a href="/prj/4">1500 ريال</a>
-                                                    </div>
-                                                <div class="action-post">
-                                                        <a href="#"><i class="bx bx-heart loveProject"
-                                mu-notlogged=""
-                                mu-id="4"></i></a>
-                                                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-                <div class="item prj-3 col-md-4 mb-4">
-        <div class="post-item">
-            <div class="post-img">
-                <img class="img-fluid" mu-open mu-link="/prj/5"
-                    style="border-radius: 16px; cursor: pointer;"
-                    src="https://www.ektml.com/catalog/image/5" alt>
-            </div>
-            <div class="post-txt">
-                <a class="post-title" href="/prj/5">مشروع سكربت قرآن للجميع</a>
-                <ul class="list-unstyled post-details">
-                    <li></li>
-                    <li>2022/04/27</li>
-                    <li>5 إعجاب</li>
-                </ul>
-                <p>إمتلك موقع قرآن كريم كاملا مع التفسير و الإستماع بالإضا...</p>
-                <div class="footer-post">
-                                                <div class="tags">
-                                                        <a href="/prj/5">450 ريال</a>
-                                                    </div>
-                                                <div class="action-post">
-                                                        <a href="#"><i class="bx bx-heart loveProject"
-                                mu-notlogged=""
-                                mu-id="5"></i></a>
-                                                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-                <div class="item prj-3 col-md-4 mb-4">
-        <div class="post-item">
-            <div class="post-img">
-                <img class="img-fluid" mu-open mu-link="/prj/6"
-                    style="border-radius: 16px; cursor: pointer;"
-                    src="https://www.ektml.com/catalog/image/6" alt>
-            </div>
-            <div class="post-txt">
-                <a class="post-title" href="/prj/6">مشروع حراج</a>
-                <ul class="list-unstyled post-details">
-                    <li></li>
-                    <li>2022/05/01</li>
-                    <li>5 إعجاب</li>
-                </ul>
-                <p>امتلك موقع مثل موقع حراج المشهور , بتصميم وميزات أحدث...</p>
-                <div class="footer-post">
-                                                <div class="tags">
-                                                        <a href="/prj/6">1450 ريال</a>
-                                                    </div>
-                                                <div class="action-post">
-                                                        <a href="#"><i class="bx bx-heart loveProject"
-                                mu-notlogged=""
-                                mu-id="6"></i></a>
-                                                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-                <div class="item prj-3 col-md-4 mb-4">
-        <div class="post-item">
-            <div class="post-img">
-                <img class="img-fluid" mu-open mu-link="/prj/7"
-                    style="border-radius: 16px; cursor: pointer;"
-                    src="https://www.ektml.com/catalog/image/7" alt>
-            </div>
-            <div class="post-txt">
-                <a class="post-title" href="/prj/7">مشروع قص الروابط</a>
-                <ul class="list-unstyled post-details">
-                    <li></li>
-                    <li>2022/05/07</li>
-                    <li>5 إعجاب</li>
-                </ul>
-                <p>يمكنك في هذا المشروع جمع مسوقين بالعمولة للعمل معك وكسب...</p>
-                <div class="footer-post">
-                                                <div class="tags">
-                                                        <a href="/prj/7">1690 ريال</a>
-                                                    </div>
-                                                <div class="action-post">
-                                                        <a href="#"><i class="bx bx-heart loveProject"
-                                mu-notlogged=""
-                                mu-id="7"></i></a>
-                                                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-                <div class="item prj-3 col-md-4 mb-4">
-        <div class="post-item">
-            <div class="post-img">
-                <img class="img-fluid" mu-open mu-link="/prj/8"
-                    style="border-radius: 16px; cursor: pointer;"
-                    src="https://www.ektml.com/catalog/image/8" alt>
-            </div>
-            <div class="post-txt">
-                <a class="post-title" href="/prj/8">مشروع متجر متعدد التجار</a>
-                <ul class="list-unstyled post-details">
-                    <li></li>
-                    <li>2022/05/17</li>
-                    <li>3 إعجاب</li>
-                </ul>
-                <p>امتلك موقع وتطبيق مثل ( علي اكسبريس ) الشهير , بحيث يمك...</p>
-                <div class="footer-post">
-                                                <div class="tags">
-                                                        <a href="/prj/8">2800 ريال</a>
-                                                    </div>
-                                                <div class="action-post">
-                                                        <a href="#"><i class="bx bx-heart loveProject"
-                                mu-notlogged=""
-                                mu-id="8"></i></a>
-                                                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-                <div class="item prj-3 col-md-4 mb-4">
-        <div class="post-item">
-            <div class="post-img">
-                <img class="img-fluid" mu-open mu-link="/prj/9"
-                    style="border-radius: 16px; cursor: pointer;"
-                    src="https://www.ektml.com/catalog/image/9" alt>
-            </div>
-            <div class="post-txt">
-                <a class="post-title" href="/prj/9">مشروع مزاد</a>
-                <ul class="list-unstyled post-details">
-                    <li></li>
-                    <li>2022/06/08</li>
-                    <li>4 إعجاب</li>
-                </ul>
-                <p>امتلك مشروع يساعد التجار والشركات من جميع أنحاء العالم ...</p>
-                <div class="footer-post">
-                                                <div class="tags">
-                                                        <a href="/prj/9">1780 ريال</a>
-                                                    </div>
-                                                <div class="action-post">
-                                                        <a href="#"><i class="bx bx-heart loveProject"
-                                mu-notlogged=""
-                                mu-id="9"></i></a>
-                                                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-                <div class="item prj-3 col-md-4 mb-4">
-        <div class="post-item">
-            <div class="post-img">
-                <img class="img-fluid" mu-open mu-link="/prj/10"
-                    style="border-radius: 16px; cursor: pointer;"
-                    src="https://www.ektml.com/catalog/image/10" alt>
-            </div>
-            <div class="post-txt">
-                <a class="post-title" href="/prj/10">الخدمات الألكترونية</a>
-                <ul class="list-unstyled post-details">
-                    <li></li>
-                    <li>2022/06/15</li>
-                    <li>4 إعجاب</li>
-                </ul>
-                <p>يمكنك في هذا المشروع تقديم خدماتك الالكترونية او التسوي...</p>
-                <div class="footer-post">
-                                                <div class="tags">
-                                                        <a href="/prj/10">1450 ريال</a>
-                                                    </div>
-                                                <div class="action-post">
-                                                        <a href="#"><i class="bx bx-heart loveProject"
-                                mu-notlogged=""
-                                mu-id="10"></i></a>
-                                                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-                <div class="item prj-3 col-md-4 mb-4">
-        <div class="post-item">
-            <div class="post-img">
-                <img class="img-fluid" mu-open mu-link="/prj/11"
-                    style="border-radius: 16px; cursor: pointer;"
-                    src="https://www.ektml.com/catalog/image/11" alt>
-            </div>
-            <div class="post-txt">
-                <a class="post-title" href="/prj/11">مشروع رسالة مجهول</a>
-                <ul class="list-unstyled post-details">
-                    <li></li>
-                    <li>2022/06/26</li>
-                    <li>4 إعجاب</li>
-                </ul>
-                <p>مشروع رسالة مجهول حيث تمكن الزائر من كتابة رسالة مجهولة...</p>
-                <div class="footer-post">
-                                                <div class="tags">
-                                                        <a href="/prj/11">1690 ريال</a>
-                                                    </div>
-                                                <div class="action-post">
-                                                        <a href="#"><i class="bx bx-heart loveProject"
-                                mu-notlogged=""
-                                mu-id="11"></i></a>
-                                                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-                <div class="item prj-3 col-md-4 mb-4">
-        <div class="post-item">
-            <div class="post-img">
-                <img class="img-fluid" mu-open mu-link="/prj/12"
-                    style="border-radius: 16px; cursor: pointer;"
-                    src="https://www.ektml.com/catalog/image/12" alt>
-            </div>
-            <div class="post-txt">
-                <a class="post-title" href="/prj/12">مشروع عقارات</a>
-                <ul class="list-unstyled post-details">
-                    <li></li>
-                    <li>2022/07/10</li>
-                    <li>3 إعجاب</li>
-                </ul>
-                <p>مشروع اعلانات العقارات...</p>
-                <div class="footer-post">
-                                                <div class="tags">
-                                                        <a href="/prj/12">2900 ريال</a>
-                                                    </div>
-                                                <div class="action-post">
-                                                        <a href="#"><i class="bx bx-heart loveProject"
-                                mu-notlogged=""
-                                mu-id="12"></i></a>
-                                                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-                <div class="item prj-3 col-md-4 mb-4">
-        <div class="post-item">
-            <div class="post-img">
-                <img class="img-fluid" mu-open mu-link="/prj/13"
-                    style="border-radius: 16px; cursor: pointer;"
-                    src="https://www.ektml.com/catalog/image/13" alt>
-            </div>
-            <div class="post-txt">
-                <a class="post-title" href="/prj/13">مشروع منصة الوظائف</a>
-                <ul class="list-unstyled post-details">
-                    <li></li>
-                    <li>2023/01/07</li>
-                    <li>2 إعجاب</li>
-                </ul>
-                <p>هذا المشروع هو عبارة عن منصة تجمع بين الباحثين عن العمل...</p>
-                <div class="footer-post">
-                                                <div class="tags">
-                                                        <a href="/prj/13">990 ريال</a>
-                                                    </div>
-                                                <div class="action-post">
-                                                        <a href="#"><i class="bx bx-heart loveProject"
-                                mu-notlogged=""
-                                mu-id="13"></i></a>
-                                                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-                <div class="item prj-3 col-md-4 mb-4">
-        <div class="post-item">
-            <div class="post-img">
-                <img class="img-fluid" mu-open mu-link="/prj/14"
-                    style="border-radius: 16px; cursor: pointer;"
-                    src="https://www.ektml.com/catalog/image/14" alt>
-            </div>
-            <div class="post-txt">
-                <a class="post-title" href="/prj/14">مشروع رفع الملفات</a>
-                <ul class="list-unstyled post-details">
-                    <li></li>
-                    <li>2023/01/25</li>
+                    <li>{{ $project->created_at }}</li>
                     <li>1 إعجاب</li>
                 </ul>
-                <p>المشروع عبارة عن موقع رفع ملفات
-<br />
-<br />زي موقع me...</p>
+                <p>{{ $project->description }}</p>
+
                 <div class="footer-post">
-                                                <div class="tags">
-                                                        <a href="/prj/14">850 ريال</a>
-                                                    </div>
-                                                <div class="action-post">
-                                                        <a href="#"><i class="bx bx-heart loveProject"
-                                mu-notlogged=""
-                                mu-id="14"></i></a>
-                                                    </div>
+                    <div class="tags">
+                        <a href="/prj/15">{{ $project->price }} {{ __('home_trans.SAR') }}</a>
+                    </div>
+                    <div class="action-post">
+                        <a href="#"><i class="bx bx-heart loveProject" mu-notlogged="" mu-id="15"></i></a>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
-                <div class="item prj-5 col-md-4 mb-4">
-        <div class="post-item">
-            <div class="post-img">
-                <img class="img-fluid" mu-open mu-link="/prj/15"
-                    style="border-radius: 16px; cursor: pointer;"
-                    src="https://www.ektml.com/catalog/image/15" alt>
-            </div>
-            <div class="post-txt">
-                <a class="post-title" href="/prj/15">مشروع إدارة الشركات والمشاريع</a>
-                <ul class="list-unstyled post-details">
-                    <li></li>
-                    <li>2023/05/06</li>
-                    <li>1 إعجاب</li>
-                </ul>
-                <p>مشروع يساعدك على ادارة وتنظيم نشاطك التجاري وطاقم عملك ...</p>
-                <div class="footer-post">
-                                                <div class="tags">
-                                                        <a href="/prj/15">950 ريال</a>
-                                                    </div>
-                                                <div class="action-post">
-                                                        <a href="#"><i class="bx bx-heart loveProject"
-                                mu-notlogged=""
-                                mu-id="15"></i></a>
-                                                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-            </div>
+@endforeach
+
+</div>
 </div>
 </section>
+
+
 {{--
 <!--<section id="blog-pp portfolio" class="blog-pp portfolio">
 <div class="container">
@@ -1284,24 +893,3 @@
             </div>
 </div>
 </section>--> --}}
-
-
-<section id="question" class="question">
-<div class="container">
-    <div class="row row-aligns">
-        <div class="col-lg-8">
-            <div class="question-txt">
-                <h3><span>663</span> {{ __('main_trans.User has used') }} <br> {{ __('main_trans.Our services successfullly.') }}</h3>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="question-action">
-                <a class="bttn btn-purple" href="https://www.ektml.com/projects/create">
-                    {{ __('main_trans.Start with us now!') }}
-                    <i class='bx bx-left-arrow-alt'></i>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-</section>

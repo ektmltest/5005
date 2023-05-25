@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html>
+<head>
 <!-- Basic Page Needs -->
 <meta charset="UTF-8">
 <meta name="description" content="Hotan Multipurpose HTML Template for Saas & Agency">
@@ -9,10 +12,8 @@
 
 <!-- Page Title -->
 <title>@yield('title')</title>
-
 <!-- Favicon-->
 <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/logo_ektml.webp')}}">
-
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,3 +29,15 @@
 <script src="{{ asset('assets/js/modernizr-2.6.2.min.js') }}"></script>
 
 @livewireStyles()
+</head>
+
+<body>
+
+    @include('layouts.nav')
+    
+    @yield('content')
+
+    @include('layouts.footer', ['auth' => isset($auth)])
+</body>
+
+</html>

@@ -15,7 +15,6 @@
 
 <div class="col-xl-9 col-lg-8">
     <div class="faq-question">
-        <!-- Start Accordion Box -->
         <div id="faq-general" class="accordion-box">
             <h4><span><i class='bx bx-globe'></i>{{ucwords(__('faq_trans.general_inquiries'))}}</span></h4>
             <div id="accordion" class="accordion-faq">

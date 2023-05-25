@@ -9,7 +9,7 @@
 <script src="{{ asset('assets/vendors/appear/js/jquery.appear.js') }}"></script>
 <!-- Lity -->
 <script src="{{ asset('assets/vendors/lity/js/lity.min.js') }}"></script>
-<!-- Parallax -->
+<!-- Parallax -->+
 <script src="{{ asset('assets/vendors/parallax/js/jquery-parallax.js') }}"></script>
 <!-- Parallax -->
 <script src="{{ asset('assets/js/core.js') }}"></script>

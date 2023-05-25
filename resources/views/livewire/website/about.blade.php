@@ -1,5 +1,4 @@
 <div class="my-page-content">
-<!-- Start Random Post -->
 <section id="random-post" class="random-post">
     <div class="container">
         <div class="main-title">
@@ -39,7 +38,7 @@
                         </span>
                     </div>
                 </div>
-                
+
                 <div class="col-md-6 order-1 order-md-2">
                     <div class="post-img">
                         <img class="img-fluid" src="{{ asset('assets/img/problem_solving2.svg') }}"
@@ -50,6 +49,7 @@
         </div>
     </div>
 </section>
+
 
 <section id="trial" class="trial">
     <div class="container">

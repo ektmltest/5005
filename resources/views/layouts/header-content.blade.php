@@ -1,4 +1,3 @@
-<!-- Start Header Content -->
 <div class="container">
     <div class="box-inner">
         <div class="box-content">
@@ -15,4 +14,3 @@
         </div>
     </div>
 </div>
-<!-- End Header Content -->

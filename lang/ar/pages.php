@@ -14,6 +14,6 @@ return [
     'store' => 'المتجر',
     'myprojects' => 'مشاريعي',
     'profile' => 'الملف الشخصي',
-
+    'project' => '',
 
 ];

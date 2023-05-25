@@ -1,5 +1,5 @@
 <header id="inner-header" class="inner-header parallax">
-    <div class="overlay"></div>
+<div class="overlay"></div>
 
     @include('layouts.nav')
 
@@ -9,7 +9,7 @@
             'header_content' => $header_body
         ])
     @endif
-    <!-- Background Shape-->
+
     <div class="background-shapes">
         <div class="box1"></div>
         <div class="box2"></div>
