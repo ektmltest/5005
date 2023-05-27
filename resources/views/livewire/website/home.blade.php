@@ -111,7 +111,7 @@
 <!-- End Services -->
 
 <!-- Start Catalog -->
-<section id="portfolio" class="portfolio">
+<section id="portfolio" class="portfolio p-0 m-0">
 <div class="container">
     <div class="trial">
         <div class="container">
@@ -119,93 +119,18 @@
         </div>
     </div>
     &nbsp;
-    <div id="portfolio-grid" class="row no-gutter">
-        <div class="item prj-3 col-md-4 mb-4">
-            <div class="post-item">
-                <div class="post-img">
-                    <img class="img-fluid" mu-open mu-link="/prj/1"
-                        style="border-radius: 16px; cursor: pointer;"
-                        src="https://www.ektml.com/catalog/image/1" alt>
-                </div>
-                <div class="post-txt">
-                    <a class="post-title" href="/prj/1">Business Blog</a>
-                    <ul class="list-unstyled post-details">
-                        <li></li>
-                        <li>2022/04/20</li>
-                        <li>9 Liked</li>
-                    </ul>
-                    <p>Own a site to publish news and general articles, and ea...</p>
-                    <div class="footer-post">
-                        <div class="tags">
-                            <a href="/prj/1">950 {{ __('home_trans.SAR') }}</a>
-                        </div>
-                        <div class="action-post">
-                            <a href="#"><i class="bx bx-heart loveProject" mu-notlogged="" mu-id="1"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-        </div>
-        <div class="item prj-3 col-md-4 mb-4">
-            <div class="post-item">
-                <div class="post-img">
-                    <img class="img-fluid" mu-open mu-link="/prj/2"
-                        style="border-radius: 16px; cursor: pointer;"
-                        src="https://www.ektml.com/catalog/image/2" alt>
-                </div>
-                <div class="post-txt">
-                    <a class="post-title" href="/prj/2">Discount Coupons Project</a>
-                    <ul class="list-unstyled post-details">
-                        <li></li>
-                        <li>2022/04/22</li>
-                        <li>9 Liked</li>
-                    </ul>
-                    <p>A specialized site to display discount coupons for any ...</p>
-                    <div class="footer-post">
-                        <div class="tags">
-                            <a href="/prj/2">1300 {{ __('home_trans.SAR') }}</a>
-                        </div>
-                        <div class="action-post">
-                            <a href="#"><i class="bx bx-heart loveProject" mu-notlogged="" mu-id="2"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div id="portfolio-grid" class="row no-gutter">
+    @include('livewire.website.like')
 
+    &nbsp;
+    <div class="container" style="text-align: center;">
+        <a class="bttn btn-purple" href="{{ route('store') }}">{{ __('home_trans.more Details') }}
+            <i class='bx bx-left-arrow-alt'></i></a>
         </div>
-        <div class="item prj-3 col-md-4 mb-4">
-            <div class="post-item">
-                <div class="post-img">
-                    <img class="img-fluid" mu-open mu-link="/prj/3"
-                        style="border-radius: 16px; cursor: pointer;"
-                        src="https://www.ektml.com/catalog/image/3" alt>
-                </div>
-                <div class="post-txt">
-                    <a class="post-title" href="/prj/3">Hotel booking site</a>
-                    <ul class="list-unstyled post-details">
-                        <li></li>
-                        <li>2022/04/23</li>
-                        <li>4 Liked</li>
-                    </ul>
-                    <p>A project like Almosafer and Booking.com for hotel rese...</p>
-                    <div class="footer-post">
-                        <div class="tags">
-                            <a href="/prj/3">1700 {{ __('home_trans.SAR') }}</a>
-                        </div>
-                        <div class="action-post">
-                            <a href="#"><i class="bx bx-heart loveProject" mu-notlogged="" mu-id="3"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        &nbsp;
+    </div>
+</div>
 
-        <div class="container" style="text-align: center;">
-            <a class="bttn btn-purple" href="{{ route('store') }}">{{ __('home_trans.more Details') }} <i
-                    class='bx bx-left-arrow-alt'></i></a>
-        </div>
 </section>
 <!-- End Catalog -->
 

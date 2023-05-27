@@ -23,6 +23,10 @@ return[
     'Projects Gallery' => 'Projects Gallery',
     'PREVIOUS PROJECT' => 'PREVIOUS PROJECT',
     'NEXT PROJECT' => 'NEXT PROJECT',
+    'Project Idea' => 'Project Idea',
+    'basmala' => 'In the name of God, the most gracious, the most merciful',
+    
+
 
 
 ];

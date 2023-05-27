@@ -1,8 +1,7 @@
 <?php
 use App\Models\Contact;
-use App\Http\Livewire\Website\Home;
+use App\Http\Livewire\Website\Like;
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Website\Project;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 // Localization
@@ -41,6 +40,8 @@ Route::group([
     // Route::get('project/{id}', fn ($id) => view('project', )->with('id', $id))->name('project');
     Route::get('project/{id}', fn () => view('project'))->name('project');
 
+    // add or delete likes
+    Route::get('/addorremovelikes/{id}', Like::class)->name('like');
 
 });
 

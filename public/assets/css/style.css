@@ -816,13 +816,13 @@ input, button {
 }
 
 .side-service.left .service-item .plus-icon {
-    right: -40%;
-    bottom: 20%;
+    /* right: -40%;
+    bottom: 20%; */
 }
 
 .side-service.right .service-item .plus-icon {
-    left: -40%;
-    top: 10%;
+    /* left: -40%;
+    top: 10%; */
 }
 
 .service-txt {

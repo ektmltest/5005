@@ -16,11 +16,16 @@ return[
     'Auto coupons' => 'الكوبونات التلقائيه',
     'Monthly' => 'شهري',
     'Affiliate Marketing' => 'تسويق بالعمولة',
+    'Your commission is' => 'عمولتك',
+    'per purchase' => 'لكل عملية شراء',
     'SAR' => 'ريال سعودي',
     'Create promo url' => 'إنشاء رابط تس    ويقي ',
     'Projects Gallery' => 'معرض المشاريع',
     'PREVIOUS PROJECT' => 'المشروع السابق',
     'NEXT PROJECT' => 'المشروع التالي',
+    'Project Idea' => 'فكرة المشروع',
+    'basmala' => 'بسم الله الرحمن الرحيم',
+
 
 
 

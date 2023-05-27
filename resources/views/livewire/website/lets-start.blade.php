@@ -1,6 +1,3 @@
-
-
-
 <section id="pricing-table" class="pricing-table">
     <div class="container">
         <div class="section-pricing">
