@@ -1,7 +1,9 @@
 <?php
 namespace App\Http\Livewire\Website;
+use App\Models\Like;
 use App\Models\Contact;
 use Livewire\Component;
+use App\Models\ReadyProject;
 
 class Home extends Component
 {
@@ -34,6 +36,7 @@ class Home extends Component
         $this->reset();
         session()->flash('message', 'Your Message Sent Successfully.!');
     }
+
 
     public function render()
     {

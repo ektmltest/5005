@@ -17,6 +17,9 @@ return [
     'Your Profile' => 'Your Profile',
     'Sign Out' => 'Sign Out',
 
+    'Likes' => 'Likes',
+
+
     // Footer
     'Sitemap' => 'Site Map',
     'Home' => 'Home',

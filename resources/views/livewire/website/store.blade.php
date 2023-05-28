@@ -8,41 +8,10 @@
     </ul>
 </div>
 
+<livewire:website.like />
 
-<div id="portfolio-grid" class="row no-gutter">
 
-@foreach (App\Models\ReadyProject::get() as $project)
-    <div class="item prj-5 col-md-4 mb-4">
-        <div class="post-item">
-            <div class="post-img">
-                <img class="img-fluid" mu-open mu-link="/prj/15" style="border-radius: 16px; cursor: pointer;" src="https://www.ektml.com/catalog/image/15" alt>
-            </div>
 
-            <div class="post-txt">
-                <a class="post-title" href="{{ route('project', $project->id) }}">{{ $project->name }}</a>
-
-                <ul class="list-unstyled post-details">
-                    <li></li>
-                    <li>{{ $project->created_at }}</li>
-                    <li>1 إعجاب</li>
-                </ul>
-                <p>{{ $project->description }}</p>
-
-                <div class="footer-post">
-                    <div class="tags">
-                        <a href="/prj/15">{{ $project->price }} {{ __('home_trans.SAR') }}</a>
-                    </div>
-                    <div class="action-post">
-                        <a href="{{ route('like') }}"><i class="bx bx-heart loveProject" mu-notlogged="" mu-id="{{ $project->id }}"></i></a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-@endforeach
-
-</div>
 </div>
 </section>
 

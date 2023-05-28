@@ -5,42 +5,26 @@ use Livewire\Component;
 
 class Like extends Component
 {
-    // public function addorremovelikes($id)
-    // {
-    //     $type = request("type");
-    //     $flag = false;
-    //     $action="append";
-    //     if($type=="product"){
-    //         $product = ReadyProject::findOrFail($id);
-    //     if($product->likes->where("user_id",auth()->user()->id)->count()==0){
-    //         $product->likes()->create([
-    //             "user_id" => auth()->user()->id,
-    //             "type"=> $type,
-    //         ]);
-    //         $action="add";
-    //     }else{
-    //         $product->likes()->where("user_id",auth()->user()->id)->delete();
-    //         $action="delete";
-    //         }
+    public $ready_project;
 
-    //     $flag=true;
-
-//         }elseif($type=="photo"){
-//             $photo = Photo::findOrFail($id);
-//             if($photo->likes->where("user_id",auth()->user()->id)->count()==0){
-//                 $photo->likes()->create([
-//                     "user_id" => auth()->user()->id,
-//                     "type"=> $type,
-//                 ]);
-//                 $action="add";
-//             }else{
-//                 $photo->likes()->where("user_id",auth()->user()->id)->delete();
-//                 $action="delete";
-//                 }
-//             $flag=true;
-//             }
-//         return json_encode(["status"=>$flag,"action"=>$action],true);
-//     }
+    public function addorremovelikes($id)
+    {
+        if(!auth()->check()){
+            return redirect()->route('login');
+        }
+        $ready_project = ReadyProject::find($id);
+        if($ready_project->likes->where('user_id', auth()->user()->id)->where('likesable_id', $id)->count() == 0){
+            $ready_project->likes()->create([
+                'user_id' => auth()->user()->id,
+                'likesable_type' => ReadyProject::class,
+                'likesable_id' => $id,
+            ]);
+            session()->flash('message', 'Like Added Successfully');
+        }else{
+            $ready_project->likes()->delete();
+            session()->flash('message', 'Like Removed Successfully');
+        }
+    }
 
     public function render()
     {
