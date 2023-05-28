@@ -18,6 +18,7 @@ return [
     'Your Profile' => 'الملف الشخصي',
     'Sign Out' => 'تسجيل الخروج',
 
+    'Likes' => 'اعجاب',
 
     // Footer
     'Sitemap' => 'خريطة الموقع',

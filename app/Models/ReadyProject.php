@@ -1,8 +1,9 @@
 <?php
 namespace App\Models;
+use App\Models\Like;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 class ReadyProject extends Model
 {
@@ -28,6 +29,10 @@ class ReadyProject extends Model
 
     public function payments() {
         return $this->hasMany(Payment::class);
+    }
+
+    public function likes() {
+        return $this->hasMany(Like::class, 'likesable_id');
     }
 
     public function marketingCoupons() {
