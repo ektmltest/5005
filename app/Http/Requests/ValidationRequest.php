@@ -49,4 +49,16 @@ class ValidationRequest extends FormRequest
     protected function resetPasswordTokenRule() {
         return ['required', 'exists:password_reset_tokens,token'];
     }
+
+    protected function messageRule() {
+        return ['required', 'min:10'];
+    }
+
+    protected function typeRule() {
+        return ['required', 'exists:ticket_types'];
+    }
+
+    protected function fileRule() {
+        return ['file', /* 'mimes:pdf,txt' */];
+    }
 }

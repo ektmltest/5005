@@ -20,6 +20,7 @@ class TicketFactory extends Factory
         return [
             'title' => fake()->title(),
             'description' => fake()->paragraph(),
+            'status' => fake()->randomElement(['available', 'closed']),
             'ticket_type_id' => TicketType::inRandomOrder()->first()->id,
         ];
     }
