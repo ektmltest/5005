@@ -19,7 +19,7 @@ class BankCard extends Model
     //////* attributes *//////
     public function bankName(): Attribute {
         return Attribute::make(
-            get: fn ($value) => json_decode($value, true),
+            get: fn ($value) => json_decode($value, true)[app()->getLocale()],
             set: fn ($value) => json_encode($value)
         );
     }

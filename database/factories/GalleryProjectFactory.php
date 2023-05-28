@@ -19,7 +19,10 @@ class GalleryProjectFactory extends Factory
     public function definition(): array
     {
         return [
-            'description' => fake()->paragraph(),
+            'description' => [
+                'ar' => 'براجراف',
+                'en' => fake()->paragraph(),
+            ],
             'image' => fake()->imageUrl(),
             'user_id' => User::inRandomOrder()->first()->id,
             'gallery_type_id' => GalleryProjectType::inRandomOrder()->first()->id,

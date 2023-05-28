@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
+use App\Interfaces\GallaryProjectRepositoryInterface;
+use App\Interfaces\GallaryProjectTypeRepositoryInterface;
 use App\Interfaces\ResetPasswordTokenInterface;
 use App\Interfaces\UserRepositoryInterface;
+use App\Repositories\GallaryProjectRepository;
+use App\Repositories\GallaryProjectTypeRepository;
 use App\Repositories\ResetPasswordTokenRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\App;
@@ -18,6 +22,8 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         App::bind(UserRepositoryInterface::class, UserRepository::class);
         App::bind(ResetPasswordTokenInterface::class, ResetPasswordTokenRepository::class);
+        App::bind(GallaryProjectRepositoryInterface::class, GallaryProjectRepository::class);
+        App::bind(GallaryProjectTypeRepositoryInterface::class, GallaryProjectTypeRepository::class);
     }
 
     /**

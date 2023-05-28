@@ -9,8 +9,16 @@
 <script src="{{ asset('assets/vendors/appear/js/jquery.appear.js') }}"></script>
 <!-- Lity -->
 <script src="{{ asset('assets/vendors/lity/js/lity.min.js') }}"></script>
-<!-- Parallax -->+
+<!-- Parallax -->
 <script src="{{ asset('assets/vendors/parallax/js/jquery-parallax.js') }}"></script>
+
+{{-- * portfolio --}}
+<!-- Magnific -->
+<script src="{{asset('assets/vendors/magnific/js/jquery.magnific-popup.min.js')}}"></script>
+<!-- Isotope-->
+<script src="{{asset('assets/vendors/isotope/js/isotope.pkgd.min.js')}}"></script>
+<script src="{{asset('assets/vendors/isotope/js/imagesloaded.pkgd.min.js')}}"></script>
+<script src="{{asset('assets/js/portfolio.js')}}"></script>
 <!-- Parallax -->
 <script src="{{ asset('assets/js/core.js') }}"></script>
 

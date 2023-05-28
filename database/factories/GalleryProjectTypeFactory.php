@@ -18,8 +18,11 @@ class GalleryProjectTypeFactory extends Factory
     public function definition(): array
     {
         return [
-            'key' => fake()->unique()->name(),
-            'name' => fake()->name(),
+            'key' => fake()->unique()->slug(),
+            'name' => [
+                'ar' => 'اسم',
+                'en' => fake()->unique()->name(),
+            ],
             'user_id' => User::inRandomOrder()->first()->id,
         ];
     }

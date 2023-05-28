@@ -11,6 +11,8 @@ rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('assets/vendors/owl-carousel/css/owl.theme.default.min.css') }}">
 <!-- Lity -->
 <link rel="stylesheet" href="{{ asset('assets/vendors/lity/css/lity.min.css') }}">
+<!-- Magnific Popup-->
+<link rel="stylesheet" href="{{asset('assets/vendors/magnific/css/magnific-popup.css')}}">
 <!-- Style Css -->
 <link rel="stylesheet" href="{{ URL::asset('assets/css/style.css') }}">
 <!-- Animate CSS -->

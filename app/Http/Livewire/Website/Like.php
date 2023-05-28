@@ -3,8 +3,8 @@ namespace App\Http\Livewire\Website;
 use App\Models\ReadyProject;
 use Livewire\Component;
 
-// class Like extends Component
-// {
+class Like extends Component
+{
     // public function addorremovelikes($id)
     // {
     //     $type = request("type");
@@ -42,8 +42,8 @@ use Livewire\Component;
 //         return json_encode(["status"=>$flag,"action"=>$action],true);
 //     }
 
-//     public function render()
-//     {
-//         return view('livewire.website.like');
-//     }
-// }
+    public function render()
+    {
+        return view('livewire.website.like');
+    }
+}

@@ -62,7 +62,7 @@ class DatabaseSeeder extends Seeder
                 });
 
             GalleryProjectType::factory()->count(5)->create();
-            GalleryProject::factory()->count(5)->create();
+            GalleryProject::factory()->count(50)->create();
 
             Newspaper::factory()->count(5)->create();
 
