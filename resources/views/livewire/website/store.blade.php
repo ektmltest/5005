@@ -10,8 +10,6 @@
 
 <livewire:website.like />
 
-
-
 </div>
 </section>
 
