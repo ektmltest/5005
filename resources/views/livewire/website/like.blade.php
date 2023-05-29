@@ -21,6 +21,7 @@
                             {{ $project->price }} {{ __('home_trans.SAR') }}
                         </a>
                     </div>
+
                     <div class="action-post">
                         <a wire:click="addorremovelikes({{$project->id}})">
                             @if(\App\Models\Like::where('user_id', auth()->user()->id)->where('likesable_id', $project->id)->first())
@@ -35,11 +36,6 @@
         </div>
     </div>
     @endforeach
-
-
-    &nbsp;
-    <div class="container" style="text-align: center;">
-        <a class="bttn btn-purple" href="{{ route('store') }}">{{ __('home_trans.more Details') }}
-            <i class='bx bx-left-arrow-alt'></i></a>
-    </div>
 </div>
+
+

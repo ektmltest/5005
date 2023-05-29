@@ -38,9 +38,6 @@ Route::group([
     // Route::get('project/{id}', fn ($id) => view('project', )->with('id', $id))->name('project');
     Route::get('project/{id}', fn () => view('project'))->name('project');
 
-    // add or delete likes
-    // Route::get('addorremovelikes/{id}', fn() => view('home'))->name('like');
-
 });
 
 
