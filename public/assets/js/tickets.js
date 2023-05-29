@@ -20,9 +20,10 @@ function insertFormFileInput(row, i) {
     fileInput.type = 'file';
     fileInput.id = `attachInput${i}`;
     fileInput.name = 'attachments[]';
+    fileInput.setAttribute('wire:model', 'files[]');
 
     label.classList = 'floating-label';
-    label.innerText = 'attachments';
+    label.innerText = attachmentTitle;
     label.htmlFor = `attachInput${i}`;
 
     btnWrapDiv.appendChild(fileInput);
@@ -44,7 +45,7 @@ function insertAddAttachBtn(row) {
     btnWrapFormBtnsDiv.classList = 'form-buttons';
 
     addAttachInput.type = 'button';
-    addAttachInput.value = 'add attachment';
+    addAttachInput.value = attachmentAdd;
     addAttachInput.id = 'addAttachBtn';
 
     btnWrapFormBtnsDiv.appendChild(addAttachInput);
@@ -103,7 +104,7 @@ function handleCreateLinkClick() {
     $(ticketsAvailable).hide();
     $(ticketsClosed).hide();
     $(ticketsCreate).hide();
-    $(ticketsCreate).fadeIn(1000);
+    $(ticketsCreate).fadeIn(500);
 }
 
 function handleAvailableLinkClick() {
@@ -126,7 +127,7 @@ function handleAvailableLinkClick() {
     $(ticketsClosed).hide();
     $(ticketsCreate).hide();
     $(ticketsAvailable).hide();
-    $(ticketsAvailable).fadeIn(1000);
+    $(ticketsAvailable).fadeIn(500);
 }
 
 function handleClosedLinkClick() {
@@ -149,5 +150,5 @@ function handleClosedLinkClick() {
     $(ticketsCreate).hide();
     $(ticketsAvailable).hide();
     $(ticketsClosed).hide();
-    $(ticketsClosed).fadeIn(1000);
+    $(ticketsClosed).fadeIn(500);
 }

@@ -122,6 +122,7 @@
 
             <livewire:website.like />
 
+
             &nbsp;
             <div class="container" style="text-align: center;">
                 <a class="bttn btn-purple" href="{{ route('store') }}">{{ __('home_trans.more Details') }}

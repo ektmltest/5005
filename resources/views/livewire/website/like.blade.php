@@ -31,6 +31,25 @@
                             @endif
                         </a>
                     </div>
+
+                    @auth
+                        <div class="action-post">
+                            <a wire:click="addorremovelikes({{$project->id}})">
+                                @if(\App\Models\Like::where('user_id', auth()->user()->id)->where('likesable_id', $project->id)->first())
+                                <i class="bx bxs-heart loveProject"></i>
+                                @else
+                                <i class="bx bx-heart loveProject"></i>
+                                @endif
+                            </a>
+                        </div>
+                    @else
+                        <div class="action-post">
+                            <a href="{{route('login')}}">
+                                <i class="bx bx-heart loveProject"></i>
+                            </a>
+                        </div>
+                    @endauth
+
                 </div>
             </div>
         </div>
