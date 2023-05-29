@@ -1,10 +1,21 @@
-
-
 <section id="blog-pp" class="blog-pp single-pp">
     <div class="container">
         <div class="row">
-            <div class="col-lg-2 col-sm-2"></div>
-            <div class="col-lg-8 col-sm-12">
+            <!-- Start Faq Sidebar -->
+            <div class="col-xl-3 col-lg-4">
+                <aside class="aside-bar">
+                    <div class="faq-control">
+                        <ul class="list-unstyled">
+                            <li class="active"><a href="{{ route('tickets') }}" id="ticketsCreateLink" style="cursor: pointer"><i class='bx bx-message-rounded-add'></i>{{ucwords(__('tickets_trans.create_ticket'))}}</a></li>
+                            <li><a href="{{ route('showAvailableTickets') }}" id="ticketsAvailableLink" style="cursor: pointer"><i class="bx bx-list-ul"></i>{{ucwords(__('tickets_trans.available_ticket'))}}</a></li>
+                            <li><a href="{{ route('showClosedTickets') }}" id="ticketsClosedLink" style="cursor: pointer"><i class="bx bx-lock"></i>{{ucwords(__('tickets_trans.closed_ticket'))}}</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+            <!-- End Faq Sidebar -->
+
+            <div class="col-xl-9 col-lg-8">
                 <!-- Start Post -->
                 <div class="post-item comment-box">
                     <div class="post-txt">

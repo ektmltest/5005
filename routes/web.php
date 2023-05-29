@@ -1,4 +1,5 @@
 <?php
+use App\Http\Livewire\Website\Ticket;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -10,7 +11,6 @@ Route::group([
     function () {
 
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-
     // Auth
     Route::group(['middleware' => 'auth'], function () {
         Route::get('logout', fn () => view('home'))->name('logout');
@@ -38,6 +38,10 @@ Route::group([
     // Route::get('project/{id}', fn ($id) => view('project', )->with('id', $id))->name('project');
     Route::get('project/{id}', fn () => view('project'))->name('project');
 
+    // Tickets
+    Route::get('tickets', fn() => view('ticket'))->name('tickets');
+    Route::get('showAvailableTickets', fn() => view('ticket-show'))->name('showAvailableTickets');
+    Route::get('showClosedTickets', fn() => view('ticket-show'))->name('showClosedTickets');
 });
 
 

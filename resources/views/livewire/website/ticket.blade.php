@@ -1,4 +1,4 @@
-<!-- Start Faqs -->
+<div>
 <section id="faqs-pp" class="faqs-pp">
     <div class="container">
         <div class="row">
@@ -7,9 +7,9 @@
                 <aside class="aside-bar">
                     <div class="faq-control">
                         <ul class="list-unstyled">
-                            <li class="active"><a id="ticketsCreateLink" style="cursor: pointer"><i class='bx bx-message-rounded-add'></i>{{ucwords(__('tickets_trans.create_ticket'))}}</a></li>
-                            <li><a id="ticketsAvailableLink" style="cursor: pointer"><i class="bx bx-list-ul"></i>{{ucwords(__('tickets_trans.available_ticket'))}}</a></li>
-                            <li><a id="ticketsClosedLink" style="cursor: pointer"><i class="bx bx-lock"></i>{{ucwords(__('tickets_trans.closed_ticket'))}}</a></li>
+                            <li class="active"><a wire:click="render" id="ticketsCreateLink" style="cursor: pointer"><i class='bx bx-message-rounded-add'></i>{{ucwords(__('tickets_trans.create_ticket'))}}</a></li>
+                            <li><a href="{{ route('showAvailableTickets') }}" id="ticketsAvailableLink" style="cursor: pointer"><i class="bx bx-list-ul"></i>{{ucwords(__('tickets_trans.available_ticket'))}}</a></li>
+                            <li><a href="{{ route('showClosedTickets') }}" id="ticketsClosedLink" style="cursor: pointer"><i class="bx bx-lock"></i>{{ucwords(__('tickets_trans.closed_ticket'))}}</a></li>
                         </ul>
                     </div>
                 </aside>
@@ -18,7 +18,28 @@
 
             <div class="col-xl-9 col-lg-8">
                 <div id="boxData">
-                    <form wire:submit.prevent='submit' id="ticketsCreate" class="faq-control p-3">
+                    <div>
+                        @if (session()->has('message'))
+                            <div class="alert alert-success">
+                                {{ session('message') }}
+                            </div>
+                        @endif
+                    </div>
+
+                    <div>
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+                    </div>
+
+                    <form wire:submit.prevent='submit' id="ticketsCreate" class="faq-control p-3" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <div class="floating-label-wrap">
@@ -33,11 +54,12 @@
                             <div class="form-group col-md-6">
                                 <div class="floating-label-wrap">
                                     <select wire:model='type' class="floating-label-field floating-label-field--s3" id="subject">
-                                        @foreach ($ticketTypes as $type)
+                                        <option value="">Choose</option>
+                                        @foreach($ticketTypes as $type)
                                             <option value="{{$type->id}}">{{$type->name}}</option>
                                         @endforeach
                                     </select>
-                                    <label for="subject" class="floating-label">{{ucwords(__('tickets_trans.type'))}}</label>
+                                    <label for="type" class="floating-label">{{ucwords(__('tickets_trans.type'))}}</label>
                                 </div>
                                 @error('type')
                                     <span class="text-danger">* {{$message}}</span>
@@ -48,10 +70,10 @@
                         <div class="form-row">
                             <div class="form-group col">
                                 <div class="floating-label-wrap">
-                                    <textarea wire:model='message' class="floating-label-field floating-label-field--s3" id="message" placeholder="{{ucwords(__('tickets_trans.message'))}}" rows="10"></textarea>
-                                    <label for="message" class="floating-label">{{ucwords(__('tickets_trans.message'))}}</label>
+                                    <textarea wire:model='description' class="floating-label-field floating-label-field--s3" id="message" placeholder="{{ucwords(__('tickets_trans.message'))}}" rows="10"></textarea>
+                                    <label for="description" class="floating-label">{{ucwords(__('tickets_trans.message'))}}</label>
                                 </div>
-                                @error('message')
+                                @error('description')
                                     <span class="text-danger">* {{$message}}</span>
                                 @enderror
                             </div>
@@ -61,11 +83,11 @@
                             <div class="form-row">
                                 <div class="form-group col-md-8">
                                     <div class="floating-label-wrap">
-                                        <input wire:model='files[]' type="file" class="floating-label-field floating-label-field--s3" id="attachInput" />
+                                        <input wire:model='file' name="file" type="file" class="floating-label-field floating-label-field--s3" id="attachInput" />
                                         <label for="attachInput" class="floating-label">{{ucwords(__('tickets_trans.attachment'))}}</label>
                                     </div>
                                 </div>
-                                @error('files')
+                                @error('file')
                                     <span class="text-danger">* {{$message}}</span>
                                 @enderror
                             </div>
@@ -151,5 +173,5 @@
     </script>
     <script src="{{asset('assets/js/tickets.js')}}"></script>
 </section>
-<!-- End Faqs -->
 
+</div>

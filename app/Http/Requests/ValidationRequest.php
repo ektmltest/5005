@@ -59,6 +59,6 @@ class ValidationRequest extends FormRequest
     }
 
     protected function fileRule() {
-        return ['file', /* 'mimes:pdf,txt' */];
+        return ['required', 'file', /* 'mimes:pdf,txt' */];
     }
 }
