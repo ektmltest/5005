@@ -218,7 +218,7 @@
                         <div class="counter-icon">
                             <i class="bx bx-check-double"></i>
                         </div>
-                        <span class="counter-value">36</span>
+                        <span class="counter-value">{{ \App\Models\ReadyProject::count() }}</span>
                         <h3>{{ __('home_trans.shap3') }}</h3>
                     </div>
                 </div>
@@ -236,7 +236,7 @@
                             <div class="counter-icon">
                                 <i class='bx bx-group'></i>
                             </div>
-                            <span class="counter-value">6142</span>
+                            <span class="counter-value">{{ \App\Models\User::count() }}</span>
                             <h3>{{ __('home_trans.shap4') }}</h3>
                         </div>
                     </div>
@@ -245,7 +245,7 @@
                             <div class="counter-icon">
                                 <i class='bx bx-briefcase-alt'></i>
                             </div>
-                            <span class="counter-value">1002</span>
+                            <span class="counter-value">{{ \App\Models\Project::count() }}</span>
                             <h3>{{ __('home_trans.shap5') }}</h3>
                         </div>
                     </div>
@@ -268,13 +268,20 @@
     <section id="trial" class="trial">
         <div class="container">
             <h4>{{ __('home_trans.headt') }}</h4>
-            <p>>{{ __('home_trans.headb') }}</p>
+            <p>{{ __('home_trans.headb') }}</p>
             <div class="line-sepa"></div>
-            <h3><span>1,693,752</span> >{{ __('home_trans.headdes') }}</h3>
-            <a class="bttn btn-purple" href="{{ route('myProfile') }}">
-                {{ __('home_trans.button') }}
-                <i class='bx bx-right-arrow-alt'></i>
-            </a>
+            <h3><span>693</span> {{ __('home_trans.headdes') }}</h3>
+            @if (auth()->check())
+                <a class="bttn btn-purple" href="{{ route('myProfile') }}">
+                    {{ __('home_trans.button') }}
+                    <i class='bx bx-right-arrow-alt'></i>
+                </a>
+            @else
+                <a class="bttn btn-purple" href="{{ route('login') }}">
+                    {{ __('home_trans.button2') }}
+                    <i class='bx bx-right-arrow-alt'></i>
+                </a>
+            @endif
             <img class="img-fluid" src="{{ asset('assets/img/undraw_landscape_mode_53ej.svg') }}" alt="Hotan Template">
         </div>
     </section>

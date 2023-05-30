@@ -8,8 +8,8 @@
                     <div class="faq-control">
                         <ul class="list-unstyled">
                             <li class="active"><a wire:click="render" id="ticketsCreateLink" style="cursor: pointer"><i class='bx bx-message-rounded-add'></i>{{ucwords(__('tickets_trans.create_ticket'))}}</a></li>
-                            <li><a href="{{ route('showAvailableTickets') }}" id="ticketsAvailableLink" style="cursor: pointer"><i class="bx bx-list-ul"></i>{{ucwords(__('tickets_trans.available_ticket'))}}</a></li>
-                            <li><a href="{{ route('showClosedTickets') }}" id="ticketsClosedLink" style="cursor: pointer"><i class="bx bx-lock"></i>{{ucwords(__('tickets_trans.closed_ticket'))}}</a></li>
+                            <li><a wire:click="$emitSelf('showTickets')" id="ticketsAvailableLink" style="cursor: pointer"><i class="bx bx-list-ul"></i>{{ucwords(__('tickets_trans.available_ticket'))}}</a></li>
+                            <li><a id="ticketsClosedLink" style="cursor: pointer"><i class="bx bx-lock"></i>{{ucwords(__('tickets_trans.closed_ticket'))}}</a></li>
                         </ul>
                     </div>
                 </aside>
@@ -46,7 +46,7 @@
                                     <input wire:model='title' type="text" class="floating-label-field floating-label-field--s3" id="title" placeholder="{{ucwords(__('tickets_trans.title'))}}">
                                     <label for="title" class="floating-label">{{ucwords(__('tickets_trans.title'))}}</label>
                                 </div>
-                                @error('title')
+                                @error(ucwords(__('tickets_trans.title')))
                                     <span class="text-danger">* {{$message}}</span>
                                 @enderror
                             </div>
@@ -167,11 +167,11 @@
     </div>
 
     {{-- * scripting js for animation --}}
-    <script>
-        var attachmentTitle = "{{ucwords(__('tickets_trans.attachment'))}}";
-        var attachmentAdd = "{{ucwords(__('tickets_trans.add attachment'))}}"
-    </script>
-    <script src="{{asset('assets/js/tickets.js')}}"></script>
+        <script>
+            var attachmentTitle = "{{ucwords(__('tickets_trans.attachment'))}}";
+            var attachmentAdd = "{{ucwords(__('tickets_trans.add attachment'))}}"
+        </script>
+        <script src="{{asset('assets/js/tickets.js')}}"></script>
 </section>
 
 </div>

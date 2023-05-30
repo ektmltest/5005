@@ -32,18 +32,17 @@ Route::group([
 
     Route::get('store', fn () => view('store'))->name('store');
     Route::get('gallary', fn () => view('gallary'))->name('gallary');
-    Route::get('myProfile', fn () => view('my-projects'))->name('myProfile');
+    Route::get('myProfile', fn () => view('profile'))->name('myProfile');
     Route::get('letsStart', fn () => view('lets-start'))->name('letsStart');
     Route::get('myProjects', fn () => view('my-projects'))->name('myProjects');
     // Route::get('project/{id}', fn ($id) => view('project', )->with('id', $id))->name('project');
     Route::get('project/{id}', fn () => view('project'))->name('project');
 
     // Tickets
-    Route::get('tickets', fn() => view('ticket'))->name('tickets');
-    Route::get('showAvailableTickets', fn() => view('ticket-show'))->name('showAvailableTickets');
-    Route::get('showClosedTickets', fn() => view('ticket-show'))->name('showClosedTickets');
+    // Route::get('tickets', fn() => view('ticket'))->name('tickets');
+    // Route::get('showAvailableTickets', fn() => view('ticket-show'))->name('showAvailableTickets');
+    // Route::get('showClosedTickets', fn() => view('ticket-show'))->name('showClosedTickets');
 });
-
 
 
 

@@ -44,6 +44,7 @@ return [
     'headb' => 'With Ektml platform, anyone can work with us as a commission marketer, with very attractive rates, and a guarantee of receiving money',
     'headdes' => 'A user who works with us as an affiliate marketer',
     'button' => 'Start working with us as a Marketer Now!',
+    'button2' => 'Create an account to be able to work as a marketer',
 
     'Why_Us' => 'Why Us?',
     'headtitle' => 'Your chance to transfer your idea to the Internet and develop it',

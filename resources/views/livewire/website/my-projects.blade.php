@@ -1,5 +1,4 @@
-
-
+<div>
 
 <section id="projectsSection" class="faqs-pp">
     <div class="container">
@@ -18,8 +17,7 @@
                             <li id="7"><a href="javascript:;"><i
                                         class='bx bx-money'></i>{{ __('myprojects_trans.Awaiting payment') }}</a></li>
                             <li id="2"><a href="javascript:;"><i
-                                        class='bx bx-edit'></i>{{ __('myprojects_trans.Under
-                                                                            implementation') }}</a>
+                                        class='bx bx-edit'></i>{{ __('myprojects_trans.Under implementation') }}</a>
                             </li>
                             <li id="3"><a href="javascript:;"><i
                                         class='bx bx-check-double'></i>{{ __('myprojects_trans.Completed') }}</a></li>
@@ -42,8 +40,7 @@
                                 <a class="email-list-detail">
                                     <div>
                                         <p class="msg text-center">
-                                            {{ __('myprojects_trans.there is no Projects in this
-                                                                                        status') }}
+                                            {{ __('myprojects_trans.there is no Projects in this status') }}
                                         </p>
                                     </div>
                                 </a>
@@ -64,8 +61,7 @@
             <div class="col-lg-8">
                 <div class="question-txt">
                     <h3><span>663</span> {{ __('main_trans.User has used') }} <br>
-                        {{ __('main_trans.Our services
-                                                successfullly.') }}</h3>
+                        {{ __('main_trans.Our services successfullly.') }}</h3>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -152,4 +148,4 @@
 {{-- <script src="https://www.ektml.com/static/js/core.js"></script> --}}
 <script src="https://www.ektml.com/static/js/pages/projects.js"></script>
 
-
+</div>

@@ -44,7 +44,7 @@ return [
             'throw' => false,
         ],
 
-        'attachments' => [
+        'file' => [
             'driver' => 'local',
             'root' => public_path('assets/tickets'),
             'url' => env('APP_URL').'/storage',

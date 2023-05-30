@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Livewire\WithFileUploads;
 use App\Repositories\TicketRepository;
 use App\Repositories\TicketTypeRepository;
+use Illuminate\Support\Str;
 
 class Ticket extends Component
 {
@@ -30,6 +31,11 @@ class Ticket extends Component
     //     return (new TicketStoreRequest)->rules();
     // }
 
+    public function render()
+    {
+        return view('livewire.website.ticket');
+    }
+
     protected $rules = [
         'title' => 'required|string|min:3',
         'description' => 'required|min:10',
@@ -46,16 +52,18 @@ class Ticket extends Component
     public function submit(Request $request)
     {
         $this->validate();
-        \App\Models\Ticket::create([
+        $ticket = \App\Models\Ticket::create([
             'title' => $this->title,
             'description' => $this->description,
             'status' => 'available',
             'ticket_type_id' => $this->type,
         ]);
+        $lastInsertedId= $ticket->id;
 
+        $random = Str::random(6);
         \App\Models\TicketAttachment::create([
-            'file' => $this->file->store('attachments'),
-            'ticket_id' => 1,
+            'file' => ('assets/tickets/'.$this->file->storeAs('attachment', $random, 'file')),
+            'ticket_id' => $lastInsertedId,
         ]);
 
         $this->reset();
@@ -63,14 +71,8 @@ class Ticket extends Component
     }
 
 
-    public function render()
-    {
-        return view('livewire.website.ticket');
-    }
-
-
     public function showTickets()
     {
-        return view('livewire.website.ticket-show');
+        return view('ticket-show');
     }
 }
