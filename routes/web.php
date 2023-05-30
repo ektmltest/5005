@@ -1,5 +1,4 @@
 <?php
-use App\Http\Livewire\Website\Ticket;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -11,7 +10,6 @@ Route::group([
     function () {
 
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-    // Auth
     Route::group(['middleware' => 'auth'], function () {
         Route::get('logout', fn () => view('home'))->name('logout');
     });
@@ -22,6 +20,7 @@ Route::group([
         Route::get('password/forget', fn () => view('forget-password'))->name('password.forget');
         Route::get('password/forget/{token}', fn ($token) => view('forget-password-form')->with('token', $token))->name('password.forget.form');
     });
+
 
     Route::get('/', fn () => view('home'))->name('index');
     Route::get('/faq', fn () => view('faq'))->name('faq');
@@ -38,21 +37,6 @@ Route::group([
     // Route::get('project/{id}', fn ($id) => view('project', )->with('id', $id))->name('project');
     Route::get('project/{id}', fn () => view('project'))->name('project');
 
-    // Tickets
-    // Route::get('tickets', fn() => view('ticket'))->name('tickets');
-    // Route::get('showAvailableTickets', fn() => view('ticket-show'))->name('showAvailableTickets');
-    // Route::get('showClosedTickets', fn() => view('ticket-show'))->name('showClosedTickets');
 });
 
 
-
-
-
-Route::prefix('admin')->group(function () {
-
-});
-
-// Route::get('/home', Home::class);
-// Route::get('/', Home::class)->name('index');
-// Route::get('/home', Home::class)->name('home');
-// Route::get('/about', About::class)->name('about');
