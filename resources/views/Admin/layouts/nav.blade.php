@@ -65,7 +65,6 @@
                 </button>
 
                 <div class="dropdown-menu dropdown-menu-end">
-                    <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <img src="{{ asset('dashboard/assets/images/flags/egypt.jpg') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Arabic</span>
                     </a>
