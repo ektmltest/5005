@@ -18,6 +18,13 @@ return [
     'Store Catogries' => 'Store Catogries',
     'Addons' => 'Addons',
 
+    'WITHDRAWS' => 'WITHDRAWS',
+    'Withdraws' => 'Withdraws',
+    'Charges' => 'Charges',
+
+    'TICKET SYSTEM'=> 'TICKET SYSTEM',
+    'Tickets Management'=> 'Tickets Management',
+    'Ticket Categories'=> 'Ticket Categories',
 
 
 
