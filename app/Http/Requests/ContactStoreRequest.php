@@ -1,8 +1,10 @@
 <?php
+
 namespace App\Http\Requests;
+
 use Illuminate\Foundation\Http\FormRequest;
 
-class TicketStoreRequest extends ValidationRequest
+class ContactStoreRequest extends ValidationRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -20,10 +22,10 @@ class TicketStoreRequest extends ValidationRequest
     public function rules(): array
     {
         return [
-            'ticket.title' => parent::nameRule(),
-            'ticket.description' => parent::messageRule(),
-            'ticket.ticket_type_id' => parent::typeRule(),
-            'files.*' => parent::fileRule(),
+            'contact.name' => parent::nameRule(),
+            'contact.phone' => parent::phoneRule(),
+            'contact.email' => parent::emailRule(),
+            'contact.message' => parent::messageRule(),
         ];
     }
 }

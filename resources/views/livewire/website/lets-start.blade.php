@@ -61,8 +61,8 @@
 
             <!-- Start Price Item -->
             <div class="col-md-4">
-                <div class="price-item active">
-                    <img src="img/blob-shape-1.svg" alt="Hotan Template">
+                <div class="price-item">
+                    {{-- <img src="img/blob-shape-1.svg" alt="Hotan Template"> --}}
                     <div class="table-ico">
                         <i class='bx bx-briefcase'></i>
                     </div>

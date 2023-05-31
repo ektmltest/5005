@@ -43,17 +43,17 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <div class="floating-label-wrap">
-                                    <input wire:model='title' type="text" class="floating-label-field floating-label-field--s3" id="title" placeholder="{{ucwords(__('tickets_trans.title'))}}">
+                                    <input wire:model='ticket.title' type="text" class="floating-label-field floating-label-field--s3" id="title" placeholder="{{ucwords(__('tickets_trans.title'))}}">
                                     <label for="title" class="floating-label">{{ucwords(__('tickets_trans.title'))}}</label>
                                 </div>
-                                @error(ucwords(__('tickets_trans.title')))
+                                @error('ticket.title')
                                     <span class="text-danger">* {{$message}}</span>
                                 @enderror
                             </div>
 
                             <div class="form-group col-md-6">
                                 <div class="floating-label-wrap">
-                                    <select wire:model='type' class="floating-label-field floating-label-field--s3" id="subject">
+                                    <select wire:model='ticket.ticket_type_id' class="floating-label-field floating-label-field--s3" id="type">
                                         <option value="">Choose</option>
                                         @foreach($ticketTypes as $type)
                                             <option value="{{$type->id}}">{{$type->name}}</option>
@@ -61,7 +61,7 @@
                                     </select>
                                     <label for="type" class="floating-label">{{ucwords(__('tickets_trans.type'))}}</label>
                                 </div>
-                                @error('type')
+                                @error('ticket.ticket_type_id')
                                     <span class="text-danger">* {{$message}}</span>
                                 @enderror
                             </div>
@@ -70,10 +70,10 @@
                         <div class="form-row">
                             <div class="form-group col">
                                 <div class="floating-label-wrap">
-                                    <textarea wire:model='description' class="floating-label-field floating-label-field--s3" id="message" placeholder="{{ucwords(__('tickets_trans.message'))}}" rows="10"></textarea>
-                                    <label for="description" class="floating-label">{{ucwords(__('tickets_trans.message'))}}</label>
+                                    <textarea wire:model='ticket.description' class="floating-label-field floating-label-field--s3" id="message" placeholder="{{ucwords(__('tickets_trans.message'))}}" rows="10"></textarea>
+                                    <label for="message" class="floating-label">{{ucwords(__('tickets_trans.message'))}}</label>
                                 </div>
-                                @error('description')
+                                @error('ticket.description')
                                     <span class="text-danger">* {{$message}}</span>
                                 @enderror
                             </div>

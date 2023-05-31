@@ -55,10 +55,14 @@ class ValidationRequest extends FormRequest
     }
 
     protected function typeRule() {
-        return ['required', 'exists:ticket_types'];
+        return ['required', 'exists:ticket_types,id'];
     }
 
     protected function fileRule() {
         return ['required', 'file', /* 'mimes:pdf,txt' */];
+    }
+
+    protected function phoneRule() {
+        return ['required', 'numeric'];
     }
 }

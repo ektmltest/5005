@@ -1,5 +1,9 @@
 <?php
 namespace App\Http\Livewire\Website;
+
+use App\Http\Requests\TicketStoreRequest;
+use App\Models\Ticket as ModelsTicket;
+use App\Repositories\TicketAttachmentRepository;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use Livewire\WithFileUploads;
@@ -11,16 +15,23 @@ class Ticket extends Component
 {
     use WithFileUploads;
 
-    public $id, $ticketTypes, $availableTickets, $closedTickets, $title, $ticket_type_id, $type, $description;
+    public $ticketTypes;
+    public $availableTickets;
+    public $closedTickets;
+    public ModelsTicket $ticket;
     public $files = array();
     public $noFiles = 1;
     // * end form data
-    protected $ticketTypeRepository, $ticketRepository;
+    protected $ticketTypeRepository;
+    protected $ticketRepository;
+    protected $ticketAttachmentRepository;
 
     public function __construct()
     {
         $this->ticketTypeRepository = new TicketTypeRepository;
         $this->ticketRepository = new TicketRepository;
+        $this->ticketAttachmentRepository = new TicketAttachmentRepository;
+        $this->ticket = new ModelsTicket;
 
         $this->ticketTypes = $this->ticketTypeRepository->getAllTicketTypes();
         $this->availableTickets = $this->ticketRepository->getAllAvailableTickets();
@@ -28,17 +39,10 @@ class Ticket extends Component
     }
 
     // * to define rules for all post requests comming to this component
-    // public function rules(): array
-    // {
-    //     return (new TicketStoreRequest)->rules();
-    // }
-
-    protected $rules = [
-        'title' => 'required|string|min:3',
-        'description' => 'required|min:10',
-        'type' => 'required',
-        'files.*' => 'required'
-    ];
+    public function rules(): array
+    {
+        return (new TicketStoreRequest)->rules();
+    }
 
     // * to handle realtime validation on single properity at a time
     public function updated($property)
@@ -46,24 +50,15 @@ class Ticket extends Component
         $this->validateOnly($property);
     }
 
-    public function submit(Request $request)
+    public function submit()
     {
         $this->validate();
 
-        $ticket = \App\Models\Ticket::create([
-            'title' => $this->title,
-            'description' => $this->description,
-            'status' => 'available',
-            'ticket_type_id' => $this->type,
-        ]);
-        $lastInsertedId= $ticket->id;
+        $this->ticket->status = 'available';
+        $this->ticket->save();
 
         foreach ($this->files as $file) {
-            $random = Str::random(6);
-            \App\Models\TicketAttachment::create([
-                'file' => ('assets/tickets/'.$file->storeAs('attachment', $random, 'file')),
-                'ticket_id' => $lastInsertedId,
-            ]);
+            $this->ticketAttachmentRepository->store($this->ticket, $file);
         }
 
         $this->reset();
