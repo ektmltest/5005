@@ -61,15 +61,37 @@
             <div class="dropdown d-inline-block language-switch">
                 <button type="button" class="btn header-item waves-effect"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="{{ asset('dashboard/assets/images/flags/us.jpg') }}" alt="Header Language" height="16">
+                    <img src="{{asset('dashboard/assets/images/flags/' . app()->getLocale() . '.jpg')}}" alt="Header Language" height="16">
                 </button>
 
-                <div class="dropdown-menu dropdown-menu-end">
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="{{ asset('dashboard/assets/images/flags/egypt.jpg') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Arabic</span>
-                    </a>
-                </div>
+                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                    {{-- <a data-turbo="false" class="dropdown-item dropdown-link" rel="alternate" hreflang="{{ $localeCode }}" href=""
+                        wire:click="reloadPageContent">
+                        <div class="link-ico">
+                            <span class='flag-icon flag-icon-{{$localeCode == 'en' ? 'us' : 'sa'}}'></span>
+                            <span class="title">{{ $properties['native'] }}</span>
+                        </div>
+                    </a> --}}
+
+                    @if($localeCode == app()->getLocale())
+                        @continue
+                    @endif
+
+                    <div class="dropdown-menu dropdown-menu-end">
+
+                        <!-- item-->
+                        <a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" class="dropdown-item notify-item">
+                            <img src="{{ asset("dashboard/assets/images/flags/$localeCode.jpg") }}" alt="user-image" class="me-1" height="12">
+                            <span class="align-middle">
+                                @if ($localeCode == 'en')
+                                    الانجليزية
+                                @else
+                                    Arabic
+                                @endif
+                            </span>
+                        </a>
+                    </div>
+                @endforeach
             </div>
 
 
