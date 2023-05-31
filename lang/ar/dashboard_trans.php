@@ -24,6 +24,36 @@ return [
     'Tickets Management'=> 'إدارة التذاكر',
     'Ticket Categories'=> 'أقسام التذاكر',
 
+    'POSTS SYSTEM' => 'نظام المنشورات',
+    'Posts List' => 'قائمة المنشورات',
+    'Add a new post' => 'اضافة منشور جديد',
+
+    'PUBLIC SYSTEMS' => 'الإنظمة العامة',
+    'Users Management' => 'إدارة الإعضاء',
+    'Translation System' => 'نظام الترجمة',
+    'Roles management' => 'إدارة الرتب',
+
+    'SITE DETAILS' => 'تفاصيل الموقع',
+    'Site settings' => 'إعدادات الموقع',
+    'Our work sections' => 'أقسام المعرض',
+    'Our work' => 'معرض أعمالنا',
+    'FAQ sections' => 'أقسام الأسئله',
+    'FAQ' => 'الإسئلة الشائعة',
+    'Our platforms' => 'منصاتنا',
+
+    'CURRENT CUSTOMERS' => 'عدد العملاء',
+    'READY PROJECTS COUNT' => 'عدد المشاريع الجاهزة',
+    'PROJECTS COUNT' => 'عدد المشاريع',
+    'AVAILABLE TICKETS COUNT' => 'عدد التذاكر المتاحة',
+
+    'LAST 10 CREATED ACCOUNTS' => 'آخر 10 حسابات منشأة',
+    'LAST 10 PROJECTS' => 'آخر 10 مشاريع',
+
+    'PROJECT NAME' => 'إسم المشروع',
+    'CLIENT' => 'العميل',
+    'CATEGORY' => 'القسم',
+    'STATUS' => 'الحالة',
+
 
 
 
