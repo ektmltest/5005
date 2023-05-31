@@ -16,7 +16,13 @@ return [
     'Store Catogries' => 'أقسام المتجر',
     'Addons' => 'الإضافات',
 
+    'WITHDRAWS' => 'السحب والإيداع',
+    'Withdraws' => 'السحب والإيداع',
+    'Charges' => 'الشحونات',
 
+    'TICKET SYSTEM'=> 'نظام التذاكر',
+    'Tickets Management'=> 'إدارة التذاكر',
+    'Ticket Categories'=> 'أقسام التذاكر',
 
 
 
