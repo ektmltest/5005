@@ -20,7 +20,7 @@ function insertFormFileInput(row, i) {
     fileInput.type = 'file';
     fileInput.id = `attachInput${i}`;
     fileInput.name = 'attachments[]';
-    fileInput.setAttribute('wire:model', 'files[]');
+    fileInput.setAttribute('wire:model', `files.${i-1}`);
 
     label.classList = 'floating-label';
     label.innerText = attachmentTitle;

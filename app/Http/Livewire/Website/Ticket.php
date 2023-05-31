@@ -11,7 +11,9 @@ class Ticket extends Component
 {
     use WithFileUploads;
 
-    public $id, $ticketTypes, $availableTickets, $closedTickets, $title, $ticket_type_id, $type, $description, $file;
+    public $id, $ticketTypes, $availableTickets, $closedTickets, $title, $ticket_type_id, $type, $description;
+    public $files = array();
+    public $noFiles = 1;
     // * end form data
     protected $ticketTypeRepository, $ticketRepository;
 
@@ -31,16 +33,11 @@ class Ticket extends Component
     //     return (new TicketStoreRequest)->rules();
     // }
 
-    public function render()
-    {
-        return view('livewire.website.ticket');
-    }
-
     protected $rules = [
         'title' => 'required|string|min:3',
         'description' => 'required|min:10',
         'type' => 'required',
-        'file' => 'required'
+        'files.*' => 'required'
     ];
 
     // * to handle realtime validation on single properity at a time
@@ -52,6 +49,7 @@ class Ticket extends Component
     public function submit(Request $request)
     {
         $this->validate();
+
         $ticket = \App\Models\Ticket::create([
             'title' => $this->title,
             'description' => $this->description,
@@ -60,11 +58,13 @@ class Ticket extends Component
         ]);
         $lastInsertedId= $ticket->id;
 
-        $random = Str::random(6);
-        \App\Models\TicketAttachment::create([
-            'file' => ('assets/tickets/'.$this->file->storeAs('attachment', $random, 'file')),
-            'ticket_id' => $lastInsertedId,
-        ]);
+        foreach ($this->files as $file) {
+            $random = Str::random(6);
+            \App\Models\TicketAttachment::create([
+                'file' => ('assets/tickets/'.$file->storeAs('attachment', $random, 'file')),
+                'ticket_id' => $lastInsertedId,
+            ]);
+        }
 
         $this->reset();
         session()->flash('message', 'Ticket Created Successfully.!');
@@ -74,5 +74,15 @@ class Ticket extends Component
     public function showTickets()
     {
         return view('ticket-show');
+    }
+
+    public function addBtn()
+    {
+        $this->noFiles++;
+    }
+
+    public function render()
+    {
+        return view('livewire.website.ticket');
     }
 }

@@ -80,16 +80,26 @@
                         </div>
 
                         <div id="attachments">
-                            <div class="form-row">
-                                <div class="form-group col-md-8">
-                                    <div class="floating-label-wrap">
-                                        <input wire:model='file' name="file" type="file" class="floating-label-field floating-label-field--s3" id="attachInput" />
-                                        <label for="attachInput" class="floating-label">{{ucwords(__('tickets_trans.attachment'))}}</label>
+                            @for ($i = 0; $i < $noFiles; $i++)
+                                <div class="form-row">
+                                    <div class="form-group col-md-8">
+                                        <div class="floating-label-wrap">
+                                            <input wire:model='files.{{$i}}' type="file" class="floating-label-field floating-label-field--s3" id="attachInput{{$i}}" />
+                                            <label for="attachInput{{$i}}" class="floating-label">{{ucwords(__('tickets_trans.attachment'))}}</label>
+                                        </div>
+                                    </div>
+                                    @error('file')
+                                        <span class="text-danger">* {{$message}}</span>
+                                    @enderror
+                                </div>
+                            @endfor
+
+                            <div class="form-group col-md-4">
+                                <div class="floating-label-wrap">
+                                    <div class="form-buttons">
+                                        <input wire:click='addBtn' type="button" value="{{ucwords(__('tickets_trans.add attachment'))}}" id="addAttachBtn">
                                     </div>
                                 </div>
-                                @error('file')
-                                    <span class="text-danger">* {{$message}}</span>
-                                @enderror
                             </div>
                         </div>
 
@@ -167,11 +177,11 @@
     </div>
 
     {{-- * scripting js for animation --}}
-        <script>
+        {{-- <script>
             var attachmentTitle = "{{ucwords(__('tickets_trans.attachment'))}}";
             var attachmentAdd = "{{ucwords(__('tickets_trans.add attachment'))}}"
         </script>
-        <script src="{{asset('assets/js/tickets.js')}}"></script>
+        <script src="{{asset('assets/js/tickets.js')}}"></script> --}}
 </section>
 
 </div>
