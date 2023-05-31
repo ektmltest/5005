@@ -30,153 +30,72 @@
     <div id="sidebar-menu">
         <!-- Left Menu Start -->
         <ul class="metismenu list-unstyled" id="side-menu">
-            <li class="menu-title">Menu</li>
-
+            <li class="menu-title text-primary">{{ __('dashboard_trans.MAIN OPTIONS') }}</li>
             <li>
                 <a href="index.html">
-                    <i class="uil-home-alt"></i><span class="badge rounded-pill bg-primary float-end">01</span>
-                    <span>Dashboard</span>
+                    <i class="uil-home-alt"></i>
+                    <span>{{ __('dashboard_trans.Home') }}</span>
                 </a>
             </li>
 
-            <li>
-                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                    <i class="uil-window-section"></i>
-                    <span>Layouts</span>
-                </a>
-                <ul class="sub-menu" aria-expanded="true">
-                    <li>
-                        <a href="javascript: void(0);" class="has-arrow">Vertical</a>
-                        <ul class="sub-menu" aria-expanded="true">
-                            <li><a href="layouts-dark-sidebar.html">Dark Sidebar</a></li>
-                            <li><a href="layouts-compact-sidebar.html">Compact Sidebar</a></li>
-                            <li><a href="layouts-icon-sidebar.html">Icon Sidebar</a></li>
-                            <li><a href="layouts-boxed.html">Boxed Width</a></li>
-                            <li><a href="layouts-preloader.html">Preloader</a></li>
-                            <li><a href="layouts-colored-sidebar.html">Colored Sidebar</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript: void(0);" class="has-arrow">Horizontal</a>
-                        <ul class="sub-menu" aria-expanded="true">
-                            <li><a href="layouts-horizontal.html">Horizontal</a></li>
-                            <li><a href="layouts-hori-topbar-dark.html">Topbar Dark</a></li>
-                            <li><a href="layouts-hori-boxed-width.html">Boxed Width</a></li>
-                            <li><a href="layouts-hori-preloader.html">Preloader</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="menu-title">Apps</li>
-
+            <li class="menu-title text-primary">{{ __('dashboard_trans.PROJECTS SYSTEM') }}</li>
             <li>
                 <a href="calendar.html" class="waves-effect">
                     <i class="uil-calender"></i>
-                    <span>Calendar</span>
+                    <span>{{ __('dashboard_trans.Projects management') }}</span>
                 </a>
             </li>
 
             <li>
                 <a href="chat.html" class=" waves-effect">
-                    <i class="uil-comments-alt"></i>
-                    <span>Chat</span>
+                    <i class="fa fa-solid fa-bars"></i>
+                    <span>{{ __('dashboard_trans.Projects sections') }}</span>
                 </a>
             </li>
 
             <li>
                 <a href="file-manager.html" class=" waves-effect">
-                    <i class="uil-comments-alt"></i>
-                    <span class="badge rounded-pill bg-success float-end">New</span>
-                    <span>File Manager</span>
+                    <i class="fa fa-solid fa-puzzle-piece"></i>
+                    <span>{{ __('dashboard_trans.Projects categories') }}</span>
+                </a>
+            </li>
+
+
+            <li class="menu-title text-primary">{{ __('dashboard_trans.CATALOG MANAGMENT') }}</li>
+            <li>
+                <a href="file-manager.html" class=" waves-effect">
+                    <i class="fa fa-solid fa-pen-nib"></i>
+                    <span>{{ __('dashboard_trans.Manage Projects') }}</span>
                 </a>
             </li>
 
             <li>
-                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                    <i class="uil-store"></i>
-                    <span>Ecommerce</span>
+                <a href="file-manager.html" class=" waves-effect">
+                    <i class="fa fa-solid fa-plus"></i>
+                    <span>{{ __('dashboard_trans.Add Project') }}</span>
                 </a>
-                <ul class="sub-menu" aria-expanded="false">
-                    <li><a href="ecommerce-products.html">Products</a></li>
-                    <li><a href="ecommerce-product-detail.html">Product Detail</a></li>
-                    <li><a href="ecommerce-orders.html">Orders</a></li>
-                    <li><a href="ecommerce-customers.html">Customers</a></li>
-                    <li><a href="ecommerce-cart.html">Cart</a></li>
-                    <li><a href="ecommerce-checkout.html">Checkout</a></li>
-                    <li><a href="ecommerce-shops.html">Shops</a></li>
-                    <li><a href="ecommerce-add-product.html">Add Product</a></li>
-                </ul>
             </li>
 
             <li>
-                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                    <i class="uil-envelope"></i>
-                    <span>Email</span>
+                <a href="file-manager.html" class=" waves-effect">
+                    <i class="fa fa-duotone fa-rectangle-history-circle-plus"></i>
+                    <span>{{ __('dashboard_trans.Store Catogries') }}</span>
                 </a>
-                <ul class="sub-menu" aria-expanded="false">
-                    <li><a href="email-inbox.html">Inbox</a></li>
-                    <li><a href="email-read.html">Read Email</a></li>
-                </ul>
             </li>
 
             <li>
-                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                    <i class="uil-invoice"></i>
-                    <span>Invoices</span>
+                <a href="file-manager.html" class=" waves-effect">
+                    <i class="fa fa-solid fa-puzzle-piece"></i>
+                    <span>{{ __('dashboard_trans.Addons') }}</span>
                 </a>
-                <ul class="sub-menu" aria-expanded="false">
-                    <li><a href="invoices-list.html">Invoice List</a></li>
-                    <li><a href="invoices-detail.html">Invoice Detail</a></li>
-                </ul>
             </li>
 
-            <li>
-                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                    <i class="uil-book-alt"></i>
-                    <span>Contacts</span>
-                </a>
-                <ul class="sub-menu" aria-expanded="false">
-                    <li><a href="contacts-grid.html">User Grid</a></li>
-                    <li><a href="contacts-list.html">User List</a></li>
-                    <li><a href="contacts-profile.html">Profile</a></li>
-                </ul>
-            </li>
 
-            <li class="menu-title">Pages</li>
 
-            <li>
-                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                    <i class="uil-user-circle"></i>
-                    <span>Authentication</span>
-                </a>
-                <ul class="sub-menu" aria-expanded="false">
-                    <li><a href="auth-login.html">Login</a></li>
-                    <li><a href="auth-register.html">Register</a></li>
-                    <li><a href="auth-recoverpw.html">Recover Password</a></li>
-                    <li><a href="auth-lock-screen.html">Lock Screen</a></li>
-                </ul>
-            </li>
 
-            <li>
-                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                    <i class="uil-file-alt"></i>
-                    <span>Utility</span>
-                </a>
-                <ul class="sub-menu" aria-expanded="false">
-                    <li><a href="pages-starter.html">Starter Page</a></li>
-                    <li><a href="pages-maintenance.html">Maintenance</a></li>
-                    <li><a href="pages-comingsoon.html">Coming Soon</a></li>
-                    <li><a href="pages-timeline.html">Timeline</a></li>
-                    <li><a href="pages-faqs.html">FAQs</a></li>
-                    <li><a href="pages-pricing.html">Pricing</a></li>
-                    <li><a href="pages-404.html">Error 404</a></li>
-                    <li><a href="pages-500.html">Error 500</a></li>
-                </ul>
-            </li>
+
 
             <li class="menu-title">Components</li>
-
             <li>
                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                     <i class="uil-flask"></i>
