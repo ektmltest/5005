@@ -58,9 +58,22 @@ return [
 
 
 
+    //Projects Section
+    'ARABIC NAME' => 'ARABIC NAME',
+    'ENGLISH NAME' => 'ENGLISH NAME',
+    'ICON' => 'ICON',
+    'ACTION' => 'ACTION',
 
-
-
+    //Projects sections
+    'Edit Category' => 'Edit Category',
+    'Delete Category' => 'Delete Category',
+    'Name Ar' => 'Name_Ar',
+    'Name En' => 'Name_En',
+    'Icon' => 'Icon',
+    'Edit' => 'Edit',
+    'Delete' => 'Delete',
+    'Cancel' => 'Cancel',
+    'QuesDele' => 'Are You Sure To Delete.?!',
 
 
 ];

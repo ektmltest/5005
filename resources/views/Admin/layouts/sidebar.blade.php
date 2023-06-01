@@ -30,7 +30,7 @@
         <ul class="metismenu list-unstyled" id="side-menu">
             <li class="menu-title text-primary">{{ __('dashboard_trans.MAIN OPTIONS') }}</li>
             <li>
-                <a href="index.html">
+                <a href="{{ route('dashboard') }}">
                     <i class="uil-home-alt"></i>
                     <span>{{ __('dashboard_trans.Home') }}</span>
                 </a>
@@ -38,14 +38,14 @@
 
             <li class="menu-title text-primary">{{ __('dashboard_trans.PROJECTS SYSTEM') }}</li>
             <li>
-                <a href="calendar.html" class="waves-effect">
+                <a href="{{ route('staffProjects') }}" class="waves-effect">
                     <i class="uil-calender"></i>
                     <span>{{ __('dashboard_trans.Projects management') }}</span>
                 </a>
             </li>
 
             <li>
-                <a href="chat.html" class=" waves-effect">
+                <a href="{{ route('staffProjectSections') }}" class=" waves-effect">
                     <i class="fa fa-solid fa-bars"></i>
                     <span>{{ __('dashboard_trans.Projects sections') }}</span>
                 </a>

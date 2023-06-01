@@ -56,8 +56,22 @@ return [
 
 
 
+    //Projects Section
+    'ARABIC NAME' => 'الإسم العربي',
+    'ENGLISH NAME' => 'الإسم الإنجليزي',
+    'ICON' => 'الأيقونه',
+    'ACTION' => 'الإجراء',
 
-
+    //Projects sections
+    'Edit Category' => 'تعديل القسم',
+    'Delete Category' => 'حذف القسم',
+    'Name Ar' => 'اسم القسم عربي',
+    'Name En' => 'اسم القسم انجليزي',
+    'Icon' => 'الأيقونة',
+    'Edit' => 'تعديل',
+    'Delete' => 'حذف',
+    'Cancel' => 'الغاء',
+    'QuesDele' => 'هل أنت متأكد من عملية الحذف.؟!',
 
 
 

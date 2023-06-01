@@ -93,7 +93,7 @@
                     <tr>
                         <td style="width: 20px;"><img src="assets/images/users/avatar-4.jpg" class="avatar-xs rounded-circle " alt="..."></td>
                         <td><h6 class="font-size-15 mb-1 fw-normal">Glenn Holden</h6></td>
-                        <td><span class="badge bg-soft-danger font-size-12">Cancel</span></td>
+                        <td><span class="badge bg-soft-danger font-size-12">Customer</span></td>
                     </tr>
                 </tbody>
             </table>

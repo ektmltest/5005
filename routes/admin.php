@@ -1,4 +1,7 @@
 <?php
+
+use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Livewire\Admin\ManageProject;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -17,6 +20,11 @@ function () {
             return view('Admin.dashboard');
         })->name('dashboard');
     });
+
+
+    // Manage Projects
+    Route::get('manageProjects', fn () => view('Admin.projects.manage-project'))->name('staffProjects');
+    Route::get('staffProjectSections', fn() => view('Admin.projects.project-sections'))->name('staffProjectSections');
 
 // });
 });

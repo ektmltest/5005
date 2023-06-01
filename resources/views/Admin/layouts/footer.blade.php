@@ -141,6 +141,7 @@
 <!-- /Right-bar -->
 <!-- Right bar overlay-->
 <div class="rightbar-overlay"></div>
+{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script> --}}
 
 <!-- JAVASCRIPT -->
 <script src="{{ asset("dashboard/assets/libs/jquery/jquery.min.js") }}"></script>
@@ -156,6 +157,10 @@
 <!-- App js -->
 <script src="{{ asset("dashboard/assets/js/app.js") }}"></script>
 <script src="{{ asset("dashboard/assets/js/all.min.js") }}"></script>
+
+
+@livewireScripts()
+
 </body>
 </html>
 
