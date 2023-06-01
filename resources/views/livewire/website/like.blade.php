@@ -1,10 +1,10 @@
 <div id="portfolio-grid" class="row no-gutter">
-    @foreach (\App\Models\ReadyProject::all() as $project)
+    @foreach ($ready_projects as $project)
     <div class="item prj-3 col-md-4 mb-4">
         <div class="post-item">
             <div class="post-img">
                 <img class="img-fluid" mu-open mu-link="/prj/1" style="border-radius: 16px; cursor: pointer;"
-                    src="{{ asset('assets/img/'.$project->image) }}" alt>
+                    src="{{ $project->image }}" alt>
             </div>
 
             <div class="post-txt">
@@ -23,9 +23,9 @@
                     </div>
 
                     @auth
-                        <div class="action-post">
-                            <a wire:click="addorremovelikes({{$project->id}})">
-                                @if(\App\Models\Like::where('user_id', auth()->user()->id)->where('likesable_id', $project->id)->first())
+                        <div class="action-post" wire:key='divLike'>
+                            <a wire:click="toggleLike({{$project}})">
+                                @if($project->liked())
                                     <i class="bx bxs-heart loveProject"></i>
                                 @else
                                     <i class="bx bx-heart loveProject"></i>

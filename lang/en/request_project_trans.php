@@ -5,7 +5,7 @@ return[
     'bodysTitle' => "Choose your project's section",
 
     'Programming Section' => 'Programming Section',
-    'des1' => 'PROGRAMMING SECTION CONTAINS',
+    'des1' => 'CONTAINS',
     'Websites Programming' => 'Websites Programming',
     'Mobile Apps Programming' => 'Mobile Apps Programming',
     'Software modification' => 'Software modification',

@@ -5,7 +5,7 @@ return[
     'bodysTitle' => 'أختر قسم المشروع الخاص بك',
 
     'Programming Section' => 'قسم البرمجة',
-    'des1' => 'قسم البرمجة يحوي على',
+    'des1' => 'يحوي على',
     'Websites Programming' => 'برمجة المواقع',
     'Mobile Apps Programming' => 'برمجة التطبيقات',
     'Software modification' => 'تعديل برمجي',

@@ -1,33 +1,36 @@
 <?php
 namespace App\Http\Livewire\Website;
-use App\Models\ReadyProject;
+
+use App\Repositories\ReadyProjectRepository;
 use Livewire\Component;
 
 class Like extends Component
 {
-    public $ready_project;
+    public $ready_projects;
+    protected $readyProjectRepository;
 
-    public function addorremovelikes($id)
+    public function __construct() {
+        $this->readyProjectRepository = new ReadyProjectRepository;
+    }
+
+    public function toggleLike($ready_project)
     {
         if(!auth()->check()){
             return redirect()->route('login');
         }
-        $ready_project = ReadyProject::find($id);
-        if($ready_project->likes->where('user_id', auth()->user()->id)->where('likesable_id', $id)->count() == 0){
-            $ready_project->likes()->create([
-                'user_id' => auth()->user()->id,
-                'likesable_type' => ReadyProject::class,
-                'likesable_id' => $id,
-            ]);
+
+        $ready_project = $this->readyProjectRepository->findById($ready_project['id']);
+        $isAdded = $this->readyProjectRepository->toggleLike($ready_project);
+
+        if ($isAdded)
             session()->flash('message', 'Like Added Successfully');
-        }else{
-            $ready_project->likes()->delete();
+        else
             session()->flash('message', 'Like Removed Successfully');
-        }
     }
 
     public function render()
     {
+        $this->ready_projects = $this->readyProjectRepository->getAllReadyProjects();
         return view('livewire.website.like');
     }
 }

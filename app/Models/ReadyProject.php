@@ -43,6 +43,11 @@ class ReadyProject extends Model
         return $this->hasMany(Opinion::class);
     }
 
+    //////* my functions *//////
+    public function liked() {
+        return Like::where('user_id', auth()->user()->id)->where('likesable_id', $this->id)->first();
+    }
+
     //////* attributes *//////
     public function name(): Attribute {
         return Attribute::make(
