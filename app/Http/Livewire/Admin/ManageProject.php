@@ -3,7 +3,6 @@ namespace App\Http\Livewire\Admin;
 use App\Models\Project;
 use Livewire\Component;
 use App\Models\ProjectState;
-use Illuminate\Http\Request;
 
 class ManageProject extends Component
 {
@@ -19,6 +18,6 @@ class ManageProject extends Component
 
     public function render()
     {
-        return view('livewire.admin.manage-project');
+        return view('livewire.admin.manage-project', ['state_id' => $this->state_id]);
     }
 }

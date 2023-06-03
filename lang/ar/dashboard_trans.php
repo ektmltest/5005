@@ -73,7 +73,9 @@ return [
     'Cancel' => 'الغاء',
     'QuesDele' => 'هل أنت متأكد من عملية الحذف.؟!',
 
-
+    'START PRICE' => 'السعر المبدأي',
+    'Project Department' => 'التصنيف',
+    'Add Category' => 'اضافة قسم',
 
 
 ];

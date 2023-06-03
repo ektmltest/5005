@@ -7,7 +7,7 @@
                 <div class="page-title-box d-flex align-items-center justify-content-between">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">{{ __('dashboard_trans.PROJECTS SYSTEM') }}</a></li>
+                            <li class="breadcrumb-item">{{ __('dashboard_trans.PROJECTS SYSTEM') }}</li>
                             <li class="breadcrumb-item active">{{ __('dashboard_trans.Projects management') }}
                             </li>
                         </ol>
@@ -23,6 +23,7 @@
                         <div class="p-3 bg-light mb-4">
                             <h5 class="font-size-16 mb-0">Haithm Mhmd<span class="float-end ms-2">Admin</span></h5>
                         </div>
+                        
                         <div class="table-responsive">
                             <table class="table table-centered mb-0 table-nowrap">
                                 <tbody>
@@ -44,7 +45,7 @@
                         <table class="table table-centered table-nowrap mb-0">
                             <thead>
                                 <tr>
-                                    <th>مشاريع {{ $state->name }} <i class="bx bxs-briefcase-alt-2"></i></th>
+                                    <th>مشاريع {{ $state->name }}<i class="bx bxs-briefcase-alt-2"></i></th>
                                 </tr>
                             </thead>
 
@@ -62,6 +63,6 @@
             </div>
         </div><!-- end row -->
 
-    </div> <!-- container-fluid -->
+    </div>
     </div>
 </div>

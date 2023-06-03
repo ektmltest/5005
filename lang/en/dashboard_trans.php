@@ -75,6 +75,16 @@ return [
     'Cancel' => 'Cancel',
     'QuesDele' => 'Are You Sure To Delete.?!',
 
+    'START PRICE' => 'START PRICE',
+    'Project Department' => 'Project Department',
+    'Add Category' => 'Add Category',
+
+
+
+
+
+
+
 
 ];
 
