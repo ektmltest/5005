@@ -23,7 +23,7 @@
                         <div class="p-3 bg-light mb-4">
                             <h5 class="font-size-16 mb-0">Haithm Mhmd<span class="float-end ms-2">Admin</span></h5>
                         </div>
-                        
+
                         <div class="table-responsive">
                             <table class="table table-centered mb-0 table-nowrap">
                                 <tbody>
@@ -45,11 +45,10 @@
                         <table class="table table-centered table-nowrap mb-0">
                             <thead>
                                 <tr>
-                                    <th>مشاريع {{ $state->name }}<i class="bx bxs-briefcase-alt-2"></i></th>
+                                    <th>مشاريع {{$state->name }}<i class="bx bxs-briefcase-alt-2"></i></th>
                                 </tr>
                             </thead>
-
-                            @foreach (\App\Models\Project::where('project_state_id', $state->id)->get() as $project)
+                            @foreach($projects as $project)
                                 <tbody>
                                     <tr>
                                         <td><a href="#">{{ $project->name }}</a></td>
