@@ -9,6 +9,8 @@
 <script src="{{ asset('assets/vendors/appear/js/jquery.appear.js') }}"></script>
 <!-- Lity -->
 <script src="{{ asset('assets/vendors/lity/js/lity.min.js') }}"></script>
+{{-- sticky --}}
+<script src="{{ asset('assets/vendors/sticky/js/hc-sticky.js') }}"></script>
 <!-- Parallax -->
 <script src="{{ asset('assets/vendors/parallax/js/jquery-parallax.js') }}"></script>
 
@@ -21,9 +23,10 @@
 <script src="{{asset('assets/js/portfolio.js')}}"></script>
 <!-- Parallax -->
 <script src="{{ asset('assets/js/core.js') }}"></script>
+{{-- projects --}}
+{{-- <script src="{{asset('assets/js/projects.js')}}"></script> --}}
 
 <!-- Turbo JS -->
 <script type="module">
     import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';
 </script>
-

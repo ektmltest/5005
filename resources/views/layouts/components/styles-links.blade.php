@@ -15,5 +15,12 @@ rel="stylesheet">
 <link rel="stylesheet" href="{{asset('assets/vendors/magnific/css/magnific-popup.css')}}">
 <!-- Style Css -->
 <link rel="stylesheet" href="{{ URL::asset('assets/css/style.css') }}">
+
+
 <!-- Animate CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
+{{-- WOW JS --}}
+<script src="{{ asset('assets/js/wow.min.js') }}"></script>
+<script>
+    new WOW().init();
+</script>

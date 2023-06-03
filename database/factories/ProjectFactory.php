@@ -24,7 +24,7 @@ class ProjectFactory extends Factory
             'description' => fake()->paragraph(),
             'progress' => fake()->numberBetween(0, 100),
             'user_id' => User::inRandomOrder()->first()->id,
-            'project_category_id' => ProjectCategory::inRandomOrder()->first()->id,
+            // 'project_category_id' => ProjectCategory::inRandomOrder()->first()->id,
             'project_state_id' => ProjectState::inRandomOrder()->first()->id,
         ];
     }

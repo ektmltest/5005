@@ -25,7 +25,5 @@ return[
     'Logos and brands' => 'شعارات وعلامات تجارية',
 
 
-
-
 ];
 

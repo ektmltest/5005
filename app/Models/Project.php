@@ -13,8 +13,12 @@ class Project extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function category() {
-        return $this->belongsTo(ProjectCategory::class, 'project_category_id');
+    // public function category() {
+    //     return $this->belongsTo(ProjectCategory::class, 'project_category_id');
+    // }
+
+    public function categories() {
+        return $this->belongsToMany(ProjectCategory::class, 'project_pivot_categories');
     }
 
     public function state() {

@@ -114,9 +114,14 @@ class DatabaseSeeder extends Seeder
             Opinion::factory()->count(10)->create();
 
             ProjectDepartment::factory()->count(5)->create();
-            ProjectCategory::factory()->count(5)->create();
+            $categories = ProjectCategory::factory()->count(5)->create();
             ProjectState::factory()->count(2)->create();
-            Project::factory()->count(10)->create();
+            Project::factory()
+                ->count(10)
+                ->create()
+                ->each(function ($project) use ($categories) {
+                    $project->categories()->attach($categories->random(1)->first()->id);
+                });
             ProjectReply::factory()->count(10)->create();
             ProjectReplyAttachment::factory()->count(20)->create();
 

@@ -88,7 +88,7 @@
                                             <label for="attachInput{{$i}}" class="floating-label">{{ucwords(__('tickets_trans.attachment'))}}</label>
                                         </div>
                                     </div>
-                                    @error('file')
+                                    @error('files')
                                         <span class="text-danger">* {{$message}}</span>
                                     @enderror
                                 </div>

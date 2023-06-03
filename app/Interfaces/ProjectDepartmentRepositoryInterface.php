@@ -2,6 +2,8 @@
 
 namespace App\Interfaces;
 
-interface ProjectDeparmentRepositoryInterface {
-    
+interface ProjectDepartmentRepositoryInterface {
+    public function getAllDeparments();
+
+    public function getDepartmentCategories($id);
 }

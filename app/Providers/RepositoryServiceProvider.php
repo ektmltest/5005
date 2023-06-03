@@ -4,12 +4,14 @@ namespace App\Providers;
 
 use App\Interfaces\GallaryProjectRepositoryInterface;
 use App\Interfaces\GallaryProjectTypeRepositoryInterface;
+use App\Interfaces\ProjectDepartmentRepositoryInterface;
 use App\Interfaces\ResetPasswordTokenInterface;
 use App\Interfaces\TicketRepositoryInterface;
 use App\Interfaces\TicketTypeRepositoryInterface;
 use App\Interfaces\UserRepositoryInterface;
 use App\Repositories\GallaryProjectRepository;
 use App\Repositories\GallaryProjectTypeRepository;
+use App\Repositories\ProjectDepartmentRepository;
 use App\Repositories\ResetPasswordTokenRepository;
 use App\Repositories\TicketRepository;
 use App\Repositories\TicketTypeRepository;
@@ -30,6 +32,9 @@ class RepositoryServiceProvider extends ServiceProvider
         App::bind(GallaryProjectTypeRepositoryInterface::class, GallaryProjectTypeRepository::class);
         App::bind(TicketTypeRepositoryInterface::class, TicketTypeRepository::class);
         App::bind(TicketRepositoryInterface::class, TicketRepository::class);
+
+        // projects
+        App::bind(ProjectDepartmentRepositoryInterface::class, ProjectDepartmentRepository::class);
     }
 
     /**

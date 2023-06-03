@@ -13,7 +13,7 @@ class ProjectCategory extends Model
     protected $guarded = [];
 
     public function projects() {
-        return $this->hasMany(Project::class);
+        return $this->belongsToMany(Project::class, 'projects');
     }
 
     public function department() {
