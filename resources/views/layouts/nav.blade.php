@@ -16,6 +16,8 @@
         <li class="nav-item">
             <a class="nav-link" href="{{route('home')}}">{{ucwords(__('nav.home_page'))}}</a>
         </li>
+
+        @auth
         <li class="nav-item dropdown js-dropdown-links">
             <a class="nav-link dropdown-toggle" href="#" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -28,7 +30,7 @@
                         <span class="title">{{ucwords(__('nav.options.tickets_system'))}}</span>
                     </div>
                 </a>
-                <a class="dropdown-item dropdown-link" href="{{ route('letsStart') }}">
+                <a class="dropdown-item dropdown-link" data-turbo="false" href="{{ route('letsStart') }}">
                     <div class="link-ico">
                         <i class='bx bx-book-add'></i>
                         <span class="title">{{ucwords(__('nav.options.project_request'))}}</span>
@@ -43,6 +45,7 @@
                 <span class="bg-gray hover-state js-hover-state"></span>
             </div>
         </li>
+        @endauth
 
         <li class="nav-item dropdown js-dropdown-links">
             <a class="nav-link dropdown-toggle" href="#" role="button"

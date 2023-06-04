@@ -21,6 +21,7 @@ class ProjectStateFactory extends Factory
                 'ar' => 'اسم',
                 'en' => fake()->unique()->name(),
             ],
+            'icon' => 'bx bx-alarm',
         ];
     }
 }

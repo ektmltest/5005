@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->integer('progress');
+            $table->integer('progress')->default(0);
             $table->timestamps();
 
             // foreign keys

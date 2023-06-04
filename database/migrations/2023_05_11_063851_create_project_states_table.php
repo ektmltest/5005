@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('project_states', function (Blueprint $table) {
             $table->id();
             $table->json('name')->unique();
+            $table->string('icon');
             $table->timestamps();
         });
     }

@@ -1,12 +1,19 @@
 <?php
 namespace App\Http\Livewire\Website;
 
+use App\Http\Requests\ProjectStoreRequest;
+use App\Models\Project;
+use App\Repositories\ProjectAttachmentRepository;
 use App\Repositories\ProjectCategoryRepository;
 use App\Repositories\ProjectDepartmentRepository;
+use App\Repositories\ProjectRepository;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class LetsStart extends Component
 {
+    use WithFileUploads;
+
     public $departments;
     public $categories = null;
     public $selectedDeptId = null;
@@ -16,10 +23,17 @@ class LetsStart extends Component
     public $showCategories = false;
     public $showForm = false;
     public $noFiles = 1;
+    // ** FORM DATA ** //
+    public Project $project;
+    public $files = array();
+    // ** END FORM DATA ** //
     protected $projectDepartmentRepository;
+    protected $projectRepository;
 
     public function __construct() {
         $this->projectDepartmentRepository = new ProjectDepartmentRepository;
+        $this->projectRepository = new ProjectRepository(new ProjectAttachmentRepository);
+        $this->project = new Project;
     }
 
     public function departmentCategories($dept_id) {
@@ -52,6 +66,27 @@ class LetsStart extends Component
 
     public function addBtn() {
         $this->noFiles++;
+    }
+
+    // * to define rules for all post requests comming to this component
+    public function rules(): array
+    {
+        return (new ProjectStoreRequest)->rules();
+    }
+
+    // * to handle realtime validation on single properity at a time
+    public function updated($property)
+    {
+        $this->validateOnly($property);
+    }
+
+    public function submit() {
+        $this->validate();
+
+        $this->projectRepository->store($this->project, $this->files);
+
+        $this->reset();
+        session()->flash('message', 'Project Created Successfully.!');
     }
 
     public function render()

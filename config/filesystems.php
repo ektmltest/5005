@@ -46,7 +46,7 @@ return [
 
         'file' => [
             'driver' => 'local',
-            'root' => public_path('assets/tickets'),
+            'root' => public_path('assets'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
             'throw' => false,

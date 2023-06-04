@@ -1,5 +1,12 @@
 <section class="pricing-table">
     <div class="container">
+        <div>
+            @if (session()->has('message'))
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
+            @endif
+        </div>
         @if ($showDepartments)
         <div class="section-pricing">
             <h3>{{ __('request_project_trans.bodyTitle')}}</h3>
@@ -86,26 +93,32 @@
                                 <h3>{{ __('request_project_trans.bodyTitle')}}</h3>
                                 <p>{{ __('request_project_trans.bodysTitle')}}</p>
                             </div>
-                            <form>
+                            <form wire:submit.prevent='submit'>
                                 <div class="row">
                                     <div class="col-xl-12 col-md-6">
                                         <div class="form-group">
                                             <div class="floating-label-wrap">
-                                                <input type="text" class="floating-label-field floating-label-field--s3"
-                                                    name="projectName" id="projectName" maxlength="100"
-                                                    placeholder="إسم المشروع">
+                                                <input wire:model='project.name' type="text"
+                                                    class="floating-label-field floating-label-field--s3"
+                                                    maxlength="100" placeholder="إسم المشروع">
                                                 <label for="field-1" class="floating-label">إسم المشروع</label>
                                             </div><!-- .floating-label-wrap -->
+                                            @error('project.name')
+                                            <span class="text-danger">* {{$message}}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-xl-12">
                                         <div class="form-group">
                                             <div class="floating-label-wrap">
-                                                <textarea class="floating-label-field floating-label-field--s3"
-                                                    name="projectDetails" id="projectDetails" rows="15"
+                                                <textarea wire:model='project.description'
+                                                    class="floating-label-field floating-label-field--s3" rows="15"
                                                     placeholder="تفاصيل المشروع"></textarea>
                                                 <label for="field-1" class="floating-label">تفاصيل المشروع</label>
                                             </div>
+                                            @error('project.description')
+                                            <span class="text-danger">* {{$message}}</span>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -116,22 +129,21 @@
                                     </div>
 
                                     <div id="attachments">
-                                        @for ($i = 0; $i < $noFiles; $i++)
-                                            <div class="form-row">
-                                                <div class="form-group col-md-8">
-                                                    <div class="floating-label-wrap">
-                                                        <input wire:model='files.{{$i}}' type="file"
-                                                            class="floating-label-field floating-label-field--s3"
-                                                            id="attachInput{{$i}}" />
-                                                        <label for="attachInput{{$i}}"
-                                                            class="floating-label">{{ucwords(__('tickets_trans.attachment'))}}</label>
-                                                    </div>
+                                        @for ($i = 0; $i < $noFiles; $i++) <div class="form-row">
+                                            <div class="form-group col-md-8">
+                                                <div class="floating-label-wrap">
+                                                    <input wire:model='files.{{$i}}' type="file"
+                                                        class="floating-label-field floating-label-field--s3"
+                                                        id="attachInput{{$i}}" />
+                                                    <label for="attachInput{{$i}}"
+                                                        class="floating-label">{{ucwords(__('tickets_trans.attachment'))}}</label>
                                                 </div>
-                                                @error('files')
-                                                    <span class="text-danger">* {{$message}}</span>
-                                                @enderror
                                             </div>
-                                        @endfor
+                                            @error('files')
+                                            <span class="text-danger">* {{$message}}</span>
+                                            @enderror
+                                    </div>
+                                    @endfor
 
                                     <div class="form-group col-md-4">
                                         <div class="floating-label-wrap">
@@ -146,13 +158,13 @@
 
                                 <div class="col-xl-12 text-center">
                                     <div class="question-action">
-                                        <button class="btn bttn btn-info" type="button" onclick="submitProject()">
+                                        <button class="btn bttn btn-info" type="submit">
                                             إرسال الطلب <i class="bx bx-left-arrow-alt"></i>
                                         </button>
                                     </div>
                                 </div>
+                            </form>
                         </div>
-                        </form>
                     </div>
                 </div>
             </div>
