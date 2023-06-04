@@ -45,14 +45,14 @@
             </li>
 
             <li>
-                <a href="{{ route('staffProjectSections') }}" class=" waves-effect">
+                <a href="{{ route('staffProjectSections') }}" class="waves-effect">
                     <i class="fa fa-solid fa-bars"></i>
                     <span>{{ __('dashboard_trans.Projects sections') }}</span>
                 </a>
             </li>
 
             <li>
-                <a href="file-manager.html" class=" waves-effect">
+                <a href="{{ route('staffProjectCategories') }}" class=" waves-effect">
                     <i class="fa fa-solid fa-puzzle-piece"></i>
                     <span>{{ __('dashboard_trans.Projects categories') }}</span>
                 </a>
@@ -61,7 +61,7 @@
 
             <li class="menu-title text-primary">{{ __('dashboard_trans.CATALOG MANAGMENT') }}</li>
             <li>
-                <a href="file-manager.html" class=" waves-effect">
+                <a href="{{ route('readyProjects') }}" class=" waves-effect">
                     <i class="fa fa-solid fa-pen-nib"></i>
                     <span>{{ __('dashboard_trans.Manage Projects') }}</span>
                 </a>

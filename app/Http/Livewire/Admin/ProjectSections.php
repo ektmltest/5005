@@ -2,22 +2,21 @@
 namespace App\Http\Livewire\Admin;
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\ProjectCategory;
+use App\Models\ProjectDepartment;
+use Illuminate\Http\Request;
 
 class ProjectSections extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $cat_id, $category, $name, $name_en, $name_ar, $icon, $start_price, $project_department_id;
-    public $ename_en, $ename_ar, $eicon, $estart_price, $eproject_department_id;
+    public $cat_id, $category, $name, $name_en, $name_ar, $icon;
+    public $ename_en, $ename_ar, $eicon;
 
     protected $rules = [
         'name_en' => 'required|min:5',
         'name_ar' => 'required|min:5',
         'icon' => 'required',
-        'start_price' => 'required|numeric',
-        'project_department_id' => 'required',
     ];
 
     public function updated($propertyName)
@@ -26,52 +25,48 @@ class ProjectSections extends Component
     }
 
 
-    public function addCategory()
+    public function addDeparment()
     {
-        $this->validate();
-        ProjectCategory::create([
+        ProjectDepartment::create([
             'name' => [
                 'ar' => $this->name_ar,
                 'en' => $this->name_en,
             ],
             'icon' => $this->icon,
-            'start_price' => $this->start_price,
-            'project_department_id' => $this->project_department_id,
         ]);
         $this->reset();
-        session()->flash('message', 'Category Successfully Created');
+        session()->flash('message', 'Department Successfully Created');
     }
 
 
-    public function editCategory($id)
+    public function editDeparment(Request $request, $id)
     {
-        dd('dfghfgdjh');
-        $this->category = ProjectCategory::find($id);
+        dd($request);
+        $this->category = ProjectDepartment::find($id);
         $this->category->update([
             'name' => [
-                'ar' => $this->ename_ar,
-                'en' => $this->ename_en,
+                'ar' => $request->ename_ar,
+                'en' => $request->ename_en,
             ],
-            'icon' => $this->eicon,
-            'start_price' => $this->estart_price,
-            'project_department_id' => $this->eproject_department_id,
+            'icon' => $request->eicon,
         ]);
-        session()->flash('message', 'Category Updated Successfully.!');
+        session()->flash('message', 'Department Updated Successfully');
     }
 
 
 
-    public function deleteCategory($id)
+    public function deleteDeparment($id)
     {
-        $this->cat_id = ProjectCategory::find($id);
+        $this->cat_id = ProjectDepartment::find($id);
         $this->cat_id->delete();
+        session()->flash('message', 'Department Deleted Successfully');
     }
 
 
     public function render()
     {
         return view('livewire.admin.project-sections', [
-            'categories' => ProjectCategory::paginate(5),
+            'departments' => ProjectDepartment::paginate(5),
         ]);
     }
 }

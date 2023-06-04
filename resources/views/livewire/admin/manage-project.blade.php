@@ -29,7 +29,7 @@
                                 <tbody>
                                     @foreach (\App\Models\ProjectState::all() as $state)
                                         <tr>
-                                            <th><a style="cursor: pointer" wire:click="changeStatus({{$state->id}})">{{ $state->name }}</a></th>
+                                            <th><a style="cursor: pointer;" class="waves-effect" wire:click="changeStatus({{$state->id}})">{{ $state->name }}</a></th>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -45,7 +45,7 @@
                         <table class="table table-centered table-nowrap mb-0">
                             <thead>
                                 <tr>
-                                    <th>مشاريع {{$state->name }}<i class="bx bxs-briefcase-alt-2"></i></th>
+                                    <th>مشاريع {{$state_name}} <i class="bx bxs-briefcase-alt-2"></i></th>
                                 </tr>
                             </thead>
                             @foreach($projects as $project)

@@ -80,6 +80,22 @@ return [
     'Add Category' => 'Add Category',
 
 
+    // Projects Categories
+    'PROJECTS CATEGORIES' => 'PROJECTS CATEGORIES',
+    'BELONGS TO' => 'BELONGS TO',
+
+
+    // Manage Catalog
+    'Catalog' => 'Catalog',
+
+
+
+
+
+
+
+
+
 
 
 

@@ -62,9 +62,9 @@ return [
     'ICON' => 'الأيقونه',
     'ACTION' => 'الإجراء',
 
-    //Projects sections
-    'Edit Category' => 'تعديل القسم',
-    'Delete Category' => 'حذف القسم',
+    // Projects Sections
+    'Edit Section' => 'تعديل القسم',
+    'Delete Section' => 'حذف القسم',
     'Name Ar' => 'اسم القسم عربي',
     'Name En' => 'اسم القسم انجليزي',
     'Icon' => 'الأيقونة',
@@ -75,7 +75,24 @@ return [
 
     'START PRICE' => 'السعر المبدأي',
     'Project Department' => 'التصنيف',
-    'Add Category' => 'اضافة قسم',
+    'Add Section' => 'اضافة قسم',
+
+
+    // Projects Categories
+    'PROJECTS CATEGORIES' => 'تصنيفات المشاريع',
+    'Edit Category' => 'تعديل التصنيف',
+    'Delete Category' => 'حذف التصنيف',
+    'BELONGS TO' => 'ينتمي إلى',
+    'Add Category' => 'اضافة تصنيف',
+
+
+    // Manage Catalog
+    'Catalog' => 'الكاتالوج',
+
+
+
+
+
 
 
 ];

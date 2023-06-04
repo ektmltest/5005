@@ -44,11 +44,29 @@ class ReadyProject extends Model
     }
 
     //////* attributes *//////
-    public function name(): Attribute {
+    // public function name(): Attribute {
+    //     return Attribute::make(
+    //         get: fn ($value) => json_decode($value, true)[app()->getLocale()],
+    //         set: fn ($value) => json_encode($value)
+    //     );
+    // }
+    public function name(string $locale = null): Attribute {
         return Attribute::make(
-            get: fn ($value) => json_decode($value, true)[app()->getLocale()],
+            get: function ($value) {
+                if ($this->locale) {
+                    $loc = $this->locale;
+                    $this->locale = null;
+                    return json_decode($value, true)[$loc];
+                }
+                return json_decode($value, true)[app()->getLocale()];
+            },
             set: fn ($value) => json_encode($value)
         );
+    }
+
+    public function nameLocale(string $locale) {
+        $this->locale = $locale;
+        return $this->name;
     }
 
     public function description(): Attribute {
