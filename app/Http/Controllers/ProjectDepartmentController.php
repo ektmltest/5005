@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ProjectDepartmentController extends Controller
 {
-    public $projectDepartmentRepository;
+    protected $projectDepartmentRepository;
 
     public function __construct(ProjectDepartmentRepositoryInterface $projectDepartmentRepository) {
         $this->projectDepartmentRepository = $projectDepartmentRepository;

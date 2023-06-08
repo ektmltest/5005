@@ -12,7 +12,7 @@ class ProjectState extends Model
 
     protected $guarded = [];
 
-    protected function projects() {
+    public function projects() {
         return $this->hasMany(Project::class);
     }
 

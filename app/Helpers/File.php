@@ -14,4 +14,14 @@ trait File {
             ;
         }
     }
+
+    protected function deleteUsingFilePath($filepath, $root = 'assets') {
+        unlink(public_path($filepath));
+    }
+
+    protected function deleteFilesInFolder($dir) {
+        $files = glob(public_path('assets/' . $dir . '/attachment/*'));
+        foreach ($files as $file)
+            unlink($file);
+    }
 }

@@ -88,4 +88,9 @@ class User extends Authenticatable
     public function newspapers() {
         return $this->hasMany(Newspaper::class);
     }
+
+    //////* Attributes *//////
+    public function getFullNameAttribute() {
+        return $this->fname . ' ' . $this->lname;
+    }
 }

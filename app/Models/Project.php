@@ -21,6 +21,10 @@ class Project extends Model
         return $this->belongsToMany(ProjectCategory::class, 'project_pivot_categories');
     }
 
+    public function department() {
+        return $this->categories->first()->department;
+    }
+
     public function state() {
         return $this->belongsTo(ProjectState::class, 'project_state_id');
     }

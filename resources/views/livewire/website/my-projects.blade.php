@@ -6,8 +6,15 @@
                     <div class="faq-control">
                         <p class="text-center" style="font-weight: 500;">{{ __('myprojects_trans.The projects') }}</p>
                         <ul class="list-unstyled" id="projectsStatus">
+                            <li wire:click='switchState()' class="@if(!$currentState) active @endif">
+                                <a role="button">
+                                    <i class='bx bxs-grid'></i>
+                                    جميع مشاريعي
+                                </a>
+                            </li>
                             @foreach ($projectStates as $state)
-                            <li wire:click='switchState({{$state}})' class="@if($state->id == $currentState->id) active @endif" id="0">
+                            <li wire:click='switchState({{$state}})'
+                                class="@if($currentState && $state->id == $currentState->id) active @endif">
                                 <a role="button">
                                     <i class='{{$state->icon}}'></i>
                                     {{ $state->name }}
@@ -21,27 +28,52 @@
 
             <div class="col-xl-9 col-lg-4">
                 <div class="vacan-posts">
-                    @foreach ($currentState->projects as $project)
-                        <a href="#">
-                            <div class="job-post text-center" style="color: #4b3da7;">
-                                <h6>
-                                    <div class="email-list-item email-list-item--unread">
-                                        <a class="email-list-detail">
-                                            <div>
-                                                <p class="msg text-center">
-                                                    {{ __('myprojects_trans.there is no Projects in this status') }}
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </h6>
+
+                    @if (count($projectsToDisplay))
+                    @foreach ($projectsToDisplay as $project)
+                    <a href="{{route('myProjects.show', $project->id)}}" data-turbo="false" class="job-post">
+                        <div class="row">
+                            <div class="col-xl-5 col-lg-5">
+                                <div class="job-title">
+                                    <h5>{{$project->name}}</h5>
+                                    <span class="job-id">
+                                        @foreach ($project->categories as $category)
+                                        <span class="badge badge-info">{{$category->name}}</span>
+                                        @endforeach
+                                    </span>
+                                </div>
                             </div>
-                        </a>
+                            <div class="col-xl-3 col-lg-3">
+                                <div class="job-category">
+                                    <span>{{$project->department()->name}}</span>
+                                </div>
+                                <div class="job-title">
+                                    <span class="job-id"><span
+                                            class="badge text-light badge-secondary">{{$project->state->name}}</span></span>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4">
+                                <div class="job-location">
+                                    <i class="bx bx-alarm-add"></i>
+                                    <span>{{date('M d Y, H:i a', strtotime($project->created_at))}}</span>
+                                </div>
+                                <div class="job-location">
+                                    <i class="bx bx-alarm"></i>
+                                    <span>{{date('M d Y, H:i a', strtotime($project->updated_at))}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
                     @endforeach
+                    @else
+                    <div class="job-post text-center" style="color: #4b3da7;">
+                        <h6>لا توجد مشاريع في هذه الحالة</h6>
+                    </div>
+                    @endif
+
                 </div>
 
             </div>
         </div>
     </div>
-
 </section>

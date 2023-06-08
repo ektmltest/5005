@@ -59,7 +59,7 @@ class ValidationRequest extends FormRequest
     }
 
     protected function fileRule() {
-        return ['required', 'file', /* 'mimes:pdf,txt' */];
+        return ['required', 'file', 'max:10000'];
     }
 
     protected function phoneRule() {

@@ -2,6 +2,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Helpers\File;
 use App\Models\Addon;
 use App\Models\AddonType;
 use App\Models\BankCard;
@@ -37,6 +39,7 @@ use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
+    use File;
     /**
      * Seed the application's database.
      */
@@ -44,6 +47,9 @@ class DatabaseSeeder extends Seeder
     {
         DB::beginTransaction();
         try {
+            $this->deleteFilesInFolder('projects');
+            $this->deleteFilesInFolder('tickets');
+
             RankType::factory()->count(5)->create();
 
             $permissions = Permission::factory()->count(5)->create();

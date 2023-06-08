@@ -9,4 +9,8 @@ class ProjectStateRepository implements ProjectStateRepositoryInterface {
     public function getAllProjectStates() {
         return ProjectState::all();
     }
+
+    public function getProjectStateById($id) {
+        return ProjectState::with('projects')->find($id);
+    }
 }

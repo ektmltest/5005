@@ -177,11 +177,11 @@
     </div>
 
     {{-- * scripting js for animation --}}
-        {{-- <script>
-            var attachmentTitle = "{{ucwords(__('tickets_trans.attachment'))}}";
-            var attachmentAdd = "{{ucwords(__('tickets_trans.add attachment'))}}"
-        </script>
-        <script src="{{asset('assets/js/tickets.js')}}"></script> --}}
+    <script>
+        var attachmentTitle = "{{ucwords(__('tickets_trans.attachment'))}}";
+        var attachmentAdd = "{{ucwords(__('tickets_trans.add attachment'))}}"
+    </script>
+    <script src="{{asset('assets/js/tickets.js')}}"></script>
 </section>
 
 </div>

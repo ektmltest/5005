@@ -9,7 +9,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="question-action">
-                    <a class="bttn btn-purple" href="{{ route('letsStart') }}">
+                    <a class="bttn btn-purple" data-turbo="false" href="{{ route('letsStart') }}">
                         {{ __('main_trans.Start with us now!') }}
                         <i class='bx bx-right-arrow-alt'></i>
                     </a>

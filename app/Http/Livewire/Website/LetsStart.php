@@ -18,7 +18,8 @@ class LetsStart extends Component
     public $categories = null;
     public $selectedDeptId = null;
     public $categoryIds = [];
-    public $categoryHasClass = [];
+    public $categoryNames = [];
+    public $categoryActive = [];
     public $showDepartments = true;
     public $showCategories = false;
     public $showForm = false;
@@ -47,21 +48,32 @@ class LetsStart extends Component
         $this->showForm = false;
     }
 
-    public function toggleActive($cat_id) {
-        if (isset($this->categoryHasClass[$cat_id])) {
-            unset($this->categoryHasClass[$cat_id]);
+    public function toggleActive($cat_id, $cat_name) {
+        if (isset($this->categoryActive[$cat_id])) {
+            unset($this->categoryActive[$cat_id]);
             $key = array_search($cat_id, $this->categoryIds);
             unset($this->categoryIds[$key]);
+            $key = array_search($cat_name, $this->categoryNames);
+            unset($this->categoryNames[$key]);
         } else {
-            $this->categoryHasClass[$cat_id] = true;
+            $this->categoryActive[$cat_id] = true;
             $this->categoryIds[] = $cat_id;
+            $this->categoryNames[] = $cat_name;
         }
     }
 
     public function displayForm() {
-        $this->showCategories = false;
-        $this->showDepartments = false;
-        $this->showForm = true;
+        if (empty($this->categoryIds)) {
+
+            $this->addError('selectCategory', 'Please select a category');
+
+        } else {
+
+            $this->showCategories = false;
+            $this->showDepartments = false;
+            $this->showForm = true;
+
+        }
     }
 
     public function addBtn() {
@@ -80,10 +92,18 @@ class LetsStart extends Component
         $this->validateOnly($property);
     }
 
+    public function displayBack($showDeptSec, $showCateSec, $showFormSec) {
+        if (!$showCateSec)
+            $this->reset();
+        $this->showCategories = $showCateSec;
+        $this->showDepartments = $showDeptSec;
+        $this->showForm = $showFormSec;
+    }
+
     public function submit() {
         $this->validate();
 
-        $this->projectRepository->store($this->project, $this->files);
+        $this->projectRepository->store($this->project, $this->files, $this->categories);
 
         $this->reset();
         session()->flash('message', 'Project Created Successfully.!');

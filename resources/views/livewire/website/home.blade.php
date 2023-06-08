@@ -8,7 +8,7 @@
                                 }}</span></h2>
                         <p>{{ __("main_trans.title3") }}</p>
                         <div class="head-buttons">
-                            <a class="bttn btn-purple" href="{{ URL('letsStart') }}">
+                            <a class="bttn btn-purple" data-turbo="false" href="{{ URL('letsStart') }}">
                                 {{ __('main_trans.Get Started') }}
                                 <i class='bx bx-right-arrow-alt'></i>
                             </a>

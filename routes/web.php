@@ -12,6 +12,13 @@ Route::group([
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
     Route::group(['middleware' => 'auth'], function () {
         Route::get('logout', fn () => view('home'))->name('logout');
+        Route::get('myProjects', fn () => view('my-projects'))->name('myProjects');
+        Route::get('/myProjects/{id}', fn ($id) => view('my-project-show')->with('id', $id))->name('myProjects.show');
+        Route::get('project/{id}', fn () => view('project'))->name('project');
+        Route::get('/tickets', fn () => view('ticket'))->name('tickets');
+        Route::get('/tickets/1', fn () => view('ticket-show'))->name('tickets.show');
+        Route::get('myProfile', fn () => view('profile'))->name('myProfile');
+        Route::get('letsStart', fn () => view('lets-start'))->name('letsStart');
     });
 
     Route::group(['middleware' => ['guest']], function () {
@@ -26,16 +33,9 @@ Route::group([
     Route::get('/faq', fn () => view('faq'))->name('faq');
     Route::get('/home', fn () => view('home'))->name('home');
     Route::get('/about', fn () => view('about'))->name('about');
-    Route::get('/tickets', fn () => view('ticket'))->name('tickets');
-    Route::get('/tickets/1', fn () => view('ticket-show'))->name('tickets.show');
-
     Route::get('store', fn () => view('store'))->name('store');
     Route::get('gallary', fn () => view('gallary'))->name('gallary');
-    Route::get('myProfile', fn () => view('profile'))->name('myProfile');
-    Route::get('letsStart', fn () => view('lets-start'))->name('letsStart');
-    Route::get('myProjects', fn () => view('my-projects'))->name('myProjects');
     // Route::get('project/{id}', fn ($id) => view('project', )->with('id', $id))->name('project');
-    Route::get('project/{id}', fn () => view('project'))->name('project');
 
 });
 
