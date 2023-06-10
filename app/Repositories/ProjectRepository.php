@@ -15,8 +15,16 @@ class ProjectRepository implements ProjectRepositoryInterface {
         $this->projectAttachmentRepository = $projectAttachmentRepository;
     }
 
-    public function getProjectById($id) {
-        return Project::find($id);
+    public function getProjectById($id, $auth = false) {
+        $project = Project::find($id);
+        if ($auth) {
+            if ($project->user->id == auth()->user()->id)
+                return $project;
+            else
+                return null;
+        }
+        else
+            return $project;
     }
 
     public function getAllProjects($auth = false) {

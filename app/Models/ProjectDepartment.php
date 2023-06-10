@@ -12,6 +12,8 @@ class ProjectDepartment extends Model
 
     protected $guarded = [];
 
+    protected $with = ['categories'];
+
     public function categories() {
         return $this->hasMany(ProjectCategory::class);
     }

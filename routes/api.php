@@ -1,9 +1,12 @@
 <?php
 
 use App\Helpers\Response;
-use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\ProjectDepartmentController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\GalleryProject\GalleryProjectController;
+use App\Http\Controllers\Api\Project\ProjectController;
+use App\Http\Controllers\Api\Project\ProjectDepartmentController;
+use App\Http\Controllers\Api\Project\ProjectReplyController;
+use App\Http\Controllers\Api\ReadyProject\ReadyProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,13 +25,29 @@ Route::post('/login', [AuthController::class, 'login'])->name('api.login');
 // verification action
 Route::get('/email/verify/{token}', [AuthController::class, 'verify'])->name('api.email.verify');
 
+// project departments
+Route::get('/projects/departments', [ProjectDepartmentController::class, 'index'])->name('api.projects.departments.index');
+Route::get('/projects/departments/{id}', [ProjectDepartmentController::class, 'show'])->name('api.projects.deparments.show');
+
+// gallery projects
+Route::get('/gallery', [GalleryProjectController::class, 'index'])->name('api.gallery.index');
+Route::get('/gallery/{id}', [GalleryProjectController::class, 'show'])->name('api.gallery.show');
+
+// Ready projects
+Route::get('/store/projects', [ReadyProjectController::class, 'index'])->name('api.store.projects.index');
+Route::get('/store/projects/{id}', [ReadyProjectController::class, 'show'])->name('api.store.projects.show');
+
 Route::middleware('auth:sanctum')->group(function () {
     // Auth
     Route::delete('/logout', [AuthController::class, 'logout'])->name('api.logout');
 
-    //
-    Route::get('/project/departments', [ProjectDepartmentController::class, 'index'])->name('api.project.department.index');
-    Route::get('/project/departments/{id}', [ProjectDepartmentController::class, 'show'])->name('api.project.deparment.show');
+    // my projects
+    Route::get('/projects', [ProjectController::class, 'index'])->name('api.projects.index');
+    Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('api.projects.show');
+    // Route::post('/projects', [ProjectController::class, 'store'])->name('api.projects.store');
+
+    // project replies
+    Route::get('/projects/{id}/replies', [ProjectReplyController::class, 'index'])->name('api.projects.replies');
 });
 
 //? This route for any invalid request ;)

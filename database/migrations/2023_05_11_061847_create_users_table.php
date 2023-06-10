@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('country_code')->default('+20');
             $table->enum('state', ['pending', 'activated', 'blocked'])->default('pending');
+            $table->string('avatar')->nullable();
             $table->rememberToken();
             $table->timestamps();
 

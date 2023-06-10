@@ -10,6 +10,8 @@ class GalleryProject extends Model
 
     protected $guarded = [];
 
+    protected $with = ['type'];
+
     public function user() {
         return $this->belongsTo(User::class);
     }

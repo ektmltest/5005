@@ -6,6 +6,11 @@ use App\Interfaces\ProjectDepartmentRepositoryInterface;
 use App\Models\ProjectDepartment;
 
 class ProjectDepartmentRepository implements ProjectDepartmentRepositoryInterface {
+
+    public function getDepartmentById($id) {
+        return ProjectDepartment::find($id);
+    }
+
     public function getAllDeparments() {
         return ProjectDepartment::orderBy('created_at')->get();
     }

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Interfaces\ProjectDepartmentRepositoryInterface;
-use Illuminate\Http\Request;
 
 class ProjectDepartmentController extends Controller
 {

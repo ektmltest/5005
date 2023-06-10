@@ -11,6 +11,11 @@ class ProjectReply extends Model
 
     protected $guarded = [];
 
+    protected $with = [
+        'user',
+        'project'
+    ];
+
     public function user() {
         return $this->belongsTo(User::class);
     }

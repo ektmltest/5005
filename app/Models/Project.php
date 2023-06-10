@@ -9,6 +9,9 @@ class Project extends Model
 
     protected $guarded = [];
 
+    // * user defined attributes * //
+    protected $appends = ['price'];
+
     public function user() {
         return $this->belongsTo(User::class);
     }
@@ -35,5 +38,15 @@ class Project extends Model
 
     public function replies() {
         return $this->hasMany(ProjectReply::class);
+    }
+
+    // ** attributes ** //
+    public function getPriceAttribute() {
+        $price = 0;
+        foreach ($this->categories as $category) {
+            $price += $category->start_price;
+        }
+
+        return $price;
     }
 }
