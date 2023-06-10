@@ -89,6 +89,11 @@ class User extends Authenticatable
         return $this->hasMany(Newspaper::class);
     }
 
+    //////* functions *///////
+    public function verified() {
+        return !is_null($this->email_verified_at);
+    }
+
     //////* Attributes *//////
     public function getFullNameAttribute() {
         return $this->fname . ' ' . $this->lname;

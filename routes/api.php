@@ -1,5 +1,7 @@
 <?php
 
+use App\Helpers\Response;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ProjectDepartmentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,9 +17,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/register', [AuthController::class, 'register'])->name('api.register');
+Route::post('/login', [AuthController::class, 'login'])->name('api.login');
+// verification action
+Route::get('/email/verify/{token}', [AuthController::class, 'verify'])->name('api.email.verify');
+
+Route::middleware('auth:sanctum')->group(function () {
+    // Auth
+    Route::delete('/logout', [AuthController::class, 'logout'])->name('api.logout');
+
+    //
+    Route::get('/project/departments', [ProjectDepartmentController::class, 'index'])->name('api.project.department.index');
+    Route::get('/project/departments/{id}', [ProjectDepartmentController::class, 'show'])->name('api.project.deparment.show');
 });
 
-Route::get('/project/departments', [ProjectDepartmentController::class, 'index'])->name('project.department.index');
-Route::get('/project/departments/{id}', [ProjectDepartmentController::class, 'show'])->name('project.deparment.show');
+//? This route for any invalid request ;)
+Route::any('{any}', function () {
+    // dd(request()->getUri());
+    return (new Response)->notFound(NULL, 'resource');
+})->where('any', '.*');

@@ -7,6 +7,12 @@ use Illuminate\Validation\Rules\Password;
 
 class ValidationRequest extends FormRequest
 {
+    public $validator = NULL;
+    protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
+    {
+        $this->validator = $validator;
+    }
+
     protected function nameRule($min = 3, $max = 255, $update = false) {
         $rules = ["min: $min", "max: $max", "string"];
 
@@ -16,7 +22,7 @@ class ValidationRequest extends FormRequest
         return $rules;
     }
 
-    protected function emailRule($update = false, $exists = false, $table='users') {
+    protected function emailRule($update = false, $exists = false, $table='users', $unique = false) {
         $rules = ['email'];
 
         if (!$update)
@@ -24,6 +30,9 @@ class ValidationRequest extends FormRequest
 
         if ($exists)
             $rules[] = "exists:$table,email";
+
+        if ($unique)
+            $rules = "unique:users,email";
 
         return $rules;
     }
@@ -64,5 +73,9 @@ class ValidationRequest extends FormRequest
 
     protected function phoneRule() {
         return ['required', 'numeric'];
+    }
+
+    protected function phoneCodeRule() {
+        return ['required'];
     }
 }

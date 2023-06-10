@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequest extends ValidationRequest
+class RegisterRequest extends ValidationRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,12 @@ class LoginRequest extends ValidationRequest
     public function rules(): array
     {
         return [
-            'email' => $this->emailRule(exists: true),
-            'password' => $this->passwordRule('login'),
+            'fname' => parent::nameRule(),
+            'lname' => parent::nameRule(),
+            'email' => parent::emailRule(unique: true),
+            'password' => parent::passwordRule(case: 'register'),
+            'country_code' => parent::phoneCodeRule(),
+            'phone' => parent::phoneRule(),
         ];
     }
 }

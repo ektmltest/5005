@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -37,6 +38,11 @@ Route::group([
     Route::get('gallary', fn () => view('gallary'))->name('gallary');
     // Route::get('project/{id}', fn ($id) => view('project', )->with('id', $id))->name('project');
 
-});
 
+    //? This route for any invalid request ;)
+    // Route::any('{any}', function () {
+    //     // dd(request()->getUri());
+    //     return (new Response)->notFound(NULL, 'resource');
+    // })->where('any', '.*');
+});
 

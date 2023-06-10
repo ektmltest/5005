@@ -27,6 +27,6 @@
 {{-- <script src="{{asset('assets/js/projects.js')}}"></script> --}}
 
 <!-- Turbo JS -->
-<script type="module">
+{{-- <script type="module">
     import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';
-</script>
+</script> --}}
