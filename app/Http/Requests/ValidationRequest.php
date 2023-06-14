@@ -78,4 +78,12 @@ class ValidationRequest extends FormRequest
     protected function phoneCodeRule() {
         return ['required'];
     }
+
+    protected function existsRule($table, $col = 'id', $required = true) {
+        $rules = [];
+        if ($required)
+            $rules[] = 'required';
+        $rules[] = "exists:$table,$col";
+        return $rules;
+    }
 }

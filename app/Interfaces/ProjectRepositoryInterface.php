@@ -14,4 +14,6 @@ interface ProjectRepositoryInterface {
 
     public function delete(Project $project);
 
+    public function prepareProject($data): Project;
+
 }

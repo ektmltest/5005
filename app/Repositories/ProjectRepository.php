@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Interfaces\ProjectAttachmentRepositoryInterface;
+use App\Interfaces\ProjectCategoryRepositoryInterface;
 use App\Interfaces\ProjectRepositoryInterface;
 use App\Models\Project;
 use Illuminate\Http\Request;
@@ -10,9 +11,11 @@ use Illuminate\Support\Facades\DB;
 
 class ProjectRepository implements ProjectRepositoryInterface {
     protected ProjectAttachmentRepositoryInterface $projectAttachmentRepository;
+    protected ProjectCategoryRepositoryInterface $projectCategoryRepository;
 
-    public function __construct(ProjectAttachmentRepositoryInterface $projectAttachmentRepository) {
+    public function __construct(ProjectAttachmentRepositoryInterface $projectAttachmentRepository, ProjectCategoryRepositoryInterface $projectCategoryRepository) {
         $this->projectAttachmentRepository = $projectAttachmentRepository;
+        $this->projectCategoryRepository = $projectCategoryRepository;
     }
 
     public function getProjectById($id, $auth = false) {
@@ -33,6 +36,14 @@ class ProjectRepository implements ProjectRepositoryInterface {
         return Project::orderBy('created_at')->get();
     }
 
+    public function prepareProject($data): Project {
+        $project = new Project;
+        $project->name = $data['name'];
+        $project->description = $data['description'];
+
+        return $project;
+    }
+
     public function store(Project $project, $files, $categories) {
         $project->project_state_id = 1; // TODO: Must Be Updated
         $project->user_id = auth()->user()->id;
@@ -42,16 +53,7 @@ class ProjectRepository implements ProjectRepositoryInterface {
             $this->projectAttachmentRepository->store($project, $file);
         }
 
-        $dataToInsert = [];
-        foreach ($categories as $category) {
-            $dataToInsert[] = [
-                'project_id' => $project->id,
-                'project_category_id' => $category->id,
-            ];
-        }
-
-        DB::table('project_pivot_categories')
-            ->insert($dataToInsert);
+        $this->projectCategoryRepository->storeToPivotBulk($categories, $project);
 
         return $project;
     }

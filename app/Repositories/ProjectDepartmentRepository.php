@@ -18,4 +18,12 @@ class ProjectDepartmentRepository implements ProjectDepartmentRepositoryInterfac
     public function getDepartmentCategories($id) {
         return ProjectDepartment::find($id)->categories;
     }
+
+    public function checkCategoriesDependency($department, $categories) {
+        foreach ($categories as $category) {
+            if ($category->project_department_id != $department->id)
+                return false;
+        }
+        return true;
+    }
 }

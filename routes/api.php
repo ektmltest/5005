@@ -3,6 +3,7 @@
 use App\Helpers\Response;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\GalleryProject\GalleryProjectController;
+use App\Http\Controllers\Api\Profile\ProfileController;
 use App\Http\Controllers\Api\Project\ProjectCategoryController;
 use App\Http\Controllers\Api\Project\ProjectController;
 use App\Http\Controllers\Api\Project\ProjectDepartmentController;
@@ -54,10 +55,13 @@ Route::middleware('auth:sanctum')->group(function () {
     // ? Auth
     Route::delete('/logout', [AuthController::class, 'logout'])->name('api.logout');
 
+    // ? Profile
+    Route::get('/profile', [ProfileController::class, 'index'])->name('api.profile');
+
     // ? my projects
     Route::get('/projects', [ProjectController::class, 'index'])->name('api.projects.index');
     Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('api.projects.show');
-    // Route::post('/projects', [ProjectController::class, 'store'])->name('api.projects.store');
+    Route::post('/projects', [ProjectController::class, 'store'])->name('api.projects.store');
 
     // ? Ready projects
     Route::get('/store/projects', [ReadyProjectController::class, 'index'])->name('api.store.projects.index');

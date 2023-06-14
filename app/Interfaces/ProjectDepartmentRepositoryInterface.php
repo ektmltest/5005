@@ -9,4 +9,6 @@ interface ProjectDepartmentRepositoryInterface {
     public function getAllDeparments();
 
     public function getDepartmentCategories($id);
+
+    public function checkCategoriesDependency($department, $categories);
 }
