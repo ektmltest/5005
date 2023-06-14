@@ -9,4 +9,8 @@ class ProjectCategoryRepository implements ProjectCategoryRepositoryInterface {
     public function getAllCategories() {
         return ProjectCategory::all();
     }
+
+    public function getCategoryById($id) {
+        return ProjectCategory::find($id);
+    }
 }

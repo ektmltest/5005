@@ -14,7 +14,8 @@ class GallaryProjectRepository implements GallaryProjectRepositoryInterface
         }
     }
 
-    public function getProjectById($id) {
+    public function getProjectById($id)
+    {
         return GalleryProject::find($id);
     }
 }

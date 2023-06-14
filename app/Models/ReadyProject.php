@@ -11,6 +11,8 @@ class ReadyProject extends Model
 
     protected $guarded = [];
 
+    protected $appends = ['is_liked'];
+
     public function department() {
         return $this->belongsTo(ReadyProjectDepartment::class, 'ready_project_department_id');
     }
@@ -68,5 +70,12 @@ class ReadyProject extends Model
             get: fn ($value) => json_decode($value, true)[app()->getLocale()],
             set: fn ($value) => json_encode($value)
         );
+    }
+
+    public function getIsLikedAttribute() {
+        if (auth()->check())
+            return !is_null($this->liked());
+        else
+            return null;
     }
 }

@@ -14,8 +14,12 @@ class ReadyProjectRepository implements ReadyProjectRepositoryInterface {
         return $this->findById($ready_project['id']);
     }
 
-    public function getAllReadyProjects() {
-        return ReadyProject::orderBy('created_at')->get();
+    public function getAllReadyProjects($paginate = false, $num = 5) {
+        if ($paginate) {
+            return ReadyProject::paginate($num);
+        } else {
+            return ReadyProject::orderBy('created_at')->get();
+        }
     }
 
     public function findById($id) {

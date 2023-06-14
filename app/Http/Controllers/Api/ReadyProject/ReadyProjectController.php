@@ -25,7 +25,7 @@ class ReadyProjectController extends Controller
 
         try {
 
-            $projects = $this->readyProjectRepository->getAllReadyProjects();
+            $projects = $this->readyProjectRepository->getAllReadyProjects(paginate: request()->has('paginate'));
 
             return $this->response->ok([
                 'message' => 'All ready projects (store projects)!',
@@ -46,10 +46,41 @@ class ReadyProjectController extends Controller
 
             $project = $this->readyProjectRepository->findById($id);
 
+            if (!$project)
+                return $this->response->notFound(obj: 'ready project');
+
             return $this->response->ok([
                 'message' => 'Ready project!',
                 'data' => $project,
             ]);
+
+        } catch (\Throwable $th) {
+
+            $this->response->internalServerError($th->getMessage());
+
+        }
+
+    }
+
+    public function like($id) {
+
+        try {
+
+            $project = $this->readyProjectRepository->findById($id);
+
+            if (!$project)
+                return $this->response->notFound(obj: 'ready project');
+
+            if ($this->readyProjectRepository->toggleLike($project))
+                return $this->response->ok([
+                    'message' => 'Ready project like has been added successfully!',
+                    'data' => $project,
+                ]);
+            else
+                return $this->response->ok([
+                    'message' => 'Ready project like has been removed successfully!',
+                    'data' => $project,
+                ]);
 
         } catch (\Throwable $th) {
 
