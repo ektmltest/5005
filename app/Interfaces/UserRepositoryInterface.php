@@ -4,12 +4,15 @@ namespace App\Interfaces;
 
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\UserUpdateRequest;
 
 interface UserRepositoryInterface {
 
     public function store(RegisterRequest $request);
 
     public function checkCredentials(LoginRequest $request);
+
+    public function update(UserUpdateRequest $request);
 
     public function generateToken($user = null);
 

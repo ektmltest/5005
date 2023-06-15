@@ -37,14 +37,25 @@ class ValidationRequest extends FormRequest
         return $rules;
     }
 
-    protected function passwordRule($case) {
-        $rules = ['required'];
+    protected function passwordRule($case, $confirmed = true, $no_strict = false) {
+        $rules = [];
         if($case == 'login') {
             array_push($rules, Password::min(8));
-        } else if($case == 'register' || $case == 'update') {
+            $rules[] = 'required';
+        } else if($case == 'register') {
             $rules = array_merge($rules, [
                 'confirmed',
                 Password::min(8)
+                    ->letters()
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
+            ]);
+            $rules[] = 'required';
+        } else if ($case == 'update') {
+            $rules = array_merge($rules, [
+                $confirmed ? 'confirmed' : '',
+                $no_strict ? '' : Password::min(8)
                     ->letters()
                     ->mixedCase()
                     ->numbers()
@@ -68,11 +79,14 @@ class ValidationRequest extends FormRequest
     }
 
     protected function fileRule() {
-        return ['required', 'file', 'max:10000'];
+        return ['required', 'file', 'max:10000', 'mimes:png,jpg,webp,gif'];
     }
 
-    protected function phoneRule() {
-        return ['required', 'numeric'];
+    protected function phoneRule($update = false) {
+        $rules = ['numeric'];
+        if (!$update)
+            $rules[] = 'required';
+        return $rules;
     }
 
     protected function phoneCodeRule() {

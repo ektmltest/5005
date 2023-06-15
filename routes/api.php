@@ -57,11 +57,15 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // ? Profile
     Route::get('/profile', [ProfileController::class, 'index'])->name('api.profile');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('api.profile.update');
 
     // ? my projects
     Route::get('/projects', [ProjectController::class, 'index'])->name('api.projects.index');
     Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('api.projects.show');
     Route::post('/projects', [ProjectController::class, 'store'])->name('api.projects.store');
+
+    // ? project replies
+    Route::get('/projects/{id}/replies', [ProjectReplyController::class, 'index'])->name('api.projects.replies');
 
     // ? Ready projects
     Route::get('/store/projects', [ReadyProjectController::class, 'index'])->name('api.store.projects.index');
@@ -73,9 +77,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/tickets/available', [TicketController::class, 'showAllAvailableTickets'])->name('api.tickets.available');
     Route::get('/tickets/closed', [TicketController::class, 'showAllClosedTickets'])->name('api.tickets.closed');
     Route::get('/tickets/{id}', [TicketController::class, 'show'])->name('api.tickets.show');
-
-    // ? project replies
-    Route::get('/projects/{id}/replies', [ProjectReplyController::class, 'index'])->name('api.projects.replies');
 });
 
 //? This route for any invalid request ;)

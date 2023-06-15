@@ -14,4 +14,8 @@ class ProjectAttachment extends Model
     public function project() {
         return $this->belongsTo(Project::class);
     }
+
+    public function getFileAttribute() {
+        return asset($this->attributes['file']);
+    }
 }

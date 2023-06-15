@@ -19,6 +19,7 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'state' => fake()->randomElement(['pending', 'activated', 'blocked']),
             'rank_id' => Rank::inRandomOrder()->first()->id,
+            'avatar' => fake()->imageUrl(),
         ];
     }
 

@@ -2,15 +2,17 @@
 
 namespace App\Repositories;
 
+use App\Helpers\File;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Interfaces\UserRepositoryInterface;
 use App\Interfaces\VerifyEmailRepositoryInterface;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class UserRepository implements UserRepositoryInterface {
-
+    use File;
     protected User $user;
     protected VerifyEmailRepositoryInterface $verifyEmailRepository;
 
@@ -29,9 +31,38 @@ class UserRepository implements UserRepositoryInterface {
         $user->country_code = $data['country_code'];
         $user->phone = $data['phone'];
         $user->rank_id = 1; // TODO: changing this to default rank
+        // $user->avatar = $this->prepareFilePath($data['avatar'], 'users', true);
 
         $user->save();
 
+        $this->user = $user;
+
+        return $user;
+    }
+
+    public function update(UserUpdateRequest $request) {
+        $data = $request->validated();
+
+        $user = $this->findByEmail(auth()->user()->email);
+        $user->fname = isset($data['fname']) ? $data['fname'] : $user->fname;
+        $user->lname = isset($data['lname']) ? $data['lname'] : $user->lname;
+        $user->phone = isset($data['phone']) ? $data['phone'] : $user->phone;
+        $user->phone = isset($data['avatar']) ? $this->prepareFilePath($data['avatar'], 'users', true) : $user->avatar;
+
+        if (isset($data['old_password'])) {
+            if (password_verify($data['old_password'], $user->password)) {
+                if (isset($data['new_password'])) {
+                    $user->password = bcrypt($data['new_password']);
+                    auth()->user()->tokens()->delete();
+                } else {
+                    return 'new_password_error';
+                }
+            } else {
+                return 'wrong_password_error';
+            }
+        }
+
+        $user->save();
         $this->user = $user;
 
         return $user;

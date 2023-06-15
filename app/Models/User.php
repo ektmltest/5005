@@ -98,4 +98,8 @@ class User extends Authenticatable
     public function getFullNameAttribute() {
         return $this->fname . ' ' . $this->lname;
     }
+
+    public function getAvatarAttribute() {
+        return asset($this->attributes['avatar']);
+    }
 }
