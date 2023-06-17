@@ -24,7 +24,70 @@ return [
     'Tickets Management'=> 'إدارة التذاكر',
     'Ticket Categories'=> 'أقسام التذاكر',
 
+    'POSTS SYSTEM' => 'نظام المنشورات',
+    'Posts List' => 'قائمة المنشورات',
+    'Add a new post' => 'اضافة منشور جديد',
 
+    'PUBLIC SYSTEMS' => 'الإنظمة العامة',
+    'Users Management' => 'إدارة الإعضاء',
+    'Translation System' => 'نظام الترجمة',
+    'Roles management' => 'إدارة الرتب',
+
+    'SITE DETAILS' => 'تفاصيل الموقع',
+    'Site settings' => 'إعدادات الموقع',
+    'Our work sections' => 'أقسام المعرض',
+    'Our work' => 'معرض أعمالنا',
+    'FAQ sections' => 'أقسام الأسئله',
+    'FAQ' => 'الإسئلة الشائعة',
+    'Our platforms' => 'منصاتنا',
+
+    'CURRENT CUSTOMERS' => 'عدد العملاء',
+    'READY PROJECTS COUNT' => 'عدد المشاريع الجاهزة',
+    'PROJECTS COUNT' => 'عدد المشاريع',
+    'AVAILABLE TICKETS COUNT' => 'عدد التذاكر المتاحة',
+
+    'LAST 10 CREATED ACCOUNTS' => 'آخر 10 حسابات منشأة',
+    'LAST 10 PROJECTS' => 'آخر 10 مشاريع',
+
+    'PROJECT NAME' => 'إسم المشروع',
+    'CLIENT' => 'العميل',
+    'CATEGORY' => 'القسم',
+    'STATUS' => 'الحالة',
+
+
+
+    //Projects Section
+    'ARABIC NAME' => 'الإسم العربي',
+    'ENGLISH NAME' => 'الإسم الإنجليزي',
+    'ICON' => 'الأيقونه',
+    'ACTION' => 'الإجراء',
+
+    // Projects Sections
+    'Edit Section' => 'تعديل القسم',
+    'Delete Section' => 'حذف القسم',
+    'Name Ar' => 'اسم القسم عربي',
+    'Name En' => 'اسم القسم انجليزي',
+    'Icon' => 'الأيقونة',
+    'Edit' => 'تعديل',
+    'Delete' => 'حذف',
+    'Cancel' => 'الغاء',
+    'QuesDele' => 'هل أنت متأكد من عملية الحذف.؟!',
+
+    'START PRICE' => 'السعر المبدأي',
+    'Project Department' => 'التصنيف',
+    'Add Section' => 'اضافة قسم',
+
+
+    // Projects Categories
+    'PROJECTS CATEGORIES' => 'تصنيفات المشاريع',
+    'Edit Category' => 'تعديل التصنيف',
+    'Delete Category' => 'حذف التصنيف',
+    'BELONGS TO' => 'ينتمي إلى',
+    'Add Category' => 'اضافة تصنيف',
+
+
+    // Manage Catalog
+    'Catalog' => 'الكاتالوج',
 
 
 
