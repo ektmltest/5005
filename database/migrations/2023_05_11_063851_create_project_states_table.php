@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('project_states', function (Blueprint $table) {
             $table->id();
-            $table->json('name')->unique();
+            $table->json('name'); // todo: edited
             $table->string('icon');
             $table->timestamps();
         });

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ticket_types', function (Blueprint $table) {
             $table->id();
-            $table->json('name')->unique();
+            $table->json('name'); // todo: unique deleted
             $table->timestamps();
         });
     }

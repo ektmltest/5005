@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('addons', function (Blueprint $table) {
             $table->id();
-            $table->json('name')->unique();
+            $table->json('name'); // todo
             $table->double('price');
             $table->timestamps();
 

@@ -9,7 +9,7 @@ class Project extends Model
 
     protected $guarded = [];
 
-    protected $with = ['attachments'];
+    protected $with = ['attachments', 'state'];
 
     // * user defined attributes * //
     protected $appends = ['price'];
