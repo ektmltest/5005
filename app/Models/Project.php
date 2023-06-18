@@ -9,10 +9,10 @@ class Project extends Model
 
     protected $guarded = [];
 
-    protected $with = ['attachments', 'state', 'department()'];
+    protected $with = ['attachments', 'state'];
 
     // * user defined attributes * //
-    protected $appends = ['price'];
+    protected $appends = ['price', 'department'];
 
     public function user() {
         return $this->belongsTo(User::class);
@@ -50,5 +50,9 @@ class Project extends Model
         }
 
         return $price;
+    }
+
+    public function getDepartmentAttribute() {
+        return $this->department();
     }
 }
