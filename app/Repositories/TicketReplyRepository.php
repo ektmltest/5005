@@ -14,15 +14,15 @@ class TicketReplyRepository implements TicketReplyRepositoryInterface {
     }
 
     public function store($request, $ticket_id) {
-        $ticket = TicketReply::create([
+        $reply = TicketReply::create([
             'message' => $request->message,
             'user_id' => auth()->user()->id,
             'ticket_id' => $ticket_id
         ]);
 
         if (isset($request->file()['files']))
-            $this->ticketReplyAttachmentRepository->storeBulk($ticket, $request->file['files']);
+            $this->ticketReplyAttachmentRepository->storeBulk($reply, $request->file()['files']);
 
-        return $ticket;
+        return $reply;
     }
 }

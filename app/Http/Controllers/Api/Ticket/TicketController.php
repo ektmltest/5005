@@ -90,7 +90,7 @@ class TicketController extends Controller
 
         try {
 
-            $ticket = $this->ticketRepository->getTicketById($id);
+            $ticket = $this->ticketRepository->getTicketById($id, auth: true);
 
             if (!$ticket)
                 return $this->response->notFound(obj: 'ticket');
@@ -150,7 +150,7 @@ class TicketController extends Controller
         DB::beginTransaction();
         try {
 
-            $ticket = $this->ticketRepository->getTicketById($id);
+            $ticket = $this->ticketRepository->getTicketById($id, auth: true);
 
             if (!$ticket)
                 return $this->response->notFound(obj: 'ticket');

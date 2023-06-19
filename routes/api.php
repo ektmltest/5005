@@ -67,7 +67,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/projects', [ProjectController::class, 'store'])->name('api.projects.store');
 
     // ? project replies
-    Route::get('/projects/{id}/replies', [ProjectReplyController::class, 'index'])->name('api.projects.replies');
+    Route::get('/projects/{id}/replies', [ProjectReplyController::class, 'index'])->name('api.projects.replies.index');
+    Route::post('/projects/{id}/replies', [ProjectReplyController::class, 'store'])->name('api.projects.replies.store');
 
     // ? Ready projects
     Route::get('/store/projects', [ReadyProjectController::class, 'index'])->name('api.store.projects.index');

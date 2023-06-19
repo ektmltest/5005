@@ -34,7 +34,7 @@ class ProfileController extends Controller
     public function update(UserUpdateRequest $request) {
         // if fails
         if(isset($request->validator) && $request->validator->fails()) {
-            return $this->response->badRequest('Data is not valid!', $request->validator->errors(), $request->except(['old_password', 'new_password', 'new_password_confirmation']));
+            return $this->response->badRequest(__('api/validation.data_not_valid'), $request->validator->errors(), $request->except(['old_password', 'new_password', 'new_password_confirmation']));
         }
 
         DB::beginTransaction();
@@ -44,9 +44,9 @@ class ProfileController extends Controller
 
             if (is_string($res)) {
                 if ($res == 'wrong_password_error')
-                    return $this->response->badRequest('Data is not valid!', ['old_password' => 'wrong password!'], $request->except(['old_password', 'new_password', 'new_password_confirmation']));
+                    return $this->response->badRequest(__('api/validation.data_not_valid'), ['old_password' => 'wrong password!'], $request->except(['old_password', 'new_password', 'new_password_confirmation']));
                 else if ($res == 'new_password_error')
-                    return $this->response->badRequest('Data is not valid!', ['new_password' => 'new password is required!'], $request->except(['old_password', 'new_password', 'new_password_confirmation']));
+                    return $this->response->badRequest(__('api/validation.data_not_valid'), ['new_password' => 'new password is required!'], $request->except(['old_password', 'new_password', 'new_password_confirmation']));
                 else
                     throw new \Exception('App\Http\Controllers\Api\ProfileController::update() ===> something went wrong!');
             }
@@ -54,7 +54,7 @@ class ProfileController extends Controller
             DB::commit();
 
             return $this->response->ok([
-                'message' => 'user data has been updated successfully!',
+                'message' => __('api/messages.user_updated'),
                 'data' => $res
             ]);
 

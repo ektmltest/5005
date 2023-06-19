@@ -11,6 +11,10 @@ class TicketReply extends Model
 
     protected $guarded = [];
 
+    protected $with = [
+        'attachments'
+    ];
+
     public function ticket() {
         return $this->belongsTo(Ticket::class);
     }

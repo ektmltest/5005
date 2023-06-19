@@ -2,11 +2,12 @@
 
 namespace App\Interfaces;
 
-use App\Models\TicketReplyAttachment;
+use App\Models\TicketReply;
 
 interface TicketReplyAttachmentRepositoryInterface {
 
-    public function store(TicketReplyAttachment $model, $file, $isLivewire = true);
+    public function store(TicketReply $model, $file, $isLivewire = true);
 
-    public function storeBulk(TicketReplyAttachment $model, $files, $isLivewire = true);
+    public function storeBulk(TicketReply $model, $files, $isLivewire = true);
+
 }

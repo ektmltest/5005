@@ -28,7 +28,7 @@ class AuthController extends Controller
     public function register(RegisterRequest $request) {
         // if fails
         if(isset($request->validator) && $request->validator->fails()) {
-            return $this->response->badRequest('Data is not valid!', $request->validator->errors(), $request->except(['password', 'password_confirmation']));
+            return $this->response->badRequest(__('api/validation.data_not_valid'), $request->validator->errors(), $request->except(['password', 'password_confirmation']));
         }
 
         DB::beginTransaction();
@@ -56,7 +56,7 @@ class AuthController extends Controller
     public function login(LoginRequest $request) {
         // if fails
         if(isset($request->validator) && $request->validator->fails()) {
-            return $this->response->badRequest('Data is not valid!', $request->validator->errors(), $request->except(['password', 'password_confirmation']));
+            return $this->response->badRequest(__('api/validation.data_not_valid'), $request->validator->errors(), $request->except(['password', 'password_confirmation']));
         }
 
         DB::beginTransaction();
@@ -65,7 +65,7 @@ class AuthController extends Controller
             $user = $this->userRepository->checkCredentials($request);
 
             if (!$user)
-                return $this->response->forbidden('Wrong password!');
+                return $this->response->forbidden(__('api/validation.wrong_password'));
 
             if (!$user->verified())
                 $this->sendVerificationLink($user->email, api: true);
@@ -75,7 +75,7 @@ class AuthController extends Controller
             DB::commit();
 
             return $this->response->ok([
-                'message' => 'Signed in successfully!',
+                'message' => __('api/messages.signed_in'),
                 'token' => $token,
                 'data' => $user
             ]);
@@ -92,7 +92,7 @@ class AuthController extends Controller
         auth()->user()->tokens()->delete();
 
         return $this->response->ok([
-            'message' => 'Signed out successfully!',
+            'message' => __('api/messages.signed_out'),
         ]);
     }
 
@@ -102,12 +102,12 @@ class AuthController extends Controller
         try {
 
             if (!request()->has('email'))
-                return $this->response->badRequest('Email is not found.');
+                return $this->response->badRequest(__('api/validation.email_not_found'));
 
             $user = $this->userRepository->verify(request()->get('email'), $token);
 
             return $this->response->ok([
-                'message' => 'User account has been verified!',
+                'message' => __('api/messages.email_verified'),
                 'data' => $user,
             ]);
 

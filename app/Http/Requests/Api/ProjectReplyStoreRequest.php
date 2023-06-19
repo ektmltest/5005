@@ -2,16 +2,17 @@
 
 namespace App\Http\Requests\Api;
 
+use App\Http\Requests\ValidationRequest;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProjectReplyStoreRequest extends FormRequest
+class ProjectReplyStoreRequest extends ValidationRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -22,7 +23,8 @@ class ProjectReplyStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'message' => parent::messageRule(),
+            'files.*' => parent::fileRule(),
         ];
     }
 }

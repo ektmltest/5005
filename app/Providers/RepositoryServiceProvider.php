@@ -7,6 +7,8 @@ use App\Interfaces\GallaryProjectTypeRepositoryInterface;
 use App\Interfaces\ProjectAttachmentRepositoryInterface;
 use App\Interfaces\ProjectCategoryRepositoryInterface;
 use App\Interfaces\ProjectDepartmentRepositoryInterface;
+use App\Interfaces\ProjectReplyAttachmentRepositoryInterface;
+use App\Interfaces\ProjectReplyRepositoryInterface;
 use App\Interfaces\ProjectRepositoryInterface;
 use App\Interfaces\ReadyProjectDepartmentRepositoryInterface;
 use App\Interfaces\ReadyProjectRepositoryInterface;
@@ -23,6 +25,8 @@ use App\Repositories\GallaryProjectTypeRepository;
 use App\Repositories\ProjectAttachmentRepository;
 use App\Repositories\ProjectCategoryRepository;
 use App\Repositories\ProjectDepartmentRepository;
+use App\Repositories\ProjectReplyAttachmentRepository;
+use App\Repositories\ProjectReplyRepository;
 use App\Repositories\ProjectRepository;
 use App\Repositories\ReadyProjectDepartmentRepository;
 use App\Repositories\ReadyProjectRepository;
@@ -70,6 +74,9 @@ class RepositoryServiceProvider extends ServiceProvider
         App::bind(ProjectDepartmentRepositoryInterface::class, ProjectDepartmentRepository::class);
         App::bind(ProjectAttachmentRepositoryInterface::class, ProjectAttachmentRepository::class);
         App::bind(ProjectRepositoryInterface::class, ProjectRepository::class);
+        // project replies
+        App::bind(ProjectReplyRepositoryInterface::class, ProjectReplyRepository::class);
+        App::bind(ProjectReplyAttachmentRepositoryInterface::class, ProjectReplyAttachmentRepository::class);
 
         // ? ready projects
         App::bind(ReadyProjectRepositoryInterface::class, ReadyProjectRepository::class);

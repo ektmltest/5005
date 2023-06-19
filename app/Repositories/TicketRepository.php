@@ -26,12 +26,15 @@ class TicketRepository implements TicketRepositoryInterface {
         return Ticket::where('user_id', auth()->user()->id)->where('status', 'closed')->get();
     }
 
-    public function getTicketById($id) {
+    public function getTicketById($id, $auth = false) {
         $ticket = Ticket::find($id);
-        if ($ticket && $ticket->user_id == auth()->user()->id)
-            return $ticket;
+        if ($auth)
+            if ($ticket && $ticket->user_id == auth()->user()->id)
+                return $ticket;
+            else
+                return null;
         else
-            return null;
+            return $ticket;
     }
 
     public function store(Ticket $ticket, $files) {

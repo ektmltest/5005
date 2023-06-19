@@ -11,7 +11,7 @@ interface TicketRepositoryInterface {
 
     public function getAllClosedTickets();
 
-    public function getTicketById($id);
+    public function getTicketById($id, $auth = false);
 
     public function store(Ticket $ticket, $files);
 

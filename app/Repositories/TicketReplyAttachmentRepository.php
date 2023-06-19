@@ -3,29 +3,30 @@
 namespace App\Repositories;
 use App\Helpers\File;
 use App\Interfaces\TicketReplyAttachmentRepositoryInterface;
+use App\Models\TicketReply;
 use App\Models\TicketReplyAttachment;
 use Illuminate\Support\Facades\DB;
 
 class TicketReplyAttachmentRepository implements TicketReplyAttachmentRepositoryInterface {
     use File;
 
-    public function store(TicketReplyAttachment $model, $file, $isLivewire = true) {
+    public function store(TicketReply $model, $file, $isLivewire = true) {
         TicketReplyAttachment::create([
             'file' => $this->prepareFilePath($file, 'tickets/replies', $isLivewire),
-            'ticket_id' => $model->id,
+            'ticket_reply_id' => $model->id,
         ]);
     }
 
-    public function storeBulk(TicketReplyAttachment $model, $files, $isLivewire = true) {
+    public function storeBulk(TicketReply $model, $files, $isLivewire = true) {
         $dataToInsert = [];
         foreach($files as $file) {
             $dataToInsert[] = [
                 'file' => $this->prepareFilePath($file, 'tickets/replies', $isLivewire),
-                'ticket_id' => $model->id,
+                'ticket_reply_id' => $model->id,
             ];
         }
 
-        DB::table('ticketx_attachments')
+        DB::table('ticket_reply_attachments')
             ->insert($dataToInsert);
     }
 
