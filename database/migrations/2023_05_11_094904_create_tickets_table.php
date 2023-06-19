@@ -15,6 +15,7 @@ return new class extends Migration
             $table->timestamps();
             // foreign keys
             $table->foreignId('ticket_type_id')->constrained('ticket_types')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

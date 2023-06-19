@@ -11,6 +11,9 @@ use App\Interfaces\ProjectRepositoryInterface;
 use App\Interfaces\ReadyProjectDepartmentRepositoryInterface;
 use App\Interfaces\ReadyProjectRepositoryInterface;
 use App\Interfaces\ResetPasswordTokenInterface;
+use App\Interfaces\TicketAttachmentRepositoryInterface;
+use App\Interfaces\TicketReplyAttachmentRepositoryInterface;
+use App\Interfaces\TicketReplyRepositoryInterface;
 use App\Interfaces\TicketRepositoryInterface;
 use App\Interfaces\TicketTypeRepositoryInterface;
 use App\Interfaces\UserRepositoryInterface;
@@ -24,6 +27,9 @@ use App\Repositories\ProjectRepository;
 use App\Repositories\ReadyProjectDepartmentRepository;
 use App\Repositories\ReadyProjectRepository;
 use App\Repositories\ResetPasswordTokenRepository;
+use App\Repositories\TicketAttachmentRepository;
+use App\Repositories\TicketReplyAttachmentRepository;
+use App\Repositories\TicketReplyRepository;
 use App\Repositories\TicketRepository;
 use App\Repositories\TicketTypeRepository;
 use App\Repositories\UserRepository;
@@ -54,6 +60,10 @@ class RepositoryServiceProvider extends ServiceProvider
         // ? Tickets
         App::bind(TicketTypeRepositoryInterface::class, TicketTypeRepository::class);
         App::bind(TicketRepositoryInterface::class, TicketRepository::class);
+        App::bind(TicketAttachmentRepositoryInterface::class, TicketAttachmentRepository::class);
+        // Ticket replies
+        App::bind(TicketReplyRepositoryInterface::class, TicketReplyRepository::class);
+        App::bind(TicketReplyAttachmentRepositoryInterface::class, TicketReplyAttachmentRepository::class);
 
         // ? projects
         App::bind(ProjectCategoryRepositoryInterface::class, ProjectCategoryRepository::class);

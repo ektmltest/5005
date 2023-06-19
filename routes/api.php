@@ -11,6 +11,8 @@ use App\Http\Controllers\Api\Project\ProjectReplyController;
 use App\Http\Controllers\Api\ReadyProject\ReadyProjectController;
 use App\Http\Controllers\Api\ReadyProject\ReadyProjectDepartmentController;
 use App\Http\Controllers\Api\Ticket\TicketController;
+use App\Http\Controllers\Api\Ticket\TicketReplyController;
+use App\Http\Controllers\Api\Ticket\TicketTypeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -72,11 +74,21 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/store/projects/{id}', [ReadyProjectController::class, 'show'])->name('api.store.projects.show');
     Route::get('/store/projects/like/{id}', [ReadyProjectController::class, 'like'])->name('api.store.projects.like');
 
+    // ? Ticket Types
+    Route::get('/tickets/types', [TicketTypeController::class, 'index'])->name('api.tickets.types.index');
+
     // ? Tickets
     Route::get('/tickets', [TicketController::class, 'index'])->name('api.tickets.index');
+    Route::post('/tickets', [TicketController::class, 'store'])->name('api.tickets.store');
     Route::get('/tickets/available', [TicketController::class, 'showAllAvailableTickets'])->name('api.tickets.available');
+    Route::put('/tickets/available/{id}', [TicketController::class, 'closeAvailableTicket'])->name('api.tickets.available.close');
     Route::get('/tickets/closed', [TicketController::class, 'showAllClosedTickets'])->name('api.tickets.closed');
     Route::get('/tickets/{id}', [TicketController::class, 'show'])->name('api.tickets.show');
+    // TODO: get allowed mimes
+
+    // ? Ticket replies
+    Route::get('/tickets/{id}/replies', [TicketReplyController::class, 'index'])->name('api.tickets.replies.index');
+    Route::post('/tickets/{id}/replies', [TicketReplyController::class, 'store'])->name('api.tickets.replies.store');
 });
 
 //? This route for any invalid request ;)

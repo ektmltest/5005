@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\TicketType;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,6 +23,7 @@ class TicketFactory extends Factory
             'description' => fake()->paragraph(),
             'status' => fake()->randomElement(['available', 'closed']),
             'ticket_type_id' => TicketType::inRandomOrder()->first()->id,
+            'user_id' => User::inRandomOrder()->first()->id,
         ];
     }
 }

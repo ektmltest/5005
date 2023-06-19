@@ -5,6 +5,7 @@ use App\Helpers\File;
 use App\Interfaces\TicketAttachmentRepositoryInterface;
 use App\Models\Ticket;
 use App\Models\TicketAttachment;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class TicketAttachmentRepository implements TicketAttachmentRepositoryInterface {
@@ -15,5 +16,18 @@ class TicketAttachmentRepository implements TicketAttachmentRepositoryInterface 
             'file' => $this->prepareFilePath($file, 'tickets', $isLivewire),
             'ticket_id' => $model->id,
         ]);
+    }
+
+    public function storeBulk(Ticket $model, $files, $isLivewire = true) {
+        $dataToInsert = [];
+        foreach($files as $file) {
+            $dataToInsert[] = [
+                'file' => $this->prepareFilePath($file, 'tickets', $isLivewire),
+                'ticket_id' => $model->id,
+            ];
+        }
+
+        DB::table('ticketx_attachments')
+            ->insert($dataToInsert);
     }
 }
