@@ -100,4 +100,8 @@ class ValidationRequest extends FormRequest
         $rules[] = "exists:$table,$col";
         return $rules;
     }
+
+    protected function rateRule() {
+        return ['required', 'numeric', 'min:0', 'max:1'];
+    }
 }

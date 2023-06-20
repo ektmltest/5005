@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\ReadyProject;
 use App\Helpers\Localizable;
 use App\Helpers\Response;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\RatingStoreRequest;
 use App\Interfaces\ReadyProjectRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -80,6 +81,35 @@ class ReadyProjectController extends Controller
                 return $this->response->ok([
                     'message' => __('api/messages.ready_proj_like_removed'),
                     'data' => $project,
+                ]);
+
+        } catch (\Throwable $th) {
+
+            $this->response->internalServerError($th->getMessage());
+
+        }
+
+    }
+
+    public function rate(RatingStoreRequest $request, $id) {
+
+        try {
+
+            $project = $this->readyProjectRepository->findById($id);
+
+            if (!$project)
+                return $this->response->notFound(obj: 'ready project');
+
+            if ($this->readyProjectRepository->setRate($project, $request->rating))
+                return $this->response->created(
+                    data: ['data' => $this->readyProjectRepository->findById($id)],
+                    createdObj: 'rate',
+                    msg: __('api/messages.ready_proj_rate_created')
+                );
+            else
+                return $this->response->ok([
+                    'message' => __('api/messages.ready_proj_rate_updated'),
+                    'data' => $this->readyProjectRepository->findById($id),
                 ]);
 
         } catch (\Throwable $th) {

@@ -9,6 +9,8 @@ return [
 
     'ready_proj_like_added' => 'تم اضافة الاعجاب بنجاح!',
     'ready_proj_like_removed' => 'تم حذف الاعجاب بنجاح!',
+    'ready_proj_rate_created' => 'تم اضافة تقييمك بنجاح!',
+    'ready_proj_rate_updated' => 'تم تحديث تقييمك بنجاح!',
 
     'ticket_closed' => 'تم غلق التذكرة بنجاح!',
 ];
