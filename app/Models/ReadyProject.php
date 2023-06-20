@@ -11,6 +11,8 @@ class ReadyProject extends Model
 
     protected $guarded = [];
 
+    protected $with = ['user'];
+
     protected $appends = ['is_liked'];
 
     public function department() {
@@ -43,6 +45,10 @@ class ReadyProject extends Model
 
     public function opinions() {
         return $this->hasMany(Opinion::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 
     //////* my functions *//////

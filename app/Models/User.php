@@ -91,6 +91,10 @@ class User extends Authenticatable
         return $this->hasMany(Newspaper::class);
     }
 
+    public function readyProjects() {
+        return $this->hasMany(ReadyProject::class);
+    }
+
     //////* functions *///////
     public function verified() {
         return !is_null($this->email_verified_at);

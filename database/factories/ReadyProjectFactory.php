@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\ReadyProjectDepartment;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -34,6 +35,7 @@ class ReadyProjectFactory extends Factory
             ],
             'image' => fake()->imageUrl(),
             'ready_project_department_id' => ReadyProjectDepartment::inRandomOrder()->first()->id,
+            'user_id' => User::inRandomOrder()->first()->id,
         ];
     }
 }

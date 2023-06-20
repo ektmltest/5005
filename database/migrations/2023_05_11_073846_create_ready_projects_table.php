@@ -23,6 +23,7 @@ return new class extends Migration
 
             // foreign keys
             $table->foreignId('ready_project_department_id')->constrained('ready_project_departments')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 
