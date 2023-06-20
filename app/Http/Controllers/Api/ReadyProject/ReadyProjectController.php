@@ -92,7 +92,11 @@ class ReadyProjectController extends Controller
     }
 
     public function rate(RatingStoreRequest $request, $id) {
-
+        // if fails
+        if (isset($request->validator) && $request->validator->fails()) {
+            return $this->response->badRequest('Data is not valid!', $request->validator->errors(), $request->except(['files']));
+        }
+        
         try {
 
             $project = $this->readyProjectRepository->findById($id);
