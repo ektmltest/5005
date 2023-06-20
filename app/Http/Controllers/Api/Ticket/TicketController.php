@@ -163,7 +163,7 @@ class TicketController extends Controller
             DB::commit();
 
             return $this->response->ok([
-                'message' => 'The ticket has been closed!',
+                'message' => __('api/messages.ticket_closed'),
                 'data' => $ticket,
             ]);
 

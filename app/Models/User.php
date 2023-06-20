@@ -39,6 +39,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $appends = ['avatar'];
+
     // ranks relationship
     public function rank() {
         return $this->belongsTo(Rank::class);

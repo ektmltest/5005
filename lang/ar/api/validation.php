@@ -2,6 +2,7 @@
 
 return [
     'data_not_valid' => 'المدخلات غير صالحة!',
-    'wrong_password' => 'Wrong password!',
-    'email_not_found' => 'Email is not found.',
+    'wrong_password' => 'كلمة المرور خاطئة!',
+    'email_not_found' => 'البريد الالكتروني غير موجود!',
+    'cat_dept_not_compatible' => 'الفئات المدخلة ليست متوافقة مع القسم المختار!',
 ];

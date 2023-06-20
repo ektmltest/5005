@@ -79,7 +79,7 @@ class ProjectController extends Controller
     public function store(ProjectStoreRequest $request) {
         // if fails
         if(isset($request->validator) && $request->validator->fails()) {
-            return $this->response->badRequest('Data is not valid!', $request->validator->errors(), $request->except(['files']));
+            return $this->response->badRequest(__('api/validation.data_not_valid'), $request->validator->errors(), $request->except(['files']));
         }
 
         DB::beginTransaction();
@@ -92,8 +92,8 @@ class ProjectController extends Controller
             // * compitable for the department entered by the user of the API
             if (!$this->projectDepartmentRepository->checkCategoriesDependency($department, $categories))
                 return $this->response->badRequest(
-                    'Data is not valid!',
-                    ['categories' => 'categories and department are not compatible!'],
+                    __('api/validation.data_not_valid'),
+                    ['categories' => __('api/validation.cat_dept_not_compatible')],
                     $request->except(['files'])
                 );
 

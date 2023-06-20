@@ -1,9 +1,14 @@
 <?php
 
 return [
-    'signed_in' => 'Signed in successfully!',
-    'signed_out' => 'Signed out successfully!',
-    'email_verified' => 'User account has been verified!',
+    'signed_in' => 'تم تسجيل الدخول بنجاح!',
+    'signed_out' => 'تم تسجيل الخروج بنجاح!',
+    'email_verified' => 'تم تفعيل الحساب بنجاح!',
 
-    'user_updated' => 'user data has been updated successfully!',
+    'user_updated' => 'تم تحديث البيانات بنجاح!',
+
+    'ready_proj_like_added' => 'تم اضافة الاعجاب بنجاح!',
+    'ready_proj_like_removed' => 'تم حذف الاعجاب بنجاح!',
+
+    'ticket_closed' => 'تم غلق التذكرة بنجاح!',
 ];

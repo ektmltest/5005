@@ -51,7 +51,7 @@ class ProjectReplyController extends Controller
     public function store(ProjectReplyStoreRequest $request, $project_id) {
         // if fails
         if (isset($request->validator) && $request->validator->fails()) {
-            return $this->response->badRequest('Data is not valid!', $request->validator->errors(), $request->except(['files']));
+            return $this->response->badRequest(__('api/validation.data_not_valid'), $request->validator->errors(), $request->except(['files']));
         }
 
         DB::beginTransaction();

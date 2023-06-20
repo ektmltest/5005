@@ -73,12 +73,12 @@ class ReadyProjectController extends Controller
 
             if ($this->readyProjectRepository->toggleLike($project))
                 return $this->response->ok([
-                    'message' => 'Ready project like has been added successfully!',
+                    'message' => __('api/messages.ready_proj_like_added'),
                     'data' => $project,
                 ]);
             else
                 return $this->response->ok([
-                    'message' => 'Ready project like has been removed successfully!',
+                    'message' => __('api/messages.ready_proj_like_removed'),
                     'data' => $project,
                 ]);
 
