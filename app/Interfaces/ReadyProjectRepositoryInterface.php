@@ -12,6 +12,6 @@ interface ReadyProjectRepositoryInterface {
 
     public function toggleLike($ready_project);
 
-    public function setRate(ReadyProject $ready_project, $rating);
+    public function setRate(ReadyProject $ready_project, $data);
 
 }

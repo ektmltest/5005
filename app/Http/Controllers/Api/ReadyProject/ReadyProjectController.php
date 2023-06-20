@@ -96,7 +96,7 @@ class ReadyProjectController extends Controller
         if (isset($request->validator) && $request->validator->fails()) {
             return $this->response->badRequest('Data is not valid!', $request->validator->errors(), $request->except(['files']));
         }
-        
+
         try {
 
             $project = $this->readyProjectRepository->findById($id);
@@ -104,7 +104,7 @@ class ReadyProjectController extends Controller
             if (!$project)
                 return $this->response->notFound(obj: 'ready project');
 
-            if ($this->readyProjectRepository->setRate($project, $request->rating))
+            if ($this->readyProjectRepository->setRate($project, $request->all()))
                 return $this->response->created(
                     data: ['data' => $this->readyProjectRepository->findById($id)],
                     createdObj: 'rate',

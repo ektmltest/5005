@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('ready_project_ratings', function (Blueprint $table) {
             $table->timestamps();
             $table->double('rating');
+            $table->text('message');
 
             // foreign keys
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();

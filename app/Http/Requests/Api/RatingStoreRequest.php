@@ -24,6 +24,7 @@ class RatingStoreRequest extends ValidationRequest
     {
         return [
             'rating' => parent::rateRule(),
+            'message' => parent::messageRule(),
         ];
     }
 }

@@ -97,7 +97,10 @@ class DatabaseSeeder extends Seeder
                     ->userRatings()
                     ->attach(
                         $users->random(1)->first()->id,
-                        ['rating' => fake()->randomFloat(min: 0, max: 1)]
+                        [
+                            'rating' => fake()->randomFloat(min: 0, max: 1),
+                            'message' => fake()->paragraph(),
+                        ]
                     );
                 });
 

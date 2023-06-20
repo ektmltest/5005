@@ -36,14 +36,20 @@ class ReadyProjectRepository implements ReadyProjectRepositoryInterface {
         }
     }
 
-    public function setRate(ReadyProject $ready_project, $rating) {
+    public function setRate(ReadyProject $ready_project, $data) {
         $found = $ready_project->userRatings()->wherePivot('user_id', auth()->user()->id)->first();
         if ($found) {
-            $ready_project->userRatings()->updateExistingPivot(id: auth()->user()->id, attributes: ['rating' => $rating]);
+            $ready_project->userRatings()->updateExistingPivot(id: auth()->user()->id, attributes: [
+                'rating' => $data['rating'],
+                'message' => $data['message'],
+            ]);
             return 0;
         }
         else {
-            $ready_project->userRatings()->attach(auth()->user()->id, ['rating' => $rating]);
+            $ready_project->userRatings()->attach(auth()->user()->id, [
+                'rating' => $data['rating'],
+                'message' => $data['message']
+            ]);
             return 1;
         }
     }
