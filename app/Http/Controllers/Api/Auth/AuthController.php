@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Auth;
 
+use App\Helpers\Localizable;
 use App\Helpers\Mailer;
 use App\Helpers\Response;
 use App\Http\Controllers\Controller;
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
-    use Mailer;
+    use Mailer, Localizable;
 
     protected UserRepositoryInterface $userRepository;
     protected Response $response;
@@ -23,6 +24,8 @@ class AuthController extends Controller
     public function __construct(UserRepositoryInterface $userRepository, Response $response) {
         $this->userRepository = $userRepository;
         $this->response = $response;
+
+        $this->setLocalization();
     }
 
     public function register(RegisterRequest $request) {
