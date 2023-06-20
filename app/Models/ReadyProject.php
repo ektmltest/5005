@@ -13,7 +13,7 @@ class ReadyProject extends Model
 
     protected $with = ['user'];
 
-    protected $appends = ['is_liked'];
+    protected $appends = ['is_liked', 'average_rating'];
 
     public function department() {
         return $this->belongsTo(ReadyProjectDepartment::class, 'ready_project_department_id');
@@ -49,6 +49,10 @@ class ReadyProject extends Model
 
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function userRatings() {
+        return $this->belongsToMany(User::class, 'ready_project_ratings')->withPivot('rating');
     }
 
     //////* my functions *//////
@@ -101,5 +105,16 @@ class ReadyProject extends Model
             return !is_null($this->liked());
         else
             return null;
+    }
+
+    public function getAverageRatingAttribute() {
+        $sum = 0;
+        $num = 0;
+        foreach ($this->userRatings as $ratingModel) {
+            $sum += $ratingModel->pivot->rating;
+            $num++;
+        }
+
+        return $sum / $num;
     }
 }

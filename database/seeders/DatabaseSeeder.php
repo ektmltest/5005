@@ -91,6 +91,14 @@ class DatabaseSeeder extends Seeder
                 ->create()
                 ->each(function ($readyProject) use ($addons) {
                     $readyProject->addons()->attach($addons->random(1)->first()->id);
+                })
+                ->each(function ($readyProject) use ($users) {
+                    $readyProject
+                    ->userRatings()
+                    ->attach(
+                        $users->random(1)->first()->id,
+                        ['rating' => fake()->randomFloat(min: 0, max: 1)]
+                    );
                 });
 
             Tag::factory()
