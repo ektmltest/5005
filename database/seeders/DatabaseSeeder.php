@@ -7,6 +7,7 @@ use App\Helpers\File;
 use App\Models\Addon;
 use App\Models\AddonType;
 use App\Models\BankCard;
+use App\Models\Cart;
 use App\Models\Contact;
 use App\Models\Facility;
 use App\Models\GalleryProject;
@@ -102,6 +103,13 @@ class DatabaseSeeder extends Seeder
                             'message' => fake()->paragraph(),
                         ]
                     );
+                });
+
+            Cart::factory()
+                ->count(5)
+                ->create()
+                ->each(function ($cart) use ($readyProjects) {
+                    $cart->projects()->attach($readyProjects->random(1)->first()->id);
                 });
 
             Tag::factory()

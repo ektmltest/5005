@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Interfaces\CartRepositoryInterface;
 use App\Interfaces\GallaryProjectRepositoryInterface;
 use App\Interfaces\GallaryProjectTypeRepositoryInterface;
 use App\Interfaces\ProjectAttachmentRepositoryInterface;
@@ -20,6 +21,7 @@ use App\Interfaces\TicketRepositoryInterface;
 use App\Interfaces\TicketTypeRepositoryInterface;
 use App\Interfaces\UserRepositoryInterface;
 use App\Interfaces\VerifyEmailRepositoryInterface;
+use App\Repositories\CartRepository;
 use App\Repositories\GallaryProjectRepository;
 use App\Repositories\GallaryProjectTypeRepository;
 use App\Repositories\ProjectAttachmentRepository;
@@ -81,6 +83,9 @@ class RepositoryServiceProvider extends ServiceProvider
         // ? ready projects
         App::bind(ReadyProjectRepositoryInterface::class, ReadyProjectRepository::class);
         App::bind(ReadyProjectDepartmentRepositoryInterface::class, ReadyProjectDepartmentRepository::class);
+
+        // ? cart
+        App::bind(CartRepositoryInterface::class, CartRepository::class);
     }
 
     /**

@@ -12,7 +12,8 @@ class TicketReply extends Model
     protected $guarded = [];
 
     protected $with = [
-        'attachments'
+        'attachments',
+        'user'
     ];
 
     public function ticket() {

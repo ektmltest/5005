@@ -2,6 +2,7 @@
 
 use App\Helpers\Response;
 use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\Cart\CartController;
 use App\Http\Controllers\Api\GalleryProject\GalleryProjectController;
 use App\Http\Controllers\Api\Profile\ProfileController;
 use App\Http\Controllers\Api\Project\ProjectCategoryController;
@@ -91,6 +92,13 @@ Route::middleware('auth:sanctum')->group(function () {
     // ? Ticket replies
     Route::get('/tickets/{id}/replies', [TicketReplyController::class, 'index'])->name('api.tickets.replies.index');
     Route::post('/tickets/{id}/replies', [TicketReplyController::class, 'store'])->name('api.tickets.replies.store');
+
+    // ? Cart
+    Route::get('/cart', [CartController::class, 'index'])->name('api.cart.index');
+    Route::post('/cart', [CartController::class, 'create'])->name('api.cart.create');
+    Route::post('/cart/{id}/add', [CartController::class, 'store'])->name('api.cart.store');
+    Route::delete('/cart', [CartController::class, 'destroy'])->name('api.cart.destroy');
+    Route::put('/cart/reset', [CartController::class, 'reset'])->name('api.cart.reset');
 });
 
 //? This route for any invalid request ;)

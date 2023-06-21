@@ -13,7 +13,6 @@ class ProjectReply extends Model
 
     protected $with = [
         'user',
-        'project',
         'attachments'
     ];
 
