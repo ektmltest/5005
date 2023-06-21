@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Website;
 
 use App\Repositories\ProjectAttachmentRepository;
+use App\Repositories\ProjectCategoryRepository;
 use App\Repositories\ProjectRepository;
 use Livewire\Component;
 
@@ -12,7 +13,7 @@ class MyProjectShow extends Component
     protected $projectRepository;
 
     public function __construct() {
-        $this->projectRepository = new ProjectRepository(new ProjectAttachmentRepository);
+        $this->projectRepository = new ProjectRepository(new ProjectAttachmentRepository, new ProjectCategoryRepository);
     }
 
     public function mount($id) {

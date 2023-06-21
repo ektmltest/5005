@@ -5113,3 +5113,23 @@ input, button {
         justify-content: center;
     }
 }
+
+.notifyjs-corner {
+    z-index: 9999 !important;
+}
+
+.notifyjs-bootstrap-success {
+    color: #ffffff !important;
+    background-color: #4b3da7ef !important;
+    /* border: #4b3da7 1px solid !important; */
+}
+
+.notifyjs-bootstrap-icon {
+    display: none;
+}
+
+/* .notifyjs-corner .success {
+    color: #4b3da7 !important;
+    background-color: #ffffff !important;
+    border: #4b3da7 !important;
+  } */

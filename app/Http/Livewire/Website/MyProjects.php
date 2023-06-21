@@ -3,6 +3,7 @@ namespace App\Http\Livewire\Website;
 
 use App\Models\ProjectState;
 use App\Repositories\ProjectAttachmentRepository;
+use App\Repositories\ProjectCategoryRepository;
 use App\Repositories\ProjectRepository;
 use App\Repositories\ProjectStateRepository;
 use Livewire\Component;
@@ -18,7 +19,7 @@ class MyProjects extends Component
 
     public function __construct() {
         $this->projectStateRepository = new ProjectStateRepository;
-        $this->projectRepository = new ProjectRepository(new ProjectAttachmentRepository);
+        $this->projectRepository = new ProjectRepository(new ProjectAttachmentRepository, new ProjectCategoryRepository);
         $this->allProjects = $this->projectRepository->getAllProjects(auth: true);
         $this->projectStates = $this->projectStateRepository->getAllProjectStates();
         $this->projectsToDisplay = $this->allProjects;

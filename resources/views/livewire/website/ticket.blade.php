@@ -18,28 +18,10 @@
 
             <div class="col-xl-9 col-lg-8">
                 <div id="boxData">
-                    <div>
-                        @if (session()->has('message'))
-                            <div class="alert alert-success">
-                                {{ session('message') }}
-                            </div>
-                        @endif
-                    </div>
-
-                    <div>
-                        @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        @endif
-                    </div>
+                    @component('layouts.components.messages.success')
+                    @endcomponent
 
                     <form wire:submit.prevent='submit' id="ticketsCreate" class="faq-control p-3" enctype="multipart/form-data">
-                        @csrf
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <div class="floating-label-wrap">

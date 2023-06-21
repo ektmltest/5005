@@ -27,7 +27,11 @@ class Project extends Model
     }
 
     public function department() {
-        return $this->categories->first()->department;
+        $category = $this->categories->first();
+        if ($category)
+            return $category->department;
+        else
+            return null;
     }
 
     public function state() {

@@ -29,7 +29,7 @@ class Ticket extends Component
     public function __construct()
     {
         $this->ticketTypeRepository = new TicketTypeRepository;
-        $this->ticketRepository = new TicketRepository;
+        $this->ticketRepository = new TicketRepository(new TicketAttachmentRepository);
         $this->ticketAttachmentRepository = new TicketAttachmentRepository;
         $this->ticket = new ModelsTicket;
 
@@ -55,6 +55,7 @@ class Ticket extends Component
         $this->validate();
 
         $this->ticket->status = 'available';
+        $this->ticket->user_id = auth()->user()->id;
         $this->ticket->save();
 
         foreach ($this->files as $file) {

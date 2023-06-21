@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Auth;
 use App\Http\Requests\ForgetPasswordFormRequest;
 use App\Repositories\ResetPasswordTokenRepository;
 use App\Repositories\UserRepository;
+use App\Repositories\VerifyEmailRepository;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -22,7 +23,7 @@ class ForgetPasswordForm extends Component
     // * constructor
     public function __construct() {
         $this->resetPasswordTokenRepository = new ResetPasswordTokenRepository;
-        $this->userRepository = new UserRepository;
+        $this->userRepository = new UserRepository(new VerifyEmailRepository);
     }
 
     // * mount
@@ -74,7 +75,7 @@ class ForgetPasswordForm extends Component
                 $this->dispatchBrowserEvent('loaded');
 
                 return redirect()->route('login');
-                
+
             } catch (\Throwable $th) {
                 DB::rollBack();
                 throw $th;

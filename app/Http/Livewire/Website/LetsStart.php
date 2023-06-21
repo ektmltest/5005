@@ -33,7 +33,7 @@ class LetsStart extends Component
 
     public function __construct() {
         $this->projectDepartmentRepository = new ProjectDepartmentRepository;
-        $this->projectRepository = new ProjectRepository(new ProjectAttachmentRepository);
+        $this->projectRepository = new ProjectRepository(new ProjectAttachmentRepository, new ProjectCategoryRepository);
         $this->project = new Project;
     }
 

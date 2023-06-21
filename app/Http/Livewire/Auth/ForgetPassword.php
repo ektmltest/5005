@@ -6,6 +6,7 @@ use App\Helpers\Mailer;
 use App\Http\Requests\ForgetPasswordRequest;
 use App\Repositories\ResetPasswordTokenRepository;
 use App\Repositories\UserRepository;
+use App\Repositories\VerifyEmailRepository;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
@@ -18,7 +19,7 @@ class ForgetPassword extends Component
 
     // * constructor
     public function __construct() {
-        $this->userRepository = new UserRepository;
+        $this->userRepository = new UserRepository(new VerifyEmailRepository);
         $this->resetPasswordRepository = new ResetPasswordTokenRepository;
     }
 

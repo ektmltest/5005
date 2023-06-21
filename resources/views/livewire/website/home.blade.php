@@ -791,13 +791,8 @@
 
 
                         {{-- contact-us form --}}
-                        <div>
-                            @if (session()->has('message'))
-                            <div class="alert alert-success">
-                                {{ session('message') }}
-                            </div>
-                            @endif
-                        </div>
+                        @component('layouts.components.messages.success')
+                        @endcomponent
 
                         <form wire:submit.prevent='contact'>
                             <div class="row">

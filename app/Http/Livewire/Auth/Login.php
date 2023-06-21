@@ -3,6 +3,7 @@ namespace App\Http\Livewire\Auth;
 use App\Http\Requests\LoginRequest;
 // use App\Interfaces\UserRepositoryInterface;
 use App\Repositories\UserRepository;
+use App\Repositories\VerifyEmailRepository;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
@@ -15,7 +16,7 @@ class Login extends Component
 
     // * constructor
     public function __construct() {
-        $this->userRepository = new UserRepository;
+        $this->userRepository = new UserRepository(new VerifyEmailRepository);
     }
 
     // * to define rules for all post requests comming to this component

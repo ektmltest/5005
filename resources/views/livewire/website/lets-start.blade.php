@@ -1,12 +1,7 @@
 <section class="pricing-table">
     <div class="container">
-        <div>
-            @if (session()->has('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
-            </div>
-            @endif
-        </div>
+        @component('layouts.components.messages.success')
+        @endcomponent
 
         @if ($showDepartments)
         <div class="section-pricing">

@@ -4,7 +4,7 @@ var rows = document.querySelectorAll('#attachments .form-row');
 var len = 1;
 
 var list = insertAddAttachBtn(rows[0]);
-list[1].addEventListener('click', handleAddAttachBtnClick);
+// list[1].addEventListener('click', handleAddAttachBtnClick);
 
 function insertFormFileInput(row, i) {
     var inputDiv = document.createElement('div');
