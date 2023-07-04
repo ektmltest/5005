@@ -14,4 +14,8 @@ class TicketReplyAttachment extends Model
     public function reply() {
         return $this->belongsTo(TicketReply::class, 'ticket_reply_id');
     }
+
+    public function getFileAttribute() {
+        return asset($this->attributes['file']);
+    }
 }

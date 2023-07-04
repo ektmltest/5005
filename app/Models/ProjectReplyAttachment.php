@@ -14,4 +14,8 @@ class ProjectReplyAttachment extends Model
     public function reply() {
         return $this->belongsTo(ProjectReply::class, 'project_reply_id');
     }
+
+    public function getFileAttribute() {
+        return asset($this->attributes['file']);
+    }
 }

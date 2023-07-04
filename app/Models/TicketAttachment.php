@@ -12,4 +12,8 @@ class TicketAttachment extends Model
     public function ticket() {
         return $this->belongsTo(Ticket::class);
     }
+
+    public function getFileAttribute() {
+        return asset($this->attributes['file']);
+    }
 }
