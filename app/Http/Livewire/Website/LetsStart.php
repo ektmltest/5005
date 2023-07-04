@@ -6,6 +6,8 @@ use App\Models\Project;
 use App\Repositories\ProjectAttachmentRepository;
 use App\Repositories\ProjectCategoryRepository;
 use App\Repositories\ProjectDepartmentRepository;
+use App\Repositories\ProjectReplyAttachmentRepository;
+use App\Repositories\ProjectReplyRepository;
 use App\Repositories\ProjectRepository;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -33,7 +35,11 @@ class LetsStart extends Component
 
     public function __construct() {
         $this->projectDepartmentRepository = new ProjectDepartmentRepository;
-        $this->projectRepository = new ProjectRepository(new ProjectAttachmentRepository, new ProjectCategoryRepository);
+        $this->projectRepository = new ProjectRepository(
+            new ProjectAttachmentRepository,
+            new ProjectCategoryRepository,
+            new ProjectReplyRepository(new ProjectReplyAttachmentRepository)
+        );
         $this->project = new Project;
     }
 

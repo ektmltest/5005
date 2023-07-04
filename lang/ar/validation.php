@@ -100,7 +100,7 @@ return [
         'array' => 'The :attribute field must have at least :min items.',
         'file' => 'The :attribute field must be at least :min kilobytes.',
         'numeric' => 'قيمة هذا الحقل يجب الا تقل عن :min.',
-        'string' => 'عدد الاحرف يجب الا تقل عن :min حرف.',
+        'string' => 'عدد الاحرف يجب الا يقل عن :min حرف.',
     ],
     'min_digits' => 'The :attribute field must have at least :min digits.',
     'missing' => 'The :attribute field must be missing.',

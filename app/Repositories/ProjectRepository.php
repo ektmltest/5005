@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Interfaces\ProjectAttachmentRepositoryInterface;
 use App\Interfaces\ProjectCategoryRepositoryInterface;
+use App\Interfaces\ProjectReplyRepositoryInterface;
 use App\Interfaces\ProjectRepositoryInterface;
 use App\Models\Project;
 use Illuminate\Http\Request;
@@ -12,10 +13,12 @@ use Illuminate\Support\Facades\DB;
 class ProjectRepository implements ProjectRepositoryInterface {
     protected ProjectAttachmentRepositoryInterface $projectAttachmentRepository;
     protected ProjectCategoryRepositoryInterface $projectCategoryRepository;
+    protected ProjectReplyRepositoryInterface $projectReplyRepository;
 
-    public function __construct(ProjectAttachmentRepositoryInterface $projectAttachmentRepository, ProjectCategoryRepositoryInterface $projectCategoryRepository) {
+    public function __construct(ProjectAttachmentRepositoryInterface $projectAttachmentRepository, ProjectCategoryRepositoryInterface $projectCategoryRepository, ProjectReplyRepositoryInterface $projectReplyRepository) {
         $this->projectAttachmentRepository = $projectAttachmentRepository;
         $this->projectCategoryRepository = $projectCategoryRepository;
+        $this->projectReplyRepository = $projectReplyRepository;
     }
 
     public function getProjectById($id, $auth = false) {
@@ -60,6 +63,8 @@ class ProjectRepository implements ProjectRepositoryInterface {
 
     public function delete(Project $project) {
         $this->projectAttachmentRepository->deleteAllRelatedFiles($project);
+
+        $this->projectReplyRepository->deleteProjectReplies($project);
 
         $project->delete();
 

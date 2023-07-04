@@ -60,7 +60,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // ? Profile
     Route::get('/profile', [ProfileController::class, 'index'])->name('api.profile');
-    Route::put('/profile', [ProfileController::class, 'update'])->name('api.profile.update');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('api.profile.update');
 
     // ? my projects
     Route::get('/projects', [ProjectController::class, 'index'])->name('api.projects.index');

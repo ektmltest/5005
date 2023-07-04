@@ -6,6 +6,6 @@
 
 @section('content')
 
-<livewire:admin.ready-project>
+<livewire:admin.ready-project-edit :id="$id">
 
 @endsection

@@ -87,16 +87,18 @@ return [
 
     // Manage Catalog
     'Catalog' => 'Catalog',
+    'NAME' => 'NAME',
+    'DESCRIPTION' => 'DESCRIPTION',
+    'PRICE' => 'PRICE',
+    'DEPARTMENT' => 'DEPARTMENT',
+    'TAX' => 'TAX',
+    'ACTIONS' => 'ACTIONS',
 
-
-
-
-
-
-
-
-
-
+    // All
+    'EDIT' => 'EDIT',
+    'SHOW' => 'SHOW',
+    'LINK' => 'LINK',
+    'DELETE' => 'DELETE'
 
 
 

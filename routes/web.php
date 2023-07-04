@@ -15,7 +15,6 @@ Route::group([
         Route::get('logout', fn () => view('home'))->name('logout');
         Route::get('myProjects', fn () => view('my-projects'))->name('myProjects');
         Route::get('/myProjects/{id}', fn ($id) => view('my-project-show')->with('id', $id))->name('myProjects.show');
-        Route::get('project/{id}', fn () => view('project'))->name('project');
         Route::get('/tickets', fn () => view('ticket'))->name('tickets');
         Route::get('/tickets/1', fn () => view('ticket-show'))->name('tickets.show');
         Route::get('myProfile', fn () => view('profile'))->name('myProfile');
@@ -27,6 +26,7 @@ Route::group([
         Route::get('login', fn () => view('login'))->name('login');
         Route::get('password/forget', fn () => view('forget-password'))->name('password.forget');
         Route::get('password/forget/{token}', fn ($token) => view('forget-password-form')->with('token', $token))->name('password.forget.form');
+        Route::get('project/{id}', fn () => view('project'))->name('project');
     });
 
 

@@ -27,6 +27,7 @@ class UserUpdateRequest extends ValidationRequest
             'phone' => parent::phoneRule(update: true),
             'old_password' => parent::passwordRule(case: 'update', confirmed: false, no_strict: true),
             'new_password' => parent::passwordRule(case: 'update'),
+            'avatar' => parent::fileRule(update: true),
         ];
     }
 }

@@ -78,8 +78,12 @@ class ValidationRequest extends FormRequest
         return ['required', 'exists:ticket_types,id'];
     }
 
-    protected function fileRule() {
-        return ['required', 'file', 'max:10000', 'mimes:png,jpg,webp,gif'];
+    protected function fileRule($update = false) {
+        $rules = ['file', 'max:10000', 'mimes:png,jpg,webp,gif'];
+        if (!$update)
+            $rules[] ='required';
+
+        return $rules;
     }
 
     protected function phoneRule($update = false) {

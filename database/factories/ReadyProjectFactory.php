@@ -34,6 +34,7 @@ class ReadyProjectFactory extends Factory
                 'en' => fake()->paragraph(),
             ],
             'image' => fake()->imageUrl(),
+            'link' => fake()->url(),
             'ready_project_department_id' => ReadyProjectDepartment::inRandomOrder()->first()->id,
             'user_id' => User::inRandomOrder()->first()->id,
         ];

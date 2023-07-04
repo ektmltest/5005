@@ -88,11 +88,18 @@ return [
 
     // Manage Catalog
     'Catalog' => 'الكاتالوج',
+    'NAME' => 'الأسم',
+    'DESCRIPTION' => 'الوصف',
+    'PRICE' => 'السعر',
+    'DEPARTMENT' => 'القسم',
+    'TAX' => 'الضريبة',
+    'ACTIONS' => 'الإجراءات',
 
-
-
-
-
+    // All
+    'EDIT' => 'تعديل',
+    'SHOW' => 'عرض',
+    'LINK' => 'رابط',
+    'DELETE' => 'حذف',
 
 
 ];

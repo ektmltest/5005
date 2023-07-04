@@ -47,7 +47,7 @@ class UserRepository implements UserRepositoryInterface {
         $user->fname = isset($data['fname']) ? $data['fname'] : $user->fname;
         $user->lname = isset($data['lname']) ? $data['lname'] : $user->lname;
         $user->phone = isset($data['phone']) ? $data['phone'] : $user->phone;
-        $user->phone = isset($data['avatar']) ? $this->prepareFilePath($data['avatar'], 'users', true) : $user->avatar;
+        $user->avatar = isset($data['avatar']) ? $this->prepareFilePath($data['avatar'], 'users', true) : $user->avatar;
 
         if (isset($data['old_password'])) {
             if (password_verify($data['old_password'], $user->password)) {

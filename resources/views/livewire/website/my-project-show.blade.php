@@ -27,7 +27,7 @@
                                 <div class="comment-head">
                                     <div class="member-info">
                                         <div class="member-img">
-                                            <img class="img-fluid" src="https://www.ektml.com/avatar/user/719"
+                                            <img class="img-fluid" src="{{$project->user->avatar}}"
                                                 alt="Avatar">
                                         </div>
                                         <div class="member-name">
@@ -81,7 +81,7 @@
                                                     <div class="member-info">
                                                         <div class="member-img">
                                                             <img class="img-fluid"
-                                                                src="https://www.ektml.com/avatar/user/719"
+                                                                src="{{$reply->user->avatar}}"
                                                                 alt="Avatar">
                                                         </div>
                                                         <div class="member-name">

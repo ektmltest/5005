@@ -19,6 +19,7 @@ return new class extends Migration
             $table->json('description');
             $table->json('body');
             $table->string('image');
+            $table->string('link');
             $table->timestamps();
 
             // foreign keys
