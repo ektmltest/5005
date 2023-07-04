@@ -117,4 +117,8 @@ class ReadyProject extends Model
 
         return $sum / $num;
     }
+
+    public function getImageAttribute() {
+        return asset($this->attributes['image']);
+    }
 }

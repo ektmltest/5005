@@ -27,4 +27,8 @@ class GalleryProject extends Model
             set: fn ($value) => json_encode($value)
         );
     }
+
+    public function getImageAttribute() {
+        return asset($this->attributes['image']);
+    }
 }
