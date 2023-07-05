@@ -32,6 +32,8 @@
         <link href="{{ asset('dashboard/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
     @endif
 
+    <link href="{{ asset("dashboard/assets/libs/select2/css/select2.min.css") }}" rel="stylesheet" />
+
     @livewireStyles()
 
 </head>

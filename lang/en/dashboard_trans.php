@@ -98,10 +98,13 @@ return [
     'EDIT' => 'EDIT',
     'SHOW' => 'SHOW',
     'LINK' => 'LINK',
-    'DELETE' => 'DELETE'
+    'DELETE' => 'DELETE',
 
+    'ARABIC TAGS' => 'TAGS IN ARABIC',
+    'ENGLISH TAGS' => 'TAGS IN ENGLISH',
 
-
+    'ARABIC FACILITIES' => 'FACILITIES IN ARABIC',
+    'ENGLISH FACILITIES' => 'FACILITIES IN ENGLISH',
 
 
 ];

@@ -101,6 +101,12 @@ return [
     'LINK' => 'رابط',
     'DELETE' => 'حذف',
 
+    'ARABIC TAGS' => 'الوسوم بالعربية',
+    'ENGLISH TAGS' => 'الوسوم بالانجليزية',
+
+    'ARABIC FACILITIES' => 'الميزات بالعربية',
+    'ENGLISH FACILITIES' => 'الميزات بالانجليزية',
+
 
 ];
 

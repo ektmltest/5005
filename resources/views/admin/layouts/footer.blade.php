@@ -156,7 +156,12 @@
 <script src="{{ asset("dashboard/assets/js/pages/dashboard.init.js") }}"></script>
 <!-- App js -->
 <script src="{{ asset("dashboard/assets/js/app.js") }}"></script>
-<script src="{{ asset("dashboard/assets/js/all.min.js") }}"></script>
+
+<script src="{{ asset("dashboard/assets/libs/select2/js/select2.min.js") }}"></script>
+<script src="{{ asset("dashboard/assets/libs/tinymce/tinymce.min.js") }}"></script>
+<script src="{{ asset("dashboard/assets/libs/tinymce/jquery.tinymce.min.js") }}"></script>
+
+@stack('custom-scripts')
 
 
 @livewireScripts()

@@ -20,7 +20,7 @@ class AddonFactory extends Factory
         return [
             'price' => fake()->randomFloat(),
             'name' => [
-                'ar' => 'اسم',
+                'ar' => 'اضافة',
                 'en' => fake()->unique()->name(),
             ],
             'addon_type_id' => AddonType::inRandomOrder()->first()->id,

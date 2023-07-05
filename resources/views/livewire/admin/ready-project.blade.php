@@ -45,7 +45,7 @@
                                         <td>{{ $project->department->name }}</td>
                                         <td>{{ $project->marketing_discount_ratio }}%</td>
                                         <td>
-                                            <a href="#" type="button" class="btn btn-primary btn-sm"
+                                            <a href="{{route('readyProjects.edit', $project->id)}}" type="button" class="btn btn-primary btn-sm"
                                                 data-bs-toggle="tooltip" data-bs-placement="top" title="{{__('dashboard_trans.EDIT')}}"><i
                                                     class="fa fa-edit"></i></a>
 
@@ -116,8 +116,8 @@
                                                         aria-label="Close"></button>
                                                 </div>
 
-                                                <div class="modal-body">
-
+                                                <div class="modal-body text-center">
+                                                    <a href="{{$project->link}}" target="_blank">{{$project->link}}</a>
                                                 </div>
                                             </div>
                                         </div>

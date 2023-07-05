@@ -17,6 +17,7 @@ return new class extends Migration
             $table->double('price');
             $table->double('marketing_discount_ratio');
             $table->json('description');
+            $table->json('short_description');
             $table->json('body');
             $table->string('image');
             $table->string('link');

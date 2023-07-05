@@ -52,7 +52,7 @@ class ReadyProject extends Model
     }
 
     public function userRatings() {
-        return $this->belongsToMany(User::class, 'ready_project_ratings')->withPivot('rating');
+        return $this->belongsToMany(User::class, 'ready_project_ratings')->withPivot(['rating', 'message']);
     }
 
     //////* my functions *//////
