@@ -31,7 +31,7 @@ function () {
 
     // CATALOG MANAGMENT
     Route::get('readyProjects', fn() => view('admin.catalogs.readyProjects'))->name('readyProjects');
-    Route::get('readyProjects/{id}/edit', fn($id) => view('admin.catalogs.readyProjects-edit', ['id' => $id]))->name('staffProjectCategories');
+    Route::get('readyProjects/{id}/edit', fn($id) => view('admin.catalogs.readyProjects-edit', ['id' => $id]))->name('readyProjects.edit');
 
 
 // });
