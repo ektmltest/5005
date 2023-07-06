@@ -13,7 +13,7 @@ class ValidationRequest extends FormRequest
         $this->validator = $validator;
     }
 
-    protected function nameRule($min = 3, $max = 255, $update = false) {
+    protected function nameRule($min = 3, $max = 255, bool $update = false) {
         $rules = ["min: $min", "max: $max", "string"];
 
         if (!$update)
@@ -22,7 +22,7 @@ class ValidationRequest extends FormRequest
         return $rules;
     }
 
-    protected function emailRule($update = false, $exists = false, $table='users', $unique = false) {
+    protected function emailRule(bool $update = false, $exists = false, $table='users', $unique = false) {
         $rules = ['email'];
 
         if (!$update)
@@ -78,7 +78,7 @@ class ValidationRequest extends FormRequest
         return ['required', 'exists:ticket_types,id'];
     }
 
-    protected function fileRule($update = false) {
+    protected function fileRule(bool $update = false) {
         $rules = ['file', 'max:10000', 'mimes:png,jpg,webp,gif'];
         if (!$update)
             $rules[] ='required';
@@ -86,7 +86,7 @@ class ValidationRequest extends FormRequest
         return $rules;
     }
 
-    protected function phoneRule($update = false) {
+    protected function phoneRule(bool $update = false) {
         $rules = ['numeric'];
         if (!$update)
             $rules[] = 'required';
@@ -107,5 +107,13 @@ class ValidationRequest extends FormRequest
 
     protected function rateRule() {
         return ['required', 'numeric', 'min:0', 'max:1'];
+    }
+
+    protected function priceRule(bool $range = false, float $min = 0, float $max = 9999.99, bool $update = false) {
+        if ($update) {
+            return ['numeric', $range ? 'between:' . $min . ',' . $max : '', ];
+        }
+
+        return ['required', 'numeric', $range ? 'between:' . $min . ',' . $max : '', ];
     }
 }

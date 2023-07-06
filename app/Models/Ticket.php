@@ -11,7 +11,7 @@ class Ticket extends Model
 
     protected $guarded = [];
 
-    protected $with = ['type', 'user'];
+    protected $with = ['type', 'user', 'attachments'];
 
     public function user() {
         return $this->belongsTo(User::class);

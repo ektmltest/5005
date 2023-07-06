@@ -103,9 +103,21 @@ return [
 
     'ARABIC TAGS' => 'الوسوم بالعربية',
     'ENGLISH TAGS' => 'الوسوم بالانجليزية',
+    'TAGS' => 'الوسوم',
 
-    'ARABIC FACILITIES' => 'الميزات بالعربية',
-    'ENGLISH FACILITIES' => 'الميزات بالانجليزية',
+    'FACILITIES' => 'الميزات',
+
+    'ARABIC SHORT DESCRITPION' => 'وصف قصير بالعربية',
+    'ENGLISH SHORT DESCRITPION' => 'وصف قصير بالانجليزية',
+
+    'ARABIC DESCRITPION' => 'الوصف بالعربية',
+    'ENGLISH DESCRITPION' => 'الوصف بالانجليزية',
+
+    'ADDONS' => 'الإضافات',
+
+    'ADD PHOTO' => 'اضافة صورة',
+
+    'ADD' => 'اضافة',
 
 
 ];
