@@ -26,7 +26,6 @@ Route::group([
         Route::get('login', fn () => view('login'))->name('login');
         Route::get('password/forget', fn () => view('forget-password'))->name('password.forget');
         Route::get('password/forget/{token}', fn ($token) => view('forget-password-form')->with('token', $token))->name('password.forget.form');
-        Route::get('project/{id}', fn () => view('project'))->name('project');
     });
 
 
@@ -36,6 +35,7 @@ Route::group([
     Route::get('/about', fn () => view('about'))->name('about');
     Route::get('store', fn () => view('store'))->name('store');
     Route::get('gallary', fn () => view('gallary'))->name('gallary');
+    Route::get('project/{id}', fn () => view('project'))->name('project');
     // Route::get('project/{id}', fn ($id) => view('project', )->with('id', $id))->name('project');
 
 

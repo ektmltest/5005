@@ -23,23 +23,23 @@ class ReadyProjectStoreRequest extends ValidationRequest
     public function rules(): array
     {
         return [
-            'name_ar' => parent::nameRule(),
-            'name_en' => parent::nameRule(),
-            'price' => parent::priceRule(),
-            'tax' => parent::priceRule(true, 0, 100),
-            'dept_id' => parent::existsRule('ready_project_departments'),
+            'project.name_ar' => parent::nameRule(),
+            'project.name_en' => parent::nameRule(),
+            'project.price' => parent::priceRule(),
+            'project.tax' => parent::priceRule(true, 0, 100),
+            'project.dept_id' => parent::existsRule('ready_project_departments'),
             // 'addons_ids' => '',
             // 'addons_ids.*' => parent::existsRule('addons'),
-            'link' => 'required|string',
+            'project.link' => 'required|string',
             // 'facilities_ids' => '',
             // 'facilities_ids.*' => parent::existsRule('facilities'),
             // 'tags_ids' => '',
             // 'tags_ids.*' => parent::existsRule('tags'),
-            'short_desc_ar' => 'required',
-            'short_desc_en' => 'required',
-            'desc_ar' => 'required',
-            'desc_en' => 'required',
-            'image' => parent::fileRule(),
+            'project.short_desc_ar' => 'required',
+            'project.short_desc_en' => 'required',
+            // 'desc_ar' => 'required',
+            // 'desc_en' => 'required',
+            'image' => parent::fileRule(image: true),
         ];
     }
 }

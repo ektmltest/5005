@@ -99,7 +99,7 @@ class ProjectController extends Controller
 
             $project = $this->projectRepository->prepareProject($request->only(['name', 'description']));
 
-            $this->projectRepository->store($project, $request->file()['files'], $categories);
+            $this->projectRepository->store($project, isset($request->file()['files']) ? $request->file()['files'] : [], $categories);
 
             DB::commit();
 

@@ -78,8 +78,8 @@ class ValidationRequest extends FormRequest
         return ['required', 'exists:ticket_types,id'];
     }
 
-    protected function fileRule(bool $update = false) {
-        $rules = ['file', 'max:10000', 'mimes:png,jpg,webp,gif'];
+    protected function fileRule(bool $update = false, $image = false) {
+        $rules = [$image ? 'image' : 'file', 'max:10000', 'mimes:png,jpg,webp,gif'];
         if (!$update)
             $rules[] ='required';
 

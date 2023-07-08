@@ -29,10 +29,6 @@ class ReadyProjectFactory extends Factory
                 'ar' => 'براجراف',
                 'en' => fake()->paragraph(),
             ],
-            'short_description' => [
-                'ar' => 'براجراف',
-                'en' => fake()->paragraph(),
-            ],
             'body' => [
                 'ar' => 'براجراف',
                 'en' => fake()->paragraph(),

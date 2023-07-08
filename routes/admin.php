@@ -21,18 +21,17 @@ function () {
         Route::get('dashboard', function(){
             return view('admin.dashboard');
         })->name('dashboard');
+
+        // Manage Projects
+        Route::get('manageProjects', fn () => view('admin.projects.manage-project'))->name('staffProjects');
+        Route::get('staffProjectSections', fn() => view('admin.projects.project-sections'))->name('staffProjectSections');
+        Route::get('staffProjectCategories', fn() => view('admin.projects.project-categories'))->name('staffProjectCategories');
+
+        // CATALOG MANAGMENT
+        Route::get('readyProjects', fn() => view('admin.catalogs.readyProjects'))->name('readyProjects');
+        Route::get('readyProjects/{id}/edit', fn($id) => view('admin.catalogs.readyProjects-edit', ['id' => $id]))->name('readyProjects.edit');
+        Route::get('readyProjects/create', fn() => view('admin.catalogs.readyProjects-create'))->name('readyProjects.create');
     });
-
-
-    // Manage Projects
-    Route::get('manageProjects', fn () => view('admin.projects.manage-project'))->name('staffProjects');
-    Route::get('staffProjectSections', fn() => view('admin.projects.project-sections'))->name('staffProjectSections');
-    Route::get('staffProjectCategories', fn() => view('admin.projects.project-categories'))->name('staffProjectCategories');
-
-    // CATALOG MANAGMENT
-    Route::get('readyProjects', fn() => view('admin.catalogs.readyProjects'))->name('readyProjects');
-    Route::get('readyProjects/{id}/edit', fn($id) => view('admin.catalogs.readyProjects-edit', ['id' => $id]))->name('readyProjects.edit');
-    Route::get('readyProjects/create', fn() => view('admin.catalogs.readyProjects-create'))->name('readyProjects.create');
 
 
 // });

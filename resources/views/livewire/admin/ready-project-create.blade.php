@@ -24,27 +24,25 @@
                             <h4 class="card-title">{{ __('dashboard_trans.Add Project') }}</h4>
 
                             <form wire:submit.prevent="submit">
-                                <div>
-                                    @if (session()->has('message'))
-                                    <div class="alert alert-success">
-                                        {{ session('message') }}
-                                    </div>
-                                    @endif
-                                </div>
+
                                 <div class="row mt-4">
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label">{{ __('dashboard_trans.ARABIC NAME') }}</label>
-                                            <input dir="ltr" type="text" class="form-control" wire:model="name_ar">
-                                            @error("name_ar") <span class="error">{{ $message }}</span> @enderror
+                                            <input dir="ltr" type="text" class="form-control"
+                                                wire:model="project.name_ar">
+                                            @error("project.name_ar") <span class="error">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="mb-3 mt-3 mt-lg-0">
                                             <label class="form-label">{{ __('dashboard_trans.ENGLISH NAME') }}</label>
-                                            <input dir="ltr" type="text" class="form-control" wire:model="name_en">
-                                            @error('name_en') <span class="error">{{ $message }}</span> @enderror
+                                            <input dir="ltr" type="text" class="form-control"
+                                                wire:model="project.name_en">
+                                            @error('project.name_en') <span class="error">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -53,16 +51,18 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3 mt-3 mt-lg-0">
                                             <label class="form-label">{{ __('dashboard_trans.PRICE') }}</label>
-                                            <input dir="ltr" type="number" class="form-control" wire:model="price">
-                                            @error('price') <span class="error">{{ $message }}</span> @enderror
+                                            <input dir="ltr" type="number" class="form-control"
+                                                wire:model="project.price">
+                                            @error('project.price') <span class="error">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="mb-3 mt-3 mt-lg-0">
                                             <label class="form-label">{{ __('dashboard_trans.TAX') }}</label>
-                                            <input dir="ltr" type="number" class="form-control" wire:model="tax">
-                                            @error('tax') <span class="error">{{ $message }}</span> @enderror
+                                            <input dir="ltr" type="number" class="form-control"
+                                                wire:model="project.tax">
+                                            @error('project.tax') <span class="error">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -72,12 +72,14 @@
                                         <div class="mb-3 mt-3 mt-lg-0">
                                             <label class="form-label">{{ __('dashboard_trans.DEPARTMENT') }}</label>
                                             <select class="form-control" id="" style="cursor: pointer"
-                                                wire:model='dept_id'>
+                                                wire:model='project.dept_id'>
                                                 @foreach ($departments as $department)
-                                                <option value="{{$department->id}}">{{$department->name}}</option>
+                                                <option value="{{$department->id}}" @if($loop->first) selected
+                                                    @endif>{{$department->name}}</option>
                                                 @endforeach
                                             </select>
-                                            @error('dept_id') <span class="error">{{ $message }}</span> @enderror
+                                            @error('project.dept_id') <span class="error">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -103,8 +105,8 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3 mt-3 mt-lg-0">
                                             <label class="form-label">{{ __('dashboard_trans.LINK') }}</label>
-                                            <input dir="ltr" type="text" class="form-control" wire:model="link">
-                                            @error('link') <span class="error">{{ $message }}</span> @enderror
+                                            <input dir="ltr" type="text" class="form-control" wire:model="project.link">
+                                            @error('project.link') <span class="error">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
 
@@ -112,7 +114,8 @@
                                         <div class="mb-3 mt-3 mt-lg-0">
                                             <label class="form-label">{{ __('dashboard_trans.FACILITIES') }}</label>
                                             <div class="form-control p-0 border-0">
-                                                <select wire:ignore class="js-example-basic-multiple w-100" name="facilities_ids" multiple="multiple" id=""
+                                                <select wire:ignore class="js-example-basic-multiple w-100"
+                                                    name="facilities_ids" multiple="multiple" id=""
                                                     style="cursor: pointer">
                                                     @foreach ($facilities as $facility)
                                                     <option value="{{$facility->id}}">{{$facility->description}}
@@ -129,7 +132,8 @@
                                     <div class="mb-3 mt-3 mt-lg-0">
                                         <label class="form-label">{{ __('dashboard_trans.TAGS') }}</label>
                                         <div class="form-control p-0 border-0">
-                                            <select wire:ignore name="tags_ids" class="w-100 js-example-basic-multiple" multiple="multiple" id="" style="cursor: pointer">
+                                            <select wire:ignore name="tags_ids" class="w-100 js-example-basic-multiple"
+                                                multiple="multiple" id="" style="cursor: pointer">
                                                 @foreach ($tags as $tag)
                                                 <option value="{{$tag->id}}">{{$tag->name}}</option>
                                                 @endforeach
@@ -144,9 +148,10 @@
                                         <div class="mb-3 mt-3 mt-lg-0">
                                             <label class="form-label">{{ __('dashboard_trans.ARABIC SHORT DESCRITPION')
                                                 }}</label>
-                                            <textarea wire:ignore type="text" class="form-control" rows="5"
-                                                wire:model="short_desc_ar"></textarea>
-                                            @error('short_desc_ar') <span class="error">{{ $message }}</span> @enderror
+                                            <textarea type="text" class="form-control" rows="5"
+                                                wire:model="project.short_desc_ar"></textarea>
+                                            @error('project.short_desc_ar') <span class="error">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -155,8 +160,9 @@
                                             <label class="form-label">{{ __('dashboard_trans.ENGLISH SHORT DESCRITPION')
                                                 }}</label>
                                             <textarea type="text" class="form-control" rows="5"
-                                                wire:model="short_desc_en"></textarea>
-                                            @error('short_desc_en') <span class="error">{{ $message }}</span> @enderror
+                                                wire:model="project.short_desc_en"></textarea>
+                                            @error('project.short_desc_en') <span class="error">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -164,21 +170,23 @@
                                 <div class="row mt-4" wire:ignore>
                                     <div class="mb-3 mt-3 mt-lg-0">
                                         <label class="form-label">{{ __('dashboard_trans.ARABIC DESCRITPION') }}</label>
-                                        <textarea type="text" class="form-control description"
-                                            wire:model="desc_ar"></textarea>
-                                        @error('desc_ar') <span class="error">{{ $message }}</span> @enderror
+                                        <textarea type="text" class="form-control description" id="desc_ar"></textarea>
                                     </div>
                                 </div>
+                                <span class="error">
+                                    @error('desc_ar') {{ $message }} @enderror
+                                </span>
 
-                                <div class="row mt-4">
+                                <div class="row mt-4" wire:ignore>
                                     <div class="mb-3 mt-3 mt-lg-0">
                                         <label class="form-label">{{ __('dashboard_trans.ENGLISH DESCRITPION')
                                             }}</label>
-                                        <textarea type="text" class="form-control description"
-                                            wire:model="desc_en"></textarea>
-                                        @error('desc_en') <span class="error">{{ $message }}</span> @enderror
+                                        <textarea type="text" class="form-control description" id="desc_en"></textarea>
                                     </div>
                                 </div>
+                                <span class="error">
+                                    @error('desc_en') {{ $message }} @enderror
+                                </span>
 
                                 <div class="row mt-4">
                                     <div class="col-lg-6 mb-3 mt-3 mt-lg-0">
@@ -199,23 +207,29 @@
         </div>
     </div>
 
-    {{-- <input type="hidden" id="test" wire:model='test'> --}}
+    {{-- <input type="hidden" id="test" wire:model='project.test'> --}}
 
     @push('custom-scripts')
     <script>
         $(document).ready(function() {
                 $('.js-example-basic-multiple').select2();
-                $('.js-example-tags').select2({
-                    tags: true
-                });
 
                 tinymce.init({
                     selector: 'textarea.description',
                     height: 500,
-                    plugins: "image fullscreen table",
-                    toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright alignjustify | indent outdent',
+                    plugins: "image fullscreen table textcolor",
+                    toolbar: 'undo redo | blocks | bold italic | forecolor backcolor | alignleft aligncenter alignright alignjustify | indent outdent',
                     images_file_types: 'svg,webp,png,gif,jpg,jpeg,',
                     file_picker_types: 'file image media',
+                    setup: (editor) => {
+                        editor.on('init change', function () {
+                            editor.save();
+                        });
+                        editor.on('change', (e) => {
+                            // console.log(editor.id);
+                            Livewire.emit('dataChanged', editor.id, editor.getContent());
+                        });
+                    }
                 });
 
                 $('.js-example-basic-multiple').each((i, elem) => {
@@ -238,31 +252,33 @@
 
                 window.addEventListener('myevent', () => {
                     $('.js-example-basic-multiple').select2();
-                    $('.js-example-tags').select2({
-                        tags: true
-                    });
-
-                    tinymce.init({
-                        selector: 'textarea.description',
-                        height: 500,
-                        plugins: "image fullscreen table",
-                        toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright alignjustify | indent outdent',
-                        images_file_types: 'svg,webp,png,gif,jpg,jpeg,',
-                        file_picker_types: 'file image media',
-                    });
-                })
+                });
             });
     </script>
     @endpush
 
+    @if (session()->has('message'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: '{{app()->getLocale() == "en" ? "Done" : "تم"}}',
+                text: "{{ session('message') }}",
+            }).then((result) => {
+                if (result.isConfirmed || result.isDismissed) {
+                    window.location.reload();
+                }
+            })
+        </script>
+    @endif
+
     {{-- @php
-        if(!empty(request()->all())) {
-            $data = request()->all();
-            foreach($data as $key => $val) {
-                $data[$key] = explode(',', $val);
-            }
-            extract($data);
-        }
+    if(!empty(request()->all())) {
+    $data = request()->all();
+    foreach($data as $key => $val) {
+    $data[$key] = explode(',', $val);
+    }
+    extract($data);
+    }
     @endphp --}}
 
 </div>

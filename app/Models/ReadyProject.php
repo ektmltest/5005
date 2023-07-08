@@ -9,6 +9,8 @@ class ReadyProject extends Model
 {
     use HasFactory;
 
+    protected $table ='ready_projects';
+
     protected $guarded = [];
 
     protected $with = ['user'];
@@ -60,6 +62,18 @@ class ReadyProject extends Model
         return Like::where('user_id', auth()->user()->id)->where('likesable_id', $this->id)->first();
     }
 
+    public function hasAddon($id) {
+        return $this->addons()->where('addon_id', $id)->exists();
+    }
+
+    public function hasFacility($id) {
+        return $this->facilities()->where('facility_id', $id)->exists();
+    }
+
+    public function hasTag($id) {
+        return $this->tags()->where('tag_id', $id)->exists();
+    }
+
     //////* attributes *//////
     // public function name(): Attribute {
     //     return Attribute::make(
@@ -93,13 +107,6 @@ class ReadyProject extends Model
         );
     }
 
-    public function shortDescription(): Attribute {
-        return Attribute::make(
-            get: fn ($value) => json_decode($value, true)[app()->getLocale()],
-            set: fn ($value) => json_encode($value)
-        );
-    }
-
     public function body(): Attribute {
         return Attribute::make(
             get: fn ($value) => json_decode($value, true)[app()->getLocale()],
@@ -122,7 +129,7 @@ class ReadyProject extends Model
             $num++;
         }
 
-        return $sum / $num;
+        return $num ? $sum / $num : 0;
     }
 
     public function getImageAttribute() {

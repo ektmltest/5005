@@ -52,8 +52,8 @@
                     <div class="sidebox sidebox-style">
                         <h5><i class="bx bx-cart-alt"></i>{{ __('project_trans.Buy Project') }}</h5>
                         <div class="sidebox-inner newsletter">
-                            <h5 class="mb-3" style="justify-content: space-between;">{{ __('project_trans.Project
-                                Price') }}
+                            <h5 class="mb-3" style="justify-content: space-between;">
+                                {{ __('project_trans.Project Price') }}
                                 <span class="pCost">{{ $project->price }} {{ __('project_trans.SAR') }}</span>
                             </h5>
 
@@ -133,7 +133,7 @@
             <div class="col-lg-8 col-sm-12 order-1 order-lg-2">
                 <div class="post-item">
                     <div class="post-img mb-4">
-                        <img class="img-fluid" src="{{ asset('assets/img/'.$project->image) }}" alt="">
+                        <img class="img-fluid" src="{{ $project->image }}" alt="">
                     </div>
 
                     <div style="width: 40%;">
@@ -146,21 +146,11 @@
                         <a class="post-title" href="#">{{ $project->name }}</a>
                         <ul class="list-unstyled post-details">
                             <li></li>
-                            <li>{{ $project->created_at }}</li>
+                            <li>{{ $project->created_at->diffForHumans() }}</li>
                             <li>4 إعجاب</li>
                         </ul>
 
-                        <p>
-                        <p
-                            style="margin-top:0px;margin-bottom:1rem;font-size:14px;font-weight:400;color:#718096;font-family:'SST Arabic';text-align:right;">
-                            {{ __('project_trans.basmala') }}</p>
-                        </p>
-                        <h5
-                            style="margin-top:0px;margin-bottom:0.5rem;font-weight:500;line-height:1.2;font-size:1.25rem;color:#212529;font-family:'SST Arabic';text-align:right;">
-                            <span style="color:#843fa1;">{{ __('project_trans.Project Idea') }} :</span></h5>
-
-                        <p style="margin-top:0px;margin-bottom:1rem;font-size:14px;color:#718096;">{{ $project->body }}
-                        </p>
+                        {!! $project->body !!}
 
                         <div class="footer-post">
                             <div class="tags">
