@@ -100,18 +100,42 @@ class ReadyProject extends Model
         return $this->name;
     }
 
-    public function description(): Attribute {
+    public function description(string $locale = null): Attribute {
         return Attribute::make(
-            get: fn ($value) => json_decode($value, true)[app()->getLocale()],
+            get: function ($value) {
+                if ($this->locale) {
+                    $loc = $this->locale;
+                    $this->locale = null;
+                    return json_decode($value, true)[$loc];
+                }
+                return json_decode($value, true)[app()->getLocale()];
+            },
             set: fn ($value) => json_encode($value)
         );
     }
 
-    public function body(): Attribute {
+    public function descriptionLocale(string $locale) {
+        $this->locale = $locale;
+        return $this->description;
+    }
+
+    public function body(string $locale = null): Attribute {
         return Attribute::make(
-            get: fn ($value) => json_decode($value, true)[app()->getLocale()],
+            get: function ($value) {
+                if ($this->locale) {
+                    $loc = $this->locale;
+                    $this->locale = null;
+                    return json_decode($value, true)[$loc];
+                }
+                return json_decode($value, true)[app()->getLocale()];
+            },
             set: fn ($value) => json_encode($value)
         );
+    }
+
+    public function bodyLocale(string $locale) {
+        $this->locale = $locale;
+        return $this->body;
     }
 
     public function getIsLikedAttribute() {
@@ -134,5 +158,9 @@ class ReadyProject extends Model
 
     public function getImageAttribute() {
         return asset($this->attributes['image']);
+    }
+
+    public function getImageUriAttribute() {
+        return $this->attributes['image'];
     }
 }

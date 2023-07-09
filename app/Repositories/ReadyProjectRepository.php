@@ -80,14 +80,38 @@ class ReadyProjectRepository implements ReadyProjectRepositoryInterface {
             'user_id' => auth()->user()->id
         ]);
 
+        $this->storeProjectDependencies($complex_data, $ready_project);
+
+        return $ready_project;
+    }
+
+    public function update($dataToUpdate, $complex_data, ReadyProject $ready_project) {
+        $this->deleteProjectDependencies($ready_project);
+
+        ReadyProject::where('id', $ready_project->id)->update($dataToUpdate);
+
+        $this->storeProjectDependencies($complex_data, $ready_project);
+
+        return $this->findById($ready_project->id);
+    }
+
+    public function storeProjectDependencies($complex_data, ReadyProject $ready_project) {
         if (isset($complex_data['facilities_ids']))
             $ready_project->facilities()->attach($complex_data['facilities_ids']);
         if (isset($complex_data['addons_ids']))
             $ready_project->addons()->attach($complex_data['addons_ids']);
         if (isset($complex_data['tags_ids']))
             $ready_project->tags()->attach($complex_data['tags_ids']);
+    }
 
-        return $ready_project;
+    public function deleteProjectDependencies(ReadyProject $ready_project) {
+        $ready_project->facilities()->detach();
+        $ready_project->addons()->detach();
+        $ready_project->tags()->detach();
+    }
+
+    public function delete($id) {
+        return ReadyProject::destroy($id);
     }
 
     private function storeLike(ReadyProject $ready_project) {

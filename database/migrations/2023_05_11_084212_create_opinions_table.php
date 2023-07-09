@@ -17,8 +17,8 @@ return new class extends Migration
             $table->timestamps();
 
             // foreign keys
-            $table->foreignId('ready_project_id')->constrained('ready_projects');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('ready_project_id')->constrained('ready_projects')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

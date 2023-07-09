@@ -79,9 +79,10 @@ class ValidationRequest extends FormRequest
     }
 
     protected function fileRule(bool $update = false, $image = false) {
-        $rules = [$image ? 'image' : 'file', 'max:10000', 'mimes:png,jpg,webp,gif'];
-        if (!$update)
-            $rules[] ='required';
+        $rules = [];
+        if (!$update) {
+            $rules = ['required', $image ? 'image' : 'file', 'mimes:png,jpg,webp,gif', 'max:10000'];
+        }
 
         return $rules;
     }

@@ -153,4 +153,18 @@
 
         </div>
     </div>
+
+    @if (session()->has('message'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: '{{app()->getLocale() == "en" ? "Done" : "تم"}}',
+                text: "{{ session('message') }}",
+            }).then((result) => {
+                if (result.isConfirmed || result.isDismissed) {
+                    window.location.reload();
+                }
+            })
+        </script>
+    @endif
 </div>

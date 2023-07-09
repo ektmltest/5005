@@ -217,8 +217,8 @@
                 tinymce.init({
                     selector: 'textarea.description',
                     height: 500,
-                    plugins: "image fullscreen table textcolor",
-                    toolbar: 'undo redo | blocks | bold italic | forecolor backcolor | alignleft aligncenter alignright alignjustify | indent outdent',
+                    plugins: "image fullscreen table textcolor fontsize",
+                    toolbar: 'undo redo | blocks | bold italic | forecolor backcolor | fontselect fontsizeselect | alignleft aligncenter alignright alignjustify | indent outdent',
                     images_file_types: 'svg,webp,png,gif,jpg,jpeg,',
                     file_picker_types: 'file image media',
                     setup: (editor) => {

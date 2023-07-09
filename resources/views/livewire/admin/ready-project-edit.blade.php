@@ -68,7 +68,7 @@
                                             <select class="form-control" id="" style="cursor: pointer"
                                                 wire:model='dept_id'>
                                                 @foreach ($departments as $department)
-                                                <option value="{{$department->id}}" @if($project->project_department_id == $department->id) selected @endif>{{$department->name}}</option>
+                                                <option value="{{$department->id}}">{{$department->name}}</option>
                                                 @endforeach
                                             </select>
                                             @error('dept_id') <span class="error">{{ $message }}</span> @enderror
@@ -209,8 +209,15 @@
                     images_file_types: 'svg,webp,png,gif,jpg,jpeg,',
                     file_picker_types: 'file image media',
                     setup: (editor) => {
-                        editor.on('init change', function () {
+                        editor.on('change', function () {
                             editor.save();
+                        });
+                        editor.on('init', function (e) {
+                            editor.save();
+                            if (editor.id == 'desc_ar')
+                                editor.setContent(`{!! $desc_ar !!}`);
+                            else if (editor.id == 'desc_en')
+                                editor.setContent(`{!! $desc_en !!}`);
                         });
                         editor.on('change', (e) => {
                             // console.log(editor.id);
