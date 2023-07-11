@@ -8,13 +8,13 @@ use Illuminate\Support\Facades\DB;
 
 class ReadyProject extends Component
 {
-    public $ready_projects = [];
+    protected $ready_projects = [];
 
     protected $readyProjectRepository;
 
     public function __construct() {
         $this->readyProjectRepository = (new ReadyProjectRepository());
-        $this->ready_projects = $this->readyProjectRepository->getAllReadyProjects();
+        $this->ready_projects = $this->readyProjectRepository->getAllReadyProjects(paginate: true);
     }
 
     public function deleteDeparment($id) {
@@ -38,6 +38,8 @@ class ReadyProject extends Component
 
     public function render()
     {
-        return view('livewire.admin.ready-project');
+        return view('livewire.admin.ready-project', [
+            'ready_projects' => $this->ready_projects
+        ]);
     }
 }

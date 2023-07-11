@@ -19,7 +19,7 @@ class MarketingCouponFactory extends Factory
     public function definition(): array
     {
         return [
-            'key' => fake()->randomNumber(),
+            'key' => fake()->unique()->randomNumber(),
             'num_of_transactions' => fake()->numberBetween(1, 500),
             'ready_project_id' => ReadyProject::inRandomOrder()->first()->id,
             'user_id' => User::inRandomOrder()->first()->id,

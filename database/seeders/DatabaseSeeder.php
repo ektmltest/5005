@@ -51,44 +51,44 @@ class DatabaseSeeder extends Seeder
             $this->deleteFilesInFolder('projects');
             $this->deleteFilesInFolder('tickets');
 
-            RankType::factory()->count(5)->create();
+            RankType::factory()->count(15)->create();
 
-            $permissions = Permission::factory()->count(5)->create();
+            $permissions = Permission::factory()->count(150)->create();
 
-            Rank::factory()->count(5)->hasAttached($permissions)->create();
+            Rank::factory()->count(50)->hasAttached($permissions)->create();
 
             $marketLevels = MarketingLevel::factory()
-                ->count(5)
+                ->count(50)
                 ->create();
 
             $users = User::factory()
-                ->count(5)
+                ->count(100)
                 ->create()
                 ->each(function ($user) use ($marketLevels) {
                     $user->marketingLevels()->attach($marketLevels->random(1)->first()->id);
                 });
 
-            GalleryProjectType::factory()->count(5)->create();
-            GalleryProject::factory()->count(50)->create();
+            GalleryProjectType::factory()->count(15)->create();
+            GalleryProject::factory()->count(100)->create();
 
-            Newspaper::factory()->count(5)->create();
+            Newspaper::factory()->count(100)->create();
 
-            TicketType::factory()->count(5)->create();
+            TicketType::factory()->count(15)->create();
             Ticket::factory()
                 ->has(TicketAttachment::factory()->count(2), 'attachments')
                 ->count(100)
                 ->create();
             TicketReply::factory()
                 ->has(TicketReplyAttachment::factory()->count(2), 'attachments')
-                ->count(5)
+                ->count(150)
                 ->create();
 
-            AddonType::factory()->count(5)->create();
-            $addons = Addon::factory()->count(5)->create();
+            AddonType::factory()->count(15)->create();
+            $addons = Addon::factory()->count(100)->create();
 
-            ReadyProjectDepartment::factory()->count(5)->create();
+            ReadyProjectDepartment::factory()->count(20)->create();
             $readyProjects = ReadyProject::factory()
-                ->count(5)
+                ->count(200)
                 ->create()
                 ->each(function ($readyProject) use ($addons) {
                     $readyProject->addons()->attach($addons->random(1)->first()->id);
@@ -106,51 +106,51 @@ class DatabaseSeeder extends Seeder
                 });
 
             Cart::factory()
-                ->count(5)
+                ->count(50)
                 ->create()
                 ->each(function ($cart) use ($readyProjects) {
                     $cart->projects()->attach($readyProjects->random(1)->first()->id);
                 });
 
             Tag::factory()
-                ->count(5)
+                ->count(250)
                 ->create()
                 ->each(function ($tag) use ($readyProjects) {
                     $tag->readyProjects()->attach($readyProjects->random(1)->first()->id);
                 });
 
             Facility::factory()
-                ->count(5)
+                ->count(50)
                 ->create()
                 ->each(function ($facility) use ($readyProjects) {
                     $facility->readyProjects()->attach($readyProjects->random(1)->first()->id);
                 });
 
-            BankCard::factory()->count(3)->create();
+            BankCard::factory()->count(10)->create();
             Payment::factory()
-                ->count(5)
+                ->count(150)
                 ->create()
                 ->each(function ($payment) use ($addons) {
                     $payment->addons()->attach($addons->random(1)->first()->id);
                 });
 
-            MarketingCoupon::factory()->count(10)->create();
+            MarketingCoupon::factory()->count(50)->create();
 
-            Opinion::factory()->count(10)->create();
+            Opinion::factory()->count(300)->create();
 
-            ProjectDepartment::factory()->count(5)->create();
-            $categories = ProjectCategory::factory()->count(5)->create();
-            ProjectState::factory()->count(2)->create();
+            ProjectDepartment::factory()->count(10)->create();
+            $categories = ProjectCategory::factory()->count(30)->create();
+            ProjectState::factory()->count(10)->create();
             Project::factory()
-                ->count(10)
+                ->count(150)
                 ->create()
                 ->each(function ($project) use ($categories) {
                     $project->categories()->attach($categories->random(1)->first()->id);
                 });
-            ProjectReply::factory()->count(10)->create();
-            ProjectReplyAttachment::factory()->count(20)->create();
+            ProjectReply::factory()->count(200)->create();
+            ProjectReplyAttachment::factory()->count(200)->create();
 
-            Contact::factory()->count(5)->create();
+            Contact::factory()->count(100)->create();
 
             DB::commit();
         } catch (\Throwable $e) {

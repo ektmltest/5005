@@ -38,7 +38,7 @@
                                     @foreach($ready_projects as $key => $project)
 
                                     <tr>
-                                        <td>{{ $key+1 }}</td>
+                                        <td>{{ $project->id }}</td>
                                         <td>{{ $project->name }}</td>
                                         <td>{{ \Str::limit($project->description, 20, '...') }}</td>
                                         <td>{{ $project->price }}</td>
@@ -147,6 +147,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        {{$ready_projects->links()}}
                     </div>
                 </div>
             </div>
