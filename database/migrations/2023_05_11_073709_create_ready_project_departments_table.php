@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->json('name'); // todo
             $table->timestamps();
+
+            // foreign keys
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

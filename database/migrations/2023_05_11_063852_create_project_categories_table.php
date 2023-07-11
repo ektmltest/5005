@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->json('name');
             $table->string('icon');
+            $table->string('unicode')->nullable();
             $table->double('start_price');
             $table->timestamps();
 

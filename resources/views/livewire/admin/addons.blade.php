@@ -29,22 +29,24 @@
                                         <th>#</th>
                                         <th>{{ __('dashboard_trans.ARABIC NAME') }}</th>
                                         <th>{{ __('dashboard_trans.ENGLISH NAME') }}</th>
-                                        <th>{{ __('dashboard_trans.BY') }}</th>
+                                        <th>{{ __('dashboard_trans.PRICE') }}</th>
+                                        <th>{{ __('dashboard_trans.TYPE') }}</th>
                                         <th>{{ __('dashboard_trans.ACTIONS') }}</th>
                                     </tr>
                                 </thead>
 
-                                @foreach($departments as $key => $deparment)
+                                @foreach($addons as $key => $addon)
                                 <tbody>
                                     <tr>
                                         <td>{{ $key+1 }}</td>
-                                        <td>{{ $deparment->nameLocale('ar') }}</td>
-                                        <td>{{ $deparment->nameLocale('en') }}</td>
-                                        <td>{{ $deparment->user->full_name }}</i></td>
+                                        <td>{{ $addon->nameLocale('ar') }}</td>
+                                        <td>{{ $addon->nameLocale('en') }}</td>
+                                        <td>{{ $addon->price }}</td>
+                                        <td>{{ $addon->type->name }}</i></td>
                                         <td>
                                             <div data-bs-toggle="tooltip" data-bs-placement="top" title="{{__('dashboard_trans.DELETE')}}" style="display: inline-block">
                                                 <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                                    data-bs-target="#delete_deparment{{$deparment->id}}"><i
+                                                    data-bs-target="#delete_deparment{{$addon->id}}"><i
                                                         class="fa fa-trash"></i></button>
                                             </div>
                                         </td>
@@ -53,7 +55,7 @@
                                 </tbody>
 
                                 <!-- delete -->
-                                <div class="modal fade" id="delete_deparment{{ $deparment->id }}" tabindex="-1"
+                                <div class="modal fade" id="delete_deparment{{ $addon->id }}" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -65,10 +67,10 @@
                                             </div>
 
                                             <div class="modal-body">
-                                                <form wire:submit.prevent="deleteDeparment({{$deparment->id}})">
+                                                <form wire:submit.prevent="deleteAddon({{$addon->id}})">
                                                     <div class="mb-3 text-center">
                                                         <input type="text" class="form-control hidden" value={{
-                                                            $deparment->id }} id="recipient-name">
+                                                            $addon->id }} id="recipient-name">
                                                         <h4 class="text-danger">{{ __('dashboard_trans.QuesDele') }}
                                                         </h4>
                                                     </div>
@@ -89,7 +91,7 @@
                                 @endforeach
                             </table>
                         </div>
-                        {{ $departments->links() }}
+                        {{ $addons->links() }}
                     </div>
                 </div>
             </div>
@@ -99,9 +101,9 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{ __('dashboard_trans.Add Section') }}</h4>
+                            <h4 class="card-title">{{ __('dashboard_trans.Add Addon') }}</h4>
 
-                            <form wire:submit.prevent="addDepartment">
+                            <form wire:submit.prevent="addAddon">
                                 <div class="row mt-4">
                                     <div class="col-lg-6">
                                         <div class="mb-3">
@@ -110,10 +112,10 @@
                                             @error("data.name_ar") <span class="error">{{ $message }}</span> @enderror
                                         </div>
 
-                                        <div class="mb-3 mt-3 mt-lg-0">
-                                            <label class="form-label">.</label>
-                                            <button type="submit" class="btn btn-success form-control">{{
-                                                __('dashboard_trans.Add Section') }}</button>
+                                        <div class="mb-3">
+                                            <label class="form-label">{{ __('dashboard_trans.PRICE') }}</label>
+                                            <input type="number" class="form-control" wire:model="data.price">
+                                            @error("data.price") <span class="error">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
 
@@ -123,6 +125,23 @@
                                             <input type="text" class="form-control" wire:model="data.name_en">
                                             @error("data.name_en") <span class="error">{{ $message }}</span> @enderror
                                         </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">{{ __('dashboard_trans.TYPE') }}</label>
+                                            <select class="form-control" wire:model="data.type">
+                                                <option>--</option>
+                                                @foreach ($types as $type)
+                                                    <option value="{{$type->id}}">{{$type->name}}</option>
+                                                @endforeach
+                                            </select>
+                                            @error("data.type") <span class="error">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3 mt-3 mt-lg-0 col-lg-3">
+                                        <label class="form-label">.</label>
+                                        <button type="submit" class="btn btn-success form-control">{{
+                                            __('dashboard_trans.Add Addon') }}</button>
                                     </div>
 
                                 </div>
@@ -143,7 +162,7 @@
                 text: "{{ session('message') }}",
             }).then((result) => {
                 if (result.isConfirmed || result.isDismissed) {
-                    window.location = window.location.href.split("?")[0];
+                    window.location.reload();
                 }
             })
         </script>

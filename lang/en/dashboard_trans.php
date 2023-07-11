@@ -11,12 +11,14 @@ return [
     'Projects management' => 'Projects management',
     'Projects sections' => 'Projects sections',
     'Projects categories' => 'Projects categories',
+    'Store sections' => 'Store sections',
 
     'CATALOG MANAGMENT' => 'CATALOG MANAGMENT',
     'Manage Projects' => 'Manage Projects',
     'Add Project' => 'Add Project',
     'Store Catogries' => 'Store Catogries',
     'Addons' => 'Addons',
+    'Add Addon' => 'Add Addon',
 
     'WITHDRAWS' => 'WITHDRAWS',
     'Withdraws' => 'Withdraws',
@@ -117,6 +119,13 @@ return [
     'ADD PHOTO' => 'ADD PHOTO',
 
     'ADD' => 'ADD',
+
+    'BY' => 'BY',
+
+    'TYPE' => 'TYPE',
+
+    'available tickets' => 'available tickets',
+    'closed tickets' => 'closed tickets',
 
 ];
 

@@ -22,6 +22,7 @@ class ProjectStateFactory extends Factory
                 'en' => fake()->unique()->name(),
             ],
             'icon' => 'bx bx-alarm',
+            'unicode' => 'f15b',
         ];
     }
 }

@@ -23,6 +23,7 @@ class ProjectCategoryFactory extends Factory
                 'en' => fake()->unique()->name(),
             ],
             'icon' => fake()->slug(),
+            'unicode' => 'f15b',
             'start_price' => fake()->randomFloat(min: 100, max: 5000),
             'project_department_id' => ProjectDepartment::inRandomOrder()->first()->id,
         ];

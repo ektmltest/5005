@@ -31,6 +31,12 @@ function () {
         Route::get('readyProjects', fn() => view('admin.catalogs.readyProjects'))->name('readyProjects');
         Route::get('readyProjects/{id}/edit', fn($id) => view('admin.catalogs.readyProjects-edit', ['id' => $id]))->name('readyProjects.edit');
         Route::get('readyProjects/create', fn() => view('admin.catalogs.readyProjects-create'))->name('readyProjects.create');
+        Route::get('readyProjects/categories', fn() => view('admin.catalogs.store-department'))->name('readyProjects.departments');
+        Route::get('readyProjects/addons', fn() => view('admin.catalogs.addons'))->name('readyProjects.addons');
+
+        // TICKET SYSTEM
+        Route::get('tickets', fn() => view('admin.tickets.index'))->name('tickets.index');
+        Route::get('tickets/types', fn() => view('admin.tickets.types'))->name('tickets.types');
     });
 
 

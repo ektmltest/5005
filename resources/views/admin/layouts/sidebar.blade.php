@@ -75,14 +75,14 @@
                 </li>
 
                 <li>
-                    <a href="file-manager.html" class=" waves-effect">
+                    <a href="{{ route('readyProjects.departments') }}" class=" waves-effect">
                         <i class="fa fa-solid fa-folder-plus"></i>
                         <span>{{ __('dashboard_trans.Store Catogries') }}</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="file-manager.html" class=" waves-effect">
+                    <a href="{{ route('readyProjects.addons') }}" class=" waves-effect">
                         <i class="fa fa-solid fa-gift"></i>
                         <span>{{ __('dashboard_trans.Addons') }}</span>
                     </a>
@@ -107,7 +107,7 @@
 
                 <li class="menu-title text-primary">{{ __('dashboard_trans.TICKET SYSTEM') }}</li>
                 <li>
-                    <a href="file-manager.html" class=" waves-effect">
+                    <a href="{{ route('tickets.index') }}" class=" waves-effect">
                         <i class="fa fa-solid fa-clipboard-list"></i>
                         <span>{{ __('dashboard_trans.Tickets Management') }}</span>
                     </a>

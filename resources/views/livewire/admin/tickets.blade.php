@@ -7,8 +7,8 @@
                     <div class="page-title-box d-flex align-items-center justify-content-between">
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item">{{ __('dashboard_trans.PROJECTS SYSTEM') }}</li>
-                                <li class="breadcrumb-item active">{{ __('dashboard_trans.Projects management') }}
+                                <li class="breadcrumb-item">{{ __('dashboard_trans.TICKET SYSTEM') }}</li>
+                                <li class="breadcrumb-item active">{{ __('dashboard_trans.Tickets Management') }}
                                 </li>
                             </ol>
                         </div>
@@ -27,13 +27,18 @@
                             <div class="table-responsive">
                                 <table class="table table-centered mb-0 table-nowrap">
                                     <tbody>
-                                        @foreach (\App\Models\ProjectState::all() as $state)
                                         <tr>
-                                            <th><a style="cursor: pointer;" class="waves-effect"
-                                                    wire:click="changeStatus({{$state->id}})">{{ $state->name }}</a>
+                                            <th>
+                                                <a class="{{$current_status != 'available' ? 'text-secondary' : ''}}" style="cursor: pointer;" class="waves-effect"
+                                                    wire:click="changeStatus('available')">{{__('dashboard_trans.available tickets')}}</a>
                                             </th>
                                         </tr>
-                                        @endforeach
+                                        <tr>
+                                            <th>
+                                                <a class="{{$current_status != 'closed' ? 'text-secondary' : ''}}" style="cursor: pointer;" class="waves-effect"
+                                                wire:click="changeStatus('closed')">{{__('dashboard_trans.closed tickets')}}</a>
+                                            </th>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -47,18 +52,24 @@
                             <table class="table table-centered table-nowrap mb-0">
                                 <thead>
                                     <tr>
-                                        <th>مشاريع {{$state_name}} <i class="bx bxs-briefcase-alt-2"></i></th>
+                                        <th>#</th>
+                                        <th>{{__("dashboard_trans.$current_status tickets")}} <i class="bx bxs-briefcase-alt-2"></i></th>
+                                        <th>{{__('dashboard_trans.TYPE')}}</th>
                                     </tr>
                                 </thead>
-                                @foreach($projects as $project)
+                                @foreach($tickets as $ticket)
                                 <tbody>
                                     <tr>
-                                        <td><a href="#">{{ $project->name }}</a></td>
-                                        <td>{{ $project->created_at->diffForHumans() }}</td>
+                                        <td>{{$ticket->id}}</td>
+                                        <td><a href="#">{{ $ticket->user->full_name }}<br><span class="text-secondary">{{$ticket->title}}</span><br><span class="text-secondary">{{\Str::limit($ticket->description, 20, '...')}}</span></a></td>
+                                        <td><span class="bg-info text-light rounded p-1 badge">{{ $ticket->type->name }}</span></td>
+                                        <td>{{ $ticket->created_at->diffForHumans() }}</td>
                                     </tr>
                                 </tbody>
                                 @endforeach
                             </table>
+
+                            {{$tickets->links()}}
                         </div>
                     </div>
                 </div>

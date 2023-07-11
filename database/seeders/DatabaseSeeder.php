@@ -76,7 +76,7 @@ class DatabaseSeeder extends Seeder
             TicketType::factory()->count(5)->create();
             Ticket::factory()
                 ->has(TicketAttachment::factory()->count(2), 'attachments')
-                ->count(5)
+                ->count(100)
                 ->create();
             TicketReply::factory()
                 ->has(TicketReplyAttachment::factory()->count(2), 'attachments')

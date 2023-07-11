@@ -1,5 +1,7 @@
 <?php
 namespace Database\Factories;
+
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,6 +21,7 @@ class TicketTypeFactory extends Factory
                 'ar' => 'اسم',
                 'en' => fake()->unique()->name(),
             ],
+            'user_id' => User::inRandomOrder()->first()->id,
         ];
     }
 }

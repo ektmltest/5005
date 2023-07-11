@@ -22,6 +22,7 @@ class ProjectDepartmentFactory extends Factory
                 'en' => fake()->unique()->name(),
             ],
             'icon' => fake()->slug(),
+            'unicode' => 'f15b',
         ];
     }
 }

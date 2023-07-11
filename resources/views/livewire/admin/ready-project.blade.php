@@ -162,7 +162,7 @@
                 text: "{{ session('message') }}",
             }).then((result) => {
                 if (result.isConfirmed || result.isDismissed) {
-                    window.location.reload();
+                    window.location = window.location.href.split("?")[0];
                 }
             })
         </script>

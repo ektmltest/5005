@@ -9,12 +9,14 @@ return [
     'Projects management' => 'إدارة المشاريع',
     'Projects sections' => 'أقسام المشاريع',
     'Projects categories' => 'تصنيفات المشاريع',
+    'Store sections' => 'أقسام المتجر',
 
     'CATALOG MANAGMENT' => 'إدارة الكاتالوج',
     'Manage Projects' => 'إدارة المشاريع',
     'Add Project' => 'إضافة مشروع جديد',
     'Store Catogries' => 'أقسام المتجر',
     'Addons' => 'الإضافات',
+    'Add Addon' => 'أضف اضافة',
 
     'WITHDRAWS' => 'السحب والإيداع',
     'Withdraws' => 'السحب والإيداع',
@@ -118,6 +120,14 @@ return [
     'ADD PHOTO' => 'اضافة صورة',
 
     'ADD' => 'اضافة',
+
+    'BY' => 'من قبل',
+
+    'TYPE' => 'النوع',
+
+    'available tickets' => 'التذاكر المتاحة',
+    'closed tickets' => 'التذاكر المغلقة',
+
 
 
 ];
