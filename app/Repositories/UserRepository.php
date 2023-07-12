@@ -119,4 +119,11 @@ class UserRepository implements UserRepositoryInterface {
 
         return $user;
     }
+
+    public function getAll($max = null) {
+        if (is_int($max))
+            return User::orderBy('created_at')->take($max)->get();
+        else
+            return User::all();
+    }
 }

@@ -41,7 +41,7 @@ class ProjectSections extends Component
 
     public function editDeparment(Request $request, $id)
     {
-        dd($request);
+        // dd($request);
         $this->category = ProjectDepartment::find($id);
         $this->category->update([
             'name' => [

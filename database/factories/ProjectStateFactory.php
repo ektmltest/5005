@@ -23,6 +23,7 @@ class ProjectStateFactory extends Factory
             ],
             'icon' => 'bx bx-alarm',
             'unicode' => 'f15b',
+            'color' => fake()->randomElement(['warning', 'dark', 'secondary', 'info', 'danger', 'success'])
         ];
     }
 }

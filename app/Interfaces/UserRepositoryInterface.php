@@ -21,4 +21,6 @@ interface UserRepositoryInterface {
     public function findByEmail(string $email, bool $firstOrFail = false);
 
     public function changePassword(string $new_password, string $email);
+
+    public function getAll($max = null);
 }

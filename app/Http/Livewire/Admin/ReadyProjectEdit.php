@@ -131,7 +131,6 @@ class ReadyProjectEdit extends Component
             'marketing_discount_ratio' => $this->tax,
             'ready_project_department_id' => $this->dept_id,
             'link' => $this->link,
-            'user_id' => auth()->user()->id
         ];
         if ($this->image) {
             if ($this->deleteProjectImage())

@@ -114,7 +114,7 @@
                 </li>
 
                 <li>
-                    <a href="file-manager.html" class=" waves-effect">
+                    <a href="{{ route('tickets.types') }}" class=" waves-effect">
                         <i class="fas fa-ticket-alt"></i>
                         <span>{{ __('dashboard_trans.Ticket Categories') }}</span>
                     </a>

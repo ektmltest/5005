@@ -16,6 +16,7 @@ return new class extends Migration
             $table->json('name'); // todo: edited
             $table->string('icon');
             $table->string('unicode')->nullable();
+            $table->enum('color', ['warning', 'dark', 'secondary', 'info', 'danger', 'success'])->nullable();
             $table->timestamps();
         });
     }

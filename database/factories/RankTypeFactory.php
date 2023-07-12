@@ -25,6 +25,7 @@ class RankTypeFactory extends Factory
 
         return [
             'name' => $this->faker->randomElement($names),
+            'color' => $this->faker->randomElement(['warning', 'dark', 'secondary', 'info', 'danger', 'success']),
         ];
     }
 }

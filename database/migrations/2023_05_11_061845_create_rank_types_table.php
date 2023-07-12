@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('rank_types', function (Blueprint $table) {
             $table->id();
             $table->json('name');
+            $table->enum('color', ['warning', 'dark', 'secondary', 'info', 'danger', 'success'])->nullable();
             $table->timestamps();
         });
     }

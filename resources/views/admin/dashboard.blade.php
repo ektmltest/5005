@@ -92,16 +92,18 @@
 
                             <div data-simplebar style="max-height: 339px;">
                                 <div class="table-responsive">
-                                    <table class="table table-borderless table-centered table-nowrap">
+                                    <table class="table table-borderless table-centered">
                                         <tbody>
+                                            @foreach ($users as $user)
                                             <tr>
-                                                <td style="width: 20px;"><img src="assets/images/users/avatar-4.jpg"
+                                                <td style="width: 20px;"><img src="{{$user->avatar}}"
                                                         class="avatar-xs rounded-circle " alt="..."></td>
                                                 <td>
-                                                    <h6 class="font-size-15 mb-1 fw-normal">Glenn Holden</h6>
+                                                    <h6 class="font-size-15 mb-1 fw-normal">{{$user->full_name}}</h6>
                                                 </td>
-                                                <td><span class="badge bg-soft-danger font-size-12">Customer</span></td>
+                                                <td><span class="badge bg-soft-{{$user->rank->type->color}} font-size-12">{{$user->rank->type->name}}</span></td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div> <!-- enbd table-responsive-->
@@ -129,8 +131,9 @@
                                     </thead>
 
                                     <tbody>
+                                        @foreach ($projects as $project)
                                         <tr>
-                                            <td><a href="javascript: void(0);" class="text-body fw-bold">MB2540</a></td>
+                                            <td><a href="javascript: void(0);" class="text-body fw-bold">{{$project->id}}</a></td>
                                             <td>Neal Matthews</td>
                                             <td>Neal Matthews</td>
                                             <td><i class="fab fa-cc-mastercard me-1"></i>Mastercard</td>
@@ -138,6 +141,7 @@
                                                     class="badge rounded-pill bg-soft-success font-size-12">Paid</span>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -147,5 +151,5 @@
             </div><!-- end row -->
         </div> <!-- container-fluid -->
     </div><!-- End Page-content -->
-
-    @endsection
+</div>
+@endsection

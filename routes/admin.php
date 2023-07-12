@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Admin\ManageProject;
 use App\Http\Livewire\Admin\ProjectSections;
@@ -18,9 +19,7 @@ function () {
 // Route::group(['middleware' => 'auth'], function () {
 
     Route::prefix('admin')->group(function () {
-        Route::get('dashboard', function(){
-            return view('admin.dashboard');
-        })->name('dashboard');
+        Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
 
         // Manage Projects
         Route::get('manageProjects', fn () => view('admin.projects.manage-project'))->name('staffProjects');
@@ -35,7 +34,8 @@ function () {
         Route::get('readyProjects/addons', fn() => view('admin.catalogs.addons'))->name('readyProjects.addons');
 
         // TICKET SYSTEM
-        Route::get('tickets', fn() => view('admin.tickets.index'))->name('tickets.index');
+        Route::get('tickets', fn() => view('admin.tickets.index', ['current_status' => 'available']))->name('tickets.index');
+        Route::get('tickets/closed', fn() => view('admin.tickets.index', ['current_status' => 'closed']))->name('tickets.closed.index');
         Route::get('tickets/types', fn() => view('admin.tickets.types'))->name('tickets.types');
     });
 

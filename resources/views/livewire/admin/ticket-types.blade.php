@@ -34,8 +34,9 @@
                                     </tr>
                                 </thead>
 
-                                @foreach($types as $ticket_type)
                                 <tbody>
+                                    @foreach($types as $ticket_type)
+
                                     <tr>
                                         <td>{{ $ticket_type->id }}</td>
                                         <td>{{ $ticket_type->nameLocale('ar') }}</td>
@@ -52,99 +53,46 @@
                                                     class="fa fa-trash"></i></button>
                                         </td>
                                     </tr>
-                                </tbody>
 
-                                <!-- edit -->
-                                <div class="modal fade" id="edit_ticket_type{{ $ticket_type->id }}" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">{{
-                                                    __('dashboard_trans.Edit Section') }}</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
+                                    <livewire:admin.ticket-type-edit :ticket_type="$ticket_type">
 
-                                            <form wire:submit.prevent="editDeparment({{$ticket_type->id}})">
-                                                <div class="modal-body">
-                                                    <div class="mb-3">
-                                                        <label for="recipient-name" class="col-form-label">{{
-                                                            __('dashboard_trans.Name Ar') }}</label>
-                                                        <input type="text" class="form-control" name="name_ar" value={{
-                                                            $ticket_type->nameLocale('ar') }} id="recipient-name">
-                                                        @error('ename_ar') <span class="error">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
 
-                                                    <div class="mb-3">
-                                                        <label for="message-text" class="col-form-label">{{
-                                                            __('dashboard_trans.Name En') }}</label>
-                                                        <input type="text" class="form-control" name="name_en" value={{
-                                                            $ticket_type->nameLocale('en') }} id="recipient-name">
-                                                        @error('ename_en') <span class="error">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-
-                                                    <div class="mb-3">
-                                                        <label for="message-text" class="col-form-label">{{
-                                                            __('dashboard_trans.Icon') }}</label>
-                                                        <input type="text" class="form-control" name="icon" value={{
-                                                            $ticket_type->icon }} id="recipient-name">
-                                                        @error('eicon') <span class="error">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">{{ __('dashboard_trans.Cancel')
-                                                            }}</button>
-                                                        <button type="submit" class="btn btn-primary">{{
-                                                            __('dashboard_trans.Edit') }}</button>
-                                                    </div>
+                                    <!-- delete -->
+                                    <div class="modal fade" id="delete_ticket_type{{ $ticket_type->id }}" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">{{
+                                                        __('dashboard_trans.Delete Section') }}</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
                                                 </div>
-                                            </form>
 
-                                        </div>
-                                    </div>
-                                </div>
+                                                <div class="modal-body">
+                                                    <form wire:submit.prevent="deleteTicketType({{$ticket_type->id}})">
+                                                        <div class="mb-3 text-center">
+                                                            <input type="text" class="form-control hidden" value={{
+                                                                $ticket_type->id }} id="recipient-name">
+                                                            <h4 class="text-danger">{{ __('dashboard_trans.QuesDele') }}
+                                                            </h4>
+                                                        </div>
 
-
-                                <!-- delete -->
-                                <div class="modal fade" id="delete_ticket_type{{ $ticket_type->id }}" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">{{
-                                                    __('dashboard_trans.Delete Section') }}</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-
-                                            <div class="modal-body">
-                                                <form wire:submit.prevent="deleteDeparment({{$ticket_type->id}})">
-                                                    <div class="mb-3 text-center">
-                                                        <input type="text" class="form-control hidden" value={{
-                                                            $ticket_type->id }} id="recipient-name">
-                                                        <h4 class="text-danger">{{ __('dashboard_trans.QuesDele') }}
-                                                        </h4>
-                                                    </div>
-
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">{{ __('dashboard_trans.Cancel')
-                                                            }}</button>
-                                                        <button type="submit" class="btn btn-danger">{{
-                                                            __('dashboard_trans.Delete') }}</button>
-                                                    </div>
-                                                </form>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">{{ __('dashboard_trans.Cancel')
+                                                                }}</button>
+                                                            <button type="submit" class="btn btn-danger">{{
+                                                                __('dashboard_trans.Delete') }}</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                @endforeach
+                                    @endforeach
+                                </tbody>
                             </table>
                         </div>
                         {{ $types->links() }}
@@ -159,14 +107,7 @@
                         <div class="card-body">
                             <h4 class="card-title">{{ __('dashboard_trans.Add Section') }}</h4>
 
-                            <form wire:submit.prevent="addDeparment">
-                                <div>
-                                    @if (session()->has('message'))
-                                    <div class="alert alert-success">
-                                        {{ session('message') }}
-                                    </div>
-                                    @endif
-                                </div>
+                            <form wire:submit.prevent="addTicketType">
                                 <div class="row mt-4">
                                     <div class="col-lg-6">
                                         <div class="mb-3">
@@ -205,4 +146,18 @@
 
         </div>
     </div><!-- end row -->
+
+    @if (session()->has('message'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: '{{app()->getLocale() == "en" ? "Done" : "تم"}}',
+                text: "{{ session('message') }}",
+            }).then((result) => {
+                if (result.isConfirmed || result.isDismissed) {
+                    window.location = window.location.href.split("?")[0];
+                }
+            })
+        </script>
+    @endif
 </div> <!-- container-fluid -->

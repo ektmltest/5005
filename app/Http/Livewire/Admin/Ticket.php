@@ -19,13 +19,16 @@ class Ticket extends Component
         $this->ticketRepository = new TicketRepository($this->ticketAttachmentRepository);
     }
 
-    public function mount() {
-        $this->tickets = $this->ticketRepository->getAllAvailableTickets(auth: false, paginate: true);
+    public function mount($current_status) {
+        $this->tickets = ($current_status == 'available') ? $this->ticketRepository->getAllAvailableTickets(auth: false, paginate: true) : $this->ticketRepository->getAllClosedTickets(auth: false, paginate: true);
+        $this->current_status = $current_status;
     }
 
     public function changeStatus(string $status) {
-        $this->current_status = $status;
-        $this->tickets = ($status == 'available') ? $this->ticketRepository->getAllAvailableTickets(auth: false, paginate: true) : $this->ticketRepository->getAllClosedTickets(auth: false, paginate: true);
+        if ($status == 'available')
+            redirect(route('tickets.index'));
+        else
+            redirect(route('tickets.closed.index'));
     }
 
     public function render()

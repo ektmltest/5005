@@ -7,6 +7,6 @@
 
 @section('content')
 
-<livewire:admin.ticket />
+<livewire:admin.ticket :current_status="$current_status"/>
 
 @endsection
