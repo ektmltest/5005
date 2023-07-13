@@ -7,9 +7,12 @@ use App\Http\Requests\Admin\ReadyProjectDepartmentStoreRequest;
 use App\Repositories\ReadyProjectDepartmentRepository;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class StoreDepartment extends Component
 {
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
     public $data = array();
 
     private $departments;

@@ -74,6 +74,8 @@ return [
     'Delete' => 'حذف',
     'Cancel' => 'الغاء',
     'QuesDele' => 'هل أنت متأكد من عملية الحذف.؟!',
+    'QuesBlock' => 'هل أنت متأكد من عملية الحظر.؟!',
+    'QuesActivate' => 'هل أنت متأكد من عملية التنشيط.؟!',
 
     'START PRICE' => 'السعر المبدأي',
     'Project Department' => 'التصنيف',
@@ -128,6 +130,12 @@ return [
     'available tickets' => 'التذاكر المتاحة',
     'closed tickets' => 'التذاكر المغلقة',
 
+    'block' => 'حظر',
+    'activate' => 'تنشيط',
+
+    'FULL NAME' => 'الاسم كامل',
+    'EMAIL' => 'البريد الالكتروني',
+    'PHONE' => 'رقم الهاتف',
 
 
 ];

@@ -5,16 +5,17 @@ namespace App\Http\Livewire\Admin;
 use Livewire\Component;
 use App\Repositories\ReadyProjectRepository;
 use Illuminate\Support\Facades\DB;
+use Livewire\WithPagination;
 
 class ReadyProject extends Component
 {
-    protected $ready_projects = [];
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
 
     protected $readyProjectRepository;
 
     public function __construct() {
         $this->readyProjectRepository = (new ReadyProjectRepository());
-        $this->ready_projects = $this->readyProjectRepository->getAllReadyProjects(paginate: true);
     }
 
     public function deleteDeparment($id) {
@@ -39,7 +40,7 @@ class ReadyProject extends Component
     public function render()
     {
         return view('livewire.admin.ready-project', [
-            'ready_projects' => $this->ready_projects
+            'ready_projects' => $this->readyProjectRepository->getAllReadyProjects(paginate: true)
         ]);
     }
 }

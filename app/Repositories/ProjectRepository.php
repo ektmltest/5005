@@ -33,17 +33,24 @@ class ProjectRepository implements ProjectRepositoryInterface {
             return $project;
     }
 
-    public function getAllProjects($auth = false, $max = null) {
-        if ($auth)
+    public function getAllProjects($auth = false, $max = null, $paginate = false, $num = 10) {
+        if ($auth) {
+            if ($paginate)
+                return Project::where('user_id', auth()->user()->id)->orderBy('created_at')->paginate($num);
+
             if (is_int($max))
                 return Project::where('user_id', auth()->user()->id)->orderBy('created_at')->take(10)->get();
             else
                 return Project::where('user_id', auth()->user()->id)->orderBy('created_at')->get();
-        else
+        } else {
+            if ($paginate)
+                return Project::orderBy('created_at')->paginate($num);
+
             if (is_int($max))
                 return Project::orderBy('created_at')->take($max)->get();
             else
                 return Project::orderBy('created_at')->get();
+        }
     }
 
     public function prepareProject($data): Project {

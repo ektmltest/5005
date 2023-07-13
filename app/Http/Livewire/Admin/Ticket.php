@@ -5,9 +5,12 @@ namespace App\Http\Livewire\Admin;
 use App\Repositories\TicketAttachmentRepository;
 use App\Repositories\TicketRepository;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Ticket extends Component
 {
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
     public $current_status = 'available';
     protected $tickets;
 
@@ -19,20 +22,14 @@ class Ticket extends Component
         $this->ticketRepository = new TicketRepository($this->ticketAttachmentRepository);
     }
 
-    public function mount($current_status) {
-        $this->tickets = ($current_status == 'available') ? $this->ticketRepository->getAllAvailableTickets(auth: false, paginate: true) : $this->ticketRepository->getAllClosedTickets(auth: false, paginate: true);
-        $this->current_status = $current_status;
-    }
-
     public function changeStatus(string $status) {
-        if ($status == 'available')
-            redirect(route('tickets.index'));
-        else
-            redirect(route('tickets.closed.index'));
+        $this->current_status = $status;
+        $this->resetPage();
     }
 
     public function render()
     {
+        $this->tickets = ($this->current_status == 'available') ? $this->ticketRepository->getAllAvailableTickets(auth: false, paginate: true) : $this->ticketRepository->getAllClosedTickets(auth: false, paginate: true);
         return view('livewire.admin.tickets', [
             'tickets' => $this->tickets
         ]);

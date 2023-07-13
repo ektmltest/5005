@@ -101,6 +101,8 @@ class DatabaseSeeder extends Seeder
                         [
                             'rating' => fake()->randomFloat(min: 0, max: 1),
                             'message' => fake()->paragraph(),
+                            'created_at' => now(),
+                            'updated_at' => now(),
                         ]
                     );
                 });

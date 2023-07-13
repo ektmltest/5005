@@ -34,7 +34,7 @@
                                     </tr>
                                 </thead>
 
-                                @foreach(\App\Models\ProjectDepartment::paginate(5) as $key => $deparment)
+                                @foreach($departments as $key => $deparment)
                                 <tbody>
                                     <tr>
                                         <td>{{ $key+1 }}</td>

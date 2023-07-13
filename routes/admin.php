@@ -34,9 +34,11 @@ function () {
         Route::get('readyProjects/addons', fn() => view('admin.catalogs.addons'))->name('readyProjects.addons');
 
         // TICKET SYSTEM
-        Route::get('tickets', fn() => view('admin.tickets.index', ['current_status' => 'available']))->name('tickets.index');
-        Route::get('tickets/closed', fn() => view('admin.tickets.index', ['current_status' => 'closed']))->name('tickets.closed.index');
+        Route::get('tickets', fn() => view('admin.tickets.index'))->name('tickets.index');
         Route::get('tickets/types', fn() => view('admin.tickets.types'))->name('tickets.types');
+
+        // USER
+        Route::get('users', fn() => view('admin.users.manage'))->name('users.index');
     });
 
 

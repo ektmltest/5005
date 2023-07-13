@@ -22,7 +22,8 @@ class TicketTypeStoreRequest extends ValidationRequest
     public function rules(): array
     {
         return [
-            'name_ar' => ''
+            'store.name_ar' => parent::nameRule(),
+            'store.name_en' => parent::nameRule(),
         ];
     }
 }

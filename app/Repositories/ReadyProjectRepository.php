@@ -46,13 +46,16 @@ class ReadyProjectRepository implements ReadyProjectRepositoryInterface {
             $ready_project->userRatings()->updateExistingPivot(id: auth()->user()->id, attributes: [
                 'rating' => $data['rating'],
                 'message' => $data['message'],
+                'updated_at' => now(),
             ]);
             return 0;
         }
         else {
             $ready_project->userRatings()->attach(auth()->user()->id, [
                 'rating' => $data['rating'],
-                'message' => $data['message']
+                'message' => $data['message'],
+                'created_at' => now(),
+                'updated_at' => now(),
             ]);
             return 1;
         }

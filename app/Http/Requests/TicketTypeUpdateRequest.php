@@ -22,8 +22,8 @@ class TicketTypeUpdateRequest extends ValidationRequest
     public function rules(): array
     {
         return [
-            'data.name_ar' => parent::nameRule(),
-            'data.name_en' => parent::nameRule(),
+            'data.*.name_ar' => parent::nameRule(),
+            'data.*.name_en' => parent::nameRule(),
         ];
     }
 }

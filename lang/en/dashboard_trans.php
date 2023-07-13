@@ -76,6 +76,8 @@ return [
     'Delete' => 'Delete',
     'Cancel' => 'Cancel',
     'QuesDele' => 'Are You Sure To Delete.?!',
+    'QuesBlock' => 'Are You Sure To Block This User Account?!',
+    'QuesActivate' => 'Are You Sure To Activate This User Account?!',
 
     'START PRICE' => 'START PRICE',
     'Project Department' => 'Project Department',
@@ -126,6 +128,13 @@ return [
 
     'available tickets' => 'available tickets',
     'closed tickets' => 'closed tickets',
+
+    'block' => 'block',
+    'activate' => 'activate',
+
+    'FULL NAME' => 'FULL NAME',
+    'EMAIL' => 'EMAIL',
+    'PHONE' => 'PHONE',
 
 ];
 

@@ -7,6 +7,6 @@
 
 @section('content')
 
-<livewire:admin.ticket />
+<livewire:admin.user-manage />
 
 @endsection

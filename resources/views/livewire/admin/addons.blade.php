@@ -44,8 +44,10 @@
                                         <td>{{ $addon->price }}</td>
                                         <td>{{ $addon->type->name }}</i></td>
                                         <td>
-                                            <div data-bs-toggle="tooltip" data-bs-placement="top" title="{{__('dashboard_trans.DELETE')}}" style="display: inline-block">
-                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                            <div data-bs-toggle="tooltip" data-bs-placement="top"
+                                                title="{{__('dashboard_trans.DELETE')}}" style="display: inline-block">
+                                                <button type="button" class="btn btn-danger btn-sm"
+                                                    data-bs-toggle="modal"
                                                     data-bs-target="#delete_deparment{{$addon->id}}"><i
                                                         class="fa fa-trash"></i></button>
                                             </div>
@@ -67,22 +69,22 @@
                                             </div>
 
                                             <div class="modal-body">
-                                                <form wire:submit.prevent="deleteAddon({{$addon->id}})">
-                                                    <div class="mb-3 text-center">
-                                                        <input type="text" class="form-control hidden" value={{
-                                                            $addon->id }} id="recipient-name">
-                                                        <h4 class="text-danger">{{ __('dashboard_trans.QuesDele') }}
-                                                        </h4>
-                                                    </div>
 
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">{{ __('dashboard_trans.Cancel')
-                                                            }}</button>
-                                                        <button type="submit" class="btn btn-danger">{{
-                                                            __('dashboard_trans.Delete') }}</button>
-                                                    </div>
-                                                </form>
+                                                <div class="mb-3 text-center">
+                                                    <input type="text" class="form-control hidden" value={{ $addon->id
+                                                    }} id="recipient-name">
+                                                    <h4 class="text-danger">{{ __('dashboard_trans.QuesDele') }}
+                                                    </h4>
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">{{ __('dashboard_trans.Cancel')
+                                                        }}</button>
+                                                    <button class="btn btn-danger" wire:click='deleteAddon({{$addon->id}})'>{{
+                                                        __('dashboard_trans.Delete') }}</button>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -131,7 +133,7 @@
                                             <select class="form-control" wire:model="data.type">
                                                 <option>--</option>
                                                 @foreach ($types as $type)
-                                                    <option value="{{$type->id}}">{{$type->name}}</option>
+                                                <option value="{{$type->id}}">{{$type->name}}</option>
                                                 @endforeach
                                             </select>
                                             @error("data.type") <span class="error">{{ $message }}</span> @enderror
@@ -155,8 +157,8 @@
     </div><!-- end row -->
 
     @if (session()->has('message'))
-        <script>
-            Swal.fire({
+    <script>
+        Swal.fire({
                 icon: 'success',
                 title: '{{app()->getLocale() == "en" ? "Done" : "تم"}}',
                 text: "{{ session('message') }}",
@@ -165,6 +167,6 @@
                     window.location.reload();
                 }
             })
-        </script>
+    </script>
     @endif
 </div> <!-- container-fluid -->

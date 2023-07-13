@@ -7,9 +7,12 @@ use App\Repositories\AddonRepository;
 use App\Repositories\AddonTypeRepository;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Addons extends Component
 {
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
     public $data = array();
 
     private $addonRepository;

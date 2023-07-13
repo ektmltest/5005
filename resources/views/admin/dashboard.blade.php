@@ -90,7 +90,7 @@
                         <div class="card-body">
                             <h4 class="card-title mb-4">{{ __('dashboard_trans.LAST 10 CREATED ACCOUNTS') }}</h4>
 
-                            <div data-simplebar style="max-height: 339px;">
+                            <div data-simplebar>
                                 <div class="table-responsive">
                                     <table class="table table-borderless table-centered">
                                         <tbody>
@@ -134,11 +134,11 @@
                                         @foreach ($projects as $project)
                                         <tr>
                                             <td><a href="javascript: void(0);" class="text-body fw-bold">{{$project->id}}</a></td>
-                                            <td>Neal Matthews</td>
-                                            <td>Neal Matthews</td>
-                                            <td><i class="fab fa-cc-mastercard me-1"></i>Mastercard</td>
+                                            <td>{{$project->name}}</td>
+                                            <td>{{$project->user->full_name}}</td>
+                                            <td>{{$project->department->name}}</td>
                                             <td><span
-                                                    class="badge rounded-pill bg-soft-success font-size-12">Paid</span>
+                                                    class="badge rounded-pill bg-soft-{{$project->state->color}} font-size-12">{{$project->state->name}}</span>
                                             </td>
                                         </tr>
                                         @endforeach
