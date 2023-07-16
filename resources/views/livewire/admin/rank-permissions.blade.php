@@ -106,12 +106,12 @@
 
                                         <!-- delete -->
                                         <div class="modal fade" id="delete_permission{{ $permission->id }}"
-                                            tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+                                            tabindex="-1" aria-labelledby="exampleModalLabel{{ $permission->id }}" aria-hidden="true"
                                             wire:ignore.self data-bs-backdrop="static">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel1">{{
+                                                        <h5 class="modal-title" id="exampleModalLabel{{ $permission->id }}">{{
                                                             __('dashboard_trans.Delete') }}</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
@@ -128,7 +128,7 @@
                                                             <button class="btn btn-secondary" data-bs-dismiss="modal">{{
                                                                 __('dashboard_trans.Cancel')
                                                                 }}</button>
-                                                            <button class="btn btn-danger"
+                                                            <button class="btn btn-danger" data-bs-dismiss="modal"
                                                                 wire:click='deletePermission({{$permission->id}})'>{{
                                                                 __('dashboard_trans.block') }}</button>
                                                         </div>
@@ -140,12 +140,12 @@
 
                                         <!-- delete -->
                                         <div class="modal fade" id="add_permission{{ $permission->id }}" tabindex="-1"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self
+                                            aria-labelledby="exampleModalLabel{{ $permission->id }}" aria-hidden="true" wire:ignore.self
                                             data-bs-backdrop="static">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel1">{{
+                                                        <h5 class="modal-title" id="exampleModalLabel{{ $permission->id }}">{{
                                                             __('dashboard_trans.Delete') }}</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
@@ -162,7 +162,7 @@
                                                             <button class="btn btn-secondary" data-bs-dismiss="modal">{{
                                                                 __('dashboard_trans.Cancel')
                                                                 }}</button>
-                                                            <button class="btn btn-success"
+                                                            <button class="btn btn-success" data-bs-dismiss="modal"
                                                                 wire:click='addPermission({{$permission->id}})'>{{
                                                                 __('dashboard_trans.activate') }}</button>
                                                         </div>
@@ -207,7 +207,7 @@
                         <button class="btn btn-secondary" data-bs-dismiss="modal">{{
                             __('dashboard_trans.Cancel')
                             }}</button>
-                        <button class="btn btn-danger" wire:click='deleteAllPermissions'>{{
+                        <button class="btn btn-danger" data-bs-dismiss="modal" wire:click='deleteAllPermissions'>{{
                             __('dashboard_trans.block') }}</button>
                     </div>
                 </div>
@@ -238,7 +238,7 @@
                         <button class="btn btn-secondary" data-bs-dismiss="modal">{{
                             __('dashboard_trans.Cancel')
                             }}</button>
-                        <button class="btn btn-success" wire:click='addAllPermissions'>{{
+                        <button class="btn btn-success" data-bs-dismiss="modal" wire:click='addAllPermissions'>{{
                             __('dashboard_trans.activate') }}</button>
                     </div>
                 </div>
@@ -249,6 +249,13 @@
 
     @push('custom-scripts')
     <script>
+
+        closeAllModals = () => {
+            $('.modal').each((index, elem) => {
+                $(elem).modal('hide');
+            })
+        }
+
         window.addEventListener('activateMode', (e) => {
             $('#activate_user'+e.detail.id).modal('show');
         })
@@ -264,12 +271,21 @@
                 text: e.detail.message,
             }).then((result) => {
                 if (result.isConfirmed || result.isDismissed) {
-                    $('.modal').each((index, elem) => {
-                        $(elem).modal('hide');
-                    })
+                    closeAllModals();
                 }
             })
         });
+
+        window.addEventListener('my:loading', (e) => {
+            console.log('loading');
+            topbar.show();
+        })
+
+        window.addEventListener('my:loaded', (e) => {
+            console.log('loaded');
+            topbar.hide();
+        })
+
     </script>
     @endpush
 </div>

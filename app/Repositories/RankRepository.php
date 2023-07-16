@@ -32,4 +32,15 @@ class RankRepository implements RankRepositoryInterface {
         return Rank::destroy($id);
     }
 
+    public function update($rank, $data) {
+        return Rank::where('id', $rank->id)->update([
+            'name' => [
+                'en' => $data['name_en'],
+                'ar' => $data['name_ar']
+            ],
+            'priority' => $data['priority'],
+            'rank_type_id' => $data['type'],
+        ]);
+    }
+
 }

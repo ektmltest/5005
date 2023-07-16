@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RankTypeStoreRequest extends ValidationRequest
+class RankStoreRequest extends ValidationRequest
 {
     /**
      * Determine if the user is authorized to make this request.

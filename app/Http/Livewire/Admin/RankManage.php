@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Http\Requests\RankTypeStoreRequest;
+use App\Http\Requests\RankStoreRequest;
 use App\Repositories\RankRepository;
 use App\Repositories\RankTypeRepository;
 use Illuminate\Support\Facades\DB;
@@ -27,7 +27,7 @@ class RankManage extends Component
     }
 
     public function rules() {
-        return (new RankTypeStoreRequest())->rules();
+        return (new RankStoreRequest())->rules();
     }
 
     public function updated($property) {

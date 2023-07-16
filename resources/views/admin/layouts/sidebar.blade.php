@@ -153,7 +153,7 @@
                 </li>
 
                 <li>
-                    <a href="file-manager.html" class=" waves-effect">
+                    <a href="{{ route('ranks.index') }}" class=" waves-effect">
                         <i class="fa fa-solid fa-globe"></i>
                         <span>{{ __('dashboard_trans.Roles management') }}</span>
                     </a>

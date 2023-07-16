@@ -33,7 +33,6 @@ class RankPermissions extends Component
     }
 
     public function deletePermission($id) {
-        $this->select = null;
 
         DB::beginTransaction();
         try {
@@ -54,7 +53,6 @@ class RankPermissions extends Component
     }
 
     public function addPermission($id) {
-        $this->select = null;
 
         DB::beginTransaction();
         try {
@@ -95,6 +93,7 @@ class RankPermissions extends Component
     }
 
     public function addAllPermissions() {
+        $this->dispatchBrowserEvent('my:loading');
 
         DB::beginTransaction();
         try {
@@ -105,10 +104,12 @@ class RankPermissions extends Component
             DB::commit();
 
             $this->dispatchBrowserEvent('messageSent', ['message' => __('messages.done')]);
+            $this->dispatchBrowserEvent('my:loaded');
 
         } catch (\Throwable $th) {
 
             DB::rollBack();
+            $this->dispatchBrowserEvent('my:loaded');
             throw new \Exception($th->getMessage());
 
         }

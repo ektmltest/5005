@@ -2,8 +2,10 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Http\Requests\RankStoreRequest;
 use App\Repositories\RankRepository;
 use App\Repositories\RankTypeRepository;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class RankEdit extends Component
@@ -29,6 +31,36 @@ class RankEdit extends Component
         $this->data['name_en'] = $this->rank->nameLocale('en');
         $this->data['priority'] = $this->rank->priority;
         $this->data['type'] = $this->rank->type->id;
+    }
+
+    public function rules() {
+        return (new RankStoreRequest)->rules();
+    }
+
+    public function updated($property) {
+        $this->validateOnly($property);
+    }
+
+    public function submit() {
+        $this->validate();
+
+        DB::beginTransaction();
+        try {
+
+            $this->rankRepository->update($this->rank, $this->data);
+
+            $this->rank = $this->rankRepository->findById($this->rank->id);
+
+            DB::commit();
+
+            session()->flash('message', __('messages.done'));
+
+        } catch (\Throwable $th) {
+
+            DB::rollBack();
+            throw new \Exception($th->getMessage());
+
+        }
     }
 
     public function render()

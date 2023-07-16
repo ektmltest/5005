@@ -9,7 +9,9 @@
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">{{
                                         __('dashboard_trans.PUBLIC SYSTEMS') }}</a></li>
-                                <li class="breadcrumb-item active">{{ __('dashboard_trans.Roles management') }}
+                                <li class="breadcrumb-item"><a class="text-primary" href="{{route('ranks.index')}}">{{ __('dashboard_trans.Roles management') }}</a>
+                                </li>
+                                <li class="breadcrumb-item active">{{ __('dashboard_trans.Edit') }}
                                 </li>
                             </ol>
                         </div>
@@ -21,7 +23,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{ __('dashboard_trans.Add Project') }}</h4>
+                            <h4 class="card-title">{{ __('dashboard_trans.Edit') }}</h4>
 
                             <form wire:submit.prevent="submit">
 
