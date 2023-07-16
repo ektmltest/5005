@@ -165,6 +165,14 @@
 <script src="{{ asset("dashboard/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js") }}"></script>
 <script src="{{ asset("assets/js/topbar.js") }}"></script>
 
+<script>
+    topbar.show();
+
+    window.addEventListener('load', () => {
+        topbar.hide();
+    })
+</script>
+
 @stack('custom-scripts')
 
 

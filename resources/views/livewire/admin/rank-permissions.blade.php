@@ -277,12 +277,10 @@
         });
 
         window.addEventListener('my:loading', (e) => {
-            console.log('loading');
             topbar.show();
         })
 
         window.addEventListener('my:loaded', (e) => {
-            console.log('loaded');
             topbar.hide();
         })
 
