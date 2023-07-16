@@ -40,7 +40,7 @@ class RankFactory extends Factory
         ];
 
         return [
-            'name' => $this->faker->randomElement($names),
+            'name' => $this->faker->unique()->randomElement($names),
             'priority' => $this->faker->numberBetween(0, 400),
             'rank_type_id' => RankType::inRandomOrder()->first()->id,
         ];

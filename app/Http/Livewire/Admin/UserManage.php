@@ -9,6 +9,7 @@ use App\Repositories\ProjectReplyRepository;
 use App\Repositories\ProjectRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\VerifyEmailRepository;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -17,6 +18,8 @@ class UserManage extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
+    public $filter = 'none';
+
     protected $users;
 
     protected $userRepository;
@@ -24,7 +27,7 @@ class UserManage extends Component
 
     public function __construct() {
         $this->userRepository = (new UserRepository(new VerifyEmailRepository));
-        $this->projectRepository = (new ProjectRepository(new ProjectAttachmentRepository, new ProjectCategoryRepository, new ProjectReplyRepository(new ProjectReplyAttachmentRepository)));
+        // $this->projectRepository = (new ProjectRepository(new ProjectAttachmentRepository, new ProjectCategoryRepository, new ProjectReplyRepository(new ProjectReplyAttachmentRepository)));
 
         $this->users = $this->userRepository->getAll(paginate: true);
     }
@@ -37,10 +40,64 @@ class UserManage extends Component
         $this->dispatchBrowserEvent('activateMode', ['id' => $id]);
     }
 
+    public function activate($id) {
+
+        DB::beginTransaction();
+        try {
+
+            $user = $this->userRepository->findById($id);
+
+            if ($user->email_verified_at)
+                $user->state = 'activated';
+            else
+                $user->state = 'pending';
+            $user->save();
+
+            DB::commit();
+
+            session()->flash('message', __('messages.done'));
+
+        } catch (\Throwable $th) {
+
+            DB::rollBack();
+            throw new \Exception($th->getMessage());
+
+        }
+
+    }
+
+    public function block($id) {
+
+        DB::beginTransaction();
+        try {
+
+            $user = $this->userRepository->findById($id);
+
+            $user->state = 'blocked';
+            $user->save();
+
+            DB::commit();
+
+            session()->flash('message', __('messages.done'));
+
+        } catch (\Throwable $th) {
+
+            DB::rollBack();
+            throw new \Exception($th->getMessage());
+
+        }
+
+    }
+
+    public function filterAction() {
+        $this->render();
+    }
+
     public function render()
     {
+        $users = $this->userRepository->getAll(paginate: true, state: $this->filter == 'none' ? null : $this->filter);
         return view('livewire.admin.user-manage', [
-            'users' => $this->userRepository->getAll(paginate: true),
+            'users' => $users,
         ]);
     }
 }

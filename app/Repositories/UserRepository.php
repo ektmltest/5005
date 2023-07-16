@@ -120,14 +120,23 @@ class UserRepository implements UserRepositoryInterface {
         return $user;
     }
 
-    public function getAll($max = null, $paginate = false, $num = 10) {
+    public function getAll($max = null, $paginate = false, $num = 10, $state = null) {
         if ($paginate)
-            return User::orderBy('created_at')->paginate($num);
+            if ($state)
+                return User::where('state', $state)->orderBy('created_at')->paginate($num);
+            else
+                return User::orderBy('created_at')->paginate($num);
 
         if (is_int($max))
-            return User::orderBy('created_at')->take($max)->get();
+            if ($state)
+                return User::where('state', $state)->orderBy('created_at')->take($max)->get();
+            else
+                return User::orderBy('created_at')->take($max)->get();
         else
-            return User::all();
+            if ($state)
+                return User::where('state', $state)->get();
+            else
+                return User::all();
     }
 
     public function findById($id) {

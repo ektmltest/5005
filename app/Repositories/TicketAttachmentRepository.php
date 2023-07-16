@@ -27,7 +27,7 @@ class TicketAttachmentRepository implements TicketAttachmentRepositoryInterface 
             ];
         }
 
-        DB::table('ticketx_attachments')
+        DB::table('ticket_attachments')
             ->insert($dataToInsert);
     }
 }

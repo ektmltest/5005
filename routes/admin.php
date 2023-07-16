@@ -39,6 +39,11 @@ function () {
 
         // USER
         Route::get('users', fn() => view('admin.users.manage'))->name('users.index');
+
+        // RANK
+        Route::get('ranks', fn() => view('admin.ranks.manage'))->name('ranks.index');
+        Route::get('ranks/{id}/edit', fn($id) => view('admin.ranks.edit', ['id' => $id]))->name('ranks.edit');
+        Route::get('ranks/{id}/permissions', fn($id) => view('admin.ranks.permissions', ['id' => $id]))->name('ranks.permissions');
     });
 
 

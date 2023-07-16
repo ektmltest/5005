@@ -99,6 +99,10 @@ class User extends Authenticatable
         return $this->belongsToMany(ReadyProject::class, 'ready_project_ratings');
     }
 
+    // public function permissions() {
+    //     return $this->rank->permissions();
+    // }
+
     //////* functions *///////
     public function verified() {
         return !is_null($this->email_verified_at);

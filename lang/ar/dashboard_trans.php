@@ -127,6 +127,18 @@ return [
 
     'TYPE' => 'النوع',
 
+    'PRIORITY' => 'الأولوية',
+    'NO. PERMISSIONS' => 'عدد الصلاحيات',
+    'NO. MEMBERS' => 'عدد الاعضاء',
+    'NO. RANKS' => 'عدد الرتب',
+
+    'edit permissions' => 'هل تريد تعديل صلاحيات هذه الرتبة؟',
+    'Edit permissions' => 'تعديل الصلاحيات',
+    'edit permissions of' => 'تعديل صلاحيات الرتبة <span class="text-primary">(:id - :name)</span>',
+    'PERMISSIONS' => 'الصلاحيات',
+    'ACTIVATE ALL PERMISSIONS' => 'تفعيل جميع الصلاحيات',
+    'DEACTIVATE ALL PERMISSIONS' => 'تعطيل جميع الصلاحيات',
+
     'available tickets' => 'التذاكر المتاحة',
     'closed tickets' => 'التذاكر المغلقة',
 
@@ -136,6 +148,13 @@ return [
     'FULL NAME' => 'الاسم كامل',
     'EMAIL' => 'البريد الالكتروني',
     'PHONE' => 'رقم الهاتف',
+
+    'deactivated' => 'معطل',
+    'activated' => 'منشط',
+    'pending' => 'معلق',
+    'blocked' => 'محظور',
+
+    'Search' => 'بحث',
 
 
 ];

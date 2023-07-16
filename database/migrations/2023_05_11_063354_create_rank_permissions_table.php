@@ -15,8 +15,8 @@ return new class extends Migration
             $table->timestamps();
 
             // foreign keys
-            $table->foreignId('rank_id')->constrained('ranks');
-            $table->foreignId('permission_id')->constrained('permissions');
+            $table->foreignId('rank_id')->constrained('ranks')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('permission_id')->constrained('permissions')->cascadeOnDelete()->cascadeOnUpdate();
 
             // constrains
             $table->primary(['rank_id', 'permission_id']);

@@ -117,4 +117,8 @@ class ValidationRequest extends FormRequest
 
         return ['required', 'numeric', $range ? 'between:' . $min . ',' . $max : '', ];
     }
+
+    protected function numericRule() {
+        return ['required', 'numeric'];
+    }
 }

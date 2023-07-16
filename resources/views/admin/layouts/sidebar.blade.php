@@ -139,7 +139,7 @@
 
                 <li class="menu-title text-primary">{{ __('dashboard_trans.PUBLIC SYSTEMS') }}</li>
                 <li>
-                    <a href="file-manager.html" class=" waves-effect">
+                    <a href="{{route('users.index')}}" class=" waves-effect">
                         <i class="fa fa-solid fa-user-shield"></i>
                         <span>{{ __('dashboard_trans.Users Management') }}</span>
                     </a>

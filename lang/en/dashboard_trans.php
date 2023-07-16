@@ -126,6 +126,18 @@ return [
 
     'TYPE' => 'TYPE',
 
+    'PRIORITY' => 'PRIORITY',
+    'NO. PERMISSIONS' => 'NO. PERMISSIONS',
+    'NO. MEMBERS' => 'NO. MEMBERS',
+    'NO. RANKS' => 'NO. RANKS',
+
+    'edit permissions' => 'Are you want to edit this rank (role) permissions?',
+    'Edit permissions' => 'Edit permissions',
+    'edit permissions of' => 'Edit permissions of rank <span class="text-primary">(:id - :name)</span>',
+    'PERMISSIONS' => 'PERMISSIONS',
+    'ACTIVATE ALL PERMISSIONS' => 'ACTIVATE ALL PERMISSIONS',
+    'DEACTIVATE ALL PERMISSIONS' => 'DEACTIVATE ALL PERMISSIONS',
+
     'available tickets' => 'available tickets',
     'closed tickets' => 'closed tickets',
 
@@ -135,6 +147,13 @@ return [
     'FULL NAME' => 'FULL NAME',
     'EMAIL' => 'EMAIL',
     'PHONE' => 'PHONE',
+
+    'deactivated' => 'deactivated',
+    'activated' => 'activated',
+    'pending' => 'pending',
+    'blocked' => 'blocked',
+
+    'Search' => 'Search',
 
 ];
 

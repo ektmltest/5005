@@ -51,11 +51,11 @@ class DatabaseSeeder extends Seeder
             $this->deleteFilesInFolder('projects');
             $this->deleteFilesInFolder('tickets');
 
-            RankType::factory()->count(15)->create();
+            RankType::factory()->count(4)->create();
 
             $permissions = Permission::factory()->count(150)->create();
 
-            Rank::factory()->count(50)->hasAttached($permissions)->create();
+            Rank::factory()->count(19)->hasAttached($permissions)->create();
 
             $marketLevels = MarketingLevel::factory()
                 ->count(50)

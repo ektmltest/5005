@@ -161,6 +161,9 @@
 <script src="{{ asset("dashboard/assets/libs/tinymce/tinymce.min.js") }}"></script>
 <script src="{{ asset("dashboard/assets/libs/tinymce/jquery.tinymce.min.js") }}"></script>
 <script src="{{ asset("dashboard/assets/libs/sweetalert2/sweetalert2.min.js") }}"></script>
+<script src="{{ asset("dashboard/assets/libs/datatables.net/js/jquery.dataTables.min.js") }}"></script>
+<script src="{{ asset("dashboard/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js") }}"></script>
+<script src="{{ asset("assets/js/topbar.js") }}"></script>
 
 @stack('custom-scripts')
 

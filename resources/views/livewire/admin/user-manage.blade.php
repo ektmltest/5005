@@ -41,9 +41,27 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title mb-4">{{ __('dashboard_trans.LAST 10 PROJECTS') }}</h4>
+                            <div class="row justify-content-between">
+                                <h4 class="card-title mb-4 col-6">{{ __('dashboard_trans.LAST 10 PROJECTS') }}</h4>
+                                <div class="col-6" dir="ltr">
+                                    <select name="" id="" wire:change='filterAction' wire:model='filter'>
+                                        <option value="none">
+                                            -- {{__('dashboard_trans.STATUS')}} --
+                                        </option>
+                                        <option value="activated">
+                                            {{ __('dashboard_trans.activated') }}
+                                        </option>
+                                        <option value="pending">
+                                            {{ __('dashboard_trans.pending') }}
+                                        </option>
+                                        <option value="blocked">
+                                            {{ __('dashboard_trans.blocked') }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="table-responsive">
-                                <table class="table table-centered table-nowrap mb-0">
+                                <table class="table table-centered table-nowrap mb-0" id="dataTable">
                                     <thead class="table-light">
                                         <tr>
                                             <th>#</th>
@@ -64,7 +82,7 @@
                                             <td>{{$user->email}}</td>
                                             <td>{{$user->country_code . $user->phone}}</td>
                                             <td><span
-                                                    class="badge rounded-pill bg-soft-{{$user->state == 'activated' ? 'success' : (($user->state == 'pending') ? 'warning' : 'danger')}} font-size-12">{{$user->state}}</span>
+                                                    class="badge rounded-pill bg-soft-{{$user->state == 'activated' ? 'success' : (($user->state == 'pending') ? 'warning' : 'danger')}} font-size-12">{{__("dashboard_trans.$user->state")}}</span>
                                             </td>
                                             <td>
                                                 @if ($user->state == 'blocked')
@@ -76,7 +94,6 @@
                                                 @endif
                                             </td>
                                         </tr>
-                                        @endforeach
 
                                         @if ($user->state != 'blocked')
                                         <!-- delete -->
@@ -100,12 +117,11 @@
                                                         </div>
 
                                                         <div class="modal-footer">
-                                                            <button class="btn btn-secondary" data-bs-dismiss="modal"
-                                                                wire:click='resetErrorMessages'>{{
+                                                            <button class="btn btn-secondary" data-bs-dismiss="modal">{{
                                                                 __('dashboard_trans.Cancel')
                                                                 }}</button>
                                                             <button class="btn btn-danger"
-                                                                wire:click='deleteTicketType({{$user->id}})'>{{
+                                                                wire:click='block({{$user->id}})'>{{
                                                                 __('dashboard_trans.Delete') }}</button>
                                                         </div>
                                                     </div>
@@ -137,12 +153,11 @@
                                                         </div>
 
                                                         <div class="modal-footer">
-                                                            <button class="btn btn-secondary" data-bs-dismiss="modal"
-                                                                wire:click='resetErrorMessages'>{{
+                                                            <button class="btn btn-secondary" data-bs-dismiss="modal">{{
                                                                 __('dashboard_trans.Cancel')
                                                                 }}</button>
                                                             <button class="btn btn-success"
-                                                                wire:click='deleteTicketType({{$user->id}})'>{{
+                                                                wire:click='activate({{$user->id}})'>{{
                                                                 __('dashboard_trans.Delete') }}</button>
                                                         </div>
                                                     </div>
@@ -152,6 +167,8 @@
                                         </div>
 
                                         @endif
+
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -173,10 +190,6 @@
                 if (result.isConfirmed || result.isDismissed) {
                     window.location = window.location.href.split("?")[0];
                 }
-                // TODO:
-                // $('.modal .show').modal('hide');
-                // console.log($('.modal .show'));
-                // window.livewire.emit('resetAction');
             })
     </script>
     @endif
@@ -184,8 +197,6 @@
     @push('custom-scripts')
     <script>
         window.addEventListener('activateMode', (e) => {
-            console.log('activate_user'+e.detail.id);
-            console.log($('#activate_user'+e.detail.id));
             $('#activate_user'+e.detail.id).modal('show');
         })
 
