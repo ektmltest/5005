@@ -126,18 +126,26 @@ class RankPermissions extends Component
     }
 
     public function selectFilter() {
+        $this->dispatchBrowserEvent('my:loading');
+
         $select = $this->select;
         $this->resetPage();
         $this->select = $select;
+
+        $this->dispatchBrowserEvent('my:loaded');
 
         $this->search = null;
         $this->render();
     }
 
     public function searchFilter() {
+        $this->dispatchBrowserEvent('my:loading');
+
         $search = $this->search;
         $this->resetPage();
         $this->search = $search;
+
+        $this->dispatchBrowserEvent('my:loaded');
 
         $this->select = null;
         $this->render();
@@ -146,10 +154,13 @@ class RankPermissions extends Component
 
     public function render()
     {
+        $this->dispatchBrowserEvent('my:loading');
+
         $permissions = $this->permissionRepository->getAll(paginate: true);
 
         if ($this->search) {
             $permissions = $this->permissionRepository->getAll(paginate: true, needle: $this->search);
+            $this->dispatchBrowserEvent('my:loaded');
             return view('livewire.admin.rank-permissions', [
                 'permissions' => $permissions,
             ]);
@@ -161,11 +172,13 @@ class RankPermissions extends Component
             else if ($this->select == 'deactivated')
                 $permissions = $this->permissionRepository->getFreePermissions(rank_id: $this->rank->id, paginate: true);
 
+            $this->dispatchBrowserEvent('my:loaded');
             return view('livewire.admin.rank-permissions', [
                 'permissions' => $permissions,
             ]);
         }
 
+        $this->dispatchBrowserEvent('my:loaded');
         return view('livewire.admin.rank-permissions', [
             'permissions' => $permissions,
         ]);
