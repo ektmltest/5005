@@ -169,35 +169,35 @@
                 </li>
 
                 <li>
-                    <a href="file-manager.html" class=" waves-effect">
+                    <a href="{{ route('gallery.types') }}" class=" waves-effect">
                         <i class="fas fa-folder-open"></i>
                         <span>{{ __('dashboard_trans.Our work sections') }}</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="file-manager.html" class=" waves-effect">
+                    <a href="{{ route('gallery.index') }}" class=" waves-effect">
                         <i class="fas fa-images"></i>
                         <span>{{ __('dashboard_trans.Our work') }}</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="file-manager.html" class=" waves-effect">
+                    <a href="{{ route('qas.types') }}" class=" waves-effect">
                         <i class="fas fa-project-diagram"></i>
                         <span>{{ __('dashboard_trans.FAQ sections') }}</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="file-manager.html" class=" waves-effect">
+                    <a href="{{ route('qas.index') }}" class=" waves-effect">
                         <i class="fas fa-question-circle"></i>
                         <span>{{ __('dashboard_trans.FAQ') }}</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="file-manager.html" class=" waves-effect">
+                    <a href="{{ route('platforms.index') }}" class=" waves-effect">
                         <i class="fab fa-ioxhost"></i>
                         <span>{{ __('dashboard_trans.Our platforms') }}</span>
                     </a>

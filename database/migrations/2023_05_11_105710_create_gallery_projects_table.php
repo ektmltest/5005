@@ -18,8 +18,8 @@ return new class extends Migration
             $table->timestamps();
 
             // foreign keys
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('gallery_type_id')->constrained('gallery_project_types');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('gallery_type_id')->constrained('gallery_project_types')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

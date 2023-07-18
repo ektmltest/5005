@@ -155,6 +155,20 @@ return [
 
     'Search' => 'Search',
 
+    'Key' => 'Key',
+
+    'CREATED AT' => 'CREATED AT',
+
+    // qas
+    'QUESTION' => 'QUESTION',
+    'ARABIC QUESTION' => 'ARABIC QUESTION',
+    'ENGLISH QUESTION' => 'ENGLISH QUESTION',
+    'ANSWER' => 'ANSWER',
+    'ARABIC ANSWER' => 'ARABIC ANSWER',
+    'ENGLISH ANSWER' => 'ENGLISH ANSWER',
+
+    'ICON UNICODE' => 'ICON UNICODE',
+
 ];
 
 ?>

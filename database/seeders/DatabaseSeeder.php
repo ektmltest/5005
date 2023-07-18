@@ -18,12 +18,15 @@ use App\Models\Newspaper;
 use App\Models\Opinion;
 use App\Models\Payment;
 use App\Models\Permission;
+use App\Models\Platform;
 use App\Models\Project;
 use App\Models\ProjectCategory;
 use App\Models\ProjectDepartment;
 use App\Models\ProjectReply;
 use App\Models\ProjectReplyAttachment;
 use App\Models\ProjectState;
+use App\Models\Qas;
+use App\Models\QasType;
 use App\Models\Rank;
 use App\Models\RankType;
 use App\Models\ReadyProject;
@@ -153,6 +156,11 @@ class DatabaseSeeder extends Seeder
             ProjectReplyAttachment::factory()->count(200)->create();
 
             Contact::factory()->count(100)->create();
+
+            QasType::factory()->count(10)->create();
+            Qas::factory()->count(100)->create();
+
+            Platform::factory()->count(10)->create();
 
             DB::commit();
         } catch (\Throwable $e) {

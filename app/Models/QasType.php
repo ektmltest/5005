@@ -1,27 +1,22 @@
 <?php
+
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GalleryProject extends Model
+class QasType extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    protected $with = ['type'];
-
     public function user() {
         return $this->belongsTo(User::class);
     }
 
-    public function type() {
-        return $this->belongsTo(GalleryProjectType::class, 'gallery_type_id');
-    }
-
-    //////* attributes *//////
-    public function description(string $locale = null): Attribute {
+    public function name(string $locale = null): Attribute {
         return Attribute::make(
             get: function ($value) {
                 if ($this->locale) {
@@ -35,16 +30,8 @@ class GalleryProject extends Model
         );
     }
 
-    public function descriptionLocale(string $locale) {
+    public function nameLocale(string $locale) {
         $this->locale = $locale;
-        return $this->description;
-    }
-
-    public function getImageAttribute() {
-        return asset($this->attributes['image']);
-    }
-
-    public function getImageUriAttribute() {
-        return $this->attributes['image'];
+        return $this->name;
     }
 }

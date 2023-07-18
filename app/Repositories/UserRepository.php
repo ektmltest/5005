@@ -49,7 +49,7 @@ class UserRepository implements UserRepositoryInterface {
         $user->phone = isset($data['phone']) ? $data['phone'] : $user->phone;
         $user->avatar = isset($data['avatar']) ? $this->prepareFilePath($data['avatar'], 'users', true) : $user->avatar;
 
-        if (isset($data['old_password'])) {
+        if (isset($data['old_password']) || $request->has('old_password')) {
             if (password_verify($data['old_password'], $user->password)) {
                 if (isset($data['new_password'])) {
                     $user->password = bcrypt($data['new_password']);

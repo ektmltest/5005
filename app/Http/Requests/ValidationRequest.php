@@ -106,6 +106,14 @@ class ValidationRequest extends FormRequest
         return $rules;
     }
 
+    protected function uniqueRule($table, $col = 'id', $except = false, $id = 1, $required = true) {
+        $rules = [];
+        if ($required)
+            $rules[] ='required';
+        $rules[] = "unique:$table,$col" . ($except ? ",$id" : '');
+        return $rules;
+    }
+
     protected function rateRule() {
         return ['required', 'numeric', 'min:0', 'max:1'];
     }

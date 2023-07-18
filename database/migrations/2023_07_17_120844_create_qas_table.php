@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gallery_project_types', function (Blueprint $table) {
+        Schema::create('qas', function (Blueprint $table) {
             $table->id();
-            $table->string('key')->unique();
-            $table->json('name');
+            $table->json('question');
+            $table->json('answer');
             $table->timestamps();
 
-            // foreign keys
+            // foreign
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('type_id')->constrained('qas_types')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gallery_project_types');
+        Schema::dropIfExists('qas');
     }
 };

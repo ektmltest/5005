@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gallery_project_types', function (Blueprint $table) {
+        Schema::create('platforms', function (Blueprint $table) {
             $table->id();
-            $table->string('key')->unique();
             $table->json('name');
+            $table->text('link');
+            $table->string('icon');
+            $table->string('unicode')->nullable();
             $table->timestamps();
 
             // foreign keys
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gallery_project_types');
+        Schema::dropIfExists('platforms');
     }
 };

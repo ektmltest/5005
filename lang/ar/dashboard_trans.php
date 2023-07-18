@@ -156,6 +156,20 @@ return [
 
     'Search' => 'بحث',
 
+    'Key' => 'المفتاح',
+
+    'CREATED AT' => 'تاريخ الانشاء',
+
+    // qas
+    'QUESTION' => 'السؤال',
+    'ARABIC QUESTION' => 'السؤال بالعربي',
+    'ENGLISH QUESTION' => 'السؤال بالانجليزي',
+    'ANSWER' => 'الجواب',
+    'ARABIC ANSWER' => 'الجواب بالعربي',
+    'ENGLISH ANSWER' => 'الجواب بالانجليزي',
+
+    'ICON UNICODE' => 'كود الأيقونة',
+
 
 ];
 
