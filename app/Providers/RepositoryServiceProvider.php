@@ -11,6 +11,8 @@ use App\Interfaces\ProjectDepartmentRepositoryInterface;
 use App\Interfaces\ProjectReplyAttachmentRepositoryInterface;
 use App\Interfaces\ProjectReplyRepositoryInterface;
 use App\Interfaces\ProjectRepositoryInterface;
+use App\Interfaces\QasRepositoryInterface;
+use App\Interfaces\QasTypeRepositoryInterface;
 use App\Interfaces\ReadyProjectDepartmentRepositoryInterface;
 use App\Interfaces\ReadyProjectRepositoryInterface;
 use App\Interfaces\ResetPasswordTokenInterface;
@@ -30,6 +32,8 @@ use App\Repositories\ProjectDepartmentRepository;
 use App\Repositories\ProjectReplyAttachmentRepository;
 use App\Repositories\ProjectReplyRepository;
 use App\Repositories\ProjectRepository;
+use App\Repositories\QasRepository;
+use App\Repositories\QasTypeRepository;
 use App\Repositories\ReadyProjectDepartmentRepository;
 use App\Repositories\ReadyProjectRepository;
 use App\Repositories\ResetPasswordTokenRepository;
@@ -86,6 +90,10 @@ class RepositoryServiceProvider extends ServiceProvider
 
         // ? cart
         App::bind(CartRepositoryInterface::class, CartRepository::class);
+
+        // ? qas
+        App::bind(QasRepositoryInterface::class, QasRepository::class);
+        App::bind(QasTypeRepositoryInterface::class, QasTypeRepository::class);
     }
 
     /**

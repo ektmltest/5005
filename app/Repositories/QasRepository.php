@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Repositories;
+use App\Interfaces\QasRepositoryInterface;
 use App\Models\Qas;
 
-class QasRepository {
+class QasRepository implements QasRepositoryInterface {
 
     public function getAll($paginate = false, $num = 10) {
         if ($paginate)

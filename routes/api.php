@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\Project\ProjectCategoryController;
 use App\Http\Controllers\Api\Project\ProjectController;
 use App\Http\Controllers\Api\Project\ProjectDepartmentController;
 use App\Http\Controllers\Api\Project\ProjectReplyController;
+use App\Http\Controllers\Api\Qas\QasController;
 use App\Http\Controllers\Api\ReadyProject\ReadyProjectController;
 use App\Http\Controllers\Api\ReadyProject\ReadyProjectDepartmentController;
 use App\Http\Controllers\Api\Ticket\TicketController;
@@ -53,6 +54,10 @@ Route::prefix('public')->group(function () {
 // ? Ready projects departments
 Route::get('/store/departments', [ReadyProjectDepartmentController::class, 'index'])->name('api.store.departments.index');
 Route::get('/store/departments/{id}', [ReadyProjectDepartmentController::class, 'show'])->name('api.store.departments.show');
+
+// ? Qas
+Route::get('/qas', [QasController::class, 'index'])->name('api.qas.index');
+Route::get('/qas/types', [QasController::class, 'types'])->name('api.qas.types');
 
 Route::middleware('auth:sanctum')->group(function () {
     // ? Auth

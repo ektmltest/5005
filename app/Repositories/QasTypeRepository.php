@@ -2,19 +2,26 @@
 
 namespace App\Repositories;
 
+use App\Interfaces\QasTypeRepositoryInterface;
 use App\Models\QasType;
 
-class QasTypeRepository {
+class QasTypeRepository implements QasTypeRepositoryInterface {
 
     public function findById($id) {
         return QasType::find($id);
     }
 
-    public function getAll($paginate = false, $num = 10) {
+    public function getAll($paginate = false, $num = 10, $with = null) {
         if ($paginate)
-            return QasType::paginate($num);
+            if ($with)
+                return QasType::with($with)->paginate($num);
+            else
+                return QasType::paginate($num);
         else
-            return QasType::get();
+            if ($with)
+                return QasType::with($with)->get();
+            else
+                return QasType::get();
     }
 
     public function delete($id) {

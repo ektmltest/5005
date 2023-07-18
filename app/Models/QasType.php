@@ -16,6 +16,10 @@ class QasType extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function qas() {
+        return $this->hasMany(Qas::class, 'type_id');
+    }
+
     public function name(string $locale = null): Attribute {
         return Attribute::make(
             get: function ($value) {
