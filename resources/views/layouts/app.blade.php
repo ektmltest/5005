@@ -9,8 +9,6 @@
 
 <head>
     @include('layouts.head')
-
-    <script src="{{ asset('assets/js/topbar.js') }}"></script>
 </head>
 
 <body>

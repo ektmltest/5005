@@ -120,7 +120,7 @@
             </div>
             &nbsp;
 
-            <livewire:website.like />
+            <livewire:website.like :max="$max" />
 
 
             &nbsp;

@@ -150,4 +150,24 @@
 @component('layouts.components.scripts-links')
 @endcomponent
 
+<script>
+    topbar.show();
+
+    window.addEventListener('load', () => {
+        topbar.hide();
+    })
+</script>
+
+<script>
+    window.addEventListener('my:loading', (e) => {
+        topbar.show();
+    })
+
+    window.addEventListener('my:loaded', (e) => {
+        topbar.hide();
+    })
+</script>
+
+@stack('custom-scripts')
+
 @livewireScripts()

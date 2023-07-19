@@ -118,10 +118,10 @@
                         <div class="sidebox-inner gallery">
                             <div class="gallery-feed">
                                 @foreach(\App\Models\ReadyProject::select('image')->get() as $gallary)
-                                    <a href="{{ $gallary->image }}" target="_blank" class="">
-                                        <i class="bx bx-search-alt"></i>
-                                        <img src="{{ $gallary->image }}" alt="Business Blog">
-                                    </a>
+                                <a href="{{ $gallary->image }}" target="_blank" class="">
+                                    <i class="bx bx-search-alt"></i>
+                                    <img src="{{ $gallary->image }}" alt="Business Blog">
+                                </a>
                                 @endforeach
                             </div>
                         </div>
@@ -156,22 +156,40 @@
                             <div class="tags">
                                 <a href="#">{{ __('project_trans.coupon') }}</a>
                             </div>
-                            <div class="action-post">
-                                <a href="#"><i class="bx bx-heart loveProject" mu-notlogged="true" mu-id="3"></i></a>
+
+                            @auth
+                            <div class="action-post" wire:key='divLike'>
+                                <a onclick="topbar.show()" style="cursor: pointer"
+                                    wire:click="toggleLike({{$project}})">
+                                    @if($project->liked())
+                                    <i class="bx bxs-heart loveProject"></i>
+                                    @else
+                                    <i class="bx bx-heart loveProject"></i>
+                                    @endif
+                                </a>
                             </div>
+                            @else
+                            <div class="action-post">
+                                <a href="{{route('login')}}">
+                                    <i class="bx bx-heart loveProject"></i>
+                                </a>
+                            </div>
+                            @endauth
                         </div>
                     </div>
 
                     <div class="pagi-post">
-                        <a href="#" class="prev-post">
-                            <p><i class="bx bx-right-arrow"></i>
-                                {{ __('project_trans.PREVIOUS PROJECT') }}</p>
-                            <h6></h6>
+                        <a @if($previous) href="{{route('project', $previous)}}" @endif class="prev-post">
+                            <p @if(!$previous) class='text-secondary' @endif>
+                                <i class="bx bx-right-arrow"></i>
+                                {{ __('project_trans.PREVIOUS PROJECT') }}
+                            </p>
                         </a>
-                        <a href="#" class="next-post">
-                            <p><i class="bx bx-left-arrow"></i>
-                                {{ __('project_trans.NEXT PROJECT') }}</p>
-                            <h6></h6>
+                        <a @if($next) href="{{route('project', $next)}}" @endif class="next-post">
+                            <p @if(!$next) class='text-secondary' @endif>
+                                {{ __('project_trans.NEXT PROJECT') }}
+                                <i class="bx bx-left-arrow"></i>
+                            </p>
                         </a>
                     </div>
                 </div>

@@ -1,16 +1,49 @@
 <?php
 namespace App\Http\Livewire\Website;
 use App\Models\ReadyProject;
+use App\Repositories\ReadyProjectRepository;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class Project extends Component
 {
+    public $project;
+    public $next;
+    public $previous;
 
-    public function render(Request $request)
+    protected $readyProjectRepository;
+
+    public function __construct() {
+        $this->readyProjectRepository = new ReadyProjectRepository;
+    }
+
+    public function mount($id) {
+        $this->project = $this->readyProjectRepository->findById($id);
+        $this->next = $this->readyProjectRepository->getNextId($id);
+        $this->previous = $this->readyProjectRepository->getPreviousId($id);
+    }
+
+    public function toggleLike($ready_project)
     {
-        $project = ReadyProject::find($request->id);
-        return view('livewire.website.project', compact('project'));
+        if(!auth()->check()){
+            return redirect()->route('login');
+        }
+
+        $ready_project = $this->readyProjectRepository->findById($ready_project['id']);
+        $isAdded = $this->readyProjectRepository->toggleLike($ready_project);
+
+        if ($isAdded)
+            session()->flash('message', __('messages.done'));
+        else
+            session()->flash('message', __('messages.done'));
+
+        $this->emit('likedEvent');
+    }
+
+    public function render()
+    {
+        $this->dispatchBrowserEvent('my:loaded');
+        return view('livewire.website.project');
     }
 }

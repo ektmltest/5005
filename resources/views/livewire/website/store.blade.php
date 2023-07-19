@@ -1,14 +1,15 @@
 <section id="portfolio" class="portfolio">
-<div class="container">
-<div class="list-control">
-    <ul class="list-unstyled">
-        <li class="active" data-filter="*">{{ __('store_trans.All') }}</li>
-        <li data-filter=".prj-3" class="">{{ __('store_trans.Business Projects') }}</li>
-        <li data-filter=".prj-5" class="">{{ __('store_trans.Management Projects') }}</li>
-    </ul>
-</div>
+    <div class="container">
+        <div class="list-control">
+            <ul class="list-unstyled" style="flex-wrap: wrap">
+                <li onclick="topbar.show()" class="@if($active == 0) active @endif" wire:click='activate(0)'>{{ __('store_trans.All') }}</li>
+                @foreach ($departments as $department)
+                <li onclick="topbar.show()" class="@if($active == $department->id) active @endif" wire:click='activate({{$department->id}})'>{{$department->name}}</li>
+                @endforeach
+            </ul>
+        </div>
 
-<livewire:website.like />
+        <livewire:website.like :active="$active" />
 
-</div>
+    </div>
 </section>

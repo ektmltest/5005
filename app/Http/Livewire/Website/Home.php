@@ -10,6 +10,10 @@ class Home extends Component
 {
     public Contact $contact;
 
+    protected $listeners = [
+        'likedEvent' => 'likedEventHandler'
+    ];
+
     public function __construct() {
         $this->contact = new Contact;
     }
@@ -30,12 +34,19 @@ class Home extends Component
         $this->contact->save();
 
         $this->reset();
-        session()->flash('message', 'Your Message Sent Successfully.!');
+        session()->flash('message', __('messages.done'));
+    }
+
+    public function likedEventHandler() {
+        $this->dispatchBrowserEvent('my:loading');
+        $this->emit('resetValueOfMaxEvent', 9);
     }
 
 
     public function render()
     {
-        return view('livewire.website.home');
+        return view('livewire.website.home', [
+            'max' => 9
+        ]);
     }
 }

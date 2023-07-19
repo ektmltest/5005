@@ -25,3 +25,4 @@ rel="stylesheet"> --}}
 <script>
     new WOW().init();
 </script>
+<script src="{{ asset('assets/js/topbar.js') }}"></script>

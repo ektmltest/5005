@@ -35,7 +35,7 @@ Route::group([
     Route::get('/about', fn () => view('about'))->name('about');
     Route::get('store', fn () => view('store'))->name('store');
     Route::get('gallary', fn () => view('gallary'))->name('gallary');
-    Route::get('project/{id}', fn () => view('project'))->name('project');
+    Route::get('project/{id}', fn ($id) => view('project', compact('id')))->name('project');
     // Route::get('project/{id}', fn ($id) => view('project', )->with('id', $id))->name('project');
 
 

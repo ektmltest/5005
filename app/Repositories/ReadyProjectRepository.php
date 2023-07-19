@@ -18,16 +18,41 @@ class ReadyProjectRepository implements ReadyProjectRepositoryInterface {
         return $this->findById($ready_project['id']);
     }
 
-    public function getAllReadyProjects($paginate = false, $num = 10) {
+    public function getAllReadyProjects($paginate = false, $num = 10, $max = null) {
         if ($paginate) {
-            return ReadyProject::orderBy('created_at')->paginate($num);
+            return ReadyProject::orderBy('created_at')->paginate($max ? $max : $num);
         } else {
-            return ReadyProject::orderBy('created_at')->get();
+            if ($max)
+                return ReadyProject::orderBy('created_at')->limit($max)->get();
+            else
+                return ReadyProject::orderBy('created_at')->get();
         }
+    }
+
+    public function getReadyProjectsByDepartmentId($id) {
+        return ReadyProject::orderBy('created_at')
+            ->where('ready_project_department_id', $id)
+            ->get();
     }
 
     public function findById($id) {
         return ReadyProject::find($id);
+    }
+
+    public function getNextId($id) {
+        $founded = ReadyProject::select('id')->where('id', '>', $id)->first();
+        if ($founded)
+            return $founded->id;
+        else
+            return null;
+    }
+
+    public function getPreviousId($id) {
+        $founded = ReadyProject::select('id')->orderBy('id', 'DESC')->where('id', '<', $id)->first();
+        if ($founded)
+            return $founded->id;
+        else
+            return null;
     }
 
     public function toggleLike($ready_project) {

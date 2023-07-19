@@ -5,7 +5,7 @@ return [
     'All in one place' => 'All In One Place',
     'powered by technology' => 'Powered By Technology',
 
-    '{{ $project->description }}' => 'ريال سعودي',
+    'SAR' => 'SAR',
 
     'MT1' => 'Website and Mobile Apps Programming',
     'DT1' => 'Programming integrated websites with professional designs providing the highest standards of protection and quality under the hands of elite specialized people in the technical field who have programmed over 750 sites',

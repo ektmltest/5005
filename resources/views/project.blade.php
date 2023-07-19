@@ -42,8 +42,8 @@
     </header>
 
 
-    <livewire:website.project />
-    {{-- <livewire:website.project :id='$id'/> --}}
+    {{-- <livewire:website.project /> --}}
+    <livewire:website.project :id="$id" />
 
     @component('layouts.components.rtl-links-js')
     @endcomponent
