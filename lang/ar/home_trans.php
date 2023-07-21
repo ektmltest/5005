@@ -11,13 +11,13 @@ return [
     'DT1' => 'برمجة مواقع متكاملة بـتصاميم إحترافية بـأعلى معايير الحماية والجوده تحت أيدي نخبة متخصصة في المجال التقني قاموا ببرمجة أكثر من 750 موقع و برمجة وتصميم تطبيقات الهواتف الذكية بتصاميم عصرية تعمل على كافة المنصات بسرعة وجودة عالية وبأسعار تنافسية',
 
     'MT2' => 'المحتوى التسويقي',
-    'DT2' => 'If you want to feature your project with modern and professional designs, such as logos, pictures and icons. you can get all of this and more with the hands of experienced designers from Ektml platform.',
+    'DT2' => 'إذا كنت ترغب في إبراز مشروعك بتصميمات حديثة واحترافية ، مثل الشعارات والصور والأيقونات. يمكنك الحصول على كل هذا وأكثر بأيدي المصممين ذوي الخبرة من منصة اكتمل.',
 
     'MT3' => 'المقالات والمحتوى التحريري',
-    'DT3' => 'Programming and designing smart phone applications with modern designs that work on all platforms with speed, high quality and competitive prices',
+    'DT3' => 'برمجة وتصميم تطبيقات الهواتف الذكية بتصميمات حديثة تعمل على جميع المنصات بسرعة وجودة عالية وأسعار تنافسية.',
 
     'MT4' => 'الدعم',
-    'DT4' => 'Your opportunity to deliver your idea and products to the highest amount of people possible with the latest marketing methods within a short period of time',
+    'DT4' => 'فرصتك لتوصيل فكرتك ومنتجاتك لأكبر عدد ممكن من الناس بأحدث طرق التسويق خلال فترة زمنية قصيرة.',
 
     'projramming Projects' => 'مشاريع برمجية جاهزة',
     'more Details' => 'تفاصيل أكثر',

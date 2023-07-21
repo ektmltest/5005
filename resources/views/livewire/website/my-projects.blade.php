@@ -6,15 +6,15 @@
                     <div class="faq-control">
                         <p class="text-center" style="font-weight: 500;">{{ __('myprojects_trans.The projects') }}</p>
                         <ul class="list-unstyled" id="projectsStatus">
-                            <li wire:click='switchState()' class="@if(!$currentState) active @endif">
+                            <li onclick="topbar.show()" wire:click='switchState()' style="cursor: pointer" class="@if(!$currentState) active @endif">
                                 <a role="button">
                                     <i class='bx bxs-grid'></i>
-                                    جميع مشاريعي
+                                    {{__('myprojects_trans.My projects')}}
                                 </a>
                             </li>
                             @foreach ($projectStates as $state)
-                            <li wire:click='switchState({{$state}})'
-                                class="@if($currentState && $state->id == $currentState->id) active @endif">
+                            <li onclick="topbar.show()" wire:click='switchState({{$state}})'
+                                class="@if($currentState && $state->id == $currentState->id) active @endif" style="cursor: pointer">
                                 <a role="button">
                                     <i class='{{$state->icon}}'></i>
                                     {{ $state->name }}

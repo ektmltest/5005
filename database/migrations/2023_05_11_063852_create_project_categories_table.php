@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('icon');
             $table->string('unicode')->nullable();
             $table->double('start_price');
+            $table->enum('color', ['warning', 'dark', 'secondary', 'info', 'danger', 'success'])->default('info');
             $table->timestamps();
 
             // foreign keys

@@ -23,6 +23,7 @@ class ProjectReplyStoreRequest extends ValidationRequest
     {
         return [
             'message' => parent::messageRule(),
+            'files.*' => parent::fileRule(),
         ];
     }
 }

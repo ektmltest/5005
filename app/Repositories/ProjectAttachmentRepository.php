@@ -32,7 +32,7 @@ class ProjectAttachmentRepository implements ProjectAttachmentRepositoryInterfac
 
     public function deleteAllRelatedFiles(Project $project) {
         foreach ($project->attachments as $attachment) {
-            $this->deleteUsingFilePath($attachment->file);
+            $this->deleteUsingFilePath($attachment->file_uri);
         }
     }
 
@@ -40,7 +40,7 @@ class ProjectAttachmentRepository implements ProjectAttachmentRepositoryInterfac
         $attachments = ProjectAttachment::all();
 
         foreach ($attachments as $attachment) {
-            $this->deleteUsingFilePath($attachment->file);
+            $this->deleteUsingFilePath($attachment->file_uri);
         }
 
         ProjectAttachment::truncate();

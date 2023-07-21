@@ -28,18 +28,8 @@ return [
     'profile.header' => 'ملفي الشخصي',
     'profile.body' => 'من هنا يمكنك تعديل ملفك الشخصي والإطلاع على بياناتك الشخصية.',
 
-
-
-
     'project.header' => 'ملفي الشخصي',
     'project.body' => 'من هنا يمكنك تعديل ملفك الشخصي والإطلاع على بياناتك الشخصية.',
 
-
-    'project.header' => 'rtjryjwtkywtyetyuketulk',
-    'project.body' => 'dffgjhqwrjywyfk',
-
-
-    'project.header' => 'ملفي الشخصي',
-    'project.body' => 'من هنا يمكنك تعديل ملفك الشخصي والإطلاع على بياناتك الشخصية.',
 
 ];

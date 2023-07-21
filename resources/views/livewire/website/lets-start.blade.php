@@ -28,7 +28,7 @@
                         </ul>
                     </div>
                     <div class="price-btn">
-                        <button class="btn bttn btn-purple" wire:click='departmentCategories({{$department->id}})'>
+                        <button class="btn bttn btn-purple" onclick="topbar.show()" wire:click='departmentCategories({{$department->id}})'>
                             {{ __('request_project_trans.Choose the section') }}
                         </button>
                     </div>
@@ -44,7 +44,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-12 mb-3">
-                <button class="btn gobackbtn bttn text-dark border" wire:click='displayBack(true, false, false)'>
+                <button onclick="topbar.show()" class="btn gobackbtn bttn text-dark border" wire:click='displayBack(true, false, false)'>
                     <i class="bx bx-right-arrow-alt"></i> العودة
                 </button>
                 <div class="text-center">
@@ -65,7 +65,7 @@
                 <div class="row">
                     @foreach ($categories as $category)
                     <div class="col-md-4 m-auto">
-                        <div class="counter @if(isset($categoryActive[$category->id])) active @endif" role="button"
+                        <div onclick="topbar.show()" class="counter @if(isset($categoryActive[$category->id])) active @endif" role="button"
                             wire:click='toggleActive({{$category->id}}, "{{$category->name}}")'>
                             <div class="counter-icon">
                                 <i class="{{$category->icon}}"></i>
@@ -81,7 +81,7 @@
 
                     <div class="col-md-12 text-center">
                         <div class="question-action mt-5">
-                            <button class="btn bttn btn-info" wire:click='displayForm()'>
+                            <button class="btn bttn btn-info" onclick="topbar.show()" wire:click='displayForm()'>
                                 إختيار الفئات<i class="bx bx-left-arrow-alt"></i>
                             </button>
                         </div>
@@ -92,7 +92,7 @@
         @elseif ($showForm)
         <div class="row justify-content-center">
             <div class="col-md-12 mb-3">
-                <button class="btn gobackbtn bttn text-dark border" wire:click='displayBack(false, true, false)'>
+                <button class="btn gobackbtn bttn text-dark border" onclick="topbar.show()" wire:click='displayBack(false, true, false)'>
                     <i class="bx bx-right-arrow-alt"></i> العودة
                 </button>
             </div>
@@ -159,7 +159,7 @@
                                     <div class="form-group col-md-4">
                                         <div class="floating-label-wrap">
                                             <div class="form-buttons">
-                                                <input wire:click='addBtn' type="button"
+                                                <input onclick="topbar.show()" wire:click='addBtn' type="button"
                                                     value="{{ucwords(__('tickets_trans.add attachment'))}}"
                                                     id="addAttachBtn">
                                             </div>
@@ -168,7 +168,7 @@
 
                                     <div class="col-xl-12 text-center">
                                         <div class="question-action">
-                                            <button class="btn bttn btn-info" type="submit">
+                                            <button onclick="topbar.show()" class="btn bttn btn-info" type="submit">
                                                 إرسال الطلب <i class="bx bx-left-arrow-alt"></i>
                                             </button>
                                         </div>

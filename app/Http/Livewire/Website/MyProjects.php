@@ -40,6 +40,7 @@ class MyProjects extends Component
             $this->currentState = null;
             $this->projectsToDisplay = $this->allProjects;
         }
+        $this->dispatchBrowserEvent('my:loaded');
     }
 
     public function render()

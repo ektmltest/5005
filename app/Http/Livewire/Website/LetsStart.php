@@ -9,6 +9,7 @@ use App\Repositories\ProjectDepartmentRepository;
 use App\Repositories\ProjectReplyAttachmentRepository;
 use App\Repositories\ProjectReplyRepository;
 use App\Repositories\ProjectRepository;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -109,15 +110,28 @@ class LetsStart extends Component
     public function submit() {
         $this->validate();
 
-        $this->projectRepository->store($this->project, $this->files, $this->categories);
+        DB::beginTransaction();
+        try {
 
-        $this->reset();
-        session()->flash('message', 'Project Created Successfully.!');
+            $this->projectRepository->store($this->project, $this->files, $this->categories);
+
+            DB::commit();
+
+            $this->reset();
+            session()->flash('message', __('messages.done'));
+
+        } catch (\Throwable $th) {
+
+            DB::rollBack();
+            throw $th;
+
+        }
     }
 
     public function render()
     {
         $this->departments = $this->projectDepartmentRepository->getAllDeparments();
+        $this->dispatchBrowserEvent('my:loaded');
         return view('livewire.website.lets-start');
     }
 }

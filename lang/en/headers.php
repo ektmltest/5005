@@ -22,6 +22,9 @@ return [
     'store.header' => 'Catalog Projects',
     'store.body' => 'If you want to start an e-commerce and launch a new project, but you are confused about the idea of ​​the project, here you will find a set of ready-made projects at the lowest costs, all you have to do is buy the right project for you and start your e-commerce.',
 
+    'myprojects.header' => 'My Projects',
+    'myprojects.body' => 'Now you only have to wait for your project and monitor it until it is completed, do not worry, your project is in the hands of professionals in various technical fields.',
+
     'profile.header' => 'My Profile',
     'profile.body' => 'From here you can edit your profile and view your personal data.',
 

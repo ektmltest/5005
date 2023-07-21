@@ -56,7 +56,7 @@
                             <div class="side-service left">
 
                                 <div class="service-item">
-                                    <div class="plus-icon">
+                                    <div class="plus-icon" style="bottom: 30%;">
                                         <i class='bx bx-code-block'></i>
                                     </div>
                                     <div class="service-txt">
@@ -87,7 +87,7 @@
                                     <div class="plus-icon">
                                         <i class='bx bx-pencil'></i>
                                     </div>
-                                    <div class="service-txt active">
+                                    <div class="service-txt">
                                         <h5>{{ __('home_trans.MT3') }}</h5>
                                         <p>{{ __('home_trans.DT3') }}</p>
                                     </div>

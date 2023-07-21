@@ -17,29 +17,28 @@ class ProjectReplyRepository implements ProjectReplyRepositoryInterface {
         $this->projectReplyAttachmentRepository = $projectReplyAttachmentRepository;
     }
 
-    public function store($request, $project_id) {
+    public function store($request, $project_id, $files = null) {
         $reply = ProjectReply::create([
             'message' => $request->message,
             'user_id' => auth()->user()->id,
             'project_id' => $project_id
         ]);
 
-        if (isset($request->file()['files']))
-            $this->projectReplyAttachmentRepository->storeBulk($reply, $request->file()['files']);
+        if ($files)
+            $this->projectReplyAttachmentRepository->storeBulk($reply, $files);
+        else
+            if (isset($request->file()['files']))
+                $this->projectReplyAttachmentRepository->storeBulk($reply, $request->file()['files']);
 
         return $reply;
     }
 
     public function deleteProjectReplies($project) {
-        $dataToDelete = [];
         foreach ($project->replies as $reply) {
-            // $this->deleteAllRelatedFiles($reply);
-            $dataToDelete[] = $reply->id;
+            $this->deleteAllRelatedFiles($reply);
         }
 
-        DB::table('project_replies')
-            ->whereIn('id', $dataToDelete)
-            ->delete();
+        $project->replies()->delete();
     }
 
     public function delete($reply) {
@@ -50,7 +49,7 @@ class ProjectReplyRepository implements ProjectReplyRepositoryInterface {
 
     public function deleteAllRelatedFiles($reply) {
         foreach ($reply->attachments as $attachment) {
-            $this->deleteUsingFilePath($attachment->file);
+            $this->deleteUsingFilePath($attachment->file_uri);
         }
     }
 }
