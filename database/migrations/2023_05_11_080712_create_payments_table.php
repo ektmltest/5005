@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->enum('state', config('globals.payment.states'));
+            $table->enum('state', config('globals.payment_states'));
             $table->string('invoice_image');
             $table->timestamps();
 

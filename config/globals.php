@@ -2,7 +2,7 @@
 
 return [
     'colors' => ['warning', 'dark', 'secondary', 'info', 'danger', 'success'],
-    'project.states' => ['pending', 'activated', 'blocked'],
-    'payment.states' => ['accepted', 'rejected'],
-    'ticket.states' => ['available', 'closed'],
+    'user_states' => ['pending', 'activated', 'blocked'],
+    'payment_states' => ['accepted', 'rejected'],
+    'ticket_states' => ['available', 'closed'],
 ];
