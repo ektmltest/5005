@@ -95,11 +95,14 @@ class ReadyProjectEdit extends Component
         DB::beginTransaction();
         try {
 
-            $this->updateReadyProject();
+            if ($this->updateReadyProject())
+                session()->flash('error', __('messages.error'));
+            else
+                session()->flash('message', __('messages.done'));
 
             DB::commit();
 
-            session()->flash('message', __('messages.done'));
+            // session()->flash('message', __('messages.done'));
 
         } catch (\Throwable $th) {
 
@@ -134,11 +137,13 @@ class ReadyProjectEdit extends Component
         ];
         if ($this->image) {
             if ($this->deleteProjectImage())
-                throw new \Exception('updating failed - project image file is not exists to be deleted');
+                return 1;
+                // throw new \Exception('updating failed - project image file is not exists to be deleted');
             $dataToUpdate['image'] = $this->prepareFilePath($this->image, 'admin/store/projects/images', true);
         }
 
         $this->project = $this->readyProjectRepository->update($dataToUpdate, $this->complex_data, $this->project);
+        return 0;
     }
 
     public function deleteProjectImage() {
@@ -194,6 +199,7 @@ class ReadyProjectEdit extends Component
     public function render()
     {
         $this->dispatchBrowserEvent('myevent');
+        $this->dispatchBrowserEvent('my:loaded');
         return view('livewire.admin.ready-project-edit');
     }
 }

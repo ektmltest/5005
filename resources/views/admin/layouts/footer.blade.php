@@ -173,6 +173,16 @@
     })
 </script>
 
+<script>
+    window.addEventListener('my:loading', (e) => {
+        topbar.show();
+    })
+
+    window.addEventListener('my:loaded', (e) => {
+        topbar.hide();
+    })
+</script>
+
 @stack('custom-scripts')
 
 

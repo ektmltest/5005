@@ -9,5 +9,5 @@ interface ProjectCategoryRepositoryInterface {
 
     public function getCategoriesByIds($ids);
 
-    public function storeToPivotBulk($categories, $project);
+    public static function storeToPivotBulk($categories, $project);
 }

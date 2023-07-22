@@ -30,6 +30,7 @@ class Ticket extends Component
     public function render()
     {
         $this->tickets = ($this->current_status == 'available') ? $this->ticketRepository->getAllAvailableTickets(auth: false, paginate: true) : $this->ticketRepository->getAllClosedTickets(auth: false, paginate: true);
+        $this->dispatchBrowserEvent('my:loaded');
         return view('livewire.admin.tickets', [
             'tickets' => $this->tickets
         ]);

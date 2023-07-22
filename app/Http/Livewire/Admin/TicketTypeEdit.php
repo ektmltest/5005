@@ -49,6 +49,7 @@ class TicketTypeEdit extends Component
 
     public function render()
     {
+        $this->dispatchBrowserEvent('my:loaded');
         return view('livewire.admin.ticket-type-edit');
     }
 }

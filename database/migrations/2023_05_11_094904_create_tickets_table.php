@@ -11,7 +11,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->enum('status', ['available', 'closed']);
+            $table->enum('status', config('globals.ticket.states'));
             $table->timestamps();
             // foreign keys
             $table->foreignId('ticket_type_id')->constrained('ticket_types')->cascadeOnDelete()->cascadeOnUpdate();

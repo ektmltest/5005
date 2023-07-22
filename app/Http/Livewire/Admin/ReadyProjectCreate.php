@@ -134,6 +134,7 @@ class ReadyProjectCreate extends Component
     public function render()
     {
         $this->dispatchBrowserEvent('myevent');
+        $this->dispatchBrowserEvent('my:loaded');
         return view('livewire.admin.ready-project-create');
     }
 }

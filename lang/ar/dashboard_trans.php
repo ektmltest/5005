@@ -169,6 +169,7 @@ return [
     'ENGLISH ANSWER' => 'الجواب بالانجليزي',
 
     'ICON UNICODE' => 'كود الأيقونة',
+    'COLOR' => 'اللون',
 
 
 ];

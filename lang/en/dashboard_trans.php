@@ -168,6 +168,7 @@ return [
     'ENGLISH ANSWER' => 'ENGLISH ANSWER',
 
     'ICON UNICODE' => 'ICON UNICODE',
+    'COLOR' => 'COLOR',
 
 ];
 

@@ -265,6 +265,20 @@
         </script>
     @endif
 
+    @if (session()->has('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: '{{app()->getLocale() == "en" ? "Error" : "خطأ"}}',
+                text: "{{ session('error') }}",
+            }).then((result) => {
+                if (result.isConfirmed || result.isDismissed) {
+                    window.location = window.location.href.split("?")[0];
+                }
+            })
+        </script>
+    @endif
+
     {{-- @php
         if(!empty(request()->all())) {
             $data = request()->all();

@@ -96,6 +96,7 @@ class UserManage extends Component
     public function render()
     {
         $users = $this->userRepository->getAll(paginate: true, state: $this->filter == 'none' ? null : $this->filter);
+        $this->dispatchBrowserEvent('my:loaded');
         return view('livewire.admin.user-manage', [
             'users' => $users,
         ]);

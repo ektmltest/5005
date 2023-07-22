@@ -26,7 +26,6 @@ class MyProjectShow extends Component
     public function __construct() {
         $this->projectRepository = new ProjectRepository(
             new ProjectAttachmentRepository,
-            new ProjectCategoryRepository,
             new ProjectReplyRepository(new ProjectReplyAttachmentRepository)
         );
         $this->projectReplyRepository = new ProjectReplyRepository(

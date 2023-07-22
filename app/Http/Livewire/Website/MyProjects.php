@@ -23,7 +23,6 @@ class MyProjects extends Component
         $this->projectStateRepository = new ProjectStateRepository;
         $this->projectRepository = new ProjectRepository(
             new ProjectAttachmentRepository,
-            new ProjectCategoryRepository,
             new ProjectReplyRepository(new ProjectReplyAttachmentRepository)
         );
         $this->allProjects = $this->projectRepository->getAllProjects(auth: true);

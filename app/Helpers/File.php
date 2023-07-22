@@ -16,7 +16,8 @@ trait File {
     }
 
     protected function deleteUsingFilePath($filepath, $root = 'assets') {
-        unlink(public_path($filepath));
+        if (file_exists(public_path($filepath)))
+            unlink(public_path($filepath));
     }
 
     protected function deleteFilesInFolder($dir) {

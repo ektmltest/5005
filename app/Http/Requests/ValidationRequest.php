@@ -129,4 +129,8 @@ class ValidationRequest extends FormRequest
     protected function numericRule() {
         return ['required', 'numeric'];
     }
+
+    protected function inRule($items) {
+        return ['required', 'in:' . implode(',', $items)];
+    }
 }

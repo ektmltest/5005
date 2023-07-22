@@ -35,12 +35,13 @@ class LetsStart extends Component
     protected $projectRepository;
 
     public function __construct() {
-        $this->projectDepartmentRepository = new ProjectDepartmentRepository;
         $this->projectRepository = new ProjectRepository(
             new ProjectAttachmentRepository,
-            new ProjectCategoryRepository,
             new ProjectReplyRepository(new ProjectReplyAttachmentRepository)
         );
+
+        $this->projectDepartmentRepository = new ProjectDepartmentRepository($this->projectRepository);
+
         $this->project = new Project;
     }
 

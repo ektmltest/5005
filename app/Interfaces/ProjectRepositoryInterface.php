@@ -16,4 +16,9 @@ interface ProjectRepositoryInterface {
 
     public function prepareProject($data): Project;
 
+    public function deleteByDepartment($dept_id);
+
+    public function deleteByCategory($cat_id);
+
+
 }

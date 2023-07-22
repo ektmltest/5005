@@ -122,6 +122,7 @@ class TicketType extends Component
 
     public function render()
     {
+        $this->dispatchBrowserEvent('my:loaded');
         return view('livewire.admin.ticket-types', [
             'types' => $this->ticketTypeRepository->getAllTicketTypes(paginate: true)
             // 'types' => $this->types

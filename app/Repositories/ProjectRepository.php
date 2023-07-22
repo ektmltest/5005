@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\DB;
 
 class ProjectRepository implements ProjectRepositoryInterface {
     protected ProjectAttachmentRepositoryInterface $projectAttachmentRepository;
-    protected ProjectCategoryRepositoryInterface $projectCategoryRepository;
+    // protected ProjectCategoryRepositoryInterface $projectCategoryRepository;
     protected ProjectReplyRepositoryInterface $projectReplyRepository;
 
-    public function __construct(ProjectAttachmentRepositoryInterface $projectAttachmentRepository, ProjectCategoryRepositoryInterface $projectCategoryRepository, ProjectReplyRepositoryInterface $projectReplyRepository) {
+    public function __construct(ProjectAttachmentRepositoryInterface $projectAttachmentRepository, ProjectReplyRepositoryInterface $projectReplyRepository) {
         $this->projectAttachmentRepository = $projectAttachmentRepository;
-        $this->projectCategoryRepository = $projectCategoryRepository;
+        // $this->projectCategoryRepository = $projectCategoryRepository;
         $this->projectReplyRepository = $projectReplyRepository;
     }
 
@@ -70,7 +70,7 @@ class ProjectRepository implements ProjectRepositoryInterface {
             $this->projectAttachmentRepository->store($project, $file);
         }
 
-        $this->projectCategoryRepository->storeToPivotBulk($categories, $project);
+        ProjectCategoryRepository::storeToPivotBulk($categories, $project);
 
         return $project;
     }
@@ -83,6 +83,28 @@ class ProjectRepository implements ProjectRepositoryInterface {
         $project->delete();
 
         return true;
+    }
+
+    public function deleteByDepartment($dept_id) {
+        $targetProjects = Project::whereHas('categories', function($cat) use ($dept_id) {
+            $cat->where('project_department_id', $dept_id);
+        })->get();
+
+        $this->deleteBulk($targetProjects);
+    }
+
+    public function deleteByCategory($cat_id) {
+        $targetProjects = Project::whereHas('categories', function($cat) use ($cat_id) {
+            $cat->where('id', $cat_id);
+        })->get();
+
+        $this->deleteBulk($targetProjects);
+    }
+
+    public function deleteBulk($projects) {
+        foreach ($projects as $project) {
+            $this->delete($project);
+        }
     }
 
     public function getProjectState() {

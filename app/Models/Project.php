@@ -26,10 +26,13 @@ class Project extends Model
         return $this->belongsToMany(ProjectCategory::class, 'project_pivot_categories');
     }
 
-    public function department() {
+    public function department($query = false) {
         $category = $this->categories->first();
         if ($category)
-            return $category->department;
+            if ($query)
+                return $category->department();
+            else
+                return $category->department;
         else
             return null;
     }

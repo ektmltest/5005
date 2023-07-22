@@ -39,6 +39,7 @@ class ReadyProject extends Component
 
     public function render()
     {
+        $this->dispatchBrowserEvent('my:loaded');
         return view('livewire.admin.ready-project', [
             'ready_projects' => $this->readyProjectRepository->getAllReadyProjects(paginate: true)
         ]);

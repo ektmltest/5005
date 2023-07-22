@@ -24,6 +24,7 @@ class ManageProject extends Component
 
     public function render()
     {
+        $this->dispatchBrowserEvent('my:loaded');
         return view('livewire.admin.manage-project');
     }
 }

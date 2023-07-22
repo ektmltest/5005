@@ -3,12 +3,22 @@
 namespace App\Repositories;
 
 use App\Interfaces\ProjectCategoryRepositoryInterface;
+use App\Interfaces\ProjectRepositoryInterface;
 use App\Models\ProjectCategory;
 use Illuminate\Support\Facades\DB;
 
 class ProjectCategoryRepository implements ProjectCategoryRepositoryInterface {
-    public function getAllCategories() {
-        return ProjectCategory::all();
+
+    protected $projectRepository;
+    public function __construct(ProjectRepositoryInterface $projectRepository) {
+        $this->projectRepository = $projectRepository;
+    }
+
+    public function getAllCategories($paginate = false, $num = 10) {
+        if ($paginate)
+            return ProjectCategory::orderBy('created_at', 'DESC')->paginate($num);
+        else
+            return ProjectCategory::orderBy('created_at', 'DESC')->get();
     }
 
     public function getCategoryById($id) {
@@ -24,7 +34,7 @@ class ProjectCategoryRepository implements ProjectCategoryRepositoryInterface {
         return $categories;
     }
 
-    public function storeToPivotBulk($categories, $project) {
+    public static function storeToPivotBulk($categories, $project) {
         $dataToInsert = [];
         foreach ($categories as $category) {
             $dataToInsert[] = [
@@ -35,5 +45,44 @@ class ProjectCategoryRepository implements ProjectCategoryRepositoryInterface {
 
         DB::table('project_pivot_categories')
             ->insert($dataToInsert);
+    }
+
+    public function store($data) {
+        return ProjectCategory::create([
+            'name' => [
+                'en' => $data['name_en'],
+                'ar' => $data['name_ar'],
+            ],
+            'icon' => $data['icon'],
+            'unicode' => $data['unicode'],
+            'start_price' => $data['price'],
+            'color' => $data['color'],
+            'project_department_id' => $data['dept_id'],
+        ]);
+    }
+
+    public function update($data, $id) {
+        $category = $this->getCategoryById($id);
+        $category->update([
+            'name' => [
+                'en' => $data['name_en'],
+                'ar' => $data['name_ar'],
+            ],
+            'icon' => $data['icon'],
+            'unicode' => $data['unicode'],
+            'start_price' => $data['price'],
+            'color' => $data['color'],
+            'project_department_id' => $data['dept_id'],
+        ]);
+
+        return $category;
+    }
+
+    public function delete($id) {
+        // * we delete projects of the department for deleting the attachments as well.
+        $this->projectRepository->deleteByCategory($id);
+
+        // * categories deleted by cascading as well.
+        return ProjectCategory::destroy($id);
     }
 }
