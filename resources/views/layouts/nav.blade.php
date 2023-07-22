@@ -53,30 +53,14 @@
                 {{ucwords(__('nav.platforms'))}}
             </a>
             <div class="dropdown-menu" >
-                <a class="dropdown-item dropdown-link" href="#">
+                @foreach (App\Models\Platform::get() as $platform)
+                <a class="dropdown-item dropdown-link" href="{{$platform->link}}">
                     <div class="link-ico">
-                        <i class='bx bx-game'></i>
-                        <span class="title">{{ucwords(__('nav.platforms.pgxpo'))}}</span>
+                        <i class='bx bx-{{$platform->icon}}'></i>
+                        <span class="title">{{ucwords($platform->name)}}</span>
                     </div>
                 </a>
-                <a class="dropdown-item dropdown-link" href="#">
-                    <div class="link-ico">
-                        <i class='bx bx-detail'></i>
-                        <span class="title">{{ucwords(__('nav.platforms.forbit'))}}</span>
-                    </div>
-                </a>
-                <a class="dropdown-item dropdown-link" href="#">
-                    <div class="link-ico">
-                        <i class='bx bx-data'></i>
-                        <span class="title">{{ucwords(__('nav.platforms.rqoom'))}}</span>
-                    </div>
-                </a>
-                <a class="dropdown-item dropdown-link" href="#">
-                    <div class="link-ico">
-                        <i class='bx bx-pointer'></i>
-                        <span class="title">{{ucwords(__('nav.platforms.nqrat'))}}</span>
-                    </div>
-                </a>
+                @endforeach
                 <span class="bg-gray hover-state js-hover-state"></span>
             </div>
         </li>

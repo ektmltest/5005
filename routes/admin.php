@@ -18,7 +18,7 @@ function () {
 
 // Route::group(['middleware' => 'auth'], function () {
 
-    Route::prefix('admin')->group(function () {
+    Route::prefix('admin')->middleware(['admin'])->group(function () {
         Route::get('/', [HomeController::class, 'index'])->name('admin.home');
         Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
 
