@@ -17,7 +17,7 @@ Route::group([
         Route::get('/myProjects/{id}', fn ($id) => view('my-project-show')->with('id', $id))->name('myProjects.show');
         Route::get('/tickets', fn () => view('ticket'))->name('tickets');
         Route::get('/tickets/1', fn () => view('ticket-show'))->name('tickets.show');
-        Route::get('myProfile', fn () => view('profile'))->name('myProfile');
+        Route::get('profile', fn () => view('profile'))->name('myProfile');
         Route::get('letsStart', fn () => view('lets-start'))->name('letsStart');
     });
 

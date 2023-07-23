@@ -34,11 +34,16 @@ class ProjectReplyRepository implements ProjectReplyRepositoryInterface {
     }
 
     public function deleteProjectReplies($project) {
+        $dataToDelete = array();
         foreach ($project->replies as $reply) {
             $this->deleteAllRelatedFiles($reply);
+            $dataToDelete[] = $reply->id;
         }
 
-        $project->replies()->delete();
+        DB::table('project_replies')
+            ->whereIn('id', $dataToDelete)
+            ->delete();
+        // $project->replies()->delete();
     }
 
     public function delete($reply) {

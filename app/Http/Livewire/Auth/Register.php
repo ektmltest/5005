@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Livewire\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
@@ -35,28 +36,37 @@ class Register extends Component
     {
         $this->validate();
 
-        if($this->iAgree){
-            $user = User::create([
-                'fname' => $this->fname,
-                'lname' => $this->lname,
-                'email' => $this->email,
-                'password' => Hash::make($this->password),
-                'phone' => $this->phone,
-                'country_code' => '+20',
-                'state' => 'pending',
-                'rank_id' => 1,
-            ]);
+        DB::beginTransaction();
+        try {
+            if($this->iAgree){
+                $user = User::create([
+                    'fname' => $this->fname,
+                    'lname' => $this->lname,
+                    'email' => $this->email,
+                    'password' => Hash::make($this->password),
+                    'phone' => $this->phone,
+                    'country_code' => '+20',
+                    'state' => 'pending',
+                    'rank_id' => 1,
+                ]);
 
-            auth()->login($user);
+                $user->visits++;
+                $user->save();
+                auth()->login($user);
+                DB::commit();
+                return redirect()->route('home');
+            }else{
+                $this->addError('agreeMessage', __('errors.checkme'));
+            }
+            // $this->reset();
+            // $this->emit('User Registered.!');
+            // session()->flash('message', 'User Registered.!');
+        } catch (\Throwable $th) {
 
-            return redirect()->route('home');
-        }else{
-            $this->addError('agreeMessage', 'Must Be Checked');
+            DB::rollBack();
+            throw $th;
+
         }
-        // $this->reset();
-        // $this->emit('User Registered.!');
-        // session()->flash('message', 'User Registered.!');
-
     }
 
 

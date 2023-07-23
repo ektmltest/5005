@@ -12,6 +12,7 @@ return [
 
     'Your views' => 'Your views',
     'Visitor' => 'Visitor',
+    'visits' => 'visits',
 
     'Your Purchases' => 'Your Purchases',
     'Buyer' => 'Buyer',

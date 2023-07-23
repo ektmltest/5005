@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
 
             // foreign keys
-            $table->foreignId('project_reply_id')->constrained('project_replies')->cancadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('project_reply_id')->constrained('project_replies')->cascadeOnDelete();
 
             // constrains
             $table->primary(['file', 'project_reply_id']);

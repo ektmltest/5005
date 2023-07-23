@@ -6,4 +6,5 @@ return [
     'url_error' => 'URL Error',
     'logout' => 'You should logout first to access this route.',
     'unauthorized' => 'Unauthorized.',
+    'checkme' => 'Must Be Checked',
 ];

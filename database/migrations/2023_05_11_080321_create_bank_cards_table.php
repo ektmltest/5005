@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('iban');
             $table->string('account_number');
             $table->json('bank_name');
+            $table->json('bank_card_owner');
             $table->timestamps();
         });
     }

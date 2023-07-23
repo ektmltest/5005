@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('country_code')->default('+20');
             $table->enum('state', config('globals.user_states'))->default('pending');
             $table->string('avatar')->nullable();
+            $table->double('balance');
+            $table->integer('visits')->default(0);
             $table->rememberToken();
             $table->timestamps();
 

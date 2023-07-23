@@ -50,4 +50,6 @@ return [
     'upgrade_your_project' => 'ارتقي بمشروعك الآن',
     'connect_with_people' => 'أوصل لأكبر عدد من الناس',
     'pro_projects' => 'مشاريع تقنية إحترافية',
+
+    'Dashboard' => 'لوحة الإدارة',
 ];

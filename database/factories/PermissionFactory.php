@@ -22,6 +22,7 @@ class PermissionFactory extends Factory
         ];
         return [
             'name' => $this->faker->randomElement($names),
+            'key' => $this->faker->unique()->slug(),
         ];
     }
 }

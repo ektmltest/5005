@@ -17,11 +17,15 @@ class BankCardFactory extends Factory
     public function definition(): array
     {
         return [
-            'iban' => fake()->randomNumber(),
+            'iban' => fake()->shuffleString('qwertyuiop123456789123456789'),
             'account_number' => fake()->randomNumber(),
             'bank_name' => [
                 'ar' => 'اسم',
                 'en' => fake()->unique()->name(),
+            ],
+            'bank_card_owner' => [
+                'ar' => 'اسم',
+                'en' => fake()->name(),
             ],
         ];
     }

@@ -20,6 +20,7 @@ class UserFactory extends Factory
             'state' => fake()->randomElement(['pending', 'activated', 'blocked']),
             'rank_id' => Rank::inRandomOrder()->first()->id,
             'avatar' => fake()->imageUrl(),
+            'balance' => fake()->randomFloat(min: 500, max: 10000),
         ];
     }
 

@@ -4,6 +4,7 @@ use App\Http\Requests\LoginRequest;
 // use App\Interfaces\UserRepositoryInterface;
 use App\Repositories\UserRepository;
 use App\Repositories\VerifyEmailRepository;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
@@ -33,19 +34,31 @@ class Login extends Component
     public function submit() {
         $this->validate();
 
-        $user = $this->userRepository->findByEmail($this->email);
+        DB::beginTransaction();
+        try {
+            $user = $this->userRepository->findByEmail($this->email);
 
-        if (!$user) {
-            $this->addError('credentials', trans('errors.credentials'));
-        } else {
-            if (!Hash::check($this->password, $user->password)) {
-                // dd('test');
-                $this->addError('credentials',trans ('errors.credentials'));
+            if (!$user) {
+                $this->addError('credentials', trans('errors.credentials'));
             } else {
-                auth()->login($user);
-                return redirect()->route('home');
+                if (!Hash::check($this->password, $user->password)) {
+                    // dd('test');
+                    $this->addError('credentials',trans ('errors.credentials'));
+                } else {
+                    $user->visits++;
+                    $user->save();
+                    auth()->login($user);
+                    DB::commit();
+                    return redirect()->route('home');
+                }
             }
+        } catch (\Throwable $th) {
+
+            DB::rollBack();
+            throw $th;
+
         }
+
     }
 
     public function render() {

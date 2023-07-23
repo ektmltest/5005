@@ -50,4 +50,6 @@ return [
     'upgrade_your_project' => 'Follow your interests',
     'connect_with_people' => 'Hear what people are talking about',
     'pro_projects' => 'Professional technical projects',
+
+    'Dashboard' => 'Admin Dashboard',
 ];

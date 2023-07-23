@@ -12,6 +12,7 @@ return [
 
     'Your views' => 'عدد الزيارات الخاصة بك',
     'Visitor' => 'زائر',
+    'visits' => 'زيارات',
 
     'Your Purchases' => 'عمليات الشراء من خلالك',
     'Buyer' => 'مشتري',
