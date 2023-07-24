@@ -29,7 +29,7 @@
                                     <tbody>
                                         @foreach (\App\Models\ProjectState::all() as $state)
                                         <tr>
-                                            <th><a onclick="topbar.show()" style="cursor: pointer;" class="waves-effect"
+                                            <th><a onclick="topbar.show()" style="cursor: pointer;" class="waves-effect badge bg-{{$state->color}}"
                                                     wire:click="changeStatus({{$state->id}})">{{ $state->name }}</a>
                                             </th>
                                         </tr>
