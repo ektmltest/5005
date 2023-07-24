@@ -4,7 +4,7 @@
         <div class="item prj-{{$project->department->id}} col-md-4 col-12 mb-4" style="max-height: 400px">
             <div class="post-item">
                 <div class="post-img">
-                    <img class="img-fluid" mu-open mu-link="/prj/1" style="border-radius: 16px; cursor: pointer; width:100%;
+                    <img class="img-fluid" mu-open mu-link="{{ route('project', $project->id) }}" style="border-radius: 16px; cursor: pointer; width:100%;
                     height:200px;
                     object-fit:cover;
                     object-position:50% 50%;"
