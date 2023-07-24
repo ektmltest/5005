@@ -31,6 +31,7 @@ class UserRepository implements UserRepositoryInterface {
         $user->country_code = $data['country_code'];
         $user->phone = $data['phone'];
         $user->rank_id = 1; // TODO: changing this to default rank
+        $user->balance = 0;
         // $user->avatar = $this->prepareFilePath($data['avatar'], 'users', true);
 
         $user->save();
