@@ -3135,7 +3135,7 @@ input, button {
     margin-bottom: 50px;
 }
 
-.pagination {
+/* .pagination {
     margin: 0;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
@@ -3174,7 +3174,7 @@ input, button {
 
 .page-item:first-child .page-link, .page-item:last-child .page-link {
     border-radius: 50%;
-}
+} */
 
 /* Sidebar */
 
@@ -4732,12 +4732,12 @@ input, button {
     .head-content {
         text-align: left !important;
     }
-    .pagination li.page-item a {
+    /* .pagination li.page-item a {
         font-size: 16px;
         width: 40px;
         height: 40px;
         margin: 0 8px;
-    }
+    } */
     .sidebox {
         width: 48%;
     }
@@ -5030,12 +5030,12 @@ input, button {
     .portfolio .list-control ul li {
         font-size: 14px;
     }
-    .pagination li.page-item a {
+    /* .pagination li.page-item a {
         font-size: 14px;
         width: 30px;
         height: 30px;
         margin: 0 4px;
-    }
+    } */
     .blog-sidebar {
         margin-top: 40px;
     }

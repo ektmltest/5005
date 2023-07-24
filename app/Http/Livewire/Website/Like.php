@@ -32,13 +32,14 @@ class Like extends Component
 
         $ready_project = $this->readyProjectRepository->findById($ready_project['id']);
         $isAdded = $this->readyProjectRepository->toggleLike($ready_project);
+        $this->active_department_id = $ready_project->department->id;
 
         if ($isAdded)
             session()->flash('message', __('messages.done'));
         else
             session()->flash('message', __('messages.done'));
 
-        $this->emit('likedEvent');
+        // $this->emit('likedEvent');
     }
 
     public function activateEventHandler($id) {

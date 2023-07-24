@@ -117,12 +117,16 @@
                         <h5><i class="bx bx-images"></i>معرض المشاريع</h5>
                         <div class="sidebox-inner gallery">
                             <div class="gallery-feed">
-                                @foreach(\App\Models\ReadyProject::select('image')->get() as $gallary)
+                                @foreach(\App\Models\GalleryProject::select('image')->limit(15)->get() as $gallary)
                                 <a href="{{ $gallary->image }}" target="_blank" class="">
                                     <i class="bx bx-search-alt"></i>
                                     <img src="{{ $gallary->image }}" alt="Business Blog">
                                 </a>
                                 @endforeach
+                            </div>
+
+                            <div class="text-center">
+                                <a class="bttn btn-purple" href="{{route('gallary')}}">{{__('home_trans.more Details')}}</a>
                             </div>
                         </div>
                     </div>

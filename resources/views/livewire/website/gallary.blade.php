@@ -9,7 +9,7 @@
 
     <div class="container">
         <div class="list-control">
-            <ul class="list-unstyled">
+            <ul class="list-unstyled" style="flex-wrap: wrap">
                 <li class="active" data-filter="*">{{ __('main_trans.All') }}</li>
                 @foreach ($categories as $category)
                 <li data-filter=".{{$category->key}}">{{ $category->name }}</li>
