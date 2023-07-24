@@ -5030,12 +5030,12 @@ input, button {
     .portfolio .list-control ul li {
         font-size: 14px;
     }
-    /* .pagination li.page-item a {
+    .pagination li.page-item a {
         font-size: 14px;
         width: 30px;
         height: 30px;
         margin: 0 4px;
-    } */
+    }
     .blog-sidebar {
         margin-top: 40px;
     }

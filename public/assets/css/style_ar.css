@@ -229,6 +229,10 @@ body {
     text-align: left;
 }
 
+.side-service.right {
+    text-align: left;
+}
+
 .start-working .video-txt ul li i {
     margin-left: 20px;
     margin-right: 0;

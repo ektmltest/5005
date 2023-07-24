@@ -60,7 +60,7 @@
                                         <i class='bx bx-code-block'></i>
                                     </div>
                                     <div class="service-txt">
-                                        <h5>{{ __('home_trans.MT1') }}</h5>
+                                        <h5 class="mb-3">{{ __('home_trans.MT1') }}</h5>
                                         <p>{{ __('home_trans.DT1') }}</p>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@
                                         <i class='bx bx-donate-heart'></i>
                                     </div>
                                     <div class="service-txt">
-                                        <h5>{{ __('home_trans.MT2') }}</h5>
+                                        <h5 class="mb-3">{{ __('home_trans.MT2') }}</h5>
                                         <p>{{ __('home_trans.DT2') }}</p>
                                     </div>
                                 </div>
@@ -88,7 +88,7 @@
                                         <i class='bx bx-pencil'></i>
                                     </div>
                                     <div class="service-txt">
-                                        <h5>{{ __('home_trans.MT3') }}</h5>
+                                        <h5 class="mb-3">{{ __('home_trans.MT3') }}</h5>
                                         <p>{{ __('home_trans.DT3') }}</p>
                                     </div>
                                 </div>
@@ -97,7 +97,7 @@
                                         <i class='bx bx-help-circle'></i>
                                     </div>
                                     <div class="service-txt">
-                                        <h5>{{ __('home_trans.MT4') }}</h5>
+                                        <h5 class="mb-3">{{ __('home_trans.MT4') }}</h5>
                                         <p>{{ __('home_trans.DT4') }}</p>
                                     </div>
                                 </div>
