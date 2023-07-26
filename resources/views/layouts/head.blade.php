@@ -13,9 +13,9 @@
 <!-- Favicon-->
 <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/logo_ektml.webp')}}">
 
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{{-- <!-- Google Fonts --> --}}
+{{-- <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> --}}
 {{--
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;500&display=swap" rel="stylesheet"> --}}
 {{-- <link rel='stylesheet' href='{{asset(' assets/css/google-fonts.css')}}' /> --}}

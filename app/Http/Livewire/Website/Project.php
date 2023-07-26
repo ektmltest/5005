@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Livewire\Website;
 use App\Models\ReadyProject;
+use App\Repositories\GallaryProjectRepository;
 use App\Repositories\ReadyProjectRepository;
 use Livewire\Component;
 use Illuminate\Http\Request;
@@ -11,11 +12,16 @@ class Project extends Component
     public $project;
     public $next;
     public $previous;
+    public $galleries;
 
     protected $readyProjectRepository;
+    protected $galleryProjectRepository;
 
     public function __construct() {
         $this->readyProjectRepository = new ReadyProjectRepository;
+        $this->galleryProjectRepository = new GallaryProjectRepository;
+
+        $this->galleries = $this->galleryProjectRepository->getAllProjects(paginate: false, limit: 9);
     }
 
     public function mount($id) {

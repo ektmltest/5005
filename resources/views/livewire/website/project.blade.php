@@ -117,10 +117,10 @@
                         <h5><i class="bx bx-images"></i>معرض المشاريع</h5>
                         <div class="sidebox-inner gallery">
                             <div class="gallery-feed">
-                                @foreach(\App\Models\GalleryProject::select('image')->limit(15)->get() as $gallary)
+                                @foreach($galleries as $gallary)
                                 <a href="{{ $gallary->image }}" target="_blank" class="">
                                     <i class="bx bx-search-alt"></i>
-                                    <img src="{{ $gallary->image }}" alt="Business Blog">
+                                    <img style="object-fit: cover" src="{{ $gallary->image }}" alt="Business Blog">
                                 </a>
                                 @endforeach
                             </div>

@@ -9,9 +9,13 @@ class GallaryProjectRepository implements GallaryProjectRepositoryInterface
 {
     use File;
 
-    public function getAllProjects($paginate = true, $num = 10)
+    public function getAllProjects($paginate = true, $num = 10, $limit = null)
     {
-        if($paginate){
+        if ($limit) {
+            return GalleryProject::limit($limit)->get();
+        }
+
+        if ($paginate){
             return GalleryProject::paginate($num);
         } else {
             return GalleryProject::get();
