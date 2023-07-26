@@ -676,61 +676,40 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6">
+                @foreach ($news as $new)
+                <!-- Start Post Item -->
+                <div class="col-md-6 mt-3">
                     <div class="post-item">
                         <div class="post-img">
-                            <img class="img-fluid lazyload" src="https://www.ektml.com/blog/image/31" loading="lazy"
-                                alt="إكتمال برمجة موقع مكتبة إمام الدعوة الرقمية Blog image">
+                            <img class="img-fluid lazyload" src="{{$new->image}}" loading="lazy"
+                                alt="{{$new->title}}">
                         </div>
                         <div class="post-txt">
-                            <a class="post-title" href="https://www.ektml.com/blog/31/imam-library">إكتمال برمجة موقع
-                                مكتبة
-                                إمام الدعوة الرقمية</a>
+                            <a class="post-title" href="{{route('news.show', $new->slug)}}">{{$new->title}}</a>
                             <ul class="list-unstyled post-details">
-                                <li>المهندس احمد شراحيلي</li>
-                                <li>16 نوفمبر, 2021 - 7:53 صباحاً</li>
+                                <li>{{$new->user->full_name}}</li>
+                                <li>{{$new->created_at->diffForHumans()}}</li>
                             </ul>
-                            <p>تعلن منصة إكتمل عن إكتمال برمجة مكتبة إمام الدعوة الرقميةوالذي يشرف عليهمعالي الشيخ \ عبد
-                                الرحمن السديس إمام وخطيب الحرم المكي وبإذن الله سيتم تدشين الموقع في حفل يرئسةمعالي
-                                الشيخ \
-                                عبد الرحمن السديسمع حضورالمهندس أحمد شراحيلي ( مؤسس منصة اكتمل )وذلك ...</p>
+                            <p>{{Str::limit($new->body, 100, '...')}}</p>
                             <div class="footer-post">
                                 <div class="tags">
-                                    <a href="https://www.ektml.com/blog/31/imam-library">{{ __('home_trans.read') }}</a>
+                                    <a href="{{route('news.show', $new->slug)}}">{{ __('home_trans.read') }}</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- End Post Item -->
-
-                <!-- Start Post Item -->
-                <div class="col-md-6">
-                    <div class="post-item">
-                        <div class="post-img">
-                            <img class="img-fluid lazyload" src="https://www.ektml.com/blog/image/30" loading="lazy"
-                                alt="مود دارك - فور بت Blog image">
-                        </div>
-                        <div class="post-txt">
-                            <a class="post-title" href="https://www.ektml.com/blog/30/forbit-dark">مود دارك - فور بت</a>
-                            <ul class="list-unstyled post-details">
-                                <li>المهندس احمد شراحيلي</li>
-                                <li>09 نوفمبر, 2021 - 12:06 صباحاً</li>
-                            </ul>
-                            <p>السلام عليكم ورحمة الله وبركاته
-                                اليوم وبفضل الله قمنا بإضافة مود الدارك ( المظلم ) في شبكة فور بت التابعة لنا
-                                وذلك بعد تلقي العديد من طلبات المستخدمين والزوار
-                                ونحن دائما نبذل قصارى جهدنا لتوفير بيئة عمل مناسبة لعملائنا
-                                دمتم في أمان الله</p>
-                            <div class="footer-post">
-                                <div class="tags">
-                                    <a href="https://www.ektml.com/blog/30/forbit-dark">{{ __('home_trans.read') }}</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
+
+            @if ($news->count() < $max_count)
+            <div class="text-center mt-3">
+                <a onclick="topbar.show()" style="cursor: pointer" class="bttn btn-purple text-light" wire:click='loadMore'>
+                    {{__('main_trans.load more')}}
+                </a>
+            </div>
+            @endif
         </div>
     </section>
     <!-- End Blog -->

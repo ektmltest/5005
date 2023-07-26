@@ -3,19 +3,37 @@ namespace App\Http\Livewire\Website;
 use App\Http\Requests\ContactStoreRequest;
 use App\Models\Like;
 use App\Models\Contact;
+use App\Repositories\NewspaperRepository;
 use Livewire\Component;
 use App\Models\ReadyProject;
 
 class Home extends Component
 {
     public Contact $contact;
+    public $news;
+    // private static $loaded;
+    public $max_count;
 
     protected $listeners = [
         'likedEvent' => 'likedEventHandler'
     ];
 
+    protected $newspaperRepository;
+
     public function __construct() {
         $this->contact = new Contact;
+
+        $this->newspaperRepository = new NewspaperRepository;
+
+        if (!session()->has('loaded'))
+            session()->put('loaded', 2);
+
+        $this->news = $this->newspaperRepository->getAll(limit: session('loaded'));
+        $this->max_count = $this->newspaperRepository->count();
+    }
+
+    public function mount() {
+
     }
 
     public function rules() {
@@ -42,9 +60,17 @@ class Home extends Component
         $this->emit('resetValueOfMaxEvent', 9);
     }
 
+    public function loadMore() {
+        // static::$loaded += 2;
+        // dd(static::$loaded);
+        session()->put('loaded', session('loaded') + 2);
+        $this->news = $this->newspaperRepository->getAll(limit: session('loaded'));
+    }
+
 
     public function render()
     {
+        $this->dispatchBrowserEvent('my:loaded');
         return view('livewire.website.home', [
             'max' => 9
         ]);

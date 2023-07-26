@@ -16,7 +16,7 @@ Route::group([
         Route::get('myProjects', fn () => view('my-projects'))->name('myProjects');
         Route::get('/myProjects/{id}', fn ($id) => view('my-project-show')->with('id', $id))->name('myProjects.show');
         Route::get('/tickets', fn () => view('ticket'))->name('tickets');
-        Route::get('/tickets/1', fn () => view('ticket-show'))->name('tickets.show');
+        Route::get('/tickets/{id}', fn ($id) => view('ticket-show', compact('id')))->name('tickets.show');
         Route::get('profile', fn () => view('profile'))->name('myProfile');
         Route::get('letsStart', fn () => view('lets-start'))->name('letsStart');
     });
@@ -37,6 +37,7 @@ Route::group([
     Route::get('gallary', fn () => view('gallary'))->name('gallary');
     Route::get('project/{id}', fn ($id) => view('project', compact('id')))->name('project');
     // Route::get('project/{id}', fn ($id) => view('project', )->with('id', $id))->name('project');
+    Route::get('news/{slug}', fn ($slug) => view('news-show', compact('slug')))->name('news.show');
 
 
     //? This route for any invalid request ;)

@@ -67,10 +67,10 @@ class Ticket extends Component
     }
 
 
-    public function showTickets()
-    {
-        return view('ticket-show');
-    }
+    // public function showTickets()
+    // {
+    //     return view('ticket-show', $this->);
+    // }
 
     public function addBtn()
     {

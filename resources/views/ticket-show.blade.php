@@ -13,7 +13,7 @@
     'header_body' => '',
     ])
 
-    <livewire:website.ticket-show />
+    <livewire:website.ticket-show :id="$id" />
 
     @component('layouts.components.rtl-links-js')
     @endcomponent

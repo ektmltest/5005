@@ -18,9 +18,15 @@ class NewspaperFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->title(),
+            'title' => [
+                'en' => fake()->name(),
+                'ar' => 'عنوان'
+            ],
             'slug' => fake()->slug(),
-            'body' => fake()->paragraphs(),
+            'body' => [
+                'en' => fake()->sentence(),
+                'ar' => 'براجراف',
+            ],
             'image' => fake()->imageUrl(),
             'user_id' => User::inRandomOrder()->first()->id,
         ];

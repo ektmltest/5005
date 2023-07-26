@@ -13,9 +13,9 @@ return [
     'route'          => [
         'prefix'     => 'translations',
         'middleware' => [
-            'auth',
+            // 'auth',
             'web',
-            'admin',
+            // 'admin',
         ],
     ],
 

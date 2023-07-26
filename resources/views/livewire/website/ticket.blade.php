@@ -8,7 +8,7 @@
                     <div class="faq-control">
                         <ul class="list-unstyled">
                             <li class="active"><a wire:click="render" id="ticketsCreateLink" style="cursor: pointer"><i class='bx bx-message-rounded-add'></i>{{ucwords(__('tickets_trans.create_ticket'))}}</a></li>
-                            <li><a wire:click="$emitSelf('showTickets')" id="ticketsAvailableLink" style="cursor: pointer"><i class="bx bx-list-ul"></i>{{ucwords(__('tickets_trans.available_ticket'))}}</a></li>
+                            <li><a id="ticketsAvailableLink" style="cursor: pointer"><i class="bx bx-list-ul"></i>{{ucwords(__('tickets_trans.available_ticket'))}}</a></li>
                             <li><a id="ticketsClosedLink" style="cursor: pointer"><i class="bx bx-lock"></i>{{ucwords(__('tickets_trans.closed_ticket'))}}</a></li>
                         </ul>
                     </div>
@@ -101,7 +101,7 @@
                             <p class="text-center font-weight-bold" style="color: #4b3da7;">{{ucwords(__('tickets_trans.not available'))}}</p>
                         @else
                             @foreach ($availableTickets as $ticket)
-                            <a href="{{route('tickets.show')}}" class="job-post shadow-none">
+                            <a href="{{route('tickets.show', $ticket->id)}}" class="job-post shadow-none">
                                 <div class="row">
                                     <div class="col-xl-5 col-lg-5">
                                         <div class="job-title">
@@ -130,7 +130,7 @@
                             <p class="text-center font-weight-bold" style="color: #4b3da7;">{{ucwords(__('tickets_trans.not available'))}}</p>
                         @else
                             @foreach ($closedTickets as $ticket)
-                            <a href="{{route('tickets.show')}}" class="job-post shadow-none">
+                            <a href="{{route('tickets.show', $ticket->id)}}" class="job-post shadow-none">
                                 <div class="row">
                                     <div class="col-xl-5 col-lg-5">
                                         <div class="job-title">
