@@ -1,36 +1,67 @@
 <?php
 namespace App\Http\Livewire\Website;
 use App\Repositories\ReadyProjectDepartmentRepository;
+use App\Repositories\ReadyProjectRepository;
 use Livewire\Component;
 
 class Store extends Component
 {
     public $departments;
+    public $ready_projects;
     public $active = 0;
+    public $max_count = null;
     protected $readyProjectDepartmentRepository;
-    protected $listeners = [
-        'likedEvent' => 'likedEventHandler',
-    ];
+    protected $readyProjectRepository;
 
     public function __construct() {
         $this->readyProjectDepartmentRepository = new ReadyProjectDepartmentRepository;
-    }
+        $this->readyProjectRepository = new ReadyProjectRepository;
 
-    public function likedEventHandler() {
-        $this->dispatchBrowserEvent('my:loading');
-        $this->activate($this->active);
+        if (!session()->has('loaded'))
+            session()->put('loaded', config('globals.store_pagination'));
     }
 
     public function activate($id) {
         $this->active = $id;
-        $this->emit('activateEvent', $id);
+        session()->put('loaded', config('globals.store_pagination'));
+    }
+
+    public function toggleLike($ready_project)
+    {
+        if(!auth()->check()){
+            return redirect()->route('login');
+        }
+
+        $ready_project = $this->readyProjectRepository->findById($ready_project['id']);
+        $isAdded = $this->readyProjectRepository->toggleLike($ready_project);
+
+        if ($isAdded)
+            session()->flash('message', __('messages.done'));
+        else
+            session()->flash('message', __('messages.done'));
+    }
+
+    public function loadMore() {
+        if (session()->has('loaded'))
+            session()->put('loaded', session('loaded') + config('globals.store_pagination'));
+        else
+            session()->put('loaded', config('globals.store_pagination'));
     }
 
     public function render()
     {
         $this->departments = $this->readyProjectDepartmentRepository->getAllDepartments();
-        return view('livewire.website.store', [
-            'departments' => $this->departments,
-        ]);
+
+        if ($this->active > 0) {
+            $this->ready_projects = $this->readyProjectRepository->getReadyProjectsByDepartmentId(id: $this->active, max: session('loaded'));
+            $this->max_count = $this->readyProjectRepository->count($this->active);
+        }
+        else {
+            $this->ready_projects = $this->readyProjectRepository->getAllReadyProjects(max: session('loaded'));
+            $this->max_count = $this->readyProjectRepository->count();
+        }
+
+        $this->dispatchBrowserEvent('my:loaded');
+        return view('livewire.website.store');
     }
 }

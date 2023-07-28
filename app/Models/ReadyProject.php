@@ -163,4 +163,8 @@ class ReadyProject extends Model
     public function getImageUriAttribute() {
         return $this->attributes['image'];
     }
+
+    public function getPriceAttribute() {
+        return round($this->attributes['price'], 2);
+    }
 }

@@ -4,6 +4,7 @@ use App\Http\Requests\ContactStoreRequest;
 use App\Models\Like;
 use App\Models\Contact;
 use App\Repositories\NewspaperRepository;
+use App\Repositories\ReadyProjectRepository;
 use Livewire\Component;
 use App\Models\ReadyProject;
 
@@ -13,17 +14,17 @@ class Home extends Component
     public $news;
     // private static $loaded;
     public $max_count;
-
-    protected $listeners = [
-        'likedEvent' => 'likedEventHandler'
-    ];
+    public $ready_projects;
 
     protected $newspaperRepository;
+    protected $readyProjectRepository;
 
     public function __construct() {
         $this->contact = new Contact;
 
         $this->newspaperRepository = new NewspaperRepository;
+        $this->readyProjectRepository = new ReadyProjectRepository;
+
 
         if (!session()->has('loaded'))
             session()->put('loaded', 2);
@@ -55,14 +56,22 @@ class Home extends Component
         session()->flash('message', __('messages.done'));
     }
 
-    public function likedEventHandler() {
-        $this->dispatchBrowserEvent('my:loading');
-        $this->emit('resetValueOfMaxEvent', 9);
+    public function toggleLike($ready_project)
+    {
+        if(!auth()->check()){
+            return redirect()->route('login');
+        }
+
+        $ready_project = $this->readyProjectRepository->findById($ready_project['id']);
+        $isAdded = $this->readyProjectRepository->toggleLike($ready_project);
+
+        if ($isAdded)
+            session()->flash('message', __('messages.done'));
+        else
+            session()->flash('message', __('messages.done'));
     }
 
     public function loadMore() {
-        // static::$loaded += 2;
-        // dd(static::$loaded);
         session()->put('loaded', session('loaded') + 2);
         $this->news = $this->newspaperRepository->getAll(limit: session('loaded'));
     }
@@ -70,9 +79,8 @@ class Home extends Component
 
     public function render()
     {
+        $this->ready_projects = $this->readyProjectRepository->getAllReadyProjects(max: config('globals.store_pagination'));
         $this->dispatchBrowserEvent('my:loaded');
-        return view('livewire.website.home', [
-            'max' => 9
-        ]);
+        return view('livewire.website.home');
     }
 }

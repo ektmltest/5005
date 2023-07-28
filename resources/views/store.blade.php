@@ -12,6 +12,8 @@
         'header_head' => ucwords(__('headers.store.header')),
         'header_body' => ucwords(__('headers.store.body')),
     ])
+
+    {{session()->put('loaded', config('globals.store_pagination'))}}
     <livewire:website.store />
 
     @component('layouts.components.rtl-links-js')

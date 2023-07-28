@@ -5,6 +5,7 @@
 /public/storage
 /public/assets/tickets
 /public/assets/projects
+/public/assets/users
 /public/assets/admin/store
 /storage/*.key
 /vendor

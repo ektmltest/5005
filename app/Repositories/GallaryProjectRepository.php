@@ -12,14 +12,29 @@ class GallaryProjectRepository implements GallaryProjectRepositoryInterface
     public function getAllProjects($paginate = true, $num = 10, $limit = null)
     {
         if ($limit) {
-            return GalleryProject::limit($limit)->get();
+            return GalleryProject::orderBy('created_at')->limit($limit)->get();
         }
 
         if ($paginate){
-            return GalleryProject::paginate($num);
+            return GalleryProject::orderBy('created_at')->paginate($num);
         } else {
-            return GalleryProject::get();
+            return GalleryProject::orderBy('created_at')->get();
         }
+    }
+
+    public function count($category_id = null) {
+        if ($category_id)
+            return GalleryProject::where('gallery_type_id', $category_id)->count();
+        else
+            return GalleryProject::count();
+    }
+
+    public function getProjectsByCategoryId($category_id, $limit = null) {
+        $query = GalleryProject::orderBy('created_at')->where('gallery_type_id', $category_id);
+        if ($limit)
+            return $query->limit($limit)->get();
+        else
+            return $query->get();
     }
 
     public function store($data, $image) {

@@ -5,4 +5,5 @@ return [
     'user_states' => ['pending', 'activated', 'blocked'],
     'payment_states' => ['accepted', 'rejected'],
     'ticket_states' => ['available', 'closed'],
+    'store_pagination' => 9
 ];

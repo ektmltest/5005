@@ -20,19 +20,21 @@ class ReadyProjectRepository implements ReadyProjectRepositoryInterface {
 
     public function getAllReadyProjects($paginate = false, $num = 10, $max = null) {
         if ($paginate) {
-            return ReadyProject::orderBy('created_at')->paginate($max ? $max : $num);
+            return ReadyProject::orderBy('created_at', 'DESC')->paginate($max ? $max : $num);
         } else {
             if ($max)
-                return ReadyProject::orderBy('created_at')->limit($max)->get();
+                return ReadyProject::orderBy('created_at', 'DESC')->limit($max)->get();
             else
-                return ReadyProject::orderBy('created_at')->get();
+                return ReadyProject::orderBy('created_at', 'DESC')->get();
         }
     }
 
-    public function getReadyProjectsByDepartmentId($id) {
-        return ReadyProject::orderBy('created_at')
-            ->where('ready_project_department_id', $id)
-            ->get();
+    public function getReadyProjectsByDepartmentId($id, $max = null) {
+        $query = ReadyProject::orderBy('created_at', 'DESC')->where('ready_project_department_id', $id);
+        if ($max)
+            $query->limit($max);
+
+        return $query->get();
     }
 
     public function findById($id) {
@@ -140,6 +142,15 @@ class ReadyProjectRepository implements ReadyProjectRepositoryInterface {
 
     public function delete($id) {
         return ReadyProject::destroy($id);
+    }
+
+    public function count($department_id = null) {
+        if ($department_id) {
+            return ReadyProject::orderBy('created_at', 'DESC')
+                ->where('ready_project_department_id', $department_id)
+                ->count();
+        } else
+            return ReadyProject::count();
     }
 
     private function storeLike(ReadyProject $ready_project) {

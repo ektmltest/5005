@@ -18,6 +18,13 @@ Trait Mailer {
         $this->verifyEmailRepository = $verifyEmailRepository;
     }
 
+    /**
+     * sendMail - send email
+     *
+     * @param string $mailView // ? string of the mail view
+     * @param string $to
+     * @return
+     */
     public function sendMail($mailView, $to) {
         $resetPassword = $this->resetPasswordRepository->generate($to);
 
@@ -30,8 +37,15 @@ Trait Mailer {
         return Mail::to($to)->send($mail);
     }
 
+    /**
+     * sendVerificationLink - send a verification link
+     *
+     * @param string $to
+     * @param boolean $api
+     * @return
+     */
     public function sendVerificationLink($to, $api = false) {
-        $token = (new VerifyEmailRepository)->generate($to);
+        $token = $this->verifyEmailRepository->generate($to);
 
         $mail = new VerificationMail($token, $to, $api);
 
