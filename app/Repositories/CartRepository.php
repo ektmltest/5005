@@ -30,7 +30,7 @@ class CartRepository implements CartRepositoryInterface {
             $cart->projects()->attach($project->id);
         else
             return -1;
-        return $cart;
+        return $this->get();
     }
 
     public function remove(ReadyProject $project): Cart|null|int {
@@ -42,7 +42,7 @@ class CartRepository implements CartRepositoryInterface {
             $cart->projects()->detach($project->id);
         else
             return -1;
-        return $cart;
+        return $this->get();
     }
 
     public function delete(): Cart|null {
