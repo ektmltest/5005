@@ -12,6 +12,8 @@ interface CartRepositoryInterface {
 
     public function add(ReadyProject $project);
 
+    public function remove(ReadyProject $project);
+
     public function delete();
 
     public function reset();

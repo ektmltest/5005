@@ -82,20 +82,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="foot-box newsletter">
-                        <h4>{{ __('main_trans.News')}}</h4>
-                        <p>{{ __('main_trans.small') }}</p>
-                        <form autocomplete="off" action="#">
-                            <div class="input-box">
-                                <div class="floating-label-wrap">
-                                    <input type="email" class="floating-label-field floating-label-field--s3"
-                                        id="field-6" placeholder="Subscribe">
-                                    <label for="field-6" class="floating-label">{{ __('main_trans.E-Mail Address')}}</label>
-                                    <button type="submit"><i class='bx bx-send'></i></button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                    <livewire:website.subscribe >
                 </div>
             </div>
         </div>

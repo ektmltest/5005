@@ -105,6 +105,40 @@ class CartController extends Controller
 
     }
 
+    public function delete($project_id) {
+
+        DB::beginTransaction();
+        try {
+
+            $project = $this->readyProjectRepository->findById($project_id);
+
+            if (!$project)
+                return $this->response->notFound('project');
+
+            $cart = $this->cartRepository->remove($project);
+
+            if (!$cart)
+                return $this->response->notFound(obj: 'cart');
+
+            if (is_int($cart) && $cart == -1)
+                return $this->response->badRequest('This project is not in the cart!');
+
+            DB::commit();
+
+            return $this->response->ok([
+                'message' => 'The project has been removed from cart successfully!',
+                'data' => $cart
+            ]);
+
+        } catch (\Throwable $th) {
+
+            DB::rollBack();
+            return $this->response->internalServerError($th->getMessage());
+
+        }
+
+    }
+
     public function destroy() {
 
         DB::beginTransaction();

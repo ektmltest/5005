@@ -1,12 +1,10 @@
 <?php
 namespace App\Http\Livewire\Website;
 use App\Http\Requests\ContactStoreRequest;
-use App\Models\Like;
 use App\Models\Contact;
 use App\Repositories\NewspaperRepository;
 use App\Repositories\ReadyProjectRepository;
 use Livewire\Component;
-use App\Models\ReadyProject;
 
 class Home extends Component
 {

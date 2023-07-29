@@ -32,7 +32,7 @@ class ValidationRequest extends FormRequest
             $rules[] = "exists:$table,email";
 
         if ($unique)
-            $rules = "unique:users,email";
+            $rules = "unique:$table,email";
 
         return $rules;
     }

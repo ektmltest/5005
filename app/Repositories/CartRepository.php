@@ -33,6 +33,18 @@ class CartRepository implements CartRepositoryInterface {
         return $cart;
     }
 
+    public function remove(ReadyProject $project): Cart|null|int {
+        $cart = $this->get();
+        if (!$cart)
+            return null;
+        $exists = $cart->projects()->where('ready_project_id', $project->id)->exists();
+        if ($exists)
+            $cart->projects()->detach($project->id);
+        else
+            return -1;
+        return $cart;
+    }
+
     public function delete(): Cart|null {
         $cart = $this->get();
         if (!$cart)
