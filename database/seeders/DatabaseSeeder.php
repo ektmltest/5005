@@ -31,6 +31,7 @@ use App\Models\Rank;
 use App\Models\RankType;
 use App\Models\ReadyProject;
 use App\Models\ReadyProjectDepartment;
+use App\Models\Settings\SocialMedia;
 use App\Models\Tag;
 use App\Models\Ticket;
 use App\Models\TicketAttachment;
@@ -170,6 +171,10 @@ class DatabaseSeeder extends Seeder
             Qas::factory()->count(100)->create();
 
             Platform::factory()->count(10)->create();
+
+            $this->call([
+                SettingsSeeder::class
+            ]);
 
             DB::commit();
         } catch (\Throwable $e) {
