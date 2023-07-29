@@ -102,7 +102,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('api.cart.index');
     Route::post('/cart', [CartController::class, 'create'])->name('api.cart.create');
     Route::post('/cart/{id}/add', [CartController::class, 'store'])->name('api.cart.store');
-    Route::post('/cart/{id}/delete', [CartController::class, 'delete'])->name('api.cart.delete');
+    Route::delete('/cart/{id}/delete', [CartController::class, 'delete'])->name('api.cart.delete');
     Route::delete('/cart', [CartController::class, 'destroy'])->name('api.cart.destroy');
     Route::put('/cart/reset', [CartController::class, 'reset'])->name('api.cart.reset');
 });
