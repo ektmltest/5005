@@ -32,11 +32,14 @@
                         </a>
                         <p>{{ __('main_trans.FooterTitle')}}</p>
                         <ul class="list-unstyled">
-                            <li><a href="https://twitter.com/ektml_sa"><i class="bx bxl-twitter"></i></a></li>
-                            <li><a href="https://www.instagram.com/ektml_sa/"><i class="bx bxl-instagram"></i></a></li>
-                            <li><a href="https://t.me/ektml_sa"><i class="bx bxl-telegram"></i></a></li>
-                            <li><a href="https://api.whatsapp.com/send?phone=+966501611608"><i class="bx bxl-whatsapp"></i></a></li>
-                            <li><a href="https://www.facebook.com/ektml"><i class="bx bxl-facebook"></i></a></li>
+                            @php
+                                $socials = \App\Models\Settings\SocialMedia::all();
+                            @endphp
+                            <li><a href="{{$socials->where('key', 'twitter')->first()->link}}"><i class="bx bxl-twitter"></i></a></li>
+                            <li><a href="{{$socials->where('key', 'instagram')->first()->link}}"><i class="bx bxl-instagram"></i></a></li>
+                            <li><a href="{{$socials->where('key', 'telegram')->first()->link}}"><i class="bx bxl-telegram"></i></a></li>
+                            <li><a href="{{$socials->where('key', 'whatsapp')->first()->link}}"><i class="bx bxl-whatsapp"></i></a></li>
+                            <li><a href="{{$socials->where('key', 'facebook')->first()->link}}"><i class="bx bxl-facebook"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -72,11 +75,11 @@
                             </li>
                             <li>
                                 <i class='bx bx-mail-send'></i>
-                                <a href="mailto:info@example.com">support@ektml.com</a>
+                                <a href="mailto:{{$socials->where('key', 'gmail')->first()->link}}">{{$socials->where('key', 'gmail')->first()->link}}</a>
                             </li>
                             <li>
                                 <i class='bx bx-phone'></i>
-                                <a href="tel:+447990704483">+966 501611608</a>
+                                <a href="tel:{{$socials->where('key', 'phone')->first()->link}}">{{$socials->where('key', 'phone')->first()->link}}</a>
                             </li>
                         </ul>
                     </div>
@@ -90,7 +93,7 @@
             <div class="row">
                 <div class="col-xl-6">
                     <div class="copyright-txt">
-                        <span>Copyright ©2020 <a href="https://www.ektml.com/" target="_blank">{{ __('main_trans.Ektml')}}</a>.
+                        <span>Copyright ©{{date('Y')}} <a href="https://www.ektml.com/" target="_blank">{{ __('main_trans.Ektml')}}</a>.
                             {{ __('main_trans.All Rights Reserved.') }}</span>
                     </div>
                 </div>

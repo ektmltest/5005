@@ -14,10 +14,13 @@ class SettingsSeeder extends Seeder
     public function run(): void
     {
         $social_medias = [
-            ['key' => 'facebook', 'link' => 'https://facebook.com/ektml'],
-            ['key' => 'twitter', 'link' => 'https://www.twitter.com/ektml_sa'],
-            ['key' => 'telegram', 'link' => 'https://t.me/ektml_sa'],
-            ['key' => 'instagram', 'link' => 'http://instagrm.com/ektml_sa']
+            ['key' => 'facebook', 'link' => 'https://facebook.com/ektml', 'created_at' => now(), 'updated_at' => now()],
+            ['key' => 'twitter', 'link' => 'https://www.twitter.com/ektml_sa', 'created_at' => now(), 'updated_at' => now()],
+            ['key' => 'telegram', 'link' => 'https://t.me/ektml_sa', 'created_at' => now(), 'updated_at' => now()],
+            ['key' => 'instagram', 'link' => 'http://instagrm.com/ektml_sa', 'created_at' => now(), 'updated_at' => now()],
+            ['key' => 'whatsapp', 'link' => 'https://api.whatsapp.com/send?phone=+966501611608', 'created_at' => now(), 'updated_at' => now()],
+            ['key' => 'gmail', 'link' => 'support@ektml.com', 'created_at' => now(), 'updated_at' => now()],
+            ['key' => 'phone', 'link' => '+447990704483', 'created_at' => now(), 'updated_at' => now()],
         ];
         SocialMedia::insert($social_medias);
     }

@@ -3,6 +3,7 @@ namespace App\Http\Livewire\Website;
 use App\Models\ReadyProject;
 use App\Repositories\GallaryProjectRepository;
 use App\Repositories\ReadyProjectRepository;
+use App\Repositories\Settings\SocialMediaRepository;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,15 +14,19 @@ class Project extends Component
     public $next;
     public $previous;
     public $galleries;
+    public $socials;
 
     protected $readyProjectRepository;
     protected $galleryProjectRepository;
+    protected $socialMediaRepository;
 
     public function __construct() {
         $this->readyProjectRepository = new ReadyProjectRepository;
         $this->galleryProjectRepository = new GallaryProjectRepository;
+        $this->socialMediaRepository = new SocialMediaRepository;
 
         $this->galleries = $this->galleryProjectRepository->getAllProjects(paginate: false, limit: 9);
+        $this->socials = $this->socialMediaRepository->getAll();
     }
 
     public function mount($id) {

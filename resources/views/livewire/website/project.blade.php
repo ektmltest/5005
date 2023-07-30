@@ -8,7 +8,7 @@
                     <div class="sidebox social-share">
                         <div class="row no-gutters">
                             <div class="col-md-6 col-6 col-lg-12 col-xl-6">
-                                <a target="_blank" href="https://facebook.com/ektml" class="bg-fb">
+                                <a target="_blank" href="{{$socials->where('key', 'facebook')->first()->link}}" class="bg-fb">
                                     <div class="name-icon">
                                         <i class="bx bxl-facebook"></i>
                                         <span>{{ __('project_trans.Facebook') }}</span>
@@ -18,7 +18,7 @@
                             </div>
 
                             <div class="col-md-6 col-6 col-lg-12 col-xl-6">
-                                <a target="_blank" href="https://www.twitter.com/ektml_sa" class="bg-tw">
+                                <a target="_blank" href="{{$socials->where('key', 'twitter')->first()->link}}" class="bg-tw">
                                     <div class="name-icon">
                                         <i class="bx bxl-twitter"></i>
                                         <span>{{ __('project_trans.Twitter') }}</span>
@@ -28,7 +28,7 @@
                             </div>
 
                             <div class="col-md-6 col-6 col-lg-12 col-xl-6">
-                                <a target="_blank" href="http://instagrm.com/ektml_sa" class="bg-insta">
+                                <a target="_blank" href="{{$socials->where('key', 'instagram')->first()->link}}" class="bg-insta">
                                     <div class="name-icon">
                                         <i class="bx bxl-instagram"></i>
                                         <span>{{ __('project_trans.Instagram') }}</span>
@@ -38,7 +38,7 @@
                             </div>
 
                             <div class="col-md-6 col-6 col-lg-12 col-xl-6">
-                                <a target="_blank" href="https://t.me/ektml_sa" class="bg-linked">
+                                <a target="_blank" href="{{$socials->where('key', 'telegram')->first()->link}}" class="bg-linked">
                                     <div class="name-icon">
                                         <i class="bx bxl-telegram"></i>
                                         <span>{{ __('project_trans.Telegram') }}</span>
@@ -151,7 +151,7 @@
                         <ul class="list-unstyled post-details">
                             <li></li>
                             <li>{{ $project->created_at->diffForHumans() }}</li>
-                            <li>4 إعجاب</li>
+                            <li>{{ $project->likes->count() }} {{__('main_trans.Likes')}}</li>
                         </ul>
 
                         {!! $project->body !!}
