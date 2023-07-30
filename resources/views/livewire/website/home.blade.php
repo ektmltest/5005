@@ -512,13 +512,11 @@
                 @endforeach
             </div>
 
-            @if ($news->count() < $max_count)
             <div class="text-center mt-3">
-                <a onclick="topbar.show()" style="cursor: pointer" class="bttn btn-purple text-light" wire:click='loadMore'>
-                    {{__('main_trans.load more')}}
+                <a href="{{route('news.index')}}" style="cursor: pointer" class="bttn btn-purple text-light">
+                    {{__('home_trans.more Details')}}
                 </a>
             </div>
-            @endif
         </div>
     </section>
     <!-- End Blog -->

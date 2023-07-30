@@ -20,6 +20,9 @@ class Newspaper extends Component
     public function mount($slug) {
         $this->new = $this->newspaperRepository->findBySlug($slug);
 
+        if (!$this->new)
+            return abort(404);
+
         $this->next = $this->newspaperRepository->findNext($this->new->id);
 
         $this->previous = $this->newspaperRepository->findPrevious($this->new->id);

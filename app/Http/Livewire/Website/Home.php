@@ -10,8 +10,6 @@ class Home extends Component
 {
     public Contact $contact;
     public $news;
-    // private static $loaded;
-    public $max_count;
     public $ready_projects;
 
     protected $newspaperRepository;
@@ -23,16 +21,7 @@ class Home extends Component
         $this->newspaperRepository = new NewspaperRepository;
         $this->readyProjectRepository = new ReadyProjectRepository;
 
-
-        if (!session()->has('loaded'))
-            session()->put('loaded', 2);
-
-        $this->news = $this->newspaperRepository->getAll(limit: session('loaded'));
-        $this->max_count = $this->newspaperRepository->count();
-    }
-
-    public function mount() {
-
+        $this->news = $this->newspaperRepository->getAll(limit: config('globals.home_news'));
     }
 
     public function rules() {
@@ -69,15 +58,10 @@ class Home extends Component
             session()->flash('message', __('messages.done'));
     }
 
-    public function loadMore() {
-        session()->put('loaded', session('loaded') + 2);
-        $this->news = $this->newspaperRepository->getAll(limit: session('loaded'));
-    }
-
 
     public function render()
     {
-        $this->ready_projects = $this->readyProjectRepository->getAllReadyProjects(max: config('globals.store_pagination'));
+        $this->ready_projects = $this->readyProjectRepository->getAllReadyProjects(max: config('globals.home_store_projects'));
         $this->dispatchBrowserEvent('my:loaded');
         return view('livewire.website.home');
     }

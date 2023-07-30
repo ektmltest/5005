@@ -40,7 +40,6 @@
         @endpush --}}
     @endif
 
-    {{session()->put('loaded', 2)}}
     <livewire:website.home />
 
     @component('layouts.components.rtl-links-js')

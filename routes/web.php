@@ -38,6 +38,7 @@ Route::group([
     Route::get('project/{id}', fn ($id) => view('project', ['project' => \App\Models\ReadyProject::find($id)]))->name('project');
     // Route::get('project/{id}', fn ($id) => view('project', )->with('id', $id))->name('project');
     Route::get('news/{slug}', fn ($slug) => view('news-show', compact('slug')))->name('news.show');
+    Route::get('news', fn () => view('news'))->name('news.index');
 
 
     //? This route for any invalid request ;)
