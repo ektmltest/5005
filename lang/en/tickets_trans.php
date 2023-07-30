@@ -12,4 +12,5 @@ return array (
   'create' => 'create',
   'not available' => 'no available tickets.',
   'close the ticket' => 'close the ticket',
+  'ticket is closed' => 'The ticket is closed',
 );

@@ -6,7 +6,8 @@
     @if($header)
         @include('layouts.header-content', [
             'header_title' => $header_head,
-            'header_content' => $header_body
+            'header_content' => $header_body,
+            'links' => isset($links) ? $links : []
         ])
     @endif
 

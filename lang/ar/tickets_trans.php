@@ -12,4 +12,5 @@ return array (
   'create' => 'انشاء',
   'not available' => 'لا يوجد تذاكر لعرضها.',
   'close the ticket' => 'أغلق التذكرة',
+  'ticket is closed' => 'التذكرة مغلقة',
 );

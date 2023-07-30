@@ -69,8 +69,18 @@ trait File
         $image = Image::make($contents);
         $image->encode('webp');
 
-        $imagePath = "assets/$dir/attachment/$filename.webp";
-        $image->save($imagePath);
+        $saveDir = "assets/$dir/attachment/";
+        $imagePath = $saveDir . "$filename.webp";
+
+        try {
+
+            $image->save($imagePath);
+
+        } catch (\Exception $e) {
+
+            throw new \Exception("Something went wrong. The directory $saveDir does not exist. (can be permission issue)");
+
+        }
 
         return $imagePath;
     }

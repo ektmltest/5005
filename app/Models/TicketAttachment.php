@@ -16,4 +16,12 @@ class TicketAttachment extends Model
     public function getFileAttribute() {
         return asset($this->attributes['file']);
     }
+
+    public function getFileUriAttribute() {
+        return $this->attributes['file'];
+    }
+
+    public function getFilenameAttribute() {
+        return explode('/', $this->file)[count(explode('/', $this->file)) - 1];
+    }
 }

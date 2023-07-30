@@ -11,6 +11,7 @@
     'header' => true,
     'header_head' => ucwords(__('headers.ticket.show.header')),
     'header_body' => '',
+    'links' => [ucwords(__('pages.ticket')) => route('tickets')]
     ])
 
     <livewire:website.ticket-show :id="$id" />

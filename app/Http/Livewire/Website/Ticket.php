@@ -21,6 +21,7 @@ class Ticket extends Component
     public ModelsTicket $ticket;
     public $files = array();
     public $noFiles = 1;
+    public $currentPage = 'create';
     // * end form data
     protected $ticketTypeRepository;
     protected $ticketRepository;
@@ -72,6 +73,10 @@ class Ticket extends Component
     //     return view('ticket-show', $this->);
     // }
 
+    public function changePage($page) {
+        $this->currentPage = $page;
+    }
+
     public function addBtn()
     {
         $this->noFiles++;
@@ -79,6 +84,7 @@ class Ticket extends Component
 
     public function render()
     {
+        $this->dispatchBrowserEvent('my:loaded');
         return view('livewire.website.ticket');
     }
 }

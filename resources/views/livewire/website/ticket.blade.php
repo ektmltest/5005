@@ -7,9 +7,9 @@
                 <aside class="aside-bar">
                     <div class="faq-control">
                         <ul class="list-unstyled">
-                            <li class="active"><a wire:click="render" id="ticketsCreateLink" style="cursor: pointer"><i class='bx bx-message-rounded-add'></i>{{ucwords(__('tickets_trans.create_ticket'))}}</a></li>
-                            <li><a id="ticketsAvailableLink" style="cursor: pointer"><i class="bx bx-list-ul"></i>{{ucwords(__('tickets_trans.available_ticket'))}}</a></li>
-                            <li><a id="ticketsClosedLink" style="cursor: pointer"><i class="bx bx-lock"></i>{{ucwords(__('tickets_trans.closed_ticket'))}}</a></li>
+                            <li class="@if($currentPage == 'create') active @endif"><a onclick="topbar.show()" wire:click="changePage('create')" style="cursor: pointer"><i class='bx bx-message-rounded-add'></i>{{ucwords(__('tickets_trans.create_ticket'))}}</a></li>
+                            <li class="@if($currentPage == 'available') active @endif"><a onclick="topbar.show()" wire:click="changePage('available')" style="cursor: pointer"><i class="bx bx-list-ul"></i>{{ucwords(__('tickets_trans.available_ticket'))}}</a></li>
+                            <li class="@if($currentPage == 'closed') active @endif"><a onclick="topbar.show()" wire:click="changePage('closed')" style="cursor: pointer"><i class="bx bx-lock"></i>{{ucwords(__('tickets_trans.closed_ticket'))}}</a></li>
                         </ul>
                     </div>
                 </aside>
@@ -20,6 +20,8 @@
                 <div id="boxData">
                     @component('layouts.components.messages.success')
                     @endcomponent
+
+                    @if ($currentPage == 'create')
 
                     <form wire:submit.prevent='submit' id="ticketsCreate" class="faq-control p-3" enctype="multipart/form-data">
                         <div class="form-row">
@@ -36,7 +38,7 @@
                             <div class="form-group col-md-6">
                                 <div class="floating-label-wrap">
                                     <select wire:model='ticket.ticket_type_id' class="floating-label-field floating-label-field--s3" id="type">
-                                        <option value="">Choose</option>
+                                        <option value="">-- {{__('tickets_trans.type')}} --</option>
                                         @foreach($ticketTypes as $type)
                                             <option value="{{$type->id}}">{{$type->name}}</option>
                                         @endforeach
@@ -79,7 +81,7 @@
                             <div class="form-group col-md-4">
                                 <div class="floating-label-wrap">
                                     <div class="form-buttons">
-                                        <input wire:click='addBtn' type="button" value="{{ucwords(__('tickets_trans.add attachment'))}}" id="addAttachBtn">
+                                        <input onclick="topbar.show()" wire:click='addBtn' type="button" value="{{ucwords(__('tickets_trans.add attachment'))}}" id="addAttachBtn">
                                     </div>
                                 </div>
                             </div>
@@ -89,14 +91,16 @@
                             <div class="form-group col">
                                 <div class="floating-label-wrap">
                                     <div class="form-buttons d-inline-block">
-                                        <input type="submit" value="{{ucwords(__('tickets_trans.create'))}}">
+                                        <input onclick="topbar.show()" type="submit" value="{{ucwords(__('tickets_trans.create'))}}">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </form>
 
-                    <div id="ticketsAvailable" class="d-none faq-control p-3">
+                    @elseif ($currentPage == 'available')
+
+                    <div id="ticketsAvailable" class="faq-control p-3">
                         @if ($availableTickets->isEmpty())
                             <p class="text-center font-weight-bold" style="color: #4b3da7;">{{ucwords(__('tickets_trans.not available'))}}</p>
                         @else
@@ -125,7 +129,9 @@
                         @endif
                     </div>
 
-                    <div id="ticketsClosed" class="d-none faq-control p-3">
+                    @else
+
+                    <div id="ticketsClosed" class="faq-control p-3">
                         @if ($closedTickets->isEmpty())
                             <p class="text-center font-weight-bold" style="color: #4b3da7;">{{ucwords(__('tickets_trans.not available'))}}</p>
                         @else
@@ -153,17 +159,12 @@
                             @endforeach
                         @endif
                     </div>
+
+                    @endif
                 </div>
             </div>
         </div>
     </div>
-
-    {{-- * scripting js for animation --}}
-    <script>
-        var attachmentTitle = "{{ucwords(__('tickets_trans.attachment'))}}";
-        var attachmentAdd = "{{ucwords(__('tickets_trans.add attachment'))}}"
-    </script>
-    <script src="{{asset('assets/js/tickets.js')}}"></script>
 </section>
 
 </div>
