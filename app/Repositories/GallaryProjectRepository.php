@@ -45,7 +45,7 @@ class GallaryProjectRepository implements GallaryProjectRepositoryInterface
             ],
             'gallery_type_id' => $data['dept_id'],
             'user_id' => auth()->user()->id,
-            'image' => $this->prepareFilePath($image, 'admin/gallery/images', true),
+            'image' => $this->prepareFilePath($image, 'admin/gallery', true),
         ]);
     }
 

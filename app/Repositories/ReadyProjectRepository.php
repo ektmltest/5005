@@ -106,7 +106,7 @@ class ReadyProjectRepository implements ReadyProjectRepositoryInterface {
             'marketing_discount_ratio' => $project->tax,
             'ready_project_department_id' => $project->dept_id,
             'link' => $project->link,
-            'image' => $this->prepareFilePath($image, 'admin/store/projects/images', true),
+            'image' => $this->prepareFilePath($image, 'admin/store/projects', true),
             'user_id' => auth()->user()->id
         ]);
 

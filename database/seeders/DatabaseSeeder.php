@@ -53,8 +53,12 @@ class DatabaseSeeder extends Seeder
         DB::beginTransaction();
         try {
             $this->deleteFilesInFolder('projects');
+            $this->deleteFilesInFolder('projects/replies');
             $this->deleteFilesInFolder('tickets');
+            $this->deleteFilesInFolder('tickets/replies');
             $this->deleteFilesInFolder('users');
+            $this->deleteFilesInFolder('admin/store/projects');
+            $this->deleteFilesInFolder('admin/gallery');
 
             RankType::factory()->count(4)->create();
 

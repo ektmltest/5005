@@ -139,7 +139,7 @@ class ReadyProjectEdit extends Component
             if ($this->deleteProjectImage())
                 return 1;
                 // throw new \Exception('updating failed - project image file is not exists to be deleted');
-            $dataToUpdate['image'] = $this->prepareFilePath($this->image, 'admin/store/projects/images', true);
+            $dataToUpdate['image'] = $this->prepareFilePath($this->image, 'admin/store/projects', true);
         }
 
         $this->project = $this->readyProjectRepository->update($dataToUpdate, $this->complex_data, $this->project);
