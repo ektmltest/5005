@@ -3,8 +3,6 @@
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
-ini_set('memory_limit', '100M');
-
 define('LARAVEL_START', microtime(true));
 
 /*
