@@ -6,7 +6,7 @@
 /public/assets/tickets
 /public/assets/projects
 /public/assets/users
-/public/assets/admin/store
+/public/assets/admin
 /storage/*.key
 /vendor
 vendor.zip
