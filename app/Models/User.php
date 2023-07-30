@@ -120,6 +120,13 @@ class User extends Authenticatable
             return null;
     }
 
+    public function getAvatarUriAttribute() {
+        if (isset($this->attributes['avatar']))
+            return $this->attributes['avatar'];
+        else
+            return null;
+    }
+
     public function getBalanceAttribute() {
         return round($this->attributes['balance'], 2);
     }
