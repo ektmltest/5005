@@ -19,7 +19,8 @@ class ProfileRepository {
 
     public function updateImage($image) {
         $user = auth()->user();
-        $this->deleteUsingFilePath($user->avatar_uri);
+        if ($user->avatar)
+            $this->deleteUsingFilePath($user->avatar_uri);
         $user->avatar = $this->prepareFilePath($image, 'users', true);
         $user->save();
     }
