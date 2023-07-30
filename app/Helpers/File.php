@@ -64,9 +64,7 @@ trait File
      */
     protected function convertImageToWebp(UploadedFile $file, $dir, $filename): string
     {
-        $contents = file_get_contents($file->path());
-
-        $image = Image::make($contents);
+        $image = Image::make($file->path());
         $image->encode('webp');
 
         $saveDir = "assets/$dir/attachment/";
