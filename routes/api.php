@@ -78,8 +78,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // ? Ready projects
     Route::get('/store/projects', [ReadyProjectController::class, 'index'])->name('api.store.projects.index');
-    Route::get('/store/projects/{id}', [ReadyProjectController::class, 'show'])->name('api.store.projects.show');
+    Route::post('/store/projects/filter', [ReadyProjectController::class, 'filter'])->name('api.store.projects.filter');
     Route::get('/store/projects/like/{id}', [ReadyProjectController::class, 'like'])->name('api.store.projects.like');
+    Route::get('/store/projects/{id}', [ReadyProjectController::class, 'show'])->name('api.store.projects.show');
     Route::post('/store/projects/{id}/rate', [ReadyProjectController::class, 'rate'])->name('api.store.projects.rate');
 
     // ? Ticket Types

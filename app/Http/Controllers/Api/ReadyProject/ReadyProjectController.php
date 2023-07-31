@@ -6,6 +6,7 @@ use App\Helpers\Localizable;
 use App\Helpers\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\RatingStoreRequest;
+use App\Http\Requests\ReadyProjectFilterRequest;
 use App\Interfaces\ReadyProjectRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -94,7 +95,7 @@ class ReadyProjectController extends Controller
     public function rate(RatingStoreRequest $request, $id) {
         // if fails
         if (isset($request->validator) && $request->validator->fails()) {
-            return $this->response->badRequest('Data is not valid!', $request->validator->errors(), $request->except(['files']));
+            return $this->response->badRequest(__('api/validation.data_not_valid'), $request->validator->errors(), $request->except(['files']));
         }
 
         try {
@@ -115,6 +116,29 @@ class ReadyProjectController extends Controller
                     'message' => __('api/messages.ready_proj_rate_updated'),
                     'data' => $this->readyProjectRepository->findById($id),
                 ]);
+
+        } catch (\Throwable $th) {
+
+            $this->response->internalServerError($th->getMessage());
+
+        }
+
+    }
+
+    public function filter(ReadyProjectFilterRequest $request) {
+        // if fails
+        if (isset($request->validator) && $request->validator->fails()) {
+            return $this->response->badRequest(__('api/validation.data_not_valid'), $request->validator->errors(), $request->except(['files']));
+        }
+
+        try {
+
+            $projects = $this->readyProjectRepository->filter($request->all());
+
+            return $this->response->ok([
+                'message' => __('messages.done'),
+                'data' => $projects,
+            ]);
 
         } catch (\Throwable $th) {
 

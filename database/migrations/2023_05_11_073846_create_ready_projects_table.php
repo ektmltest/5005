@@ -20,6 +20,8 @@ return new class extends Migration
             $table->json('body');
             $table->string('image');
             $table->string('link');
+            $table->integer('num_of_purchases')->default(0);
+            $table->double('average_rating', places: 2)->default(0);
             $table->timestamps();
 
             // foreign keys

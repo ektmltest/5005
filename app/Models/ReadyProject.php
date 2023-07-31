@@ -153,7 +153,8 @@ class ReadyProject extends Model
             $num++;
         }
 
-        return $num ? $sum / $num : 0;
+        $this->attributes['average_rating'] = $num ? $sum / $num : 0;
+        return $this->attributes['average_rating'];
     }
 
     public function getImageAttribute() {

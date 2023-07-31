@@ -14,4 +14,6 @@ interface ReadyProjectRepositoryInterface {
 
     public function setRate(ReadyProject $ready_project, $data);
 
+    public function filter($filters);
+
 }

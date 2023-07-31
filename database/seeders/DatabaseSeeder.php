@@ -111,17 +111,20 @@ class DatabaseSeeder extends Seeder
                     $readyProject->addons()->attach($addons->random(1)->first()->id);
                 })
                 ->each(function ($readyProject) use ($users) {
+                    $average_rating = fake()->randomFloat(min: 0, max: 1);
                     $readyProject
                     ->userRatings()
                     ->attach(
                         $users->random(1)->first()->id,
                         [
-                            'rating' => fake()->randomFloat(min: 0, max: 1),
+                            'rating' => $average_rating,
                             'message' => fake()->paragraph(),
                             'created_at' => now(),
                             'updated_at' => now(),
                         ]
                     );
+                    $readyProject->average_rating = $average_rating;
+                    $readyProject->save();
                 });
 
             Cart::factory()

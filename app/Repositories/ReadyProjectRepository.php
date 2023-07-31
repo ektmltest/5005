@@ -6,6 +6,7 @@ use App\Helpers\File;
 use App\Helpers\Template;
 use App\Interfaces\ReadyProjectRepositoryInterface;
 use App\Models\ReadyProject;
+use App\Models\ReadyProjectDepartment;
 
 class ReadyProjectRepository implements ReadyProjectRepositoryInterface {
     use File;
@@ -75,6 +76,8 @@ class ReadyProjectRepository implements ReadyProjectRepositoryInterface {
                 'message' => $data['message'],
                 'updated_at' => now(),
             ]);
+            $rating = $ready_project->average_rating;
+            $ready_project->save();
             return 0;
         }
         else {
@@ -84,6 +87,8 @@ class ReadyProjectRepository implements ReadyProjectRepositoryInterface {
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
+            $rating = $ready_project->average_rating;
+            $ready_project->save();
             return 1;
         }
     }
@@ -151,6 +156,24 @@ class ReadyProjectRepository implements ReadyProjectRepositoryInterface {
                 ->count();
         } else
             return ReadyProject::count();
+    }
+
+    public function filter($filters, $paginate = true, $num = 10) {
+        $query = ReadyProject::query();
+
+        if (isset($filters['department_id']))
+            $query = ReadyProjectDepartment::find($filters['department_id'])->readyProjects()->orderBy('created_at', 'DESC');
+
+        if (isset($filters['start_price']))
+            $query->whereBetween('price', [$filters['start_price'], $filters['end_price']])->orderBy('price');
+
+        if (isset($filters['rate']))
+            $query->where('average_rating', '<=', (double)($filters['rate']))->orderBy('average_rating');
+
+        if (isset($filters['filtered_with_purchases']) && $filters['filtered_with_purchases'])
+            $query->orderBy('num_of_purchases', 'DESC');
+
+        return $paginate ? $query->paginate($num) : $query->get();
     }
 
     private function storeLike(ReadyProject $ready_project) {

@@ -84,7 +84,7 @@ class ValidationRequest extends FormRequest
         if (!$update) {
             $rules = array_merge($rules, ['required', $image ? 'image' : 'file', 'mimes:png,jpg,webp,gif']);
         }
-        
+
         if ($max) {
             $rules = array_merge($rules, ['max:' . $max]);
         }
@@ -119,16 +119,26 @@ class ValidationRequest extends FormRequest
         return $rules;
     }
 
-    protected function rateRule() {
-        return ['required', 'numeric', 'min:0', 'max:1'];
+    protected function rateRule($required = true) {
+        $rules = ['numeric', 'min:0', 'max:1'];
+        if ($required)
+            $rules[] = 'required';
+        return $rules;
     }
 
-    protected function priceRule(bool $range = false, float $min = 0, float $max = 9999.99, bool $update = false) {
-        if ($update) {
-            return ['numeric', $range ? 'between:' . $min . ',' . $max : '', ];
-        }
+    protected function priceRule(bool $range = false, float $min = 0, float $max = 9999.99, $lte = null, $required_with = null, bool $update = false) {
+        $rules = ['numeric', $range ? 'between:' . $min . ',' . $max : '', ];
 
-        return ['required', 'numeric', $range ? 'between:' . $min . ',' . $max : '', ];
+        if (!$update)
+            $rules[] = 'required';
+
+        if ($lte)
+            $rules[] = "lte:$lte";
+
+        if ($required_with)
+            $rules[] = "required_with:$required_with";
+
+        return $rules;
     }
 
     protected function numericRule() {
@@ -137,5 +147,9 @@ class ValidationRequest extends FormRequest
 
     protected function inRule($items) {
         return ['required', 'in:' . implode(',', $items)];
+    }
+
+    protected function boolRule() {
+        return ['boolean'];
     }
 }
