@@ -36,6 +36,7 @@ class QasTypeRepository implements QasTypeRepositoryInterface {
             ],
             'icon' => $data['icon'],
             'unicode' => $data['unicode'],
+            'key' => $data['key'],
             'user_id' => auth()->user()->id,
         ]);
     }

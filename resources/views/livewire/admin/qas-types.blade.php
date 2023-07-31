@@ -125,6 +125,11 @@
                                                             id="recipient-name">
                                                     </div>
 
+                                                    <div class="mb-3">
+                                                        <label class="form-label">{{ __('dashboard_trans.Key') }}</label>
+                                                        <input type="text" class="form-control" wire:model="data.{{$type->id}}.key">
+                                                    </div>
+
                                                     <div class="modal-footer">
                                                         <button class="btn btn-secondary" data-bs-dismiss="modal"
                                                             wire:click='resetErrorMessages'>{{
@@ -224,6 +229,16 @@
                                             <label class="form-label">{{ __('dashboard_trans.ICON UNICODE') }} <i class="fa fa-mobile"></i></label>
                                             <input type="text" class="form-control" wire:model="store.unicode">
                                             @error("store.unicode") <span class="error">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-4">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">{{ __('dashboard_trans.Key') }}</label>
+                                            <input type="text" class="form-control" wire:model="store.key">
+                                            @error("store.key") <span class="error">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
                                 </div>

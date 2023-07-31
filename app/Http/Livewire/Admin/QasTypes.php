@@ -31,6 +31,7 @@ class QasTypes extends Component
             $this->data[$type->id]['name_en'] = $type->nameLocale('en');
             $this->data[$type->id]['unicode'] = $type->unicode;
             $this->data[$type->id]['icon'] = $type->icon;
+            $this->data[$type->id]['key'] = $type->key;
         }
     }
 
@@ -65,6 +66,7 @@ class QasTypes extends Component
             ];
             $this->type->icon = $this->data[$id]['icon'];
             $this->type->unicode = $this->data[$id]['unicode'];
+            $this->type->key = $this->data[$id]['key'];
 
             $this->type->save();
 
