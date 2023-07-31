@@ -13,6 +13,7 @@
         'header_body' => __('headers.gallary.body'),
     ])
 
+    {{session()->put('loaded', config('globals.store_pagination'))}}
     <livewire:website.gallary />
 
     @component('layouts.components.rtl-links-js')

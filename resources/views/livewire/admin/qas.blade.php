@@ -107,6 +107,13 @@
                                                     </div>
 
                                                     <div class="row">
+                                                        <div class="mb-3">
+                                                            <label for="message-text" class="text-primary col-form-label">{{ __('dashboard_trans.Key') }}</label>
+                                                            <div class="pt-3 pb-3">{{$qa->key}}</div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
                                                         <div class="col-lg-6 mb-3">
                                                             <label for="message-text" class="text-primary col-form-label">{{ __('dashboard_trans.Name Ar') }}</label>
                                                             <div class="pt-3 pb-3">{{$qa->type->nameLocale('ar')}}</div>
@@ -244,6 +251,14 @@
                                                 @endforeach
                                             </select>
                                             @error("store.type_id") <span class="error">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">{{ __('dashboard_trans.Key') }}</label>
+                                            <input type="text" class="form-control" wire:model="store.key">
+                                            @error("store.key") <span class="error">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
                                 </div>

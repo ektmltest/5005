@@ -27,6 +27,7 @@ class QasStoreRequest extends ValidationRequest
             'store.question_ar' => 'required|min:3',
             'store.answer_en' => 'required|min:3',
             'store.answer_ar' => 'required|min:3',
+            'store.key' => parent::uniqueRule('qas', 'key'),
             'store.type_id' => parent::existsRule('qas_types'),
         ];
     }

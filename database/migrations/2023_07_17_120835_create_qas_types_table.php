@@ -16,6 +16,7 @@ return new class extends Migration
             $table->json('name');
             $table->string('icon');
             $table->string('unicode');
+            $table->string('key')->unique();
             $table->timestamps();
 
             // foreign

@@ -24,6 +24,7 @@ class QasTypeFactory extends Factory
             ],
             'icon' => 'bx bx-globe',
             'unicode' => 'f0ac',
+            'key' => $this->faker->unique()->slug(),
             'user_id' => User::inRandomOrder()->first()->id,
         ];
     }

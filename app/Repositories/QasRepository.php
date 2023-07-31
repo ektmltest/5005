@@ -27,6 +27,7 @@ class QasRepository implements QasRepositoryInterface {
                 'en' => $data['answer_en'],
                 'ar' => $data['answer_ar']
             ],
+            'key' => $data['key'],
             'type_id' => $data['type_id'],
             'user_id' => auth()->user()->id
         ]);
