@@ -162,18 +162,32 @@ class ReadyProjectRepository implements ReadyProjectRepositoryInterface {
         $query = ReadyProject::query();
 
         if (isset($filters['department_id']))
-            $query = ReadyProjectDepartment::find($filters['department_id'])->readyProjects()->orderBy('created_at', 'DESC');
+            $query = ReadyProjectDepartment::find($filters['department_id'])->readyProjects();
 
         if (isset($filters['start_price']))
-            $query->whereBetween('price', [$filters['start_price'], $filters['end_price']])->orderBy('price');
+            $query->whereBetween('price', [$filters['start_price'], $filters['end_price']]);
 
         if (isset($filters['rate']))
-            $query->where('average_rating', '<=', (double)($filters['rate']))->orderBy('average_rating');
+            $query->where('average_rating', '<=', (double)($filters['rate']));
 
-        if (isset($filters['filtered_with_purchases']) && $filters['filtered_with_purchases'])
-            $query->orderBy('num_of_purchases', 'DESC');
+        $query = $this->ordering($query, $filters);
 
         return $paginate ? $query->paginate($num) : $query->get();
+    }
+
+    private function ordering($query, $filters) {
+        if (isset($filters['filtered_with_purchases']) && $filters['filtered_with_purchases'])
+            $query->orderBy('num_of_purchases', 'DESC');
+        else {
+            if (isset($filters['rate']))
+                $query->orderBy('average_rating', 'DESC');
+            else if (isset($filters['start_price']))
+                $query->orderBy('price');
+            else
+                $query->orderBy('created_at', 'DESC');
+        }
+
+        return $query;
     }
 
     private function storeLike(ReadyProject $ready_project) {
