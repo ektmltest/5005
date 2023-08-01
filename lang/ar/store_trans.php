@@ -1,11 +1,9 @@
 <?php
 
-return [
-    'All' => 'الكل',
-    'Business Projects' => 'المشاريع الربحية',
-    'Management Projects' =>  'المشاريع الإدارية',
-
-    'likes' => 'اعجاب',
-    
-
-];
+return array (
+  'All' => 'الكل',
+  'Business Projects' => 'المشاريع الربحية',
+  'Management Projects' => 'المشاريع الإدارية',
+  'likes' => 'اعجاب',
+  'offered' => 'عرض',
+);

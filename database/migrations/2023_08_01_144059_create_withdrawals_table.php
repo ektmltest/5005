@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('withdrawals', function (Blueprint $table) {
             $table->id();
             $table->enum('state', config('globals.payment_states'))->default('pending');
-            $table->string('invoice_image');
             $table->double('invoice_amount', 2)->default(0);
             $table->timestamps();
 
-            // foreign keys
-            $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('bank_card_id')->constrained('bank_cards')->cascadeOnUpdate()->cascadeOnDelete();
+            // foreign
+            $table->foreignId('user_bank_card_id')->constrained('user_bank_cards')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('withdrawals');
     }
 };

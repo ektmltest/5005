@@ -26,4 +26,7 @@ class Payment extends Model
     public function bankCard() {
         return $this->belongsTo(BankCard::class);
     }
+
+    //////* functions *///////
+    // public function getInvoice
 }

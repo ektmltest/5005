@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Settings\Settings;
 use App\Models\Settings\SocialMedia;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -23,5 +24,11 @@ class SettingsSeeder extends Seeder
             ['key' => 'phone', 'link' => '+447990704483', 'created_at' => now(), 'updated_at' => now()],
         ];
         SocialMedia::insert($social_medias);
+
+        Settings::create([
+            'type' => 'offers',
+            'key' => 'store_offer',
+            'value' => 25,
+        ]);
     }
 }

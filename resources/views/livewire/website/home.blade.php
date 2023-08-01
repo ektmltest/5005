@@ -134,7 +134,12 @@
                             </div>
 
                             <div class="post-txt">
-                                <a class="post-title" href="{{ route('project', $project->id) }}">{{ $project->name }}</a>
+                                <div class="">
+                                    <a class="post-title" href="{{ route('project', $project->id) }}">{{ $project->name }}</a>
+                                    @if ($project->isOffered())
+                                    <a id="offered-badge" class="post-title badge text-light bg-danger font-weight-bolder">{{ucwords(__('store_trans.offered'))}}!</a>
+                                    @endif
+                                </div>
                                 <ul class="list-unstyled post-details">
                                     <li></li>
                                     <li>{{ $project->created_at->diffForHumans() }}</li>
@@ -143,9 +148,15 @@
                                 <p>{{ Str::limit($project->description, 100, '...') }}</p>
                                 <div class="footer-post">
                                     <div class="tags">
+                                        @if ($project->isOffered())
+                                        <a href="{{ route('project', $project->id) }}">
+                                            <s>{{ $project->original_price }}</s> {{ $project->price }} {{ __('home_trans.SAR') }}
+                                        </a>
+                                        @else
                                         <a href="{{ route('project', $project->id) }}">
                                             {{ $project->price }} {{ __('home_trans.SAR') }}
                                         </a>
+                                        @endif
                                     </div>
 
                                     @auth

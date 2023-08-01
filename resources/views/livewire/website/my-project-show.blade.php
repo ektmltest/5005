@@ -5,7 +5,7 @@
                 <div class="sidebox sidebox-style">
                     <h5><i class="bx bx-rename"></i> {{__('myprojects_trans.project id')}}</h5>
                     <div class="sidebox-inner text-center txt-widget">
-                        <h4 class="text-muted h6 cutText">{{$project->name}}</h4>
+                        <h4 class="text-muted h6 cutText">{{$project->id}}</h4>
                     </div>
                 </div>
             </div>
@@ -13,7 +13,7 @@
                 <div class="sidebox sidebox-style">
                     <h5><i class="bx bx-hash"></i> {{__('myprojects_trans.project name')}}</h5>
                     <div class="sidebox-inner text-center txt-widget">
-                        <h4 class="text-muted h6">{{$project->id}}</h4>
+                        <h4 class="text-muted h6">{{$project->name}}</h4>
                     </div>
                 </div>
             </div>

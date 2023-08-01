@@ -42,6 +42,25 @@ class ReadyProjectController extends Controller
 
     }
 
+    public function offered() {
+
+        try {
+
+            $projects = $this->readyProjectRepository->getOfferedProjects(paginate: request()->has('paginate'));
+
+            return $this->response->ok([
+                'message' => 'Offered ready projects (store projects)!',
+                'data' => $projects,
+            ]);
+
+        } catch (\Throwable $th) {
+
+            $this->response->internalServerError($th->getMessage());
+
+        }
+
+    }
+
     public function show($id) {
 
         try {

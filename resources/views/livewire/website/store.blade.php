@@ -2,9 +2,11 @@
     <div class="container">
         <div class="list-control">
             <ul class="list-unstyled" style="flex-wrap: wrap">
-                <li onclick="topbar.show()" class="@if($active == 0) active @endif" wire:click='activate(0)'>{{ __('store_trans.All') }}</li>
+                <li onclick="topbar.show()" class="@if($active == 0) active @endif" wire:click='activate(0)'>{{
+                    __('store_trans.All') }}</li>
                 @foreach ($departments as $department)
-                <li onclick="topbar.show()" class="@if($active == $department->id) active @endif" wire:click='activate({{$department->id}})'>{{$department->name}}</li>
+                <li onclick="topbar.show()" class="@if($active == $department->id) active @endif"
+                    wire:click='activate({{$department->id}})'>{{$department->name}}</li>
                 @endforeach
             </ul>
         </div>
@@ -18,12 +20,16 @@
                             <img class="img-fluid" mu-open mu-link="{{ route('project', $project->id) }}" style="border-radius: 16px; cursor: pointer; width:100%;
                             height:200px;
                             object-fit:cover;
-                            object-position:50% 50%;"
-                                src="{{ $project->image }}" alt>
+                            object-position:50% 50%;" src="{{ $project->image }}" alt>
                         </div>
 
                         <div class="post-txt">
-                            <a class="post-title" href="{{ route('project', $project->id) }}">{{ $project->name }}</a>
+                            <div class="">
+                                <a class="post-title" href="{{ route('project', $project->id) }}">{{ $project->name }}</a>
+                                @if ($project->isOffered())
+                                <a id="offered-badge" class="post-title badge text-light bg-danger font-weight-bolder">{{ucwords(__('store_trans.offered'))}}!</a>
+                                @endif
+                            </div>
                             <ul class="list-unstyled post-details">
                                 <li></li>
                                 <li>{{ $project->created_at->diffForHumans() }}</li>
@@ -32,14 +38,21 @@
                             <p>{{ Str::limit($project->description, 100, '...') }}</p>
                             <div class="footer-post">
                                 <div class="tags">
+                                    @if ($project->isOffered())
+                                    <a href="{{ route('project', $project->id) }}">
+                                        <s>{{ $project->original_price }}</s> {{ $project->price }} {{ __('home_trans.SAR') }}
+                                    </a>
+                                    @else
                                     <a href="{{ route('project', $project->id) }}">
                                         {{ $project->price }} {{ __('home_trans.SAR') }}
                                     </a>
+                                    @endif
                                 </div>
 
                                 @auth
                                 <div class="action-post" wire:key='divLike'>
-                                    <a onclick="topbar.show()" style="cursor: pointer" wire:click="toggleLike({{$project}})">
+                                    <a onclick="topbar.show()" style="cursor: pointer"
+                                        wire:click="toggleLike({{$project}})">
                                         @if($project->liked())
                                         <i class="bx bxs-heart loveProject"></i>
                                         @else
@@ -64,14 +77,14 @@
 
             {{-- {{$ready_projects->links()}} --}}
 
-            @if ($ready_projects->count() < $max_count)
-            <div class="text-center mt-3">
-                <a onclick="topbar.show()" style="cursor: pointer" class="bttn btn-purple text-light" wire:click='loadMore'>
+            @if ($ready_projects->count() < $max_count) <div class="text-center mt-3">
+                <a onclick="topbar.show()" style="cursor: pointer" class="bttn btn-purple text-light"
+                    wire:click='loadMore'>
                     {{__('main_trans.load more')}}
                 </a>
-            </div>
-            @endif
         </div>
+        @endif
+    </div>
 
     </div>
 </section>

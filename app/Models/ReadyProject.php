@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 use App\Models\Like;
+use App\Models\Settings\Settings;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,7 +16,7 @@ class ReadyProject extends Model
 
     protected $with = ['user'];
 
-    protected $appends = ['is_liked', 'average_rating'];
+    protected $appends = ['is_liked', 'average_rating', 'original_price'];
 
     public function department() {
         return $this->belongsTo(ReadyProjectDepartment::class, 'ready_project_department_id');
@@ -72,6 +73,10 @@ class ReadyProject extends Model
 
     public function hasTag($id) {
         return $this->tags()->where('tag_id', $id)->exists();
+    }
+
+    public function isOffered() {
+        return ($this->is_offered && Settings::getStoreOffer()->value > 0);
     }
 
     //////* attributes *//////
@@ -153,7 +158,7 @@ class ReadyProject extends Model
             $num++;
         }
 
-        $this->attributes['average_rating'] = $num ? $sum / $num : 0;
+        $this->attributes['average_rating'] = round($num ? $sum / $num : 0, 2);
         return $this->attributes['average_rating'];
     }
 
@@ -166,6 +171,15 @@ class ReadyProject extends Model
     }
 
     public function getPriceAttribute() {
+        if ($this->attributes['is_offered']) {
+            $percent = (100 - Settings::getStoreOffer()->value) / 100;
+            return round($this->attributes['price'] * $percent, 2);
+        } else {
+            return round($this->attributes['price'], 2);
+        }
+    }
+
+    public function getOriginalPriceAttribute() {
         return round($this->attributes['price'], 2);
     }
 }

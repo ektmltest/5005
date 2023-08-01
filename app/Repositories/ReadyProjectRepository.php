@@ -30,6 +30,17 @@ class ReadyProjectRepository implements ReadyProjectRepositoryInterface {
         }
     }
 
+    public function getOfferedProjects($paginate = false, $num = 10, $max = null) {
+        if ($paginate) {
+            return ReadyProject::where('is_offered', 1)->orderBy('created_at', 'DESC')->paginate($max ? $max : $num);
+        } else {
+            if ($max)
+                return ReadyProject::where('is_offered', 1)->orderBy('created_at', 'DESC')->limit($max)->get();
+            else
+                return ReadyProject::where('is_offered', 1)->orderBy('created_at', 'DESC')->get();
+        }
+    }
+
     public function getReadyProjectsByDepartmentId($id, $max = null) {
         $query = ReadyProject::orderBy('created_at', 'DESC')->where('ready_project_department_id', $id);
         if ($max)

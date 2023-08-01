@@ -52,6 +52,13 @@
                     <div class="sidebox sidebox-style">
                         <h5><i class="bx bx-cart-alt"></i>{{ __('project_trans.Buy Project') }}</h5>
                         <div class="sidebox-inner newsletter">
+                            @if ($project->isOffered())
+                            <h5 class="mb-3 text-danger" style="justify-content: space-between;">
+                                {{ __('project_trans.Project Price Without Offers') }}
+                                <s class="pCost">{{ $project->original_price }} {{ __('project_trans.SAR') }}</s>
+                            </h5>
+                            @endif
+
                             <h5 class="mb-3" style="justify-content: space-between;">
                                 {{ __('project_trans.Project Price') }}
                                 <span class="pCost">{{ $project->price }} {{ __('project_trans.SAR') }}</span>
@@ -114,7 +121,7 @@
                     </div>
 
                     <div class="sidebox sidebox-style gallery-container">
-                        <h5><i class="bx bx-images"></i>معرض المشاريع</h5>
+                        <h5><i class="bx bx-images"></i>{{__('project_trans.Projects Gallery')}}</h5>
                         <div class="sidebox-inner gallery">
                             <div class="gallery-feed">
                                 @foreach($galleries as $gallary)
@@ -143,11 +150,14 @@
                     <div style="width: 40%;">
                         <a href="https://demo.ektml.com/4" target="_blank"
                             class="btn btn-block btn-icon btn-purple mt-4 justify-content-center"><i
-                                class="bx bx-show"></i> عرض المثال</a>
+                                class="bx bx-show"></i> {{ucwords(__('project_trans.show example'))}}</a>
                     </div>
 
                     <div class="post-txt">
                         <a class="post-title" href="#">{{ $project->name }}</a>
+                        @if ($project->isOffered())
+                        <a id="offered-badge" class="post-title badge text-light bg-danger font-weight-bolder">{{ucwords(__('store_trans.offered'))}}!</a>
+                        @endif
                         <ul class="list-unstyled post-details">
                             <li></li>
                             <li>{{ $project->created_at->diffForHumans() }}</li>

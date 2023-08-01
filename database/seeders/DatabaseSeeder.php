@@ -39,6 +39,8 @@ use App\Models\TicketReply;
 use App\Models\TicketReplyAttachment;
 use App\Models\TicketType;
 use App\Models\User;
+use App\Models\UserBankCard;
+use App\Models\Withdrawal;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -111,7 +113,7 @@ class DatabaseSeeder extends Seeder
                     $readyProject->addons()->attach($addons->random(1)->first()->id);
                 })
                 ->each(function ($readyProject) use ($users) {
-                    $average_rating = fake()->randomFloat(min: 0, max: 1);
+                    $average_rating = round(fake()->randomFloat(min: 0, max: 1), 2);
                     $readyProject
                     ->userRatings()
                     ->attach(
@@ -151,10 +153,10 @@ class DatabaseSeeder extends Seeder
             BankCard::factory()->count(10)->create();
             Payment::factory()
                 ->count(150)
-                ->create()
-                ->each(function ($payment) use ($addons) {
-                    $payment->addons()->attach($addons->random(1)->first()->id);
-                });
+                ->create();
+
+            UserBankCard::factory()->count(150)->create();
+            Withdrawal::factory()->count(150)->create();
 
             MarketingCoupon::factory()->count(50)->create();
 

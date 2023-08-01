@@ -14,14 +14,15 @@ return new class extends Migration
         Schema::create('ready_projects', function (Blueprint $table) {
             $table->id();
             $table->json('name');
-            $table->double('price');
-            $table->double('marketing_discount_ratio');
+            $table->double('price', places: 2);
+            $table->double('marketing_discount_ratio', places: 2);
             $table->json('description');
             $table->json('body');
             $table->string('image');
             $table->string('link');
             $table->integer('num_of_purchases')->default(0);
             $table->double('average_rating', places: 2)->default(0);
+            $table->boolean('is_offered')->default(false);
             $table->timestamps();
 
             // foreign keys

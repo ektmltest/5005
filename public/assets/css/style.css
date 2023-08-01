@@ -5134,3 +5134,10 @@ input, button {
     background-color: #ffffff !important;
     border: #4b3da7 !important;
   } */
+
+#offered-badge {
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    float: right;
+}

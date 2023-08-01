@@ -20,10 +20,10 @@ class PaymentFactory extends Factory
     public function definition(): array
     {
         return [
-            'state' => fake()->randomElement(['accepted', 'rejected']),
+            'state' => fake()->randomElement(config('globals.payment_states')),
             'invoice_image' => fake()->imageUrl(),
+            'invoice_amount' => fake()->randomFloat(),
             'user_id' => User::inRandomOrder()->first()->id,
-            'project_id' => ReadyProject::inRandomOrder()->first()->id,
             'bank_card_id' => BankCard::inRandomOrder()->first()->id,
         ];
     }
