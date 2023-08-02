@@ -163,6 +163,7 @@
 <script src="{{ asset("dashboard/assets/libs/sweetalert2/sweetalert2.min.js") }}"></script>
 <script src="{{ asset("dashboard/assets/libs/datatables.net/js/jquery.dataTables.min.js") }}"></script>
 <script src="{{ asset("dashboard/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js") }}"></script>
+<script src="{{ asset("assets/js/notify.min.js") }}"></script>
 <script src="{{ asset("assets/js/topbar.js") }}"></script>
 
 <script>
@@ -174,13 +175,38 @@
 </script>
 
 <script>
+    var copyToClipboard = (e) => {
+        if (e.target.children.length)
+            navigator.clipboard.writeText(e.target.children[0].innerText);
+        else
+            navigator.clipboard.writeText(e.target.innerText);
+
+        $.notify('Copied to clipboard', {
+            className: 'success',
+            autoHideDelay: 1000,
+            showDuration: 100,
+            hideDuration: 100,
+        });
+    }
+
+    var addEventClipboard = () => {
+        var copyText = document.getElementsByClassName("copy-clipboard");
+
+        copyText.forEach(elem => {
+            elem.addEventListener('click', copyToClipboard)
+        });
+    }
+
     window.addEventListener('my:loading', (e) => {
         topbar.show();
     })
 
     window.addEventListener('my:loaded', (e) => {
         topbar.hide();
+        addEventClipboard();
     })
+
+    addEventClipboard();
 </script>
 
 @stack('custom-scripts')

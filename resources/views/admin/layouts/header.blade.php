@@ -38,6 +38,12 @@
 
     @livewireStyles()
 
+    <style>
+        .copy-clipboard {
+            cursor: pointer;
+        }
+    </style>
+
 </head>
 <body>
     <div id="layout-wrapper">

@@ -1,0 +1,43 @@
+<?php
+
+namespace App\Repositories\Transactions;
+
+use App\Models\Withdrawal;
+
+class WithdrawalRepository {
+
+    public function getAll($paginate = false, $num = 10) {
+        if ($paginate)
+            return Withdrawal::paginate($num);
+        else
+            return Withdrawal::all();
+    }
+
+    public function getIds($state) {
+        return Withdrawal::select('id')->where('state', $state)->get()->pluck('id');
+    }
+
+    public function accept(Withdrawal $withdrawal) {
+        $withdrawal->user()->update([
+            'balance' => $withdrawal->user->balance - $withdrawal->invoice_amount
+        ]);
+        $withdrawal->state = 'accepted';
+        $withdrawal->save();
+    }
+
+    public function reject(Withdrawal $withdrawal) {
+        $withdrawal->state = 'rejected';
+        $withdrawal->save();
+    }
+
+    public function revert(Withdrawal $withdrawal) {
+        if ($withdrawal->isAccepted())
+            $withdrawal->user()->update([
+                'balance' => $withdrawal->user->balance + $withdrawal->invoice_amount
+            ]);
+
+        $withdrawal->state = 'pending';
+        $withdrawal->save();
+    }
+
+}

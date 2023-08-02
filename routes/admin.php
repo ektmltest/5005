@@ -18,7 +18,7 @@ function () {
 
 // Route::group(['middleware' => 'auth'], function () {
 
-    Route::prefix('admin')->middleware(['admin'])->group(function () {
+    Route::prefix('admin')/*->middleware(['admin'])*/->group(function () {
         Route::get('/', [HomeController::class, 'index'])->name('admin.home');
         Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
 
@@ -56,6 +56,10 @@ function () {
 
         // ? questions
         Route::get('platforms', fn() => view('admin.platforms.index'))->name('platforms.index');
+
+        // ? transactions
+        Route::get('charges', fn() => view('admin.transactions.charges'))->name('transactions.charges');
+        Route::get('withdrawals', fn() => view('admin.transactions.withdrawals'))->name('transactions.withdrawals');
     });
 
 

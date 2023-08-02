@@ -47,7 +47,7 @@
                             <table class="table table-centered table-nowrap mb-0">
                                 <thead>
                                     <tr>
-                                        <th>مشاريع {{$state_name}} <i class="bx bxs-briefcase-alt-2"></i></th>
+                                        <th>{{__('dashboard_trans.projects of')}} {{$state_name}} <i class="bx bxs-briefcase-alt-2"></i></th>
                                     </tr>
                                 </thead>
                                 @foreach($projects as $project)

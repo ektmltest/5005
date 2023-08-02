@@ -99,6 +99,14 @@ class User extends Authenticatable
         return $this->belongsToMany(ReadyProject::class, 'ready_project_ratings');
     }
 
+    public function bankCards() {
+        return $this->hasMany(UserBankCard::class);
+    }
+
+    public function withdrawals() {
+        return Withdrawal::query()->whereIn('user_bank_card_id', $this->bankCards()->select('id')->get()->pluck('id'));
+    }
+
     // public function permissions() {
     //     return $this->rank->permissions();
     // }

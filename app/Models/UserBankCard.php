@@ -10,6 +10,16 @@ class UserBankCard extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
+    public function withdrawal() {
+        return $this->hasMany(Withdrawal::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
     // * attributes
     public function bankName(string $locale = null): Attribute {
         return Attribute::make(

@@ -28,5 +28,19 @@ class Payment extends Model
     }
 
     //////* functions *///////
-    // public function getInvoice
+    public function getInvoiceAmountAttribute() {
+        return round($this->attributes['invoice_amount'], 2);
+    }
+
+    public function isPending() {
+        return $this->attributes['state'] == 'pending';
+    }
+
+    public function isAccepted() {
+        return $this->attributes['state'] == 'accepted';
+    }
+
+    public function isRejected() {
+        return $this->attributes['state'] == 'rejected';
+    }
 }

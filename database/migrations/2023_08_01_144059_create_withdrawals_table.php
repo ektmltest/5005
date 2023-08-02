@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('withdrawals', function (Blueprint $table) {
             $table->id();
             $table->enum('state', config('globals.payment_states'))->default('pending');
-            $table->double('invoice_amount', 2)->default(0);
+            $table->double('invoice_amount', places: 2)->default(0);
             $table->timestamps();
 
             // foreign
