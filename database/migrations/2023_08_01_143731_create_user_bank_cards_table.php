@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('user_bank_cards', function (Blueprint $table) {
             $table->id();
+            $table->string('owner_name');
             $table->string('iban');
-            $table->json('bank_name');
+            $table->string('bank_name');
             $table->timestamps();
 
             // foreign

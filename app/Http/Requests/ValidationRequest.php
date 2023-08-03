@@ -127,7 +127,7 @@ class ValidationRequest extends FormRequest
     }
 
     protected function priceRule(bool $range = false, float $min = 0, float $max = 9999.99, $lte = null, $required_with = null, bool $update = false) {
-        $rules = ['numeric', $range ? 'between:' . $min . ',' . $max : '', ];
+        $rules = ['numeric', 'gte: 0', $range ? 'between:' . $min . ',' . $max : '', ];
 
         if (!$update)
             $rules[] = 'required';

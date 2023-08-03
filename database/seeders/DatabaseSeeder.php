@@ -54,11 +54,14 @@ class DatabaseSeeder extends Seeder
     {
         DB::beginTransaction();
         try {
+            if (auth()->check())    auth()->logout();
+
             $this->deleteFilesInFolder('projects');
             $this->deleteFilesInFolder('projects/replies');
             $this->deleteFilesInFolder('tickets');
             $this->deleteFilesInFolder('tickets/replies');
             $this->deleteFilesInFolder('users');
+            $this->deleteFilesInFolder('transactions/charges');
             $this->deleteFilesInFolder('admin/store/projects');
             $this->deleteFilesInFolder('admin/gallery');
 

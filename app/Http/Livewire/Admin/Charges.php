@@ -35,11 +35,13 @@ class Charges extends Component
         DB::beginTransaction();
         try {
 
-            $this->paymentRepository->revert($payment);
-
-            DB::commit();
-
-            session()->flash('message', __('messages.done'));
+            if (!$this->paymentRepository->revert($payment)) {
+                DB::commit();
+                session()->flash('error', __('messages.user balance error', ['balance' => $payment->user->balance . ' ' . __('home_trans.SAR')]));
+            } else {
+                DB::commit();
+                session()->flash('message', __('messages.done'));
+            }
 
         } catch (\Throwable $th) {
 

@@ -44,7 +44,7 @@
                                         <td><span
                                                 class="badge bg-{{$payment->state == 'pending' ? 'warning' : ($payment->state == 'accepted' ? 'success' : 'danger')}}">{{
                                                 __("dashboard_trans.$payment->state") }}</span></td>
-                                        <td>{{ $payment->invoice_amount }}</td>
+                                        <td>{{ $payment->invoice_amount }} {{__('home_trans.SAR')}}</td>
 
                                         <td>
                                             <div class="d-inline-block mytooltip" data-bs-toggle="tooltip" data-placement="top"

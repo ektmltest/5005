@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 use App\Helpers\File;
+use App\Models\UserBankCard;
 
 class ProfileRepository {
     use File;
@@ -37,6 +38,26 @@ class ProfileRepository {
         $user->password = bcrypt($new_password);
 
         $user->save();
+    }
+
+    public function getBankCards($paginate = true, $num = 10) {
+        if ($paginate)
+            return auth()->user()->bankCards()->paginate($num);
+        else
+            return auth()->user()->bankCards;
+    }
+
+    public function addBankCard($data) {
+        return UserBankCard::create([
+            'owner_name' => $data['owner_name'],
+            'bank_name' => $data['bank_name'],
+            'iban' => $data['iban'],
+            'user_id' => auth()->user()->id,
+        ]);
+    }
+
+    public function deleteBankCard($id) {
+        return UserBankCard::destroy($id);
     }
 }
 

@@ -6,6 +6,7 @@
 /public/assets/tickets
 /public/assets/projects
 /public/assets/users
+/public/assets/transactions
 /public/assets/admin
 /storage/*.key
 /vendor

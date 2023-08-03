@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Transactions;
 
+use App\Models\User;
 use App\Models\Withdrawal;
 
 class WithdrawalRepository {
@@ -18,14 +19,14 @@ class WithdrawalRepository {
     }
 
     public function accept(Withdrawal $withdrawal) {
-        $withdrawal->user()->update([
-            'balance' => $withdrawal->user->balance - $withdrawal->invoice_amount
-        ]);
         $withdrawal->state = 'accepted';
         $withdrawal->save();
     }
 
     public function reject(Withdrawal $withdrawal) {
+        $withdrawal->user()->update([
+            'balance' => $withdrawal->user->balance + $withdrawal->invoice_amount
+        ]);
         $withdrawal->state = 'rejected';
         $withdrawal->save();
     }
@@ -38,6 +39,21 @@ class WithdrawalRepository {
 
         $withdrawal->state = 'pending';
         $withdrawal->save();
+    }
+
+    public function withdraw($data): Withdrawal|null {
+        if (auth()->user()->balance >= $data['amount']) {
+            $user = auth()->user();
+            $user->balance -= $data['amount'];
+            $user->save();
+
+            return Withdrawal::create([
+                'state' => 'pending',
+                'invoice_amount' => $data['amount'],
+                'user_bank_card_id' => $data['user_bank_card_id'],
+            ]);
+        } else
+            return null;
     }
 
 }

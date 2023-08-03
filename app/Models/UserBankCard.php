@@ -19,24 +19,4 @@ class UserBankCard extends Model
     public function user() {
         return $this->belongsTo(User::class);
     }
-
-    // * attributes
-    public function bankName(string $locale = null): Attribute {
-        return Attribute::make(
-            get: function ($value) {
-                if ($this->locale) {
-                    $loc = $this->locale;
-                    $this->locale = null;
-                    return json_decode($value, true)[$loc];
-                }
-                return json_decode($value, true)[app()->getLocale()];
-            },
-            set: fn ($value) => json_encode($value)
-        );
-    }
-
-    public function bankNameLocale(string $locale) {
-        $this->locale = $locale;
-        return $this->bank_name;
-    }
 }

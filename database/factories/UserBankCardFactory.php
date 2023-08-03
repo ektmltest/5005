@@ -19,10 +19,8 @@ class UserBankCardFactory extends Factory
     {
         return [
             'iban' => fake()->shuffleString('qwertyuiop123456789123456789'),
-            'bank_name' => [
-                'ar' => 'اسم',
-                'en' => fake()->unique()->name(),
-            ],
+            'bank_name' => fake()->name(),
+            'owner_name' => fake()->name(),
             'user_id' => User::inRandomOrder()->first()->id,
         ];
     }

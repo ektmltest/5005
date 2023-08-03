@@ -2,30 +2,48 @@
 
 namespace App\Http\Livewire\Website;
 
+use App\Http\Requests\Charge\ChargeRequest;
+use App\Http\Requests\Charge\WithdrawRequest;
 use App\Http\Requests\ProfilePasswordUpdateRequest;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\UserBankCardStoreRequest;
+use App\Models\Withdrawal;
 use App\Repositories\BankCardRepository;
 use App\Repositories\ProfileRepository;
+use App\Repositories\Transactions\PaymentRepository;
+use App\Repositories\Transactions\WithdrawalRepository;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class Profile extends Component
 {
-    use WithFileUploads;
+    use WithFileUploads, WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
     public $status = 'statistics';
+    public $withdrawal_status = 'withdrawal';
     public $user;
     public $profile = array();
     public $uploads = array();
     public $password = array();
     public $bank_cards;
+    public $charge = array();
+    public $user_bank_card = array();
+    public $withdrawal = array();
+    public $withdrawals;
 
     protected $profileRepository;
     protected $bankCardRepository;
+    protected $paymentRepository;
+    protected $withdrawalRepository;
 
     public function __construct() {
         $this->profileRepository = new ProfileRepository;
         $this->bankCardRepository = new BankCardRepository;
+        $this->paymentRepository = new PaymentRepository;
+        $this->withdrawalRepository = new WithdrawalRepository;
 
         $this->user = auth()->user();
 
@@ -57,7 +75,7 @@ class Profile extends Component
 
             $this->reset();
 
-            session()->flash('message', __('messages.done'));
+            $this->dispatchBrowserEvent('my:message.success', ['message' => __('messages.done')]);
 
         } catch (\Throwable $th) {
 
@@ -78,7 +96,7 @@ class Profile extends Component
 
             $this->reset();
 
-            session()->flash('message', __('messages.done'));
+            $this->dispatchBrowserEvent('my:message.success', ['message' => __('messages.done')]);
 
         } catch (\Throwable $th) {
 
@@ -116,13 +134,113 @@ class Profile extends Component
         }
     }
 
+    public function charge() {
+        $this->validate((new ChargeRequest)->rules());
+
+        DB::beginTransaction();
+        try {
+
+            $payment = $this->paymentRepository->charge($this->charge);
+
+            DB::commit();
+
+            $this->dispatchBrowserEvent('my:message.success', ['message' => __('messages.done')]);
+
+        } catch (\Throwable $th) {
+
+            DB::rollBack();
+            throw $th;
+
+        }
+    }
+
+    public function addUserBankCard() {
+        $this->validate((new UserBankCardStoreRequest)->rules());
+
+        DB::beginTransaction();
+        try {
+
+            $user_bank_card = $this->profileRepository->addBankCard($this->user_bank_card);
+
+            DB::commit();
+
+            $this->dispatchBrowserEvent('my:message.success', ['message' => __('messages.done')]);
+
+        } catch (\Throwable $th) {
+
+            DB::rollBack();
+            throw $th;
+
+        }
+    }
+
+    public function withdraw() {
+        $this->validate((new WithdrawRequest)->rules());
+
+        DB::beginTransaction();
+        try {
+
+            $withdraw = $this->withdrawalRepository->withdraw($this->withdrawal);
+
+            if (is_null($withdraw)) {
+
+                DB::commit();
+                $this->dispatchBrowserEvent('my:message.error', ['message' => __('messages.account balance error')]);
+
+            } else {
+
+                DB::commit();
+                $this->dispatchBrowserEvent('my:message.success', ['message' => __('messages.done')]);
+
+            }
+
+        } catch (\Throwable $th) {
+
+            DB::rollBack();
+            throw $th;
+
+        }
+    }
+
+    public function revert(Withdrawal $withdrawal) {
+        DB::beginTransaction();
+        try {
+
+            if ($withdrawal->isPending()) {
+                auth()->user()->balance += $withdrawal->invoice_amount;
+                auth()->user()->save();
+                $withdrawal->delete();
+                $this->dispatchBrowserEvent('my:message.success', ['message' => __('messages.done')]);
+            } else {
+                $this->dispatchBrowserEvent('my:message.error', ['message' => __('messages.withdrawal changed')]);
+            }
+
+            DB::commit();
+
+        } catch (\Throwable $th) {
+
+            DB::rollBack();
+            throw $th;
+
+        }
+    }
+
     public function changeStatus($status) {
         $this->status = $status;
+        $this->resetPage();
+        $this->withdrawal_status = 'withdrawal';
+    }
+
+    public function changeWithdrawalStatus($status) {
+        $this->withdrawal_status = $status;
+        $this->resetPage();
     }
 
     public function render()
     {
         $this->dispatchBrowserEvent('my:loaded');
-        return view('livewire.website.profile');
+        return view('livewire.website.profile', [
+            'user_bank_cards' => $this->profileRepository->getBankCards(paginate: true, num: 5),
+        ]);
     }
 }

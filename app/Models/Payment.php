@@ -32,6 +32,14 @@ class Payment extends Model
         return round($this->attributes['invoice_amount'], 2);
     }
 
+    public function getInvoiceImageAttribute() {
+        return asset($this->attributes['invoice_image']);
+    }
+
+    public function getInvoiceImageUriAttribute() {
+        return $this->attributes['invoice_image'];
+    }
+
     public function isPending() {
         return $this->attributes['state'] == 'pending';
     }

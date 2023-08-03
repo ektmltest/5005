@@ -149,13 +149,48 @@
 </script>
 
 <script>
+
+    var copyToClipboard = (e) => {
+        if (e.target.children.length)
+            navigator.clipboard.writeText(e.target.children[0].innerText);
+        else
+            navigator.clipboard.writeText(e.target.innerText);
+
+        $.notify("{{__('messages.Copied to clipboard')}}", {
+            className: 'success',
+            autoHideDelay: 1000,
+            showDuration: 100,
+            hideDuration: 100,
+        });
+    }
+
+    var addEventClipboard = () => {
+        var copyText = document.getElementsByClassName("copy-clipboard");
+
+        if (copyText.length)
+            for (var i = 0; i < copyText.length; i++) {
+                copyText[i].addEventListener('click', copyToClipboard);
+            }
+    }
+
     window.addEventListener('my:loading', (e) => {
         topbar.show();
     })
 
     window.addEventListener('my:loaded', (e) => {
         topbar.hide();
+        addEventClipboard();
     })
+
+    window.addEventListener('my:message.success', (e) => {
+        $.notify(e.detail.message, 'success')
+    })
+
+    window.addEventListener('my:message.error', (e) => {
+        $.notify(e.detail.message, 'error')
+    })
+
+    addEventClipboard();
 </script>
 
 @stack('custom-scripts')
