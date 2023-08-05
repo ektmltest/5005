@@ -24,6 +24,32 @@
 {{-- projects --}}
 {{-- <script src="{{asset('assets/js/projects.js')}}"></script> --}}
 
+<script src="{{ asset('dashboard/assets/libs/swiper/js/swiper-bundle.min.js') }}"></script>
+<script>
+    const swiper = new Swiper('.swiper', {
+        // Optional parameters
+        direction: 'horizontal',
+        // loop: true,
+
+        // Navigation arrows
+        // navigation: {
+        //     nextEl: '.swiper-button-next',
+        //     prevEl: '.swiper-button-prev',
+        // },
+
+        pagination: {
+            el: '.swiper-pagination',
+        },
+
+        autoplay: {
+            delay: 1000,
+        },
+
+        freeMode: true,
+        slidesPerView: 6,
+        spaceBetween: 30,
+    });
+</script>
 
 <!-- Turbo JS -->
 {{-- <script type="module">

@@ -21,7 +21,7 @@
                     <div class="card checkout-order-summary">
                         <div class="card-body">
                             <div class="p-3 bg-light mb-4">
-                                <h5 class="font-size-16 mb-0">Haithm Mhmd<span class="float-end ms-2">Admin</span></h5>
+                                <h5 class="font-size-16 mb-0">{{ __('dashboard_trans.tickets types') }}</h5>
                             </div>
 
                             <div class="table-responsive">
@@ -29,13 +29,13 @@
                                     <tbody>
                                         <tr>
                                             <th>
-                                                <a class="{{$current_status != 'available' ? 'text-secondary' : ''}}" style="cursor: pointer;" class="waves-effect"
+                                                <a onclick="topbar.show()" class="{{$current_status != 'available' ? 'text-secondary' : ''}}" style="cursor: pointer;" class="waves-effect"
                                                     wire:click="changeStatus('available')">{{__('dashboard_trans.available tickets')}}</a>
                                             </th>
                                         </tr>
                                         <tr>
                                             <th>
-                                                <a class="{{$current_status != 'closed' ? 'text-secondary' : ''}}" style="cursor: pointer;" class="waves-effect"
+                                                <a onclick="topbar.show()" class="{{$current_status != 'closed' ? 'text-secondary' : ''}}" style="cursor: pointer;" class="waves-effect"
                                                 wire:click="changeStatus('closed')">{{__('dashboard_trans.closed tickets')}}</a>
                                             </th>
                                         </tr>

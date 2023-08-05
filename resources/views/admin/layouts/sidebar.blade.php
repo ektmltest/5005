@@ -91,14 +91,14 @@
 
                 <li class="menu-title text-primary">{{ __('dashboard_trans.WITHDRAWS') }}</li>
                 <li>
-                    <a href="file-manager.html" class=" waves-effect">
+                    <a href="{{ route('transactions.withdrawals') }}" class=" waves-effect">
                         <i class="fa fa-solid fa-comments-dollar"></i>
                         <span>{{ __('dashboard_trans.Withdraws') }}</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="file-manager.html" class=" waves-effect">
+                    <a href="{{ route('transactions.charges') }}" class=" waves-effect">
                         <i class="fas fa-money-check-alt"></i>
                         <span>{{ __('dashboard_trans.Charges') }}</span>
                     </a>
@@ -146,7 +146,7 @@
                 </li>
 
                 <li>
-                    <a href="file-manager.html" class=" waves-effect">
+                    <a href="/translations" class=" waves-effect">
                         <i class="fa fa-solid fa-book"></i>
                         <span>{{ __('dashboard_trans.Translation System') }}</span>
                     </a>

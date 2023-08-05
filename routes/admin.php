@@ -6,6 +6,7 @@ use App\Http\Livewire\Admin\ManageProject;
 use App\Http\Livewire\Admin\ProjectSections;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ReadyProjectController;
+use Barryvdh\TranslationManager\Controller;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 

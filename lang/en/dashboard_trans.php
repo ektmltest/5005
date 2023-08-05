@@ -141,4 +141,6 @@ return array (
   'BANK CARD OWNER NAME IN ENGLISH' => 'BANK CARD OWNER NAME IN ENGLISH',
   'ACCOUNT NUMBER' => 'ACCOUNT NUMBER',
   'BANK NAME' => 'BANK NAME',
+  'project states' => 'project states',
+  'tickets types' => 'tickets types',
 );

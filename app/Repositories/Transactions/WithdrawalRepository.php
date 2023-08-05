@@ -32,11 +32,6 @@ class WithdrawalRepository {
     }
 
     public function revert(Withdrawal $withdrawal) {
-        if ($withdrawal->isAccepted())
-            $withdrawal->user()->update([
-                'balance' => $withdrawal->user->balance + $withdrawal->invoice_amount
-            ]);
-
         $withdrawal->state = 'pending';
         $withdrawal->save();
     }

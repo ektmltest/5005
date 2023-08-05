@@ -143,4 +143,6 @@ return array (
   'BANK CARD OWNER NAME IN ENGLISH' => 'اسم مالك البطاقة المصرفية باللغة الإنجليزية',
   'ACCOUNT NUMBER' => 'رقم الحساب',
   'BANK NAME' => 'اسم البنك',
+  'project states' => 'حالات المشروع',
+  'tickets types' => 'أنواع التذاكر',
 );

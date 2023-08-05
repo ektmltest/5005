@@ -75,7 +75,7 @@ class StoreDepartment extends Component
 
     public function render()
     {
-        $this->departments = $this->readyProjectDepartmentRepository->getAllDepartments(paginate: true);
+        $this->departments = $this->readyProjectDepartmentRepository->getAllDepartments(paginate: true, num: 10);
         $this->dispatchBrowserEvent('my:loaded');
         return view('livewire.admin.store-department', [
             'departments' => $this->departments,

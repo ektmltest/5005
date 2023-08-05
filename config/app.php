@@ -175,7 +175,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         // App\Providers\TelescopeServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class
+        Intervention\Image\ImageServiceProvider::class,
+        App\Providers\TranslationManagerServiceProvider::class,
     ])->toArray(),
 
     /*

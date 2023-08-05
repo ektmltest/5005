@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Partner;
 use App\Models\Settings\Settings;
 use App\Models\Settings\SocialMedia;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -30,5 +31,7 @@ class SettingsSeeder extends Seeder
             'key' => 'store_offer',
             'value' => 25,
         ]);
+
+        Partner::factory()->count(10)->create();
     }
 }

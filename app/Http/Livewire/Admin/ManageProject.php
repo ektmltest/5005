@@ -9,7 +9,8 @@ class ManageProject extends Component
 
     public function mount()
     {
-        $this->state_name = ProjectState::find(1)->name;
+        $this->state = ProjectState::find(1);
+        $this->state_name = $this->state->name;
         $this->projects = ProjectState::find(1)->projects;
     }
 
@@ -17,8 +18,8 @@ class ManageProject extends Component
     public function changeStatus($id)
     {
         $this->state_name = ProjectState::find($id)->name;
-        $state = ProjectState::find($id);
-        $this->projects = $state->projects;
+        $this->state = ProjectState::find($id);
+        $this->projects = $this->state->projects;
     }
 
 

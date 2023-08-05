@@ -204,7 +204,7 @@ input, button {
 
 .background-shapes .box2 {
     position: absolute;
-    top: 75%;
+    top: 65%;
     left: 50%;
     width: 20px;
     height: 20px;
@@ -218,7 +218,7 @@ input, button {
 
 .background-shapes .box3 {
     position: absolute;
-    top: 30%;
+    top: 20%;
     right: 15%;
     width: 20px;
     height: 20px;
@@ -288,7 +288,7 @@ input, button {
 .background-shapes .heart2 {
     font-size: 1.5rem;
     position: absolute;
-    top: 55%;
+    top: 70%;
     right: 8%;
     z-index: 1;
     color: #34d8be;

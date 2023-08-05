@@ -17,6 +17,8 @@ rel="stylesheet"> --}}
 <!-- Style Css -->
 <link rel="stylesheet" href="{{ URL::asset('assets/css/style.css') }}">
 
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="{{ asset('dashboard/assets/libs/swiper/css/swiper-bundle.min.css') }}">
 
 <!-- Animate CSS -->
 <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">

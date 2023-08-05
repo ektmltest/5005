@@ -260,13 +260,15 @@
             <h4>{{ __('home_trans.goal') }}</h4>
             <p>{{ __('home_trans.goalDes') }}</p>
             <div class="line-sepa"></div>
-            <div class="row mt-5 mb-5">
+            <div class="row">
                 <div class="col-md-4">
                     <div class="counter">
                         <div class="counter-icon">
                             <i class="bx bx-wrench"></i>
                         </div>
-                        <span class="counter-value">18</span>
+                        <span class="counter-value">{{ \App\Models\Project::whereHas('state', function ($q) {
+                            return $q->where('color', '!=', 'success');
+                        })->count() }}</span>
                         <h3>{{ __('home_trans.shap1') }}</h3>
                     </div>
                 </div>
@@ -275,7 +277,7 @@
                         <div class="counter-icon">
                             <i class="bx bxs-star-half"></i>
                         </div>
-                        <span class="counter-value">50</span>
+                        <span class="counter-value">{{ \App\Models\Partner::count() }}</span>
                         <h3>{{ __('home_trans.shap2') }}</h3>
                     </div>
                 </div>
@@ -284,51 +286,47 @@
                         <div class="counter-icon">
                             <i class="bx bx-check-double"></i>
                         </div>
-                        <span class="counter-value">{{ \App\Models\ReadyProject::count() }}</span>
+                        <span class="counter-value">{{ \App\Models\Project::whereHas('state', function ($q) {
+                            return $q->where('color', 'success');
+                        })->count() }}</span>
                         <h3>{{ __('home_trans.shap3') }}</h3>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Start Statistics -->
-    <section id="statistics" class="statistics">
-        <div class="container">
-            <div class="statistics-inner">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="counter">
-                            <div class="counter-icon">
-                                <i class='bx bx-group'></i>
-                            </div>
-                            <span class="counter-value">{{ \App\Models\User::count() }}</span>
-                            <h3>{{ __('home_trans.shap4') }}</h3>
+            <br>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="counter">
+                        <div class="counter-icon">
+                            <i class='bx bx-group'></i>
                         </div>
+                        <span class="counter-value">{{ \App\Models\User::count() }}</span>
+                        <h3>{{ __('home_trans.shap4') }}</h3>
                     </div>
-                    <div class="col-md-4">
-                        <div class="counter active">
-                            <div class="counter-icon">
-                                <i class='bx bx-briefcase-alt'></i>
-                            </div>
-                            <span class="counter-value">{{ \App\Models\Project::count() }}</span>
-                            <h3>{{ __('home_trans.shap5') }}</h3>
+                </div>
+                <div class="col-md-4">
+                    <div class="counter active">
+                        <div class="counter-icon">
+                            <i class='bx bx-briefcase-alt'></i>
                         </div>
+                        <span class="counter-value">{{ \App\Models\Project::count() }}</span>
+                        <h3>{{ __('home_trans.shap5') }}</h3>
                     </div>
-                    <div class="col-md-4">
-                        <div class="counter">
-                            <div class="counter-icon">
-                                <i class='bx bx-like'></i>
-                            </div>
-                            <span class="counter-value">45215</span>
-                            <h3>{{ __('home_trans.shap6') }}</h3>
+                </div>
+                <div class="col-md-4">
+                    <div class="counter">
+                        <div class="counter-icon">
+                            <i class='bx bx-like'></i>
                         </div>
+                        <span class="counter-value">{{ \App\Models\Subscriber::count() }}</span>
+                        <h3>{{ __('home_trans.shap6') }}</h3>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- End Statistics -->
 
     <!-- Start Try Our Trial -->
     <section id="trial" class="trial">
@@ -399,49 +397,28 @@
             <h5>{{ __('home_trans.clientH')}}</h5>
             <div class="">
                 <div class="row">
-                    <div class="col mt-2">
-                        <img src="{{ asset('assets/img/logo1.png') }}" alt="فور بت avatar" loading="lazy"
-                            class="grey-animate lazyload" width="100" height="56">
-                    </div>
 
-                    <div class="col mt-2">
-                        <img src="{{ asset('assets/img/logo2.png') }}" alt="رقوم avatar" loading="lazy"
-                            class="grey-animate lazyload" width="100" height="56">
-                    </div>
+                    <!-- Slider main container -->
+                    <div class="swiper rounded">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper rounded">
+                            @foreach ($partners as $partner)
+                                <div class="swiper-slide rounded">
+                                    @if ($partner->link)
+                                        <a href="{{ $partner->link }}">
+                                            <img src="{{ $partner->image }}" alt="avatar" loading="lazy"
+                                                class="grey-animate lazyload rounded" width="100%" height="100%" style="object-fit: cover">
+                                        </a>
+                                    @else
+                                        <img src="{{ $partner->image }}" alt="avatar" loading="lazy"
+                                            class="grey-animate lazyload rounded" width="100%" height="100%" style="object-fit: cover">
+                                    @endif
+                                </div>
+                            @endforeach
+                        </div>
 
-                    <div class="col mt-2">
-                        <img src="{{ asset('assets/img/logo3.png') }}" alt="مؤسسة إمام الدعوة avatar" loading="lazy"
-                            class="grey-animate lazyload" width="100" height="56">
-                    </div>
-
-                    <div class="col mt-2">
-                        <img src="{{ asset('assets/img/logo4.png') }}" alt="PayTaps avatar" loading="lazy"
-                            class="grey-animate lazyload" width="100" height="56">
-                    </div>
-
-                    <div class="col mt-2">
-                        <img src="{{ asset('assets/img/logo5.png') }}" alt="Discord Partner avatar" loading="lazy"
-                            class="grey-animate lazyload" width="100" height="56">
-                    </div>
-
-                    <div class="col mt-2">
-                        <img src="{{ asset('assets/img/logo6.png') }}" alt="للـون avatar" loading="lazy"
-                            class="grey-animate lazyload" width="100" height="56">
-                    </div>
-
-                    <div class="col mt-2">
-                        <img src="{{ asset('assets/img/logo7.png') }}" alt="ولي مول avatar" loading="lazy"
-                            class="grey-animate lazyload" width="100" height="56">
-                    </div>
-
-                    <div class="col mt-2">
-                        <img src="{{ asset('assets/img/logo8.png') }}" alt="للمليون avatar" loading="lazy"
-                            class="grey-animate lazyload" width="100" height="56">
-                    </div>
-
-                    <div class="col mt-2">
-                        <img src="{{ asset('assets/img/logo9.png') }}" alt="مجلة واك avatar" loading="lazy"
-                            class="grey-animate lazyload" width="100" height="56">
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
             </div>

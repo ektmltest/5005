@@ -11,6 +11,8 @@ class Home extends Component
     public Contact $contact;
     public $news;
     public $ready_projects;
+    // public $statistics = array();
+    public $partners;
 
     protected $newspaperRepository;
     protected $readyProjectRepository;
@@ -22,6 +24,7 @@ class Home extends Component
         $this->readyProjectRepository = new ReadyProjectRepository;
 
         $this->news = $this->newspaperRepository->getAll(limit: config('globals.home_news'));
+        $this->partners = \App\Models\Partner::all();
     }
 
     public function rules() {

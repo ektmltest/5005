@@ -21,16 +21,18 @@
                     <div class="card checkout-order-summary">
                         <div class="card-body">
                             <div class="p-3 bg-light mb-4">
-                                <h5 class="font-size-16 mb-0">Haithm Mhmd<span class="float-end ms-2">Admin</span></h5>
+                                <h5 class="font-size-16 mb-0">{{ ucwords(__('dashboard_trans.project states')) }}</h5>
                             </div>
 
                             <div class="table-responsive">
                                 <table class="table table-centered mb-0 table-nowrap">
                                     <tbody>
-                                        @foreach (\App\Models\ProjectState::all() as $state)
+                                        @foreach (\App\Models\ProjectState::all() as $_state)
                                         <tr>
-                                            <th><a onclick="topbar.show()" style="cursor: pointer;" class="waves-effect badge bg-{{$state->color}}"
-                                                    wire:click="changeStatus({{$state->id}})">{{ $state->name }}</a>
+                                            <th class="{{ $_state->id == $state->id ? 'bg-light' : '' }}"
+                                                onclick="topbar.show()" style="cursor: pointer;" class="waves-effect"
+                                                    wire:click="changeStatus({{$_state->id}})">
+                                                <span class="text-{{$_state->color}}">{{$_state->name}}</span>
                                             </th>
                                         </tr>
                                         @endforeach
@@ -47,7 +49,7 @@
                             <table class="table table-centered table-nowrap mb-0">
                                 <thead>
                                     <tr>
-                                        <th>{{__('dashboard_trans.projects of')}} {{$state_name}} <i class="bx bxs-briefcase-alt-2"></i></th>
+                                        <th>{{ ucwords(__('dashboard_trans.projects of')) }} {{$state_name}} <i class="bx bxs-briefcase-alt-2"></i></th>
                                     </tr>
                                 </thead>
                                 @foreach($projects as $project)
