@@ -146,7 +146,7 @@
                 </li>
 
                 <li>
-                    <a href="/translations" class=" waves-effect">
+                    <a href="/admin/translations" class=" waves-effect">
                         <i class="fa fa-solid fa-book"></i>
                         <span>{{ __('dashboard_trans.Translation System') }}</span>
                     </a>
