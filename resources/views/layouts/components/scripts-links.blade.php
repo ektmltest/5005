@@ -49,6 +49,26 @@
         slidesPerView: 6,
         spaceBetween: 30,
     });
+
+    // Update swiper on window resize
+    function updateSwiper() {
+        if (window.innerWidth < 576) { // xs
+            swiper.params.slidesPerView = 1; // Number of items on mobile
+        } else if (window.innerWidth < 768) { // sm
+            swiper.params.slidesPerView = 3; // Number of items on mobile
+        } else if (window.innerWidth < 992) { // md
+            swiper.params.slidesPerView = 3; // Number of items on mobile
+        } else {
+            swiper.params.slidesPerView = 6; // Number of items on desktop
+        }
+        swiper.update(); // Update Swiper instance
+    }
+
+    // Initial call
+    updateSwiper();
+
+    // Listen for window resize events
+    window.addEventListener('resize', updateSwiper);
 </script>
 
 <!-- Turbo JS -->

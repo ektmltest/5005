@@ -392,7 +392,7 @@
     <!-- End Working -->
 
 
-    <section id="clients" class="clients">
+    <section id="clients" class="clients pb-md-5 pb-0">
         <div class="container">
             <h5>{{ __('home_trans.clientH')}}</h5>
             <div class="">
@@ -403,7 +403,7 @@
                         <!-- Additional required wrapper -->
                         <div class="swiper-wrapper rounded">
                             @foreach ($partners as $partner)
-                                <div class="swiper-slide rounded">
+                                <div class="swiper-slide rounded p-2">
                                     @if ($partner->link)
                                         <a href="{{ $partner->link }}">
                                             <img src="{{ $partner->image }}" alt="avatar" loading="lazy"
