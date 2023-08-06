@@ -174,9 +174,12 @@
 
                                         @endforeach
                                     </tbody>
+
+                                    <tfoot>
+                                        <tr><td colspan="4">{{$permissions->links()}}</td></tr>
+                                    </tfoot>
                                 </table>
                             </div>
-                            {{$permissions->links()}}
                         </div>
                     </div>
                 </div>

@@ -91,9 +91,12 @@
                                 </div>
 
                                 @endforeach
+
+                                <tfoot>
+                                    <tr><td colspan="6">{{$addons->links()}}</td></tr>
+                                </tfoot>
                             </table>
                         </div>
-                        {{ $addons->links() }}
                     </div>
                 </div>
             </div>

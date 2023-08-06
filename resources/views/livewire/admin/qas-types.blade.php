@@ -181,10 +181,13 @@
                                     </div>
 
                                     @endforeach
+
+                                    <tfoot>
+                                        <tr><td colspan="6">{{$types->links()}}</td></tr>
+                                    </tfoot>
                                 </tbody>
                             </table>
                         </div>
-                        {{ $types->links() }}
                     </div>
                 </div>
             </div>

@@ -145,9 +145,12 @@
 
                                     @endforeach
                                 </tbody>
+
+                                <tfoot>
+                                    <tr><td colspan="7">{{$ready_projects->links()}}</td></tr>
+                                </tfoot>
                             </table>
                         </div>
-                        {{$ready_projects->links()}}
                     </div>
                 </div>
             </div>

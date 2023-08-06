@@ -35,8 +35,8 @@
                                     </tr>
                                 </thead>
 
-                                @foreach ($withdrawals as $withdrawal)
                                 <tbody>
+                                @foreach ($withdrawals as $withdrawal)
                                     <tr>
                                         <td>{{ $withdrawal->id }}</td>
                                         <td>{{ \Str::limit($withdrawal->user->full_name, 20, '...') }}
@@ -87,13 +87,15 @@
                                             @endif
                                         </td>
                                     </tr>
-                                </tbody>
 
                                 @endforeach
+                                </tbody>
 
+                                <tfoot>
+                                    <tr><td colspan="7">{{$withdrawals->links()}}</td></tr>
+                                </tfoot>
                             </table>
                         </div>
-                        {{ $withdrawals->links() }}
 
                     </div>
                 </div>

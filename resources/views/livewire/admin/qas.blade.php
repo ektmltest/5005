@@ -182,9 +182,12 @@
 
                                     @endforeach
                                 </tbody>
+
+                                <tfoot>
+                                    <tr><td colspan="6">{{$qas->links()}}</td></tr>
+                                </tfoot>
                             </table>
                         </div>
-                        {{ $qas->links() }}
                     </div>
                 </div>
             </div>

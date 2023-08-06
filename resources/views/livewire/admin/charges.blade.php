@@ -194,9 +194,12 @@
 
                                 @endforeach
 
+                                <tfoot>
+                                    <tr><td colspan="7">{{$payments->links()}}</td></tr>
+                                </tfoot>
+
                             </table>
                         </div>
-                        {{ $payments->links() }}
 
                     </div>
                 </div>

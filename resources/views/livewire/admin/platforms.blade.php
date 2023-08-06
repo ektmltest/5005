@@ -165,9 +165,12 @@
 
                                     @endforeach
                                 </tbody>
+
+                                <tfoot>
+                                    <tr><td colspan="6">{{$platforms->links()}}</td></tr>
+                                </tfoot>
                             </table>
                         </div>
-                        {{ $platforms->links() }}
                     </div>
                 </div>
             </div>

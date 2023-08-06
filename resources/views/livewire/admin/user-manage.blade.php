@@ -170,10 +170,13 @@
 
                                         @endforeach
                                     </tbody>
+
+                                    <tfoot>
+                                        <tr><td colspan="6">{{$users->links()}}</td></tr>
+                                    </tfoot>
                                 </table>
                             </div>
                         </div>
-                        {{ $users->links() }}
                     </div>
                 </div>
             </div><!-- end row -->

@@ -167,9 +167,12 @@
 
                                     @endforeach
                                 </tbody>
+
+                                <tfoot>
+                                    <tr><td colspan="6">{{$projects->links()}}</td></tr>
+                                </tfoot>
                             </table>
                         </div>
-                        {{ $projects->links() }}
                     </div>
                 </div>
             </div>
