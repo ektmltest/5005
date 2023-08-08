@@ -16,7 +16,7 @@ class IsAdmin
     public function handle(Request $request, Closure $next): Response
     {
         if (auth()->check())
-            if (auth()->user()->rank->hasPermission(1)) {
+            if (auth()->user()->hasAnyPermission()) {
                 return $next($request);
             } else {
                 session()->flash('error', __('errors.unauthorized'));

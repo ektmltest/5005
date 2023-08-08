@@ -67,12 +67,6 @@
                                         aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self>
                                         <div class="modal-dialog p-0">
                                             <div class="modal-content card border-0">
-                                                {{-- <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">{{
-                                                        __('dashboard_trans.SHOW') }}</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div> --}}
                                                 <img class="card-img-top" src="{{$project->image}}" alt="Card image cap">
 
                                                 <div class="modal-body">

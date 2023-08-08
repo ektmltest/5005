@@ -28,7 +28,7 @@ class SubscriberWelcomeMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Subscriber Welcome Mail | Ektml Platform',
+            subject: 'Subscriber: Welcome Mail | Ektml Platform',
         );
     }
 

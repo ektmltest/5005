@@ -143,4 +143,9 @@ return array (
   'BANK NAME' => 'BANK NAME',
   'project states' => 'project states',
   'tickets types' => 'tickets types',
+  'TITLE' => 'TITLE',
+  'SLUG' => 'SLUG',
+  'ENGLISH TITLE' => 'ENGLISH TITLE',
+  'ARABIC TITLE' => 'ARABIC TITLE',
+  'UPDATED AT' => 'UPDATED AT',
 );

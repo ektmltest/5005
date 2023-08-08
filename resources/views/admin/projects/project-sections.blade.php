@@ -7,7 +7,7 @@
 
 @section('content')
 
-<livewire:admin.project-sections/>
+<livewire:admin.project-sections />
 
 @endsection
 

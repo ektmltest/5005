@@ -107,9 +107,17 @@ class User extends Authenticatable
         return Withdrawal::query()->whereIn('user_bank_card_id', $this->bankCards()->select('id')->get()->pluck('id'));
     }
 
-    // public function permissions() {
-    //     return $this->rank->permissions();
-    // }
+    public function permissions() {
+        return $this->rank->permissions();
+    }
+
+    public function hasPermission($permission) {
+        return $this->rank->hasPermission($permission);
+    }
+
+    public function hasAnyPermission() {
+        return $this->rank->permissions()->count() > 0;
+    }
 
     //////* functions *///////
     public function verified() {

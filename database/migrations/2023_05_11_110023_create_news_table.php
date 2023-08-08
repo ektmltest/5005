@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamps();
 
             // foreign keys
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

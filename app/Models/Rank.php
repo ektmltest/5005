@@ -24,8 +24,8 @@ class Rank extends Model
         return $this->belongsTo(RankType::class, 'rank_type_id');
     }
 
-    public function hasPermission($permission_id) {
-        return $this->permissions()->where('id', $permission_id)->first() ? true : false;
+    public function hasPermission($permission) {
+        return $this->permissions()->where('key', $permission)->first() ? true : false;
     }
 
     //////* attributes *//////

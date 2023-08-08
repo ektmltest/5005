@@ -83,7 +83,7 @@
                                                     class="text-body fw-bold">{{$permission->id}}</a></td>
                                             <td>{{$permission->name}}</td>
                                             <td>
-                                                @if ($rank->hasPermission($permission->id))
+                                                @if ($rank->hasPermission($permission->key))
                                                 <span
                                                     class="badge bg-soft-success">{{__('dashboard_trans.activated')}}</span>
                                                 @else
@@ -92,7 +92,7 @@
                                                 @endif
                                             </td>
                                             <td class="text-center">
-                                                @if ($rank->hasPermission($permission->id))
+                                                @if ($rank->hasPermission($permission->key))
                                                 <button type="button" class="btn btn-danger btn-sm"
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#delete_permission{{ $permission->id }}">{{__('dashboard_trans.block')}}</button>

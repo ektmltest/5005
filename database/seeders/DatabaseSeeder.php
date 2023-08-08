@@ -67,13 +67,16 @@ class DatabaseSeeder extends Seeder
 
             RankType::factory()->count(4)->create();
 
-            $permissions = Permission::factory()->count(150)->create();
+            $permissions = Permission::factory()->count(25)->create();
 
             Rank::factory()->count(1)->hasAttached($permissions)->create([
                 'name' => ['ar' => 'المؤسس', 'en' => 'founder'],
                 'priority' => 9999,
             ]);
-            Rank::factory()->count(18)->hasAttached($permissions->except([1]))->create();
+
+            $ranks = Rank::factory()->count(18)->create()->each(function ($rank) use ($permissions) {
+                $rank->permissions()->attach($permissions->random(rand(1, 25)));
+            });
 
             $marketLevels = MarketingLevel::factory()
                 ->count(50)

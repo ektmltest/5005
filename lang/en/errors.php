@@ -7,4 +7,7 @@ return array (
   'logout' => 'You should logout first to access this route.',
   'unauthorized' => 'Unauthorized.',
   'checkme' => 'Must Be Checked',
+  'Sorry, page not found' => 'Sorry, page not found',
+  'It will be as simple as Occidental in fact, it will be Occidental' => 'It will be as simple as Occidental in fact, it will be Occidental',
+  'Back to Dashboard' => 'Back to Dashboard',
 );

@@ -112,7 +112,7 @@
                         <span class="title">{{ __('main_trans.Your Profile') }}</span>
                     </div>
                 </a>
-                @if (Auth::user()->rank->hasPermission(1))
+                @if (Auth::user()->hasAnyPermission())
                 <a class="dropdown-item dropdown-link" href="{{route('admin.home')}}">
                     <div class="link-ico text-danger">
                         <i class="bx bx-shield-quarter"></i>

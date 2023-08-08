@@ -152,4 +152,8 @@ class ValidationRequest extends FormRequest
     protected function boolRule() {
         return ['boolean'];
     }
+
+    protected function slugRule() {
+        return ['required', 'string', 'alpha_dash'];
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Jobs\SendMailQueueJob;
 use App\Mail\ForgetPasswordMail;
 use App\Mail\VerificationMail;
 use App\Repositories\ResetPasswordTokenRepository;
@@ -32,7 +33,9 @@ Trait Mailer {
     public function mail($mail_class, $data, $to, $mail_view=null) {
         $mail = $mail_view ? new $mail_class($mail_view, $data) : new $mail_class($data);
 
-        return Mail::to($to)->send($mail);
+        dispatch(new SendMailQueueJob($to, $mail));
+
+        return true;
     }
 
     /**

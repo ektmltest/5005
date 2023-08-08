@@ -7,4 +7,7 @@ return array (
   'logout' => 'يجب تسجيل الخروج اولا.',
   'unauthorized' => 'ليس لديك الصلاحيات.',
   'checkme' => 'يجب تعيين هذا الحقل.',
+  'Sorry, page not found' => 'عذرا، لم يتم العثور على الصفحة',
+  'It will be as simple as Occidental in fact, it will be Occidental' => 'سيكون الأمر بسيطًا مثل الخطأ في الواقع ، سيكون خطأ',
+  'Back to Dashboard' => 'رجوع إلى لوحة القيادة',
 );

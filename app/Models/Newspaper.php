@@ -56,4 +56,13 @@ class Newspaper extends Model
         $this->locale = $locale;
         return $this->body;
     }
+
+    public function getImageAttribute() {
+        return asset($this->attributes['image']);
+    }
+
+    public function getImageUriAttribute() {
+        return $this->attributes['image'];
+    }
+
 }

@@ -101,16 +101,18 @@
 <body>
 <header class="navbar navbar-static-top navbar-inverse" id="top" role="banner">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <div class="navbar-header" style='width: 100%'>
+            <!-- <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-            </button>
+            </button> -->
             <a href="<?php echo action('\Barryvdh\TranslationManager\Controller@getIndex') ?>" class="navbar-brand">
                 Translation Manager
             </a>
+
+            <a href="/admin" class="navbar-brand" style='float: right;'>Admin Dashboard</a>
         </div>
     </div>
 </header>

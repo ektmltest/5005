@@ -68,6 +68,7 @@ class Kernel extends HttpKernel
 
         /**** My own middlewares ****/
         'admin' => \App\Http\Middleware\IsAdmin::class,
+        'check.permission' => \App\Http\Middleware\CheckPermission::class,
 
         /**** Localization MIDDLEWARE ****/
         'localize'                => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,

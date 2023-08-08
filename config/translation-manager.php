@@ -13,9 +13,10 @@ return [
     'route'          => [
         'prefix'     => 'admin/translations',
         'middleware' => [
-            // 'auth',
+            'auth',
             'web',
-            // 'admin',
+            'admin',
+            'check.permission:manage-translations',
         ],
     ],
 

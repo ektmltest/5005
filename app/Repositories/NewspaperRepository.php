@@ -2,14 +2,22 @@
 
 namespace App\Repositories;
 
+use App\Helpers\File;
+use App\Helpers\Mailer;
+use App\Helpers\Template;
 use App\Models\Newspaper;
 
 class NewspaperRepository {
-    public function getAll($limit = null) {
-        if ($limit)
-            return Newspaper::limit($limit)->get();
+    use File, Mailer;
+
+    public function getAll($paginate = false, $num = 10, $limit = null) {
+        if ($paginate)
+            return Newspaper::paginate($num);
         else
-            return Newspaper::get();
+            if ($limit)
+                return Newspaper::limit($limit)->get();
+            else
+                return Newspaper::get();
     }
 
     public function findBySlug($slug) {
@@ -66,5 +74,27 @@ class NewspaperRepository {
 
     public function count() {
         return Newspaper::count();
+    }
+
+    public function delete($id) {
+        return Newspaper::destroy($id);
+    }
+
+    public function store(Template $new, $complex_data, $image) {
+        $newspaper = Newspaper::create([
+            'title' => [
+                'en' => $new->title_en,
+                'ar' => $new->title_ar
+            ],
+            'body' => [
+                'en' => $complex_data['desc_en'],
+                'ar' => $complex_data['desc_ar']
+            ],
+            'slug' => $new->slug,
+            'image' => $this->prepareFilePath($image, 'admin/posts', true),
+            'user_id' => auth()->user()->id
+        ]);
+
+        return $newspaper;
     }
 }

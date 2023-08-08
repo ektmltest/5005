@@ -1,5 +1,5 @@
 <x-mail::message>
-# Subscription mail
+# Subscription: welcome mail
 
 You subscribed to our news channel successfully.
 

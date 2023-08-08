@@ -145,4 +145,9 @@ return array (
   'BANK NAME' => 'اسم البنك',
   'project states' => 'حالات المشروع',
   'tickets types' => 'أنواع التذاكر',
+  'TITLE' => 'العنوان',
+  'SLUG' => 'عنوان الصفحة المصغر',
+  'ARABIC TITLE' => 'العنوان العربي',
+  'ENGLISH TITLE' => 'العنوان الانجليزي',
+  'UPDATED AT' => 'تاريخ التعديل',
 );
