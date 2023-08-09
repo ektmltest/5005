@@ -33,6 +33,7 @@ Trait Mailer {
     public function mail($mail_class, $data, $to, $mail_view=null) {
         $mail = $mail_view ? new $mail_class($mail_view, $data) : new $mail_class($data);
 
+        // create the job
         dispatch(new SendMailQueueJob($to, $mail));
 
         return true;
