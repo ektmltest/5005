@@ -148,7 +148,7 @@
                 <li class="menu-title text-primary">{{ __('dashboard_trans.POSTS SYSTEM') }}</li>
                 @if (auth()->user()->hasPermission('manage-posts'))
                 <li>
-                    <a href="file-manager.html" class=" waves-effect">
+                    <a href="{{route('posts.manage')}}" class=" waves-effect">
                         <i class="fa fa-solid fa-print"></i>
                         <span>{{ __('dashboard_trans.Posts List') }}</span>
                     </a>
@@ -157,7 +157,7 @@
 
                 @if (auth()->user()->hasPermission('create-posts'))
                 <li>
-                    <a href="file-manager.html" class=" waves-effect">
+                    <a href="{{route('posts.create')}}" class=" waves-effect">
                         <i class="fa fa-solid fa-marker"></i>
                         <span>{{ __('dashboard_trans.Add a new post') }}</span>
                     </a>

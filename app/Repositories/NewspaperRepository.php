@@ -20,6 +20,10 @@ class NewspaperRepository {
                 return Newspaper::get();
     }
 
+    public function findById($id) {
+        return Newspaper::find($id);
+    }
+
     public function findBySlug($slug) {
         return Newspaper::where('slug', $slug)->first();
     }
@@ -96,5 +100,13 @@ class NewspaperRepository {
         ]);
 
         return $newspaper;
+    }
+
+    public function update($dataToUpdate, $newspaper) {
+
+        Newspaper::where('id', $newspaper->id)->update($dataToUpdate);
+
+        return $this->findById($newspaper->id);
+
     }
 }

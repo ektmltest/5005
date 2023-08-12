@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Url;
 use App\Http\Controllers\Controller;
 use App\Interfaces\ProjectRepositoryInterface;
 use App\Interfaces\UserRepositoryInterface;
@@ -9,6 +10,8 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    use Url;
+
     protected $userRepository;
     protected $projectRepository;
 
@@ -18,9 +21,18 @@ class HomeController extends Controller
     }
 
     public function index() {
-        return view('admin.dashboard', [
-            'users' => $this->userRepository->getAll(max: 10),
-            'projects' => $this->projectRepository->getAllProjects(max: 10),
-        ]);
+        if (request()->has('redirect')) {
+
+            $localePrefix = $this->prepareLocalePrefix();
+            return redirect($localePrefix . 'admin/' . request()->get('redirect'));
+
+        } else {
+
+            return view('admin.dashboard', [
+                'users' => $this->userRepository->getAll(max: 10),
+                'projects' => $this->projectRepository->getAllProjects(max: 10),
+            ]);
+
+        }
     }
 }

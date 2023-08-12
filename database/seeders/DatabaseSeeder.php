@@ -64,6 +64,7 @@ class DatabaseSeeder extends Seeder
             $this->deleteFilesInFolder('transactions/charges');
             $this->deleteFilesInFolder('admin/store/projects');
             $this->deleteFilesInFolder('admin/gallery');
+            $this->deleteFilesInFolder('admin/posts');
 
             RankType::factory()->count(4)->create();
 

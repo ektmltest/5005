@@ -63,9 +63,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::middleware('check.permission:manage-withdrawals')->get('withdrawals', fn() => view('admin.transactions.withdrawals'))->name('transactions.withdrawals');
 
         // ? news
-        Route::get('posts', fn () => view('admin.posts.manage'))->name('posts.manage');
-        Route::get('posts/create', fn () => view('admin.posts.create'))->name('posts.create');
-        Route::get('posts/{id}/edit', fn () => "test")->name('posts.edit');
+        Route::middleware('check.permission:manage-posts')->get('posts', fn () => view('admin.posts.manage'))->name('posts.manage');
+        Route::middleware('check.permission:create-posts')->get('posts/create', fn () => view('admin.posts.create'))->name('posts.create');
+        Route::middleware('check.permission:edit-posts')->get('posts/{id}/edit', fn ($id) => view('admin.posts.edit', ['id' => $id]))->name('posts.edit');
 
         //? This route for any invalid request ;)
         Route::any('{any}', function () {

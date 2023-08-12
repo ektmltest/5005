@@ -11,12 +11,12 @@ return [
     |
     */
     'route'          => [
-        'prefix'     => 'admin/translations',
+        'prefix'     => (request()->segment(1) == 'en' ? 'en/' : '') . 'admin/translations',
         'middleware' => [
-            'auth',
-            'web',
+            'auth', 'web',
             'admin',
             'check.permission:manage-translations',
+            'localeSessionRedirect', 'localizationRedirect', 'localeViewPath',
         ],
     ],
 

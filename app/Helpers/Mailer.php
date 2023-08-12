@@ -19,6 +19,7 @@ Trait Mailer {
      * @return
      */
     public function sendMail($mailView, $to) {
+
         $resetPassword = (new ResetPasswordTokenRepository)->generate($to);
 
         $mail = new ForgetPasswordMail(
@@ -27,16 +28,21 @@ Trait Mailer {
             $to
         );
 
-        return Mail::to($to)->send($mail);
+        dispatch(new SendMailQueueJob($to, $mail));
+        return true;
+
     }
 
     public function mail($mail_class, $data, $to, $mail_view=null) {
+
+        // creating mail object e.g. \App\Mail\ExampleMail
         $mail = $mail_view ? new $mail_class($mail_view, $data) : new $mail_class($data);
 
         // create the job
         dispatch(new SendMailQueueJob($to, $mail));
 
         return true;
+
     }
 
     /**
@@ -47,10 +53,13 @@ Trait Mailer {
      * @return
      */
     public function sendVerificationLink($to, $api = false) {
+
         $token = (new VerifyEmailRepository)->generate($to);
 
         $mail = new VerificationMail($token, $to, $api);
 
-        return Mail::to($to)->send($mail);
+        dispatch(new SendMailQueueJob($to, $mail));
+        return true;
+
     }
 }
