@@ -2,13 +2,13 @@
 
 namespace App\Helpers;
 
-trait Url {
+class Url {
 
     // ? preconditions:
     // ?    - url must have a locale when the locale is hide,
     // ?      the function will crash.
     // ?    - prefix must be 2 chars long
-    protected function prepareLocalePrefix() {
+    public static function prepareLocalePrefix() {
         $prefix = request()->segment(1);
 
         if (strlen($prefix) != 2)
@@ -19,6 +19,10 @@ trait Url {
         $localePrefix = (!$isPrefixAr ? $prefix . '/' : '');
 
         return $localePrefix;
+    }
+
+    public static function getUrl($uri) {
+        return env('APP_URL') . '/' . $uri;
     }
 
 }

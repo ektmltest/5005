@@ -177,7 +177,7 @@
 
                 @if (auth()->user()->hasPermission('manage-translations'))
                 <li>
-                    <a href="/admin/translations" class=" waves-effect">
+                    <a href="{{ \App\Helpers\Url::getUrl('admin/translations')}} " class=" waves-effect">
                         <i class="fa fa-solid fa-book"></i>
                         <span>{{ __('dashboard_trans.Translation System') }}</span>
                     </a>

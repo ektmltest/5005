@@ -10,8 +10,6 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    use Url;
-
     protected $userRepository;
     protected $projectRepository;
 
@@ -23,7 +21,7 @@ class HomeController extends Controller
     public function index() {
         if (request()->has('redirect')) {
 
-            $localePrefix = $this->prepareLocalePrefix();
+            $localePrefix = Url::prepareLocalePrefix();
             return redirect($localePrefix . 'admin/' . request()->get('redirect'));
 
         } else {

@@ -11,11 +11,13 @@ use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
+use function Termwind\render;
+
 class PostEdit extends Component
 {
     use WithFileUploads, File;
 
-    public Newspaper $newspaper;
+    public Newspaper|null $newspaper;
     public Template $new;
     public $image;
     public $complex_data = array();
@@ -33,6 +35,10 @@ class PostEdit extends Component
 
     public function mount($id) {
         $this->newspaper = $this->newspaperRepository->findById($id);
+        if (!$this->newspaper) {
+            return abort(404);
+        }
+
         $this->new->title_ar = $this->newspaper->titleLocale('ar');
         $this->new->title_en = $this->newspaper->titleLocale('en');
         $this->new->slug = $this->newspaper->slug;
@@ -126,7 +132,7 @@ class PostEdit extends Component
         return $err;
     }
 
-    public function render()
+    public function render($found = true)
     {
         $this->dispatchBrowserEvent('my:loaded');
         return view('livewire.admin.post-edit');

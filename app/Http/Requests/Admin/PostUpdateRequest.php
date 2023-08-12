@@ -25,7 +25,7 @@ class PostUpdateRequest extends ValidationRequest
         return [
             'new.title_ar' => parent::nameRule(),
             'new.title_en' => parent::nameRule(),
-            'new.slug' => parent::slugRule(),
+            'new.slug' => array_merge(parent::slugRule(), parent::uniqueRule(table: 'news', col: 'slug', required: false)),
             'image' => parent::fileRule(image: true, update: true),
         ];
     }

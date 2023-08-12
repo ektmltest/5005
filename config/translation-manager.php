@@ -1,5 +1,18 @@
 <?php
 
+function prefix() {
+
+    try {
+
+        return request()->segment(1) == 'en' ? 'en/' : '';
+
+    } catch (\Throwable $th) {
+
+        return '';
+
+    }
+}
+
 return [
 
     /*
@@ -11,7 +24,7 @@ return [
     |
     */
     'route'          => [
-        'prefix'     => (request()->segment(1) == 'en' ? 'en/' : '') . 'admin/translations',
+        'prefix'     => prefix() . 'admin/translations',
         'middleware' => [
             'auth', 'web',
             'admin',
