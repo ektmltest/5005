@@ -150,4 +150,9 @@ return array (
   'ARABIC TITLE' => 'العنوان العربي',
   'ENGLISH TITLE' => 'العنوان الانجليزي',
   'UPDATED AT' => 'تاريخ التعديل',
+  'replies' => 'الردود',
+  'categories' => 'التصنيفات',
+  'progress' => 'التقدم',
+  'project state' => 'حالة المشروع',
+  'project settings' => 'اعدادات المشروع',
 );

@@ -14,8 +14,8 @@
         'header_body' => ucwords(__('home_trans.Newsb')),
     ])
 
-{{session()->put('loaded', config('globals.home_news'))}}
-<livewire:website.newspaper-index />
+    {{session()->put('loaded', config('globals.home_news'))}}
+    <livewire:website.newspaper-index />
 
     @component('layouts.components.rtl-links-js')
     @endcomponent

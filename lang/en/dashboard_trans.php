@@ -148,4 +148,9 @@ return array (
   'ENGLISH TITLE' => 'ENGLISH TITLE',
   'ARABIC TITLE' => 'ARABIC TITLE',
   'UPDATED AT' => 'UPDATED AT',
+  'replies' => 'replies',
+  'categories' => 'categories',
+  'progress' => 'progress',
+  'project state' => 'project state',
+  'project settings' => 'project settings',
 );

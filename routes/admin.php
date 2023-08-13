@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         // ? Manage Projects
         Route::middleware('check.permission:manage-projects')->get('projects', fn () => view('admin.projects.manage-project'))->name('staffProjects');
+        Route::get('projects/{id}', fn ($id) => view('admin.projects.project-show', compact('id')))->name('staffProjects.show');
         Route::middleware('check.permission:manage-projects-sections')->get('projects/sections', fn() => view('admin.projects.project-sections'))->name('staffProjectSections');
         Route::middleware('check.permission:manage-projects-categories')->get('projects/categories', fn() => view('admin.projects.project-categories'))->name('staffProjectCategories');
 
@@ -76,4 +77,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 });
+
+Route::any('{any}', function () {
+    // dd(request()->getUri());
+    return abort(404);
+})->where('any', '.*')->name('global.errors.not-found');
 });

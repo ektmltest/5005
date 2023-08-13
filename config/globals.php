@@ -8,4 +8,5 @@ return [
     'store_pagination' => 9,
     'home_store_projects' => 6,
     'home_news' => 2,
+    'max_replies' => 5,
 ];

@@ -45,21 +45,40 @@ class Project extends Model
         return $this->hasMany(ProjectAttachment::class);
     }
 
-    public function replies() {
-        return $this->hasMany(ProjectReply::class);
+    public function replies($limit = null, $ordered = null) {
+        $query = $this->hasMany(ProjectReply::class);
+
+        if ($ordered)
+            $query = $query->orderBy('created_at', $ordered);
+
+        if ($limit)
+            $query = $query->limit($limit);
+
+        return $query;
     }
 
     // ** attributes ** //
     public function getPriceAttribute() {
+        if ($this->attributes['price'])
+            return round($this->attributes['price'], 2);
+        else
+            return $this->calculateStartPrice();
+    }
+
+    public function getCalculatedPriceAttribute() {
+        return $this->calculateStartPrice();
+    }
+
+    public function getDepartmentAttribute() {
+        return $this->department();
+    }
+
+    private function calculateStartPrice() {
         $price = 0;
         foreach ($this->categories as $category) {
             $price += $category->start_price;
         }
 
-        return $price;
-    }
-
-    public function getDepartmentAttribute() {
-        return $this->department();
+        return round($price, 2);
     }
 }

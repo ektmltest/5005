@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->integer('progress')->default(0);
+            $table->double('price', places: 2)->default(0);
             $table->timestamps();
 
             // foreign keys

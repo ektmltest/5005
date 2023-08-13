@@ -186,6 +186,12 @@ class ReadyProjectRepository implements ReadyProjectRepositoryInterface {
         return $paginate ? $query->paginate($num) : $query->get();
     }
 
+    public function setAsOffered($id) {
+        $project = $this->findById($id);
+        $project->is_offered = !$project->is_offered;
+        $project->save();
+    }
+
     private function ordering($query, $filters) {
         if (isset($filters['filtered_with_purchases']) && $filters['filtered_with_purchases'])
             $query->orderBy('num_of_purchases', 'DESC');

@@ -30,6 +30,7 @@
                                         <th>{{ __('dashboard_trans.PRICE') }}</th>
                                         <th>{{ __('dashboard_trans.DEPARTMENT') }}</th>
                                         <th>{{ __('dashboard_trans.TAX') }}</th>
+                                        <th>{{ strtoupper(__('store_trans.offered')) }}</th>
                                         <th>{{ __('dashboard_trans.ACTIONS') }}</th>
                                     </tr>
                                 </thead>
@@ -41,9 +42,10 @@
                                         <td>{{ $project->id }}</td>
                                         <td>{{ $project->name }}</td>
                                         <td>{{ \Str::limit($project->description, 20, '...') }}</td>
-                                        <td>{{ $project->price }}</td>
+                                        <td>@if($project->is_offered) <s class="text-danger">{{ $project->original_price }}</s> | @endif <span>{{ $project->price }}</span> {{__('home_trans.SAR')}}</td>
                                         <td>{{ $project->department->name }}</td>
                                         <td>{{ $project->marketing_discount_ratio }}%</td>
+                                        <td><input onclick="topbar.show()" type="checkbox" wire:model='offered.{{$project->id}}' wire:click='setAsOffered({{$project->id}})'></td>
                                         <td>
                                             <a href="{{route('readyProjects.edit', $project->id)}}" type="button" class="btn btn-primary btn-sm"
                                                 data-bs-toggle="tooltip" data-bs-placement="top" title="{{__('dashboard_trans.EDIT')}}"><i

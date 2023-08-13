@@ -206,6 +206,24 @@
         addEventClipboard();
     })
 
+    window.addEventListener('my:message.success', (e) => {
+        $.notify(e.detail.message, {
+            className: 'success',
+            showDuration: 200,
+            hideDuration: 100,
+            autoHideDelay: 1000,
+        })
+    })
+
+    window.addEventListener('my:message.error', (e) => {
+        $.notify(e.detail.message, {
+            className: 'error',
+            showDuration: 200,
+            hideDuration: 100,
+            autoHideDelay: 1000,
+        })
+    })
+
     addEventClipboard();
 </script>
 
