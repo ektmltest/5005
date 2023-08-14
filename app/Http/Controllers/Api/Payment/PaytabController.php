@@ -30,7 +30,7 @@ class PaytabController extends Controller
 
             Log::channel('single')->info('transaction created successfully');
         } catch (\Throwable $th) {
-            Log::channel('single')->error('failed while creating transation record');
+            Log::channel('single')->error($th->getMessage());
         }
 
     }
