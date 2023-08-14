@@ -43,7 +43,7 @@ use App\Repositories\TicketReplyAttachmentRepository;
 use App\Repositories\TicketReplyRepository;
 use App\Repositories\TicketRepository;
 use App\Repositories\TicketTypeRepository;
-use App\Repositories\TransactionRepository;
+use App\Repositories\Transactions\TransactionRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\VerifyEmailRepository;
 use Illuminate\Support\Facades\App;
