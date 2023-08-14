@@ -17,7 +17,7 @@ class PaytabController extends Controller
                 'description' => $request->cart_description,
                 'currency' => $request->cart_currency,
                 'amount' => $request->cart_amount,
-                'user_id' => $request->cart_idو
+                'user_id' => $request->cart_id,
             ]);
 
             $toAdd = (double) $request->cart_amount;
