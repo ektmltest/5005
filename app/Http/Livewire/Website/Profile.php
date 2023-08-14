@@ -12,6 +12,7 @@ use App\Repositories\BankCardRepository;
 use App\Repositories\ProfileRepository;
 use App\Repositories\Transactions\PaymentRepository;
 use App\Repositories\Transactions\WithdrawalRepository;
+use App\Services\Transactions\PaytabService;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -24,6 +25,7 @@ class Profile extends Component
 
     public $status = 'statistics';
     public $withdrawal_status = 'withdrawal';
+    public $charge_method = 'bank-card';
     public $user;
     public $profile = array();
     public $uploads = array();
@@ -33,17 +35,20 @@ class Profile extends Component
     public $user_bank_card = array();
     public $withdrawal = array();
     public $withdrawals;
+    public $pay_iframe = null;
 
     protected $profileRepository;
     protected $bankCardRepository;
     protected $paymentRepository;
     protected $withdrawalRepository;
+    protected $paytabService;
 
     public function __construct() {
         $this->profileRepository = new ProfileRepository;
         $this->bankCardRepository = new BankCardRepository;
         $this->paymentRepository = new PaymentRepository;
         $this->withdrawalRepository = new WithdrawalRepository;
+        $this->paytabService = new PaytabService;
 
         $this->user = auth()->user();
 
@@ -225,6 +230,14 @@ class Profile extends Component
         }
     }
 
+    public function generatePayment() {
+        $this->validate([
+            'charge.amount' => 'required|numeric'
+        ]);
+        
+        $this->pay_iframe = $this->paytabService->generateIframe($this->charge['amount']);
+    }
+
     public function changeStatus($status) {
         $this->status = $status;
         $this->resetPage();
@@ -233,6 +246,11 @@ class Profile extends Component
 
     public function changeWithdrawalStatus($status) {
         $this->withdrawal_status = $status;
+        $this->resetPage();
+    }
+
+    public function changeChargeMethod($charge_method) {
+        $this->charge_method = $charge_method;
         $this->resetPage();
     }
 

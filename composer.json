@@ -14,6 +14,7 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^2.12",
         "mcamara/laravel-localization": "^1.8",
+        "paytabscom/laravel_paytabs": "^1.4",
         "tanmuhittin/laravel-google-translate": "^2.2"
     },
     "require-dev": {

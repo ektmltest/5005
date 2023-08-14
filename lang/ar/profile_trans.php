@@ -49,4 +49,6 @@ return array (
   'OWNER NAME' => 'اسم المالك',
   'BANK NAME' => 'اسم البنك',
   'no transactions yet' => 'لا توجد معاملات حتى الآن.',
+  'bank transfer' => 'التحويل المصرفي',
+  'online payment' => 'الدفع الالكتروني',
 );

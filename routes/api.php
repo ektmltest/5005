@@ -4,6 +4,7 @@ use App\Helpers\Response;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Cart\CartController;
 use App\Http\Controllers\Api\GalleryProject\GalleryProjectController;
+use App\Http\Controllers\Api\Payment\PaytabController;
 use App\Http\Controllers\Api\Profile\ProfileController;
 use App\Http\Controllers\Api\Project\ProjectCategoryController;
 use App\Http\Controllers\Api\Project\ProjectController;
@@ -108,6 +109,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/cart', [CartController::class, 'destroy'])->name('api.cart.destroy');
     Route::put('/cart/reset', [CartController::class, 'reset'])->name('api.cart.reset');
 });
+
+// ? payment callback handler
+Route::post('/payment/callback', [PaytabController::class, 'callback'])->name('api.payment.callback');
 
 //? This route for any invalid request ;)
 Route::any('{any}', function () {

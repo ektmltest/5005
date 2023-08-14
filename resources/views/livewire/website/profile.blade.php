@@ -268,72 +268,121 @@
 
                     <div class="col-lg-8" id="reChargeMenu">
 
+                        {{-- navs begin --}}
+                        <ul class="nav nav-tabs" style="" role="tablist">
+                            <li role="presentation" class="active">
+                                <a style="cursor: pointer" onclick="topbar.show()" wire:click='changeChargeMethod("bank-card")'
+                                    class="{{$charge_method == 'bank-card' ? 'text-primary' : ''}}">
+                                    <i class="bx bx-money"></i> {{ ucwords(__('profile_trans.bank transfer')) }}</a>
+                            </li>
+
+                            <li role="presentation" class="mx-3">
+                                <a style="cursor: pointer" onclick="topbar.show()" wire:click='changeChargeMethod("credit")'
+                                    class="{{$charge_method == 'credit' ? 'text-primary' : ''}}">
+                                    <i class="bx bx-credit-card"></i> {{ ucwords(__('profile_trans.online payment')) }}</a>
+                            </li>
+                        </ul>
+                        {{-- navs end --}}
+
                         <div class="card">
                             <div class="card-body">
                                 <h5 style="color: #4b3da7;"><i class='bx bx-credit-card mb-4'></i>
                                     {{ __('profile_trans.Recharge money') }}
                                 </h5>
 
-                                <form wire:submit.prevent='charge'>
+                                @if ($charge_method == 'bank-card')
+                                    <form wire:submit.prevent='charge'>
 
-                                    <p style="color: #34d8be;">{{ __('profile_trans.smalltitle') }}</p>
-                                    <div class="row">
-                                        @foreach ($bank_cards as $bank_card)
-                                        <div class="col-6">
-                                            <div class="card text-purple mb-3" onclick="this.children[0].children[1].children[0].click()" style="cursor: pointer">
-                                                <div class="card-header">
-                                                    <span>{{$bank_card->bank_name}}</span>
-                                                    <span style="float: left"><input type="radio" name="bank_card_id" wire:model="charge.bank_card_id" value="{{$bank_card->id}}"></span>
-                                                </div>
-                                                <div class="card-body">
-                                                    <div>{{ __("profile_trans.Account Holder's Name") }} : {{$bank_card->bank_card_owner}}</div>
-                                                    <div>{{ __('profile_trans.IBan') }} : {{$bank_card->iban}}</div>
-                                                    <div>{{ __('profile_trans.account number') }} : {{$bank_card->account_number}}</div>
+                                        <p style="color: #34d8be;">{{ __('profile_trans.smalltitle') }}</p>
+                                        <div class="row">
+                                            @foreach ($bank_cards as $bank_card)
+                                            <div class="col-6">
+                                                <div class="card text-purple mb-3" onclick="this.children[0].children[1].children[0].click()" style="cursor: pointer">
+                                                    <div class="card-header">
+                                                        <span>{{$bank_card->bank_name}}</span>
+                                                        <span style="float: {{app()->getLocale() == 'ar' ? 'left' : 'right'}}"><input type="radio" name="bank_card_id" wire:model="charge.bank_card_id" value="{{$bank_card->id}}"></span>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div>{{ __("profile_trans.Account Holder's Name") }} : {{$bank_card->bank_card_owner}}</div>
+                                                        <div>{{ __('profile_trans.IBan') }} : {{$bank_card->iban}}</div>
+                                                        <div>{{ __('profile_trans.account number') }} : {{$bank_card->account_number}}</div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        @endforeach
-                                        @error('charge.bank_card_id')
-                                            <div class="text-danger">* {{$message}}</div>
-                                        @enderror
-                                    </div>
-                                    <p style="color: #34d8be;">{{ __('profile_trans.smalltitle2') }}</p>
-                                    <div class="row">
-                                        <div class="col-12 justify-content-center">
-                                            <div class="floating-label-wrap">
-                                                <input type="number" class="floating-label-field floating-label-field--s3"
-                                                    id="reCost" min='0' wire:model='charge.amount' />
-                                                <label for="reCost" class="floating-label">{{ __('profile_trans.Money to recharge') }}</label>
-                                            </div>
-                                            @error('charge.amount')
+                                            @endforeach
+                                            @error('charge.bank_card_id')
                                                 <div class="text-danger">* {{$message}}</div>
                                             @enderror
                                         </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-12 justify-content-center mt-4">
-                                            <div class="floating-label-wrap">
-                                                <input type="file" id="fileImg"
-                                                    class="floating-label-field floating-label-field--s3" wire:model='charge.file'>
-                                                <label for="fileImg" class="floating-label">{{ __('profile_trans.Add a bank transfer photo') }}</label>
-                                            </div>
-                                            @error('charge.file')
-                                                <div class="text-danger">* {{$message}}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="row justify-content-center my-3">
-                                        <div class="col-xl-12">
-                                            <div class="form-buttons">
-                                                <input style="padding-right: 2.5rem; padding-left: 2.5rem;" onclick="topbar.show()"
-                                                    type="submit" value="{{ __('profile_trans.Request recharge') }}">
+                                        <p style="color: #34d8be;">{{ __('profile_trans.smalltitle2') }}</p>
+                                        <div class="row">
+                                            <div class="col-12 justify-content-center">
+                                                <div class="floating-label-wrap">
+                                                    <input type="number" class="floating-label-field floating-label-field--s3"
+                                                        id="reCost" min='0' wire:model='charge.amount' />
+                                                    <label for="reCost" class="floating-label">{{ __('profile_trans.Money to recharge') }}</label>
+                                                </div>
+                                                @error('charge.amount')
+                                                    <div class="text-danger">* {{$message}}</div>
+                                                @enderror
                                             </div>
                                         </div>
-                                    </div>
 
-                                </form>
+                                        <div class="row">
+                                            <div class="col-12 justify-content-center mt-4">
+                                                <div class="floating-label-wrap">
+                                                    <input type="file" id="fileImg"
+                                                        class="floating-label-field floating-label-field--s3" wire:model='charge.file'>
+                                                    <label for="fileImg" class="floating-label">{{ __('profile_trans.Add a bank transfer photo') }}</label>
+                                                </div>
+                                                @error('charge.file')
+                                                    <div class="text-danger">* {{$message}}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="row justify-content-center my-3">
+                                            <div class="col-xl-12">
+                                                <div class="form-buttons">
+                                                    <input style="padding-right: 2.5rem; padding-left: 2.5rem;" onclick="topbar.show()"
+                                                        type="submit" value="{{ __('profile_trans.Request recharge') }}">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                @else
+                                    @if (!is_null($pay_iframe))
+                                        {{-- <script>topbar.show()</script> --}}
+                                        <p style="color: #34d8be;">Note: It may take a while before the charged amount is added to your account balance. Be patient, please</p>
+                                        <iframe src="{{$pay_iframe}}" frameborder="0" width="100%" height="500px" onload="topbar.hide()"></iframe>
+                                    @else
+                                        <form wire:submit.prevent='generatePayment'>
+                                            <div class="row">
+                                                <div class="col-12 justify-content-center">
+                                                    <div class="floating-label-wrap">
+                                                        <input type="number" class="floating-label-field floating-label-field--s3"
+                                                            id="reCost" min='0' wire:model='charge.amount' />
+                                                        <label for="reCost" class="floating-label">{{ __('profile_trans.Money to recharge') }}</label>
+                                                    </div>
+                                                    @error('charge.amount')
+                                                        <div class="text-danger">* {{$message}}</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="row justify-content-center my-3">
+                                                <div class="col-xl-12">
+                                                    <div class="form-buttons">
+                                                        <input style="padding-right: 2.5rem; padding-left: 2.5rem;" onclick="topbar.show()"
+                                                            type="submit" value="{{ __('profile_trans.Request recharge') }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    @endif
+                                @endif
+
                             </div>
                         </div>
                     </div>

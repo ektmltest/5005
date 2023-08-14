@@ -164,6 +164,8 @@ return [
         /*
          * Package Service Providers...
          */
+        Paytabscom\Laravel_paytabs\PaypageServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -175,7 +177,6 @@ return [
         App\Providers\RouteServiceProvider::class,
         // App\Providers\TelescopeServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class,
         App\Providers\TranslationManagerServiceProvider::class,
     ])->toArray(),
 

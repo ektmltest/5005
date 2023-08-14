@@ -49,4 +49,6 @@ return array (
   'BANK NAME' => 'BANK NAME',
   'OWNER NAME' => 'OWNER NAME',
   'no transactions yet' => 'no transactions yet.',
+  'bank transfer' => 'bank transfer',
+  'online payment' => 'online payment',
 );
