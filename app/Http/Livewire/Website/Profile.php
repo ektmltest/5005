@@ -234,7 +234,7 @@ class Profile extends Component
         $this->validate([
             'charge.amount' => 'required|numeric'
         ]);
-        
+
         $this->pay_iframe = $this->paytabService->generateIframe($this->charge['amount']);
     }
 
@@ -242,16 +242,19 @@ class Profile extends Component
         $this->status = $status;
         $this->resetPage();
         $this->withdrawal_status = 'withdrawal';
+        $this->reset('pay_iframe');
     }
 
     public function changeWithdrawalStatus($status) {
         $this->withdrawal_status = $status;
         $this->resetPage();
+        $this->reset('pay_iframe');
     }
 
     public function changeChargeMethod($charge_method) {
         $this->charge_method = $charge_method;
         $this->resetPage();
+        $this->reset('pay_iframe');
     }
 
     public function render()
