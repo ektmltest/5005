@@ -23,4 +23,6 @@ interface UserRepositoryInterface {
     public function changePassword(string $new_password, string $email);
 
     public function getAll($max = null);
+
+    public function addToBalance($id, $amount);
 }

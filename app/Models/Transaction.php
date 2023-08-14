@@ -14,4 +14,9 @@ class Transaction extends Model
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    // * attributes
+    public function setAmountAttribute($amount) {
+        $this->attributes['amount'] = round($amount, 2);
+    }
 }

@@ -146,4 +146,8 @@ class User extends Authenticatable
     public function getBalanceAttribute() {
         return round($this->attributes['balance'], 2);
     }
+
+    public function setBalanceAttribute($balance) {
+        $this->attributes['balance'] = round($balance, 2);
+    }
 }

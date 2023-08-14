@@ -147,4 +147,12 @@ class UserRepository implements UserRepositoryInterface {
     public function findById($id) {
         return User::find($id);
     }
+
+    public function addToBalance($id, $amount) {
+        $user = $this->findById($id);
+
+        $user->balance += $amount;
+
+        $user->save();
+    }
 }

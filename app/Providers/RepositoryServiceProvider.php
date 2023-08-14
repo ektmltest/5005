@@ -21,6 +21,7 @@ use App\Interfaces\TicketReplyAttachmentRepositoryInterface;
 use App\Interfaces\TicketReplyRepositoryInterface;
 use App\Interfaces\TicketRepositoryInterface;
 use App\Interfaces\TicketTypeRepositoryInterface;
+use App\Interfaces\TransactionRepositoryInterface;
 use App\Interfaces\UserRepositoryInterface;
 use App\Interfaces\VerifyEmailRepositoryInterface;
 use App\Repositories\CartRepository;
@@ -42,6 +43,7 @@ use App\Repositories\TicketReplyAttachmentRepository;
 use App\Repositories\TicketReplyRepository;
 use App\Repositories\TicketRepository;
 use App\Repositories\TicketTypeRepository;
+use App\Repositories\TransactionRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\VerifyEmailRepository;
 use Illuminate\Support\Facades\App;
@@ -94,6 +96,9 @@ class RepositoryServiceProvider extends ServiceProvider
         // ? qas
         App::bind(QasRepositoryInterface::class, QasRepository::class);
         App::bind(QasTypeRepositoryInterface::class, QasTypeRepository::class);
+
+        // ? transactions
+        App::bind(TransactionRepositoryInterface::class, TransactionRepository::class);
     }
 
     /**
