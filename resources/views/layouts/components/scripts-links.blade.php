@@ -26,29 +26,33 @@
 
 <script src="{{ asset('dashboard/assets/libs/swiper/js/swiper-bundle.min.js') }}"></script>
 <script>
-    const swiper = new Swiper('.swiper', {
-        // Optional parameters
-        direction: 'horizontal',
-        // loop: true,
+    var swiper;
 
-        // Navigation arrows
-        // navigation: {
-        //     nextEl: '.swiper-button-next',
-        //     prevEl: '.swiper-button-prev',
-        // },
+    var initSwiper = () => {
+        swiper = new Swiper('.swiper', {
+            // Optional parameters
+            direction: 'horizontal',
+            // loop: true,
 
-        pagination: {
-            el: '.swiper-pagination',
-        },
+            // Navigation arrows
+            // navigation: {
+            //     nextEl: '.swiper-button-next',
+            //     prevEl: '.swiper-button-prev',
+            // },
 
-        autoplay: {
-            delay: 1000,
-        },
+            pagination: {
+                el: '.swiper-pagination',
+            },
 
-        freeMode: true,
-        slidesPerView: 6,
-        spaceBetween: 30,
-    });
+            autoplay: {
+                delay: 1000,
+            },
+
+            freeMode: true,
+            slidesPerView: 6,
+            spaceBetween: 30,
+        });
+    }
 
     // Update swiper on window resize
     function updateSwiper() {
@@ -65,10 +69,13 @@
     }
 
     // Initial call
+    initSwiper();
     updateSwiper();
 
     // Listen for window resize events
     window.addEventListener('resize', updateSwiper);
+
+    window.addEventListener('initSwiper', initSwiper);
 </script>
 
 <!-- Turbo JS -->

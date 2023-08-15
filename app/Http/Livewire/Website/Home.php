@@ -55,10 +55,13 @@ class Home extends Component
         $ready_project = $this->readyProjectRepository->findById($ready_project['id']);
         $isAdded = $this->readyProjectRepository->toggleLike($ready_project);
 
-        if ($isAdded)
-            session()->flash('message', __('messages.done'));
-        else
-            session()->flash('message', __('messages.done'));
+        $this->dispatchBrowserEvent('initSwiper');
+        $this->dispatchBrowserEvent('resize');
+
+        // if ($isAdded)
+        //     session()->flash('message', __('messages.done'));
+        // else
+        //     session()->flash('message', __('messages.done'));
     }
 
 
