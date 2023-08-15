@@ -40,4 +40,8 @@ class ProjectCategory extends Model
         $this->locale = $locale;
         return $this->name;
     }
+
+    public function getStartPriceAttribute() {
+        return round($this->attributes['start_price'], 2);
+    }
 }
