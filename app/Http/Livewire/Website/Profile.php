@@ -231,9 +231,7 @@ class Profile extends Component
     }
 
     public function generatePayment() {
-        $this->validate([
-            'charge.amount' => 'required|numeric'
-        ]);
+        $this->validate(['charge.amount' => 'required|numeric']);
 
         $this->pay_iframe = $this->paytabService->generateIframe($this->charge['amount']);
     }

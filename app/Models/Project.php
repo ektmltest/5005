@@ -59,7 +59,7 @@ class Project extends Model
 
     // ** attributes ** //
     public function getPriceAttribute() {
-        if ($this->attributes['price'])
+        if (isset($this->attributes['price']) && $this->attributes['price'])
             return round($this->attributes['price'], 2);
         else
             return $this->calculateStartPrice();
