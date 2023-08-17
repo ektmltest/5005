@@ -203,12 +203,11 @@
                                     <div class="row justify-content-center my-3">
                                         <div class="col-xl-12">
                                             <div class="form-buttons">
-                                                <input {{$this->isThereProfileImage() ? '' : 'disabled'}} onclick="topbar.show()" style="padding-right: 2.5rem; padding-left: 2.5rem;"
-                                                    type="submit" value="{{ __('profile_trans.Save Changes') }}">
-
                                                 <div id="profile-image-spinner" wire:loading class="spinner-border spinner-border-sm text-primary" role="status">
                                                     <span class="sr-only">Loading...</span>
                                                 </div>
+                                                <input wire:loading.attr='disabled' onclick="topbar.show()" style="padding-right: 2.5rem; padding-left: 2.5rem;"
+                                                    type="submit" value="{{ __('profile_trans.Save Changes') }}">
                                             </div>
                                         </div>
                                     </div>
