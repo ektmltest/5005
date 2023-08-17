@@ -185,13 +185,10 @@
                                     <div class="row mb-4">
                                         <div class="col-sm-12 input-box">
                                             <div class="floating-label-wrap">
-                                                <input wire:model='uploads.file' type="file" oninput="topbar.show(); showSpinner('profile-image-spinner');"
+                                                <input wire:model='uploads.file' type="file" oninput="topbar.show();"
                                                     class="floating-label-field floating-label-field--s3 submit-btn">
                                                 <label for="fileImg" class="floating-label">
                                                     {{ __('profile_trans.Image') }} *
-                                                    <div id="profile-image-spinner" class="spinner-border spinner-border-sm text-primary d-none" role="status">
-                                                        <span class="sr-only">Loading...</span>
-                                                    </div>
                                                 </label>
                                                 @error('uploads.file')
                                                 <span class="text-danger error">{{ $message }}</span>
@@ -339,13 +336,10 @@
                                         <div class="row">
                                             <div class="col-12 justify-content-center mt-4">
                                                 <div class="floating-label-wrap">
-                                                    <input type="file" id="fileImg" oninput="topbar.show(); showSpinner('charge-image-spinner');"
+                                                    <input type="file" id="fileImg" oninput="topbar.show();"
                                                         class="floating-label-field floating-label-field--s3 submit-btn" wire:model='charge.file'>
                                                     <label for="fileImg" class="floating-label">
                                                         {{ __('profile_trans.Add a bank transfer photo') }} *
-                                                        <div id="charge-image-spinner" class="spinner-border spinner-border-sm text-primary d-none" role="status">
-                                                            <span class="sr-only">Loading...</span>
-                                                        </div>
                                                     </label>
                                                 </div>
                                                 @error('charge.file')
@@ -357,7 +351,10 @@
                                         <div class="row justify-content-center my-3">
                                             <div class="col-xl-12">
                                                 <div class="form-buttons">
-                                                    <input {{$this->isThereChargeImage() ? '' : 'disabled'}}
+                                                    <div id="profile-image-spinner" wire:loading class="spinner-border spinner-border-sm text-primary" role="status">
+                                                        <span class="sr-only">Loading...</span>
+                                                    </div>
+                                                    <input wire:loading.attr='disabled'
                                                         style="padding-right: 2.5rem; padding-left: 2.5rem;" onclick="topbar.show()"
                                                         type="submit" value="{{ __('profile_trans.Request recharge') }}">
                                                 </div>

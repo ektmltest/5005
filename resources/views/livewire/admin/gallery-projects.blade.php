@@ -219,7 +219,7 @@
                                                     <span class="sr-only">Loading...</span>
                                                 </div>
                                             </label>
-                                            <input type="file" oninput="topbar.show(); showSpinner('profile-image-spinner');" class="form-control" wire:model="image">
+                                            <input type="file" oninput="topbar.show();" class="form-control" wire:model="image">
                                             @error("image") <span class="error">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
@@ -228,7 +228,10 @@
                                 <div class="row mt-4">
                                     <div class="col-lg-6">
                                         <div class="w-50 mb-3 mt-3 mt-lg-0">
-                                            <button type="submit" class="btn btn-success form-control">{{
+                                            <div id="profile-image-spinner" wire:loading class="spinner-border spinner-border-sm text-primary" role="status">
+                                                <span class="sr-only">Loading...</span>
+                                            </div>
+                                            <button wire:loading.attr='disabled' type="submit" class="btn btn-success form-control">{{
                                                 __('dashboard_trans.ADD') }}</button>
                                         </div>
                                     </div>

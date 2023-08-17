@@ -81,12 +81,15 @@
                                                 <span class="sr-only">Loading...</span>
                                             </div>
                                         </label>
-                                        <input class="form-control" oninput="topbar.show(); showSpinner('profile-image-spinner');" type="file" wire:model='image' />
+                                        <input class="form-control" oninput="topbar.show();" type="file" wire:model='image' />
                                         @error('image') <span class="error">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
 
-                                <button type="submit" class="btn btn-info">{{
+                                <div id="profile-image-spinner" wire:loading class="spinner-border spinner-border-sm text-primary" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <button wire:loading.attr='disabled' type="submit" class="btn btn-info">{{
                                     __('dashboard_trans.ADD') }}</button>
                             </form>
                         </div>

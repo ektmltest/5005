@@ -164,7 +164,7 @@
                                                             <span class="sr-only">Loading...</span>
                                                         </div>
                                                     </label> <br>
-                                                    <input wire:model='files.{{$i}}' oninput="topbar.show(); showSpinner('profile-image-spinner{{$i}}');" type="file" class="floating-label-field floating-label-field--s3" id="attachInput{{$i}}" />
+                                                    <input wire:model='files.{{$i}}' oninput="topbar.show();" type="file" class="floating-label-field floating-label-field--s3" id="attachInput{{$i}}" />
 
                                                     @if ($i == $noFiles - 1)
                                                     <input onclick="topbar.show()" wire:click='addBtn' type="button" value="{{ucwords(__('tickets_trans.add attachment'))}}" id="addAttachBtn" class="btn btn-primary">
@@ -178,7 +178,10 @@
                                     @endfor
                                 </div>
 
-                                <button class="btn btn-outline-success mt-3" type="submit">{{__('dashboard_trans.ADD')}} <i class="fa fa-paper-plane"></i></button>
+                                <div id="profile-image-spinner" wire:loading class="spinner-border spinner-border-sm text-primary" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <button wire:loading.attr='disabled' class="btn btn-outline-success mt-3" type="submit">{{__('dashboard_trans.ADD')}} <i class="fa fa-paper-plane"></i></button>
                             </form>
                         </div>
                     </div>

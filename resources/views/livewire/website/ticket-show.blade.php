@@ -146,15 +146,12 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-8">
                                             <div class="floating-label-wrap">
-                                                <input wire:model='files.{{$i}}' oninput="topbar.show(); showSpinner('profile-image-spinner');" type="file"
+                                                <input wire:model='files.{{$i}}' oninput="topbar.show();" type="file"
                                                     class="floating-label-field floating-label-field--s3"
                                                     id="attachInput{{$i}}" />
                                                 <label for="attachInput{{$i}}"
                                                     class="floating-label">
                                                     {{ucwords(__('tickets_trans.attachment'))}}
-                                                    <div id="profile-image-spinner" class="spinner-border spinner-border-sm text-primary d-none" role="status">
-                                                        <span class="sr-only">Loading...</span>
-                                                    </div>
                                                 </label>
                                             </div>
                                         </div>
@@ -177,7 +174,10 @@
                             </div>
 
                             <div class="form-buttons">
-                                <input onclick="topbar.show()" type="submit" class="mt-1"
+                                <div id="profile-image-spinner" wire:loading class="spinner-border spinner-border-sm text-primary" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <input wire:loading.attr='disabled' onclick="topbar.show()" type="submit" class="mt-1"
                                     value="{{__('myprojects_trans.reply')}}">
                             </div>
                         </form>
