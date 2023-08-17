@@ -185,13 +185,16 @@
                                     <div class="row mb-4">
                                         <div class="col-sm-12 input-box">
                                             <div class="floating-label-wrap">
-                                                <input wire:model='uploads.file' type="file" oninput="topbar.show(); showSpinner('profile-image-spinner');"
+                                                <input wire:model='uploads.file' type="file" oninput="topbar.show();"
                                                     class="floating-label-field floating-label-field--s3 submit-btn">
                                                 <label for="fileImg" class="floating-label">
                                                     {{ __('profile_trans.Image') }} *
+                                                    @if (isset($uploads['file']) && $uploads['file']->isUploading())
                                                     <div id="profile-image-spinner" class="spinner-border spinner-border-sm text-primary d-none" role="status">
                                                         <span class="sr-only">Loading...</span>
                                                     </div>
+                                                    @endif
+
                                                 </label>
                                                 @error('uploads.file')
                                                 <span class="text-danger error">{{ $message }}</span>
