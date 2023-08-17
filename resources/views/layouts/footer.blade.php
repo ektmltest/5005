@@ -182,6 +182,13 @@
         addEventClipboard();
     })
 
+    window.addEventListener('my:remove-spinner', (e) => {
+        elems = document.getElementsByClassName('spinner-border');
+        elems.forEach(element => {
+            element.classList.add('d-none');
+        });
+    });
+
     window.addEventListener('my:message.success', (e) => {
         $.notify(e.detail.message, 'success')
     })

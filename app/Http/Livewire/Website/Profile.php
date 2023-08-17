@@ -260,6 +260,7 @@ class Profile extends Component
     public function render()
     {
         $this->dispatchBrowserEvent('my:loaded');
+        $this->dispatchBrowserEvent('my:remove-spinner');
         return view('livewire.website.profile', [
             'user_bank_cards' => $this->profileRepository->getBankCards(paginate: true, num: 5),
         ]);

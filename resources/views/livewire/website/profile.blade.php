@@ -185,10 +185,14 @@
                                     <div class="row mb-4">
                                         <div class="col-sm-12 input-box">
                                             <div class="floating-label-wrap">
-                                                <input wire:model='uploads.file' type="file" wire:ignore
+                                                <input wire:model='uploads.file' type="file" wire:ignore oninput="topbar.show(); showSpinner('profile-image-spinner');"
                                                     class="floating-label-field floating-label-field--s3 submit-btn">
-                                                <label for="fileImg" class="floating-label">{{ __('profile_trans.Image')
-                                                    }} *</label>
+                                                <label for="fileImg" class="floating-label">
+                                                    {{ __('profile_trans.Image') }} *
+                                                    <div id="profile-image-spinner" class="spinner-border spinner-border-sm text-primary d-none" role="status">
+                                                        <span class="sr-only">Loading...</span>
+                                                    </div>
+                                                </label>
                                                 @error('uploads.file')
                                                 <span class="text-danger error">{{ $message }}</span>
                                                 @enderror
@@ -332,9 +336,14 @@
                                         <div class="row">
                                             <div class="col-12 justify-content-center mt-4">
                                                 <div class="floating-label-wrap">
-                                                    <input type="file" id="fileImg" wire:ignore
+                                                    <input type="file" id="fileImg" wire:ignore oninput="topbar.show(); showSpinner('charge-image-spinner');"
                                                         class="floating-label-field floating-label-field--s3 submit-btn" wire:model='charge.file'>
-                                                    <label for="fileImg" class="floating-label">{{ __('profile_trans.Add a bank transfer photo') }} *</label>
+                                                    <label for="fileImg" class="floating-label">
+                                                        {{ __('profile_trans.Add a bank transfer photo') }} *
+                                                        <div id="charge-image-spinner" class="spinner-border spinner-border-sm text-primary d-none" role="status">
+                                                            <span class="sr-only">Loading...</span>
+                                                        </div>
+                                                    </label>
                                                 </div>
                                                 @error('charge.file')
                                                     <div class="text-danger">* {{$message}}</div>
@@ -610,4 +619,11 @@
         $.notify("{{ session('error') }}", 'error');
     </script>
     @endif
+
+    <script>
+        function showSpinner(id) {
+            elem = document.getElementById(id);
+            elem.classList.remove('d-none');
+        }
+    </script>
 </section>
