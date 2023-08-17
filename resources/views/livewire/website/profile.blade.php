@@ -203,7 +203,7 @@
                                     <div class="row justify-content-center my-3">
                                         <div class="col-xl-12">
                                             <div class="form-buttons">
-                                                <input {{!isset($uploads['file']) ? 'disabled' : ''}} onclick="topbar.show()" style="padding-right: 2.5rem; padding-left: 2.5rem;"
+                                                <input {{$this->isThereProfileImage() ? '' : 'disabled'}} onclick="topbar.show()" style="padding-right: 2.5rem; padding-left: 2.5rem;"
                                                     type="submit" value="{{ __('profile_trans.Save Changes') }}">
                                             </div>
                                         </div>
@@ -354,7 +354,7 @@
                                         <div class="row justify-content-center my-3">
                                             <div class="col-xl-12">
                                                 <div class="form-buttons">
-                                                    <input {{!isset($charge['file']) ? 'disabled' : ''}}
+                                                    <input {{$this->isThereChargeImage() ? '' : 'disabled'}}
                                                         style="padding-right: 2.5rem; padding-left: 2.5rem;" onclick="topbar.show()"
                                                         type="submit" value="{{ __('profile_trans.Request recharge') }}">
                                                 </div>
@@ -619,11 +619,4 @@
         $.notify("{{ session('error') }}", 'error');
     </script>
     @endif
-
-    <script>
-        function showSpinner(id) {
-            elem = document.getElementById(id);
-            elem.classList.remove('d-none');
-        }
-    </script>
 </section>

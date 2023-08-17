@@ -41,4 +41,11 @@
 
 <script src="{{ asset('assets/js/topbar.js') }}"></script>
 
+<script>
+    function showSpinner(id) {
+        elem = document.getElementById(id);
+        elem.classList.remove('d-none');
+    }
+</script>
+
 @livewireStyles()

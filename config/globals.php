@@ -9,4 +9,5 @@ return [
     'home_store_projects' => 6,
     'home_news' => 2,
     'max_replies' => 5,
+    'max_file_size' => 5120,
 ];

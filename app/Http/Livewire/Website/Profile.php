@@ -91,7 +91,7 @@ class Profile extends Component
     }
 
     public function uploadImage() {
-        $this->validate(['uploads.file' => 'required|image']);
+        $this->validate(['uploads.file' => 'required|image|max:' . config('globals.max_file_size')]);
 
         try {
 
@@ -249,6 +249,14 @@ class Profile extends Component
     public function changeChargeMethod($charge_method) {
         $this->resetAll();
         $this->charge_method = $charge_method;
+    }
+
+    public function isThereProfileImage() {
+        return isset($this->uploads['file']);
+    }
+
+    public function isThereChargeImage() {
+        return isset($this->charge['file']);
     }
 
     private function resetAll() {
