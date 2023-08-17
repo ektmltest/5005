@@ -213,8 +213,13 @@
 
                                     <div class="col-lg-6">
                                         <div class="mb-3">
-                                            <label class="form-label">{{ __('profile_trans.Image') }}</label>
-                                            <input type="file" class="form-control" wire:model="image">
+                                            <label class="form-label">
+                                                {{ __('profile_trans.Image') }}
+                                                <div id="profile-image-spinner" class="spinner-border spinner-border-sm text-primary d-none" role="status">
+                                                    <span class="sr-only">Loading...</span>
+                                                </div>
+                                            </label>
+                                            <input type="file" oninput="topbar.show(); showSpinner('profile-image-spinner');" class="form-control" wire:model="image">
                                             @error("image") <span class="error">{{ $message }}</span> @enderror
                                         </div>
                                     </div>

@@ -75,8 +75,13 @@
 
                                 <div class="row mt-4">
                                     <div class="col-lg-6 mb-3 mt-3 mt-lg-0">
-                                        <label class="form-label">{{ __('dashboard_trans.ADD PHOTO') }}</label>
-                                        <input class="form-control" type="file" wire:model='image' />
+                                        <label class="form-label">
+                                            {{ __('dashboard_trans.ADD PHOTO') }}
+                                            <div id="profile-image-spinner" class="spinner-border spinner-border-sm text-primary d-none" role="status">
+                                                <span class="sr-only">Loading...</span>
+                                            </div>
+                                        </label>
+                                        <input class="form-control" oninput="topbar.show(); showSpinner('profile-image-spinner');" type="file" wire:model='image' />
                                         @error('image') <span class="error">{{ $message }}</span> @enderror
                                     </div>
                                 </div>

@@ -158,8 +158,13 @@
                                         <div class="form-row mt-3">
                                             <div class="form-group col-md-8">
                                                 <div class="floating-label-wrap">
-                                                    <label for="attachInput{{$i}}" class="floating-label">{{ucwords(__('tickets_trans.attachment'))}}</label> <br>
-                                                    <input wire:model='files.{{$i}}' type="file" class="floating-label-field floating-label-field--s3" id="attachInput{{$i}}" />
+                                                    <label for="attachInput{{$i}}" class="floating-label">
+                                                        {{ucwords(__('tickets_trans.attachment'))}}
+                                                        <div id="profile-image-spinner" class="spinner-border spinner-border-sm text-primary d-none" role="status">
+                                                            <span class="sr-only">Loading...</span>
+                                                        </div>
+                                                    </label> <br>
+                                                    <input wire:model='files.{{$i}}' oninput="topbar.show(); showSpinner('profile-image-spinner');" type="file" class="floating-label-field floating-label-field--s3" id="attachInput{{$i}}" />
 
                                                     @if ($i == $noFiles - 1)
                                                     <input onclick="topbar.show()" wire:click='addBtn' type="button" value="{{ucwords(__('tickets_trans.add attachment'))}}" id="addAttachBtn" class="btn btn-primary">

@@ -54,6 +54,13 @@
         }
     </style>
 
+    <script>
+        function showSpinner(id) {
+            elem = document.getElementById(id);
+            elem.classList.remove('d-none');
+        }
+    </script>
+
 </head>
 <body>
     <div id="layout-wrapper">

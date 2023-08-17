@@ -154,19 +154,25 @@
                             </div>
 
                             <div class="col-xl-12">
-                                @for ($i = 0; $i < $noFiles; $i++) <div class="form-group col-xl-12 mt-5">
-                                    <div class="floating-label-wrap">
-                                        <input wire:model='files.{{$i}}' type="file"
-                                            class="floating-label-field floating-label-field--s3"
-                                            id="attachInput{{$i}}" />
-                                        <label for="attachInput{{$i}}"
-                                            class="floating-label">{{ucwords(__('tickets_trans.attachment'))}}</label>
+                                @for ($i = 0; $i < $noFiles; $i++)
+                                    <div class="form-group col-xl-12 mt-5">
+                                        <div class="floating-label-wrap">
+                                            <input wire:model='files.{{$i}}' oninput="topbar.show(); showSpinner('profile-image-spinner');" type="file"
+                                                class="floating-label-field floating-label-field--s3"
+                                                id="attachInput{{$i}}" />
+                                            <label for="attachInput{{$i}}"
+                                                class="floating-label">
+                                                {{ucwords(__('tickets_trans.attachment'))}}
+                                                <div id="profile-image-spinner" class="spinner-border spinner-border-sm text-primary d-none" role="status">
+                                                    <span class="sr-only">Loading...</span>
+                                                </div>
+                                            </label>
+                                        </div>
                                     </div>
-                            </div>
-                            @error("files.$i")
-                            <span class="text-danger">* {{$message}}</span>
-                            @enderror
-                            @endfor
+                                    @error("files.$i")
+                                    <span class="text-danger">* {{$message}}</span>
+                                    @enderror
+                                @endfor
                         </div>
 
                         <div class="form-group col-md-4">
