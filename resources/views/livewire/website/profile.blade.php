@@ -185,7 +185,7 @@
                                     <div class="row mb-4">
                                         <div class="col-sm-12 input-box">
                                             <div class="floating-label-wrap">
-                                                <input wire:model='uploads.file' type="file" wire:ignore oninput="topbar.show(); showSpinner('profile-image-spinner');"
+                                                <input wire:model='uploads.file' type="file" oninput="topbar.show(); showSpinner('profile-image-spinner');"
                                                     class="floating-label-field floating-label-field--s3 submit-btn">
                                                 <label for="fileImg" class="floating-label">
                                                     {{ __('profile_trans.Image') }} *
@@ -336,7 +336,7 @@
                                         <div class="row">
                                             <div class="col-12 justify-content-center mt-4">
                                                 <div class="floating-label-wrap">
-                                                    <input type="file" id="fileImg" wire:ignore oninput="topbar.show(); showSpinner('charge-image-spinner');"
+                                                    <input type="file" id="fileImg" oninput="topbar.show(); showSpinner('charge-image-spinner');"
                                                         class="floating-label-field floating-label-field--s3 submit-btn" wire:model='charge.file'>
                                                     <label for="fileImg" class="floating-label">
                                                         {{ __('profile_trans.Add a bank transfer photo') }} *
