@@ -88,18 +88,18 @@
             </div>
         </div>
 
-        {{-- <div class="col-xl-12">
+        <div class="col-xl-12">
             <div class="form-group">
                 <div class="floating-label-wrap">
                     <input type="password" class="floating-label-field floating-label-field--s3" id="field-5"
-                        name="confirmPassword" wire:model="confirmPassword" placeholder="{{ucwords(__('register_trans.register.input.confirm_password'))}}" data-parsley-equalto="#field-4"required="">
+                        name="confirmPassword" wire:model="password_confirmation" placeholder="{{ucwords(__('register_trans.register.input.confirm_password'))}}" data-parsley-equalto="#field-4"required="">
                         <label for="field-5" class="floating-label">{{ucwords(__('register_trans.register.input.confirm_password'))}}</label>
-                        @error('confirmPassword')
+                        @error('password_confirmation')
                             <span class="text-danger">* {{$message}}</span>
                         @enderror
                 </div><!-- .floating-label-wrap -->
             </div>
-        </div> --}}
+        </div>
 
         <div class="col-xl-12">
             <div class="checkbox-group">

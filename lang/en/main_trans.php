@@ -42,5 +42,5 @@ return array (
   'Dashboard' => 'Admin Dashboard',
   'NEXT' => 'NEXT',
   'PREVIOUS' => 'PREVIOUS',
-  'load more' => 'load more',
+  'load more' => 'Load More',
 );

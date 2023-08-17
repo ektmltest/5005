@@ -25,9 +25,9 @@ Route::group(['middleware' => 'auth'], function () {
 
         // ? Manage Projects
         Route::middleware('check.permission:manage-projects')->get('projects', fn () => view('admin.projects.manage-project'))->name('staffProjects');
-        Route::get('projects/{id}', fn ($id) => view('admin.projects.project-show', compact('id')))->name('staffProjects.show');
         Route::middleware('check.permission:manage-projects-sections')->get('projects/sections', fn() => view('admin.projects.project-sections'))->name('staffProjectSections');
         Route::middleware('check.permission:manage-projects-categories')->get('projects/categories', fn() => view('admin.projects.project-categories'))->name('staffProjectCategories');
+        Route::middleware('check.permission:manage-projects')->get('projects/{id}', fn ($id) => view('admin.projects.project-show', compact('id')))->name('staffProjects.show');
 
         // ? CATALOG MANAGMENT
         Route::middleware('check.permission:manage-catalog-projects')->get('readyProjects', fn() => view('admin.catalogs.readyProjects'))->name('readyProjects');

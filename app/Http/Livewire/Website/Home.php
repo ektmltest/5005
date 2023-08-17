@@ -44,6 +44,9 @@ class Home extends Component
 
         $this->reset();
         session()->flash('message', __('messages.done'));
+
+        $this->dispatchBrowserEvent('initSwiper');
+        $this->dispatchBrowserEvent('resize');
     }
 
     public function toggleLike($ready_project)

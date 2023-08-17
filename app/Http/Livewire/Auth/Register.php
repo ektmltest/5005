@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class Register extends Component
 {
-    public $fname, $lname, $email, $password, $phone, $state, $country_code, $iAgree;
+    public $fname, $lname, $email, $password, $password_confirmation, $phone, $state, $country_code, $iAgree;
 
 
     public function render()
@@ -20,8 +20,8 @@ class Register extends Component
     protected $rules = [
         'fname' => 'required|string|max:255',
         'lname' => 'required|string|max:255',
-        'email' => 'required|email|max:255',
-        'password' => 'required|min:8',
+        'email' => 'required|email|max:255|unique:users,email',
+        'password' => 'required|confirmed|min:8',
         'phone' => 'required|numeric',
     ];
 

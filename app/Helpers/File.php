@@ -21,8 +21,8 @@ trait File
     {
         $filename = time() . '-' . Str::random(16);
 
-        if ($image || $this->isImageFile($file))
-            return $this->convertImageToWebp($file, $dir, $filename);
+        // if ($image || $this->isImageFile($file))
+        //     return $this->convertImageToWebp($file, $dir, $filename);
 
         return ('assets/' . $file->storeAs("$dir/attachment", $filename . '.' . $file->getClientOriginalExtension(), 'file'));
     }

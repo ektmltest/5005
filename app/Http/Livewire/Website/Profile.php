@@ -237,22 +237,24 @@ class Profile extends Component
     }
 
     public function changeStatus($status) {
+        $this->resetAll();
         $this->status = $status;
-        $this->resetPage();
-        $this->withdrawal_status = 'withdrawal';
-        $this->reset('pay_iframe');
     }
 
     public function changeWithdrawalStatus($status) {
+        $this->resetAll();
         $this->withdrawal_status = $status;
-        $this->resetPage();
-        $this->reset('pay_iframe');
     }
 
     public function changeChargeMethod($charge_method) {
+        $this->resetAll();
         $this->charge_method = $charge_method;
+    }
+
+    private function resetAll() {
+        $this->resetExcept('status');
         $this->resetPage();
-        $this->reset('pay_iframe');
+        $this->resetValidation();
     }
 
     public function render()

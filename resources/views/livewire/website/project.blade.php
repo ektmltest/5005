@@ -147,9 +147,9 @@
                         <img class="img-fluid" src="{{ $project->image }}" alt="">
                     </div>
 
-                    <div style="width: 40%;">
+                    <div style="width: 40%;" class="mb-3">
                         <a href="https://demo.ektml.com/4" target="_blank"
-                            class="btn btn-block btn-icon btn-purple mt-4 justify-content-center"><i
+                            class="bttn btn-block btn-icon btn-purple mt-4 justify-content-center"><i
                                 class="bx bx-show"></i> {{ucwords(__('project_trans.show example'))}}</a>
                     </div>
 

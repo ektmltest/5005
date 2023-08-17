@@ -1,4 +1,5 @@
 <section id="services" class="single-job inner-services">
+
     <div class="container">
         <div class="container">
             <div class="main-body">
@@ -184,10 +185,10 @@
                                     <div class="row mb-4">
                                         <div class="col-sm-12 input-box">
                                             <div class="floating-label-wrap">
-                                                <input wire:model='uploads.file' type="file" name="file" pImgInput
-                                                    class="floating-label-field floating-label-field--s3">
+                                                <input wire:model='uploads.file' type="file" wire:ignore
+                                                    class="floating-label-field floating-label-field--s3 submit-btn">
                                                 <label for="fileImg" class="floating-label">{{ __('profile_trans.Image')
-                                                    }}</label>
+                                                    }} *</label>
                                                 @error('uploads.file')
                                                 <span class="text-danger error">{{ $message }}</span>
                                                 @enderror
@@ -198,7 +199,7 @@
                                     <div class="row justify-content-center my-3">
                                         <div class="col-xl-12">
                                             <div class="form-buttons">
-                                                <input onclick="topbar.show()" style="padding-right: 2.5rem; padding-left: 2.5rem;"
+                                                <input {{!isset($uploads['file']) ? 'disabled' : ''}} onclick="topbar.show()" style="padding-right: 2.5rem; padding-left: 2.5rem;"
                                                     type="submit" value="{{ __('profile_trans.Save Changes') }}">
                                             </div>
                                         </div>
@@ -220,7 +221,7 @@
                                     <div class="row mb-4">
                                         <div class="col-sm-12 input-box">
                                             <div class="floating-label-wrap">
-                                                <input type="text" class="floating-label-field floating-label-field--s3"
+                                                <input type="password" class="floating-label-field floating-label-field--s3"
                                                     id="oldPassword" wire:model='password.old'>
                                                 <label for="oldPassword" class="floating-label">{{ __('profile_trans.Old Password') }}</label>
                                                 @error('password.old')
@@ -232,7 +233,7 @@
                                     <div class="row mb-4">
                                         <div class="col-sm-12 input-box">
                                             <div class="floating-label-wrap">
-                                                <input type="text" class="floating-label-field floating-label-field--s3"
+                                                <input type="password" class="floating-label-field floating-label-field--s3"
                                                     id="newPassword" wire:model='password.new'>
                                                 <label for="newPassword" class="floating-label">{{ __('profile_trans.New Password') }}</label>
                                                 @error('password.new')
@@ -244,7 +245,7 @@
                                     <div class="row mb-4">
                                         <div class="col-sm-12 input-box">
                                             <div class="floating-label-wrap">
-                                                <input type="text" class="floating-label-field floating-label-field--s3"
+                                                <input type="password" class="floating-label-field floating-label-field--s3"
                                                     id="newPasswordConfirm" wire:model='password.new_confirmation'>
                                                 <label for="newPasswordConfirm" class="floating-label">{{
                                                     __('profile_trans.Confirm the new password') }}</label>
@@ -318,7 +319,7 @@
                                         <div class="row">
                                             <div class="col-12 justify-content-center">
                                                 <div class="floating-label-wrap">
-                                                    <input type="number" class="floating-label-field floating-label-field--s3"
+                                                    <input type="number" step="any" class="floating-label-field floating-label-field--s3"
                                                         id="reCost" min='0' wire:model='charge.amount' />
                                                     <label for="reCost" class="floating-label">{{ __('profile_trans.Money to recharge') }}</label>
                                                 </div>
@@ -331,9 +332,9 @@
                                         <div class="row">
                                             <div class="col-12 justify-content-center mt-4">
                                                 <div class="floating-label-wrap">
-                                                    <input type="file" id="fileImg"
-                                                        class="floating-label-field floating-label-field--s3" wire:model='charge.file'>
-                                                    <label for="fileImg" class="floating-label">{{ __('profile_trans.Add a bank transfer photo') }}</label>
+                                                    <input type="file" id="fileImg" wire:ignore
+                                                        class="floating-label-field floating-label-field--s3 submit-btn" wire:model='charge.file'>
+                                                    <label for="fileImg" class="floating-label">{{ __('profile_trans.Add a bank transfer photo') }} *</label>
                                                 </div>
                                                 @error('charge.file')
                                                     <div class="text-danger">* {{$message}}</div>
@@ -344,7 +345,8 @@
                                         <div class="row justify-content-center my-3">
                                             <div class="col-xl-12">
                                                 <div class="form-buttons">
-                                                    <input style="padding-right: 2.5rem; padding-left: 2.5rem;" onclick="topbar.show()"
+                                                    <input {{!isset($charge['file']) ? 'disabled' : ''}}
+                                                        style="padding-right: 2.5rem; padding-left: 2.5rem;" onclick="topbar.show()"
                                                         type="submit" value="{{ __('profile_trans.Request recharge') }}">
                                                 </div>
                                             </div>
@@ -361,7 +363,7 @@
                                             <div class="row">
                                                 <div class="col-12 justify-content-center">
                                                     <div class="floating-label-wrap">
-                                                        <input type="number" class="floating-label-field floating-label-field--s3"
+                                                        <input type="number" step="any" class="floating-label-field floating-label-field--s3"
                                                             id="reCost" min='0' wire:model='charge.amount' />
                                                         <label for="reCost" class="floating-label">{{ __('profile_trans.Money to recharge') }}</label>
                                                     </div>
@@ -447,7 +449,7 @@
                                             <div class="row">
                                                 <div class="col-12 justify-content-center mt-4">
                                                     <div class="floating-label-wrap">
-                                                        <input type="number" wire:model='withdrawal.amount'
+                                                        <input type="number" step="any" wire:model='withdrawal.amount'
                                                             class="floating-label-field floating-label-field--s3">
                                                         <label for="balance" class="floating-label">{{ __('profile_trans.Amount to be withdrawn')}}</label>
                                                     </div>
@@ -578,7 +580,7 @@
 
                                                     </tr>
                                                 @empty
-                                                    <tr><td colspan="3" class="text-center">{{__('profile_trans.no transactions yet')}}</td></tr>
+                                                    <tr><td colspan="4" class="text-center">{{__('profile_trans.no transactions yet')}}</td></tr>
                                                 @endforelse
                                             </tbody>
                                         </table>
