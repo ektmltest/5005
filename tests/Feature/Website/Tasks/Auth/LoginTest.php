@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Website\Tasks;
+namespace Tests\Feature\Website\Tasks\Auth;
 
 use App\Http\Livewire\Auth\Login;
 use App\Models\User;
@@ -27,6 +27,9 @@ class LoginTest extends TestCase
             ->assertHasErrors([ 'email' => 'required' ]);
     }
 
+    /**
+     * @group LoginError
+     */
     public function test_website_login_email_exists(): void
     {
         Livewire::test(Login::class)
@@ -35,6 +38,9 @@ class LoginTest extends TestCase
             ->assertHasErrors([ 'email' => 'exists' ]);
     }
 
+    /**
+     * @group LoginError
+     */
     public function test_website_login_email_should_be_email(): void
     {
         Livewire::test(Login::class)
@@ -50,6 +56,9 @@ class LoginTest extends TestCase
             ->assertHasErrors([ 'password' => 'required' ]);
     }
 
+    /**
+     * @group LoginError
+     */
     public function test_website_login_password_min(): void
     {
         Livewire::test(Login::class)
@@ -64,6 +73,9 @@ class LoginTest extends TestCase
             ->assertHasErrors([ 'password' ]);
     }
 
+    /**
+     * @group LoginError
+     */
     public function test_website_login_password_wrong() {
         Livewire::test(Login::class)
             ->set('email', User::find(1)->email)
@@ -72,12 +84,17 @@ class LoginTest extends TestCase
             ->assertHasErrors([ 'credentials' ]);
     }
 
+    /**
+     * @group LoginError
+     */
     public function test_website_login_success() {
         Livewire::test(Login::class)
             ->set('email', User::find(1)->email)
-            ->set('password', '123456789')
+            ->set('password', '@testTest123')
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect(route('home'));
+
+        auth()->logout();
     }
 }

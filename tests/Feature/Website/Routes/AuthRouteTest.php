@@ -46,6 +46,15 @@ class AuthRouteTest extends TestCase
         });
     }
 
+    public function test_my_projects_show_route_that_not_belongs_to_auth_user(): void
+    {
+        $user = User::find(1);
+        $this->assertWithAuth($user, function () use ($user) {
+            $this->get(route('myProjects.show', Project::where('user_id', '!=', $user->id)->first()->id))
+                ->assertStatus(401);
+        });
+    }
+
     public function test_tickets_route(): void
     {
         $response = $this->get(route('tickets'));
@@ -72,6 +81,15 @@ class AuthRouteTest extends TestCase
             $this->get(route('tickets.show', $user->tickets()->first()->id))
                 ->assertStatus(200)
                 ->assertSeeLivewire('website.ticket-show');
+        });
+    }
+
+    public function test_tickets_show_route_that_not_belongs_to_auth_user(): void
+    {
+        $user = User::find(1);
+        $this->assertWithAuth($user, function () use ($user) {
+            $this->get(route('tickets.show', Ticket::where('user_id', '!=', $user->id)->first()->id))
+                ->assertStatus(401);
         });
     }
 

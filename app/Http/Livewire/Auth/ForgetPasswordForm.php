@@ -38,7 +38,6 @@ class ForgetPasswordForm extends Component
 
         $this->resetPasswordModel = $this->resetPasswordTokenRepository->find($this->email, $this->token);
 
-        // dd($this->resetPasswordModel);
         if (!$this->resetPasswordModel) {
             $this->addError('url', trans('errors.url_error'));
         }
@@ -64,8 +63,7 @@ class ForgetPasswordForm extends Component
                 $user = $this->userRepository->changePassword($this->password, $this->email);
 
                 if (!$user)
-                    throw new Exception('Error while getting user by email!');
-
+                    $this->addError('credentials', 'email doesn\'t exists!');
 
                 $this->resetPasswordTokenRepository->delete($this->email, $this->token);
 

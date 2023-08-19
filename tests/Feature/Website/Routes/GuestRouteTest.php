@@ -7,11 +7,12 @@ use App\Repositories\ResetPasswordTokenRepository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\Helpers\MyAssert;
+use Tests\Helpers\TestResponseGenerator;
 use Tests\TestCase;
 
 class GuestRouteTest extends TestCase
 {
-    use MyAssert;
+    use MyAssert, TestResponseGenerator;
     /**
      * A basic feature test example.
      */
@@ -53,14 +54,12 @@ class GuestRouteTest extends TestCase
 
     public function test_forget_password_form_route(): void
     {
-        $model = (new ResetPasswordTokenRepository)->generate(User::find(1)->email);
-        $response = $this->get(route('password.forget.form', $model->token));
+        $response = $this->generateForgetPasswordFormTestReponse();
         $response->assertStatus(200);
 
         $user = User::find(1);
         $this->assertWithAuth($user, function () {
-            $model = (new ResetPasswordTokenRepository)->generate(User::find(1)->email);
-            $response = $this->get(route('password.forget.form', $model->token));
+            $response = $this->generateForgetPasswordFormTestReponse();
             $this->assertRedirectHome($response);
         });
     }

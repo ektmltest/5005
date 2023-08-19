@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Website\Tasks;
+namespace Tests\Feature\Website\Tasks\Auth;
 
 use App\Http\Livewire\Auth\Register;
 use App\Models\User;
@@ -106,7 +106,7 @@ class RegisterTest extends TestCase
     public function test_website_register_without_check_iagree_button(): void
     {
         Livewire::test(Register::class)
-            ->set('email', 'test@example.com')
+            ->set('email', 'test@test.com')
             ->set('password', '123456789')
             ->set('password_confirmation', '123456789')
             ->set('fname', 'kareem')
@@ -119,7 +119,7 @@ class RegisterTest extends TestCase
     public function test_website_register_success(): void
     {
         Livewire::test(Register::class)
-            ->set('email', 'test@example.com')
+            ->set('email', 'test@test.com')
             ->set('password', '123456789')
             ->set('password_confirmation', '123456789')
             ->set('fname', 'kareem')
@@ -129,5 +129,8 @@ class RegisterTest extends TestCase
             ->call('register')
             ->assertHasNoErrors()
             ->assertRedirect(route('home'));
+
+        User::where('email', 'test@test.com')->delete();
+        auth()->logout();
     }
 }
