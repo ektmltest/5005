@@ -12,7 +12,6 @@ Route::group([
 
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
     Route::group(['middleware' => 'auth'], function () {
-        Route::get('logout', fn () => view('home'))->name('logout');
         Route::get('myProjects', fn () => view('my-projects'))->name('myProjects');
         Route::get('/myProjects/{id}', fn ($id) => view('my-project-show')->with('id', $id))->name('myProjects.show');
         Route::get('/tickets', fn () => view('ticket'))->name('tickets');
@@ -36,7 +35,6 @@ Route::group([
     Route::get('store', fn () => view('store'))->name('store');
     Route::get('gallary', fn () => view('gallary'))->name('gallary');
     Route::get('project/{id}', fn ($id) => view('project', ['project' => \App\Models\ReadyProject::find($id)]))->name('project');
-    // Route::get('project/{id}', fn ($id) => view('project', )->with('id', $id))->name('project');
     Route::get('news/{slug}', fn ($slug) => view('news-show', compact('slug')))->name('news.show');
     Route::get('news', fn () => view('news'))->name('news.index');
 

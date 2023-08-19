@@ -34,9 +34,9 @@ class MyProjectShow extends Component
     }
 
     public function mount($id) {
-        $this->project = $this->projectRepository->getProjectById($id);
+        $this->project = $this->projectRepository->getProjectById($id, auth: true);
         if (!$this->project)
-            return abort(404);
+            return abort(401);
     }
 
     public function delete() {

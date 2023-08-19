@@ -33,6 +33,7 @@ class ForgetPasswordForm extends Component
         } else {
             $this->addError('credentials', trans('errors.email_required'));
             $this->email = null;
+            return;
         }
 
         $this->resetPasswordModel = $this->resetPasswordTokenRepository->find($this->email, $this->token);

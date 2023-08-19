@@ -21,7 +21,7 @@ class Register extends Component
         'fname' => 'required|string|max:255',
         'lname' => 'required|string|max:255',
         'email' => 'required|email|max:255|unique:users,email',
-        'password' => 'required|confirmed|min:8',
+        'password' => 'required|confirmed|min:8|max:255',
         'phone' => 'required|numeric',
     ];
 
@@ -55,7 +55,7 @@ class Register extends Component
                 auth()->login($user);
                 DB::commit();
                 return redirect()->route('home');
-            }else{
+            } else {
                 $this->addError('agreeMessage', __('errors.checkme'));
             }
             // $this->reset();
