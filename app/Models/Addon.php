@@ -43,4 +43,8 @@ class Addon extends Model
         $this->locale = $locale;
         return $this->name;
     }
+
+    public function getPriceAttribute() {
+        return round($this->attributes['price'], 2);
+    }
 }

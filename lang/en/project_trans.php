@@ -27,4 +27,5 @@ return array (
   'basmala' => 'In the name of God, the most gracious, the most merciful',
   'Project Price Without Offers' => 'Project Price Without Offers',
   'show example' => 'show exmaple',
+  'no facilities for this project' => 'No facilities available for this project.',
 );

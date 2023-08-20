@@ -53,54 +53,64 @@
                         <h5><i class="bx bx-cart-alt"></i>{{ __('project_trans.Buy Project') }}</h5>
                         <div class="sidebox-inner newsletter">
                             @if ($project->isOffered())
-                            <h5 class="mb-3 text-danger" style="justify-content: space-between;">
-                                {{ __('project_trans.Project Price Without Offers') }}
-                                <s class="pCost">{{ $project->original_price }} {{ __('project_trans.SAR') }}</s>
-                            </h5>
+                            <div class="mb-3">
+                                <h5 class="text-danger">
+                                    {{ __('project_trans.Project Price Without Offers') }}
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-1" style="transform: scaleX(-1); fill: #dc3545" height="0.75em" viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M350 334.5c3.8 8.8 2 19-4.6 26l-136 144c-4.5 4.8-10.8 7.5-17.4 7.5s-12.9-2.7-17.4-7.5l-136-144c-6.6-7-8.4-17.2-4.6-26s12.5-14.5 22-14.5h88l0-192c0-17.7-14.3-32-32-32H32C14.3 96 0 81.7 0 64V32C0 14.3 14.3 0 32 0l80 0c70.7 0 128 57.3 128 128l0 192h88c9.6 0 18.2 5.7 22 14.5z"/></svg>
+                                </h5>
+
+                                <h5 class="text-danger">
+                                    <s class="pCost">{{ $project->original_price }} {{ __('project_trans.SAR') }}</s>
+                                </h5>
+                            </div>
                             @endif
 
-                            <h5 class="mb-3" style="justify-content: space-between;">
-                                {{ __('project_trans.Project Price') }}
-                                <span class="pCost">{{ $project->price }} {{ __('project_trans.SAR') }}</span>
-                            </h5>
+                            <div class="mb-3">
+                                <h5>
+                                    {{ __('project_trans.Project Price') }}
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-1" style="transform: scaleX(-1); fill: #4b3da7;" height="0.75em" viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M350 334.5c3.8 8.8 2 19-4.6 26l-136 144c-4.5 4.8-10.8 7.5-17.4 7.5s-12.9-2.7-17.4-7.5l-136-144c-6.6-7-8.4-17.2-4.6-26s12.5-14.5 22-14.5h88l0-192c0-17.7-14.3-32-32-32H32C14.3 96 0 81.7 0 64V32C0 14.3 14.3 0 32 0l80 0c70.7 0 128 57.3 128 128l0 192h88c9.6 0 18.2 5.7 22 14.5z"/></svg>
+                                    <div id="profile-image-spinner" wire:loading wire:target='checkAddon' class="spinner-border spinner-border-sm text-primary" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </h5>
+
+                                <h5>
+                                    <span class="pCost">{{ $price }} {{ __('project_trans.SAR') }}</span>
+                                </h5>
+                            </div>
 
                             <div class="[mu-features]" style="margin-bottom: 15px;">
-                                <p style="margin: 0px 0px 7px 0px !important;"><i class="bx bx-check"></i>{{
-                                    __('project_trans.Free installation') }}</p>
-                                <p style="margin: 0px 0px 7px 0px !important;"><i class="bx bx-check"></i>{{
-                                    __('project_trans.Free domain') }}</p>
-                                <p style="margin: 0px 0px 7px 0px !important;"><i class="bx bx-check"></i>{{
-                                    __('project_trans.One month technical support') }}</p>
+                                @forelse ($project->facilities as $facility)
+                                <p style="margin: 0px 0px 7px 0px !important;">
+                                    <i class="bx bx-check"></i>
+                                    {{$facility->description}}
+                                </p>
+                                @empty
+                                <p style="margin: 0px 0px 7px 0px !important;">
+                                    {{__('project_trans.no facilities for this project')}}
+                                </p>
+                                @endforelse
                             </div>
 
                             <h5>{{ __('project_trans.Plugins')}}</h5>
+                            @foreach ($project->addons as $addon)
                             <div style="list-style-type: none;">
                                 <li>
                                     <div class="form-check">
-                                        <input class="form-check-input" mu-addon mu-cost="400" type="checkbox"
-                                            id="addons" mu-id="1">
-                                        <label class="form-check-label" for="addons">
-                                            {{ __('project_trans.Maintenance and cyber security contract') }} (400) / {{
-                                            __('project_trans.Monthly') }}
+                                        <input class="form-check-input"
+                                            type="checkbox"
+                                            id="addons-{{$addon->id}}"
+                                            onclick="topbar.show();"
+                                            wire:change='checkAddon({{$addon->id}})'>
+                                        <label class="form-check-label" for="addons-{{$addon->id}}">
+                                            {{$addon->name}} ({{$addon->price}}) / {{$addon->type->name}}
                                         </label>
                                     </div>
                                 </li>
                             </div>
+                            @endforeach
 
-                            <div style="list-style-type: none;">
-                                <li>
-                                    <div class="form-check">
-                                        <input class="form-check-input" mu-addon mu-cost="200" type="checkbox"
-                                            id="addons2" mu-id="2">
-                                        <label class="form-check-label" for="addons2">
-                                            {{ __('project_trans.Auto coupons') }} (200) / {{
-                                            __('project_trans.Monthly') }}
-                                        </label>
-                                    </div>
-                                </li>
-                            </div>
-
-                            <a href="#" class="btn btn-block btn-icon btn-success mt-4 buyProject" mu-id="3"
+                            <a onclick="topbar.show()" wire:click='buy' wire:loading.class='disabled' class="text-light btn btn-block btn-icon btn-success mt-4 buyProject" mu-id="3"
                                 style="text-align: center;" mu-notlogged="true">{{ __('project_trans.Buy Project') }}<i
                                     class="bx bx-cart-alt"></i></a>
                         </div>

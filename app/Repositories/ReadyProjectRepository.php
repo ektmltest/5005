@@ -49,8 +49,11 @@ class ReadyProjectRepository implements ReadyProjectRepositoryInterface {
         return $query->get();
     }
 
-    public function findById($id) {
-        return ReadyProject::find($id);
+    public function findById($id, $with = null) {
+        if ($with)
+            return ReadyProject::with($with)->find($id);
+        else
+            return ReadyProject::find($id);
     }
 
     public function getNextId($id) {

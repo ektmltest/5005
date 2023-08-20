@@ -27,4 +27,5 @@ return array (
   'basmala' => 'بسم الله الرحمن الرحيم',
   'Project Price Without Offers' => 'سعر المشروع بدون عروض',
   'show example' => 'عرض مثال',
+  'no facilities for this project' => 'لا توجد ميزات متاحة لهذا المشروع.',
 );

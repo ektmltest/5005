@@ -155,4 +155,12 @@ class UserRepository implements UserRepositoryInterface {
 
         $user->save();
     }
+
+    public function removeFromBalance($id, $amount) {
+        $user = $this->findById($id);
+
+        $user->balance -= $amount;
+
+        $user->save();
+    }
 }

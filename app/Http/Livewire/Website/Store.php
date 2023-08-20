@@ -36,9 +36,9 @@ class Store extends Component
         $isAdded = $this->readyProjectRepository->toggleLike($ready_project);
 
         if ($isAdded)
-            session()->flash('message', __('messages.done'));
+            $this->dispatchBrowserEvent('my:message.success', ['message' => __('messages.done')]);
         else
-            session()->flash('message', __('messages.done'));
+            $this->dispatchBrowserEvent('my:message.success', ['message' => __('messages.done')]);
     }
 
     public function loadMore() {

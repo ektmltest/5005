@@ -117,7 +117,7 @@ class DatabaseSeeder extends Seeder
                 ->count(200)
                 ->create()
                 ->each(function ($readyProject) use ($addons) {
-                    $readyProject->addons()->attach($addons->random(1)->first()->id);
+                    $readyProject->addons()->attach($addons->random(fake()->randomFloat(min: 0, max: 10))->pluck('id'));
                 })
                 ->each(function ($readyProject) use ($users) {
                     $average_rating = round(fake()->randomFloat(min: 0, max: 1), 2);
@@ -154,7 +154,7 @@ class DatabaseSeeder extends Seeder
                 ->count(50)
                 ->create()
                 ->each(function ($facility) use ($readyProjects) {
-                    $facility->readyProjects()->attach($readyProjects->random(1)->first()->id);
+                    $facility->readyProjects()->attach($readyProjects->random(3)->pluck('id'));
                 });
 
             BankCard::factory()->count(10)->create();
