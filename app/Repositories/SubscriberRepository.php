@@ -14,7 +14,7 @@ class SubscriberRepository implements SubscriberRepositoryInterface {
         return Subscriber::all();
     }
 
-    public function store($email) {
+    public function store($email): Subscriber {
         return Subscriber::create([
             'email' => $email,
         ]);
@@ -30,7 +30,7 @@ class SubscriberRepository implements SubscriberRepositoryInterface {
         $data['post_slug'] = $new->slug;
 
         foreach ($subscribers as $subscriber)
-            if(!$subscriber->sendMail(SubscriberNewPostMail::class, $data))
+            if(!$subscriber->sendNewPostMail($data))
                 return false;
 
         return true;

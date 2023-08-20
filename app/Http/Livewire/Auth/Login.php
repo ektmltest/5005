@@ -45,7 +45,7 @@ class Login extends Component
                     // dd('test');
                     $this->addError('credentials',trans ('errors.credentials'));
                 } else {
-                    $user->visits++;
+                    $user->incrementVisits();
                     $user->save();
                     auth()->login($user);
                     DB::commit();

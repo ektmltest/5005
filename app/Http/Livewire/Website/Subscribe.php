@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Website;
 
 use App\Helpers\Mailer;
 use App\Http\Requests\SubscribeStoreRequest;
-use App\Mail\SubscriberWelcomeMail;
 use App\Repositories\SubscriberRepository;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -33,11 +32,11 @@ class Subscribe extends Component
 
             $subscriber = $this->subscriberRepository->store($this->email);
 
-            $this->mail(SubscriberWelcomeMail::class, ['email' => $this->email], $this->email);
+            $subscriber->sendWelcomeMail();
 
             DB::commit();
 
-            session()->flash('success', __('messages.done'));
+            $this->dispatchBrowserEvent('my:message.success', ['message' => __('messages.done')]);
 
         } catch (\Throwable $th) {
 

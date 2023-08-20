@@ -10,4 +10,5 @@ return array (
   'Sorry, page not found' => 'Sorry, page not found',
   'It will be as simple as Occidental in fact, it will be Occidental' => 'It will be as simple as Occidental in fact, it will be Occidental',
   'Back to Dashboard' => 'Back to Dashboard',
+  'complete the form and follow the instructions' => 'Error! Complete the form and follow the instructions below.',
 );

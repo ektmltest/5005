@@ -50,17 +50,18 @@ class Register extends Component
                     'rank_id' => 1,
                 ]);
 
-                $user->visits++;
+                $user->incrementVisits();
                 $user->save();
+
                 auth()->login($user);
+
                 DB::commit();
+
+                $user->sendVerificationMail();
                 return redirect()->route('home');
             } else {
                 $this->addError('agreeMessage', __('errors.checkme'));
             }
-            // $this->reset();
-            // $this->emit('User Registered.!');
-            // session()->flash('message', 'User Registered.!');
         } catch (\Throwable $th) {
 
             DB::rollBack();
@@ -68,8 +69,4 @@ class Register extends Component
 
         }
     }
-
-
-
-
 }

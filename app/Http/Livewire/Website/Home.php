@@ -11,7 +11,6 @@ class Home extends Component
     public Contact $contact;
     public $news;
     public $ready_projects;
-    // public $statistics = array();
     public $partners;
 
     protected $newspaperRepository;
@@ -38,15 +37,18 @@ class Home extends Component
 
     public function contact()
     {
-        $this->validate();
+        try {
+            $this->validate();
+        } catch (\Exception $e) {
+            $this->dispatchBrowserEvent('my:message.error', ['message' => __('errors.complete the form and follow the instructions')]);
+            $this->validate();
+        }
 
         $this->contact->save();
+        $this->contact->sendMail();
 
         $this->reset();
-        session()->flash('message', __('messages.done'));
-
-        $this->dispatchBrowserEvent('initSwiper');
-        $this->dispatchBrowserEvent('resize');
+        $this->dispatchBrowserEvent('my:message.success', ['message' => __('messages.done')]);
     }
 
     public function toggleLike($ready_project)
@@ -58,13 +60,7 @@ class Home extends Component
         $ready_project = $this->readyProjectRepository->findById($ready_project['id']);
         $isAdded = $this->readyProjectRepository->toggleLike($ready_project);
 
-        $this->dispatchBrowserEvent('initSwiper');
-        $this->dispatchBrowserEvent('resize');
-
-        // if ($isAdded)
-        //     session()->flash('message', __('messages.done'));
-        // else
-        //     session()->flash('message', __('messages.done'));
+        $this->dispatchBrowserEvent('my:message.success', ['message' => __('messages.done')]);
     }
 
 
@@ -72,6 +68,8 @@ class Home extends Component
     {
         $this->ready_projects = $this->readyProjectRepository->getAllReadyProjects(max: config('globals.home_store_projects'));
         $this->dispatchBrowserEvent('my:loaded');
+        $this->dispatchBrowserEvent('initSwiper');
+        $this->dispatchBrowserEvent('resize');
         return view('livewire.website.home');
     }
 }
