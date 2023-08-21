@@ -16,6 +16,7 @@ Route::group([
         Route::get('/myProjects/{id}', fn ($id) => view('my-project-show')->with('id', $id))->name('myProjects.show');
         Route::get('/tickets', fn () => view('ticket'))->name('tickets');
         Route::get('/tickets/{id}', fn ($id) => view('ticket-show', compact('id')))->name('tickets.show');
+        Route::get('/purchases/{id}', fn ($id) => view('purchase-show', compact('id')))->name('purchases.show');
         Route::get('profile', fn () => view('profile'))->name('myProfile');
         Route::get('letsStart', fn () => view('lets-start'))->name('letsStart');
     });

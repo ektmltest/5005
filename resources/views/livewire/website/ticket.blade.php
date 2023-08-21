@@ -10,6 +10,7 @@
                             <li class="@if($currentPage == 'create') active @endif"><a onclick="topbar.show()" wire:click="changePage('create')" style="cursor: pointer"><i class='bx bx-message-rounded-add'></i>{{ucwords(__('tickets_trans.create_ticket'))}}</a></li>
                             <li class="@if($currentPage == 'available') active @endif"><a onclick="topbar.show()" wire:click="changePage('available')" style="cursor: pointer"><i class="bx bx-list-ul"></i>{{ucwords(__('tickets_trans.available_ticket'))}}</a></li>
                             <li class="@if($currentPage == 'closed') active @endif"><a onclick="topbar.show()" wire:click="changePage('closed')" style="cursor: pointer"><i class="bx bx-lock"></i>{{ucwords(__('tickets_trans.closed_ticket'))}}</a></li>
+                            <li class="@if($currentPage == 'purchase') active @endif"><a onclick="topbar.show()" wire:click="changePage('purchase')" style="cursor: pointer"><i class='bx bx-shopping-bag'></i>{{ucwords(__('tickets_trans.purchase_tickets'))}}</a></li>
                         </ul>
                     </div>
                 </aside>
@@ -134,7 +135,7 @@
                         @endif
                     </div>
 
-                    @else
+                    @elseif ($currentPage == 'closed')
 
                     <div id="ticketsClosed" class="faq-control p-3">
                         @if ($closedTickets->isEmpty())
@@ -157,6 +158,37 @@
                                         <div class="job-location">
                                             <i class="bx bx-time"></i>
                                             <span>{{$ticket->created_at->diffForHumans()}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            @endforeach
+                        @endif
+                    </div>
+
+                    @else
+
+                    <div id="ticketsAvailable" class="faq-control p-3">
+                        @if ($purchases->isEmpty())
+                            <p class="text-center font-weight-bold" style="color: #4b3da7;">{{ucwords(__('tickets_trans.not available'))}}</p>
+                        @else
+                            @foreach ($purchases->sortByDesc('created_at') as $purchase)
+                            <a href="{{route('purchases.show', $purchase->id)}}" class="job-post shadow-none">
+                                <div class="row">
+                                    <div class="col-xl-5 col-lg-5">
+                                        <div class="job-title">
+                                            <h5>{{$purchase->project->name}}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4">
+                                        <div class="job-category">
+                                            <span>{{__('tickets_trans.purchases')}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3">
+                                        <div class="job-location">
+                                            <i class="bx bx-time"></i>
+                                            <span>{{$purchase->created_at->diffForHumans()}}</span>
                                         </div>
                                     </div>
                                 </div>

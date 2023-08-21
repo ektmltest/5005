@@ -240,7 +240,7 @@
                                 <label style="font-weight: bolder">{{strtoupper(__('dashboard_trans.project state'))}}</label>
                                 <select class="form-control" wire:model='settings.state_id' wire:change='changeSettings' onchange="topbar.show()">
                                 @foreach ($states as $state)
-                                    <option value="{{$state->id}}" class="text-{{$state->color}}">{{$state->name}} {{$state->id}}</option>
+                                    <option value="{{$state->id}}" class="text-{{$state->color}}">{{$state->name}}</option>
                                 @endforeach
                                 </select>
                             </div>

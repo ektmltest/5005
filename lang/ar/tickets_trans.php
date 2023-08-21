@@ -13,4 +13,6 @@ return array (
   'not available' => 'لا يوجد تذاكر لعرضها.',
   'close the ticket' => 'أغلق التذكرة',
   'ticket is closed' => 'التذكرة مغلقة',
+  'purchase_tickets' => 'تذاكر المشتريات',
+  'purchases' => 'مشتريات',
 );

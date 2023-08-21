@@ -68,7 +68,7 @@ class DatabaseSeeder extends Seeder
 
             RankType::factory()->count(4)->create();
 
-            $permissions = Permission::factory()->count(25)->create();
+            $permissions = Permission::factory()->count(26)->create();
 
             Rank::factory()->count(1)->hasAttached($permissions)->create([
                 'name' => ['ar' => 'المؤسس', 'en' => 'founder'],
@@ -99,6 +99,12 @@ class DatabaseSeeder extends Seeder
 
             Newspaper::factory()->count(100)->create();
 
+            TicketType::factory()->create([
+                'name' => [
+                    'en' => 'purchases',
+                    'ar' => 'مشتريات',
+                ]
+            ]);
             TicketType::factory()->count(15)->create();
             Ticket::factory()
                 ->has(TicketAttachment::factory()->count(2), 'attachments')

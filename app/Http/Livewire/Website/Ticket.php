@@ -2,6 +2,7 @@
 namespace App\Http\Livewire\Website;
 
 use App\Http\Requests\TicketStoreRequest;
+use App\Models\Purchase;
 use App\Models\Ticket as ModelsTicket;
 use App\Repositories\TicketAttachmentRepository;
 use Livewire\Component;
@@ -18,6 +19,7 @@ class Ticket extends Component
     public $ticketTypes;
     public $availableTickets;
     public $closedTickets;
+    public $purchases;
     public ModelsTicket $ticket;
     public $files = array();
     public $noFiles = 1;
@@ -37,6 +39,7 @@ class Ticket extends Component
         $this->ticketTypes = $this->ticketTypeRepository->getAllTicketTypes();
         $this->availableTickets = $this->ticketRepository->getAllAvailableTickets();
         $this->closedTickets = $this->ticketRepository->getAllClosedTickets();
+        $this->purchases = Purchase::where('user_id', auth()->user()->id)->get();
     }
 
     // * to define rules for all post requests comming to this component
@@ -64,7 +67,9 @@ class Ticket extends Component
         }
 
         $this->reset();
-        session()->flash('message', 'Ticket Created Successfully.!');
+        $this->noFiles = 1;
+        $this->files = array();
+        $this->dispatchBrowserEvent('my:message.success', ['message' => __('messages.done')]);
     }
 
 

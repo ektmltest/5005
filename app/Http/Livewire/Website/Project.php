@@ -2,10 +2,13 @@
 namespace App\Http\Livewire\Website;
 
 use App\Models\Addon;
+use App\Models\Purchase;
 use App\Models\ReadyProject;
 use App\Repositories\GallaryProjectRepository;
 use App\Repositories\ReadyProjectRepository;
 use App\Repositories\Settings\SocialMediaRepository;
+use App\Repositories\TicketAttachmentRepository;
+use App\Repositories\TicketRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\VerifyEmailRepository;
 use Livewire\Component;
@@ -26,6 +29,7 @@ class Project extends Component
     protected $galleryProjectRepository;
     protected $socialMediaRepository;
     protected $userRepository;
+    protected $ticketRepository;
 
     public function __construct() {
         $this->readyProjectRepository = new ReadyProjectRepository;
@@ -33,6 +37,9 @@ class Project extends Component
         $this->socialMediaRepository = new SocialMediaRepository;
         $this->userRepository = new UserRepository(
             new VerifyEmailRepository
+        );
+        $this->ticketRepository = new TicketRepository(
+            new TicketAttachmentRepository
         );
 
         $this->galleries = $this->galleryProjectRepository->getAllProjects(paginate: false, limit: 9);
@@ -84,8 +91,15 @@ class Project extends Component
             $validUserBalance = $user->balance >= $this->price;
             if ($validUserBalance) {
                 $this->userRepository->removeFromBalance($user->id, $this->price);
+                $purchase = Purchase::create([
+                    'ready_project_id' => $this->project->id,
+                    'user_id' => $user->id,
+                ]);
+                $purchase->addons()->attach($this->addons_ids);
+
                 DB::commit();
-                return redirect()->route('myProfile')->with('message', __('messages.done'));
+
+                return redirect()->route('purchases.show', $purchase->id);
             } else {
                 $this->dispatchBrowserEvent('my:message.error', ['message' => __('messages.account balance error')]);
             }

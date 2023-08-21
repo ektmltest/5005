@@ -55,7 +55,7 @@
                                 @foreach($projects as $project)
                                 <tbody>
                                     <tr>
-                                        <td><a href="#">{{ $project->name }}</a></td>
+                                        <td><a href="{{route('staffProjects.show', $project->id)}}">{{ $project->name }}</a></td>
                                         <td>{{ $project->created_at->diffForHumans() }}</td>
                                     </tr>
                                 </tbody>

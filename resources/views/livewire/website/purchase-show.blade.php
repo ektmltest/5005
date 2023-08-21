@@ -6,68 +6,95 @@
                 <!-- Start Post -->
                 <div class="post-item comment-box">
                     <div class="post-txt">
-                        <a class="post-title wordsBreaker mb-4">{{$ticket->title}}</a>
+                        <a class="post-title wordsBreaker mb-4">{{$purchase->project->name}}</a>
                         <ul class="list-unstyled post-details wordsBreaker">
                             <div class="comment-head">
                                 <div class="member-info">
                                     <div class="member-img">
-                                        <img src="{{$ticket->user->avatar}}" alt="Avatar">
+                                        <img src="{{$purchase->user->avatar}}" alt="Avatar">
                                     </div>
                                     <div class="member-name">
                                         <h6>
-                                            <a>{{$ticket->user->full_name}}</a>
+                                            <a>{{$purchase->user->full_name}}</a>
                                             <span><i class="bx bxs-circle" style="font-size: 6px"></i>
-                                                {{$ticket->user->rank->name}}</span>
+                                                {{$purchase->user->rank->name}}</span>
                                         </h6>
-                                        <span class="date">{{$ticket->created_at->diffForHumans()}}</span>
+                                        <span class="date">{{$purchase->created_at->diffForHumans()}}</span>
                                     </div>
                                 </div>
                             </div>
                         </ul>
-                        <p class='mt-3 wordsBreaker'>{{$ticket->description}}</p>
-                        @if ($ticket->attachments()->count() > 0)
-                        <div id="attachments" class="mt-2">
-                            <hr>
-                            <small class="text-muted"> {{__('myprojects_trans.attachments')}}:</small>
-                            @foreach ($ticket->attachments as $attachment)
-                            <br>
-                            <small>
-                                <i class="bx bxs-chevron-left text-muted"></i>
-                                <small>
-                                    <a href="{{$attachment->file}}">
-                                        <i class="bx bx-file"></i> {{$attachment->filename}}
-                                    </a>
-                                </small>
-                            </small>
-                            @endforeach
-                        </div>
-                        @endif
+                        <p class='mt-3 wordsBreaker'>لقد قمت بشراء مشروع {{$purchase->project->name}}</p>
+                        <p class='mt-3 wordsBreaker'>بمبلغ {{$purchase->full_price}}</p>
+                        <p class='mt-3 wordsBreaker'>
+                            @forelse ($purchase->addons as $addon)
+                                @if ($loop->first)
+                                    وقمت بإختيار الإضافات التالية:
+                                @endif
+
+                                @if ($loop->last)
+                                    {{$addon->name}}.
+                                @else
+                                    {{$addon->name}},
+                                @endif
+                            @empty
+                                بدون اضافات.
+                            @endforelse
+                        </p>
 
                         <div class="footer-post">
                             <div class="tags" style="font-weight: bold">
-                                <a>{{$ticket->type->name}}</a>
-                            </div>
-                            <div class="action-post">
-                                @if ($ticket->status == 'available')
-                                <a onclick="topbar.show()" wire:click='closeTicket'
-                                class="btn btn-danger text-light rounded-pill"><i
-                                    class='bx bxs-x-circle'></i> {{__('tickets_trans.close the ticket')}}</a>
-                                @else
-                                <span class="badge text-danger rounded-pill p-2"><i
-                                    class='bx bxs-x-circle'></i> {{__('tickets_trans.ticket is closed')}}</span>
-                                @endif
+                                <a>مشتريات</a>
                             </div>
                         </div>
                     </div>
 
-                    @if ($ticket->replies()->count() > 0)
                     <!-- Comments -->
                     <div class="post-comments mt-4">
                         <ul class="list-unstyled">
                             <!-- Start Comment -->
                             <li class="comment-inner">
                                 <ul class="replies" id="repliesSec">
-                                    @foreach ($ticket->replies()->orderBy('created_at')->get() as $reply)
+                                    <li class="comment-inner">
+                                        <div class="comment-box">
+                                            <div class="comment-head">
+                                                <div class="member-info">
+                                                    <div class="member-img" style="border: 1px solid #4b3da7">
+                                                        <img src="{{asset('assets/img/logo_ektml.webp')}}" width="100%" height="100%" class="p-2" alt="Avatar">
+                                                    </div>
+                                                    <div class="member-name">
+                                                        <h6>
+                                                            <a href="javascript:;">{{__('main_trans.Ektml')}}</a>
+                                                            <span style="display: contents;"><i class="bx bxs-circle"
+                                                                    style="font-size: 6px"></i>
+                                                                bot
+                                                            </span>
+                                                        </h6>
+                                                        <span
+                                                            class="date">{{$purchase->created_at->diffForHumans()}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="comment-body wordsBreaker">
+                                                <p class="wordsBreaker">
+                                                    شكراً لشرائك وثقتك بنا.. نرجو منك إرسال المعلومات التالية لإكمال العملية:
+                                                </p>
+                                                <p class="wordsBreaker">
+                                                    1 - اسم الموقع
+                                                </p>
+                                                <p class="wordsBreaker">
+                                                    ( مثال : موقع نيوم )
+                                                </p>
+                                                <p class="wordsBreaker">
+                                                    2 - رابط الموقع
+                                                </p>
+                                                <p class="wordsBreaker">
+                                                    ( مثال : Neom.com )
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    @foreach ($purchase->replies()->orderBy('created_at')->get() as $reply)
                                     <li class="comment-inner">
                                         <div class="comment-box">
                                             <div class="comment-head">
@@ -119,9 +146,7 @@
                             </li>
                         </ul>
                     </div>
-                    @endif
 
-                    @if ($ticket->status == 'available')
                     <!-- Start Leave Comment -->
                     <div class="leave-comment">
                         <h5><i class="bx bx-comment-detail"></i> {{__('myprojects_trans.reply')}}</h5>
@@ -183,7 +208,6 @@
                         </form>
                     </div>
                     <!-- End Leave Comment -->
-                    @endif
                 </div>
                 <!-- End Post -->
             </div>

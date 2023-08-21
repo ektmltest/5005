@@ -13,4 +13,6 @@ return array (
   'not available' => 'no available tickets.',
   'close the ticket' => 'close the ticket',
   'ticket is closed' => 'The ticket is closed',
+  'purchase_tickets' => 'purchase tickets',
+  'purchases' => 'purchases',
 );
