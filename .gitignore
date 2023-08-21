@@ -8,6 +8,7 @@
 /public/assets/users
 /public/assets/transactions
 /public/assets/admin
+/public/assets/purchases
 /storage/*.key
 /vendor
 vendor.zip
