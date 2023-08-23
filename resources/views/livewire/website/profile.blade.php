@@ -275,13 +275,13 @@
 
                         {{-- navs begin --}}
                         <ul class="nav nav-tabs" style="" role="tablist">
-                            <li role="presentation" class="active">
+                            <li role="presentation" class="active p-2 mb-0 {{$charge_method == 'bank-card' ? 'border border-bottom-0 border-primary' : ''}}">
                                 <a style="cursor: pointer" onclick="topbar.show()" wire:click='changeChargeMethod("bank-card")'
                                     class="{{$charge_method == 'bank-card' ? 'text-primary' : ''}}">
                                     <i class="bx bx-money"></i> {{ ucwords(__('profile_trans.bank transfer')) }}</a>
                             </li>
 
-                            <li role="presentation" class="mx-3">
+                            <li role="presentation" class="mx-3 p-2 mb-0 {{$charge_method == 'credit' ? 'border border-bottom-0 border-primary' : ''}}">
                                 <a style="cursor: pointer" onclick="topbar.show()" wire:click='changeChargeMethod("credit")'
                                     class="{{$charge_method == 'credit' ? 'text-primary' : ''}}">
                                     <i class="bx bx-credit-card"></i> {{ ucwords(__('profile_trans.online payment')) }}</a>
@@ -404,19 +404,19 @@
                         <div>
                             {{-- navs begin --}}
                             <ul class="nav nav-tabs" style="" role="tablist">
-                                <li role="presentation" class="active">
+                                <li role="presentation" class="active p-2 mb-0 {{$withdrawal_status == 'withdrawal' ? 'border border-bottom-0 border-primary' : ''}}">
                                     <a style="cursor: pointer" onclick="topbar.show()" wire:click='changeWithdrawalStatus("withdrawal")'
                                         class="{{$withdrawal_status == 'withdrawal' ? 'text-primary' : ''}}">
                                         <i class="bx bx-money"></i> {{ __('profile_trans.Withdraw')}}</a>
                                 </li>
 
-                                <li role="presentation" class="mx-3">
+                                <li role="presentation" class="mx-3 p-2 mb-0 {{$withdrawal_status == 'bank-cards' ? 'border border-bottom-0 border-primary' : ''}}">
                                     <a style="cursor: pointer" onclick="topbar.show()" wire:click='changeWithdrawalStatus("bank-cards")'
                                         class="{{$withdrawal_status == 'bank-cards' ? 'text-primary' : ''}}">
                                         <i class="bx bx-credit-card"></i> {{ __('profile_trans.my bank cards')}}</a>
                                 </li>
 
-                                <li role="presentation" class="mx-3">
+                                <li role="presentation" class="mx-3 p-2 mb-0 {{$withdrawal_status == 'history' ? 'border border-bottom-0 border-primary' : ''}}">
                                     <a style="cursor: pointer" onclick="topbar.show()" wire:click='changeWithdrawalStatus("history")'
                                         class="{{$withdrawal_status == 'history' ? 'text-primary' : ''}}">
                                         <i class="bx bx-clipboard"></i> {{ __('profile_trans.History')}}</a>

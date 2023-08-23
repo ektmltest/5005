@@ -27,8 +27,6 @@ class Gallary extends Component
     public function activate($id) {
         $this->active = $id;
         session()->put('loaded', config('globals.store_pagination'));
-        $this->dispatchBrowserEvent('my:loaded');
-
     }
 
     public function loadMore() {

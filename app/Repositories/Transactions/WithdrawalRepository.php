@@ -37,9 +37,9 @@ class WithdrawalRepository {
     }
 
     public function withdraw($data): Withdrawal|null {
-        if (auth()->user()->balance >= $data['amount']) {
-            $user = auth()->user();
-            $user->balance -= $data['amount'];
+        $user = auth()->user();
+        if ($user->removeFromBalance($data['amount'])) {
+
             $user->save();
 
             return Withdrawal::create([
@@ -47,6 +47,7 @@ class WithdrawalRepository {
                 'invoice_amount' => $data['amount'],
                 'user_bank_card_id' => $data['user_bank_card_id'],
             ]);
+
         } else
             return null;
     }

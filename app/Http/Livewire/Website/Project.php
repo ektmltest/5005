@@ -5,6 +5,7 @@ use App\Models\Addon;
 use App\Models\Purchase;
 use App\Models\ReadyProject;
 use App\Repositories\GallaryProjectRepository;
+use App\Repositories\Purchases\PurchaseRepository;
 use App\Repositories\ReadyProjectRepository;
 use App\Repositories\Settings\SocialMediaRepository;
 use App\Repositories\TicketAttachmentRepository;
@@ -28,19 +29,18 @@ class Project extends Component
     protected $readyProjectRepository;
     protected $galleryProjectRepository;
     protected $socialMediaRepository;
-    protected $userRepository;
     protected $ticketRepository;
+    protected $purchaseRepository;
 
     public function __construct() {
         $this->readyProjectRepository = new ReadyProjectRepository;
         $this->galleryProjectRepository = new GallaryProjectRepository;
         $this->socialMediaRepository = new SocialMediaRepository;
-        $this->userRepository = new UserRepository(
-            new VerifyEmailRepository
-        );
         $this->ticketRepository = new TicketRepository(
             new TicketAttachmentRepository
         );
+        $this->purchaseRepository = PurchaseRepository::instance();
+
 
         $this->galleries = $this->galleryProjectRepository->getAllProjects(paginate: false, limit: 9);
         $this->socials = $this->socialMediaRepository->getAll();
@@ -88,20 +88,17 @@ class Project extends Component
             if (!$this->authCheckOrRedirect()) return;
 
             $user = auth()->user();
-            $validUserBalance = $user->balance >= $this->price;
-            if ($validUserBalance) {
-                $this->userRepository->removeFromBalance($user->id, $this->price);
-                $purchase = Purchase::create([
-                    'ready_project_id' => $this->project->id,
-                    'user_id' => $user->id,
-                ]);
-                $purchase->addons()->attach($this->addons_ids);
+            if ($user->removeFromBalance($this->price)) {
 
+                $user->save();
+                $purchase = $this->setupPurchaseProcess();
                 DB::commit();
-
                 return redirect()->route('purchases.show', $purchase->id);
+
             } else {
+
                 $this->dispatchBrowserEvent('my:message.error', ['message' => __('messages.account balance error')]);
+
             }
 
         } catch (\Throwable $th) {
@@ -110,6 +107,17 @@ class Project extends Component
             $this->dispatchBrowserEvent('my:message.error', ['message' => __('messages.error')]);
 
         }
+    }
+
+    private function setupPurchaseProcess(): Purchase {
+        $purchase = $this->purchaseRepository->storeAndAttachAddons(
+            $this->project->id,
+            array_keys($this->addons_ids)
+        );
+
+        $this->project = $this->readyProjectRepository->incrementNumOfPurchasesAndSave($this->project);
+
+        return $purchase;
     }
 
     private function addAddonPrice(Addon $addon) {

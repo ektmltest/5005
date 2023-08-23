@@ -163,4 +163,12 @@ class UserRepository implements UserRepositoryInterface {
 
         $user->save();
     }
+
+    public function removeFromAuthBalance($amount) {
+        $user = auth()->user();
+
+        $user->balance -= $amount;
+
+        $user->save();
+    }
 }

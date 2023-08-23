@@ -6,7 +6,7 @@
                 <!-- Start Post -->
                 <div class="post-item comment-box">
                     <div class="post-txt">
-                        <a class="post-title wordsBreaker mb-4">{{$purchase->project->name}}</a>
+                        <a class="post-title wordsBreaker mb-4">{{$purchase->project->name}} - {{__('tickets_trans.purchase operation')}}</a>
                         <ul class="list-unstyled post-details wordsBreaker">
                             <div class="comment-head">
                                 <div class="member-info">
@@ -24,12 +24,12 @@
                                 </div>
                             </div>
                         </ul>
-                        <p class='mt-3 wordsBreaker'>لقد قمت بشراء مشروع {{$purchase->project->name}}</p>
-                        <p class='mt-3 wordsBreaker'>بمبلغ {{$purchase->full_price}}</p>
+                        <p class='mt-3 wordsBreaker'>{{__('tickets_trans.you have bought a project')}} - {{$purchase->project->name}}</p>
+                        <p class='mt-3 wordsBreaker'>{{__('tickets_trans.with price')}} {{$purchase->full_price}}</p>
                         <p class='mt-3 wordsBreaker'>
                             @forelse ($purchase->addons as $addon)
                                 @if ($loop->first)
-                                    وقمت بإختيار الإضافات التالية:
+                                    {{__('tickets_trans.and select the following addons')}}:
                                 @endif
 
                                 @if ($loop->last)
@@ -38,13 +38,13 @@
                                     {{$addon->name}},
                                 @endif
                             @empty
-                                بدون اضافات.
+                                {{__('tickets_trans.without addons')}}.
                             @endforelse
                         </p>
 
                         <div class="footer-post">
                             <div class="tags" style="font-weight: bold">
-                                <a>مشتريات</a>
+                                <a>{{__('tickets_trans.purchases')}}</a>
                             </div>
                         </div>
                     </div>
@@ -77,19 +77,19 @@
                                             </div>
                                             <div class="comment-body wordsBreaker">
                                                 <p class="wordsBreaker">
-                                                    شكراً لشرائك وثقتك بنا.. نرجو منك إرسال المعلومات التالية لإكمال العملية:
+                                                    {{__('tickets_trans.thanks for trust us')}}:
                                                 </p>
                                                 <p class="wordsBreaker">
-                                                    1 - اسم الموقع
+                                                    1 - {{__('tickets_trans.website name')}}
                                                 </p>
                                                 <p class="wordsBreaker">
-                                                    ( مثال : موقع نيوم )
+                                                    ( {{__('tickets_trans.example website neom')}} )
                                                 </p>
                                                 <p class="wordsBreaker">
-                                                    2 - رابط الموقع
+                                                    2 - {{__('tickets_trans.website link')}}
                                                 </p>
                                                 <p class="wordsBreaker">
-                                                    ( مثال : Neom.com )
+                                                    ( {{__('tickets_trans.example')}} : Neom.com )
                                                 </p>
                                             </div>
                                         </div>

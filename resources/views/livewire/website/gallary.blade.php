@@ -10,14 +10,17 @@
         </div>
 
         <div>
-            <div id="portfolio-grid" class="row no-gutter">
+            <div class="row">
                 @foreach ($projects as $project)
                 <!-- Start Item -->
                 <div class="item col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-4">
                     <div class="zoom-gallery">
                         <a href="{{$project->image}}" class="item-wrap">
                             <i class='bx bx-search-alt'></i>
-                            <img class="img-fluid" src="{{$project->image}}">
+                            <img class="img-fluid" src="{{$project->image}}" wire:loading.remove>
+                            <div wire:loading class="spinner-border spinner-border-sm text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
                         </a>
                     </div>
                 </div>

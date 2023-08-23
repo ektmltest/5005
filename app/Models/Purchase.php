@@ -27,6 +27,11 @@ class Purchase extends Model
         return $this->hasMany(PurchaseReply::class);
     }
 
+    // functions
+    public function attachToAddons($addons_ids) {
+        return $this->addons()->attach($addons_ids);
+    }
+
     // attributes
     public function getFullPriceAttribute() {
         return round($this->project->price + $this->addons->sum('price'), 2);

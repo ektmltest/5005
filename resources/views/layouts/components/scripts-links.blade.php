@@ -40,9 +40,9 @@
             //     prevEl: '.swiper-button-prev',
             // },
 
-            pagination: {
-                el: '.swiper-pagination',
-            },
+            // pagination: {
+            //     el: '.swiper-pagination',
+            // },
 
             autoplay: {
                 delay: 1000,

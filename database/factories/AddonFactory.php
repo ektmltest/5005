@@ -18,7 +18,7 @@ class AddonFactory extends Factory
     public function definition(): array
     {
         return [
-            'price' => fake()->randomFloat(),
+            'price' => fake()->randomFloat(nbMaxDecimals: 2, min: 100, max: 99999),
             'name' => [
                 'ar' => 'اضافة',
                 'en' => fake()->unique()->name(),

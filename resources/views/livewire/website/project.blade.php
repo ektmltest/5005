@@ -93,6 +93,8 @@
                             </div>
 
                             <h5>{{ __('project_trans.Plugins')}}</h5>
+
+                            <form autocomplete="off">
                             @foreach ($project->addons as $addon)
                             <div style="list-style-type: none;">
                                 <li>
@@ -109,10 +111,18 @@
                                 </li>
                             </div>
                             @endforeach
+                            </form>
 
-                            <a onclick="topbar.show()" wire:click='buy' wire:loading.class='disabled' class="text-light btn btn-block btn-icon btn-success mt-4 buyProject" mu-id="3"
-                                style="text-align: center;" mu-notlogged="true">{{ __('project_trans.Buy Project') }}<i
-                                    class="bx bx-cart-alt"></i></a>
+                            <a id="buy-btn"
+                                wire:loading.class='disabled'
+                                class="text-light btn btn-block btn-icon btn-success mt-4 text-center">
+                                {{ __('project_trans.Buy Project') }}
+                                <i class="bx bx-cart-alt"></i>
+                            </a>
+
+                            <input type="hidden"
+                                id="actual-buy-btn"
+                                wire:click='buy'>
                         </div>
                     </div>
 
@@ -121,11 +131,11 @@
                         <div class="sidebox-inner txt-widget">
                             <p style="color: #4b3da7;margin: 0px 0px 15px 0px !important;">
                                 <i class="bx bxs-dollar-circle" style="font-size: large;"></i>
-                                {{ __('project_trans.Your commission is') }} ( {{ $project->price * 15/100 }} {{
+                                {{ __('project_trans.Your commission is') }} ( {{ $project->marketing_commission }} {{
                                 __('project_trans.SAR') }}) {{ __('project_trans.per purchase') }}
                             </p>
                             <a class="bttn btn-purple createProjectPromo" mu-id="3" mu-notlogged="true" href>{{
-                                __("project_trans.Create promo url") }}<i class="bx bx-money"></i>
+                                __("profile_trans.Create Promotion Url") }}<i class="bx bx-money"></i>
                             </a>
                         </div>
                     </div>
@@ -158,7 +168,7 @@
                     </div>
 
                     <div style="width: 40%;" class="mb-3">
-                        <a href="https://demo.ektml.com/4" target="_blank"
+                        <a href="{{ $project->link }}" target="_blank"
                             class="bttn btn-block btn-icon btn-purple mt-4 justify-content-center"><i
                                 class="bx bx-show"></i> {{ucwords(__('project_trans.show example'))}}</a>
                     </div>
@@ -166,19 +176,23 @@
                     <div class="post-txt">
                         <a class="post-title" href="#">{{ $project->name }}</a>
                         @if ($project->isOffered())
-                        <a id="offered-badge" class="post-title badge text-light bg-danger font-weight-bolder">{{ucwords(__('store_trans.offered'))}}!</a>
+                        <span id="offered-badge" class="post-title badge text-light bg-danger font-weight-bolder">{{ucwords(__('store_trans.offered'))}}!</span>
                         @endif
-                        <ul class="list-unstyled post-details">
+                        <ul class="list-unstyled post-details mt-2">
                             <li></li>
                             <li>{{ $project->created_at->diffForHumans() }}</li>
                             <li>{{ $project->likes->count() }} {{__('main_trans.Likes')}}</li>
                         </ul>
 
-                        {!! $project->body !!}
+                        <div class="mb-3 mt-3">
+                            {!! $project->body !!}
+                        </div>
 
                         <div class="footer-post">
                             <div class="tags">
-                                <a href="#">{{ __('project_trans.coupon') }}</a>
+                                @foreach ($project->tags as $tag)
+                                <a>{{$tag->name}}</a>
+                                @endforeach
                             </div>
 
                             @auth
@@ -221,4 +235,22 @@
             </div>
         </div>
     </div>
+
+    <script>
+        console.log(document.getElementById('buy-btn'));
+        document.getElementById('buy-btn').addEventListener('click', () => {
+            Swal.fire({
+                title: "{{ucwords(__('messages.are you sure?'))}}",
+                showCancelButton: true,
+                confirmButtonText: "{{ucwords(__('messages.yes'))}}",
+                cancelButtonText: "{{ucwords(__('messages.no'))}}",
+                }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    topbar.show();
+                    document.getElementById('actual-buy-btn').click();
+                }
+            })
+        });
+    </script>
 </section>

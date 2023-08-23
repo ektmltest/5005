@@ -149,6 +149,8 @@ class Profile extends Component
 
             DB::commit();
 
+            $this->reset('charge');
+
             $this->dispatchBrowserEvent('my:message.success', ['message' => __('messages.done')]);
 
         } catch (\Throwable $th) {
@@ -169,6 +171,8 @@ class Profile extends Component
 
             DB::commit();
 
+            $this->reset('user_bank_card');
+
             $this->dispatchBrowserEvent('my:message.success', ['message' => __('messages.done')]);
 
         } catch (\Throwable $th) {
@@ -187,14 +191,16 @@ class Profile extends Component
 
             $withdraw = $this->withdrawalRepository->withdraw($this->withdrawal);
 
+            DB::commit();
+
+            $this->reset('withdrawal');
+
             if (is_null($withdraw)) {
 
-                DB::commit();
                 $this->dispatchBrowserEvent('my:message.error', ['message' => __('messages.account balance error')]);
 
             } else {
 
-                DB::commit();
                 $this->dispatchBrowserEvent('my:message.success', ['message' => __('messages.done')]);
 
             }
@@ -211,13 +217,20 @@ class Profile extends Component
         DB::beginTransaction();
         try {
 
+            $user = auth()->user();
+
             if ($withdrawal->isPending()) {
-                auth()->user()->balance += $withdrawal->invoice_amount;
-                auth()->user()->save();
+
+                $user->addToBalance($withdrawal->invoice_amount);
+                $user->save();
                 $withdrawal->delete();
+
                 $this->dispatchBrowserEvent('my:message.success', ['message' => __('messages.done')]);
+
             } else {
+
                 $this->dispatchBrowserEvent('my:message.error', ['message' => __('messages.withdrawal changed')]);
+
             }
 
             DB::commit();

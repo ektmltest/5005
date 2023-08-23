@@ -135,6 +135,23 @@ class User extends Authenticatable
         return $this->visits;
     }
 
+    public function isEnoughBalance($amount) {
+        return $this->balance >= $amount;
+    }
+
+    public function addToBalance($amount) {
+        $this->balance += $amount;
+        return true;
+    }
+
+    public function removeFromBalance($amount) {
+        if ($this->isEnoughBalance($amount)) {
+            $this->balance -= $amount;
+            return true;
+        } else
+            return false;
+    }
+
     //////* Attributes *//////
     public function getFullNameAttribute() {
         return $this->fname . ' ' . $this->lname;

@@ -195,6 +195,12 @@ class ReadyProjectRepository implements ReadyProjectRepositoryInterface {
         $project->save();
     }
 
+    public function incrementNumOfPurchasesAndSave(ReadyProject $project) {
+        $project->incrementNumOfPurchases();
+        $project->save();
+        return $project;
+    }
+
     private function ordering($query, $filters) {
         if (isset($filters['filtered_with_purchases']) && $filters['filtered_with_purchases'])
             $query->orderBy('num_of_purchases', 'DESC');

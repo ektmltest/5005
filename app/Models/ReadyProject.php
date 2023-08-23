@@ -79,6 +79,11 @@ class ReadyProject extends Model
         return ($this->is_offered && Settings::getStoreOffer()->value > 0);
     }
 
+    public function incrementNumOfPurchases() {
+        $this->num_of_purchases = $this->num_of_purchases + 1;
+        return $this->num_of_purchases;
+    }
+
     //////* attributes *//////
     // public function name(): Attribute {
     //     return Attribute::make(
@@ -181,5 +186,13 @@ class ReadyProject extends Model
 
     public function getOriginalPriceAttribute() {
         return round($this->attributes['price'], 2);
+    }
+
+    public function getMarketingCommissionAttribute() {
+        return round($this->price * $this->attributes['marketing_discount_ratio'] / 100, 2);
+    }
+
+    public function getPriceAfterCommissionAttribute() {
+        return round($this->price - $this->marketing_commission, 2);
     }
 }
