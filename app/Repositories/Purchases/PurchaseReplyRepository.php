@@ -11,6 +11,10 @@ class PurchaseReplyRepository {
         $this->purchaseReplyAttachmentRepository = PurchaseReplyAttachmentRepository::instance();
     }
 
+    public static function instance() {
+        return new self;
+    }
+
     public function store($request, $purchase_id, $files = null) {
         $reply = PurchaseReply::create([
             'message' => $request->message,

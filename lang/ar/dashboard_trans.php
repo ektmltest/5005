@@ -160,4 +160,5 @@ return array (
   'ticket participants' => 'المشاركين في التذكرة',
   'available' => 'متاحة',
   'closed' => 'مغلقة',
+  'purchase tickets' => 'تذاكر المشتريات',
 );

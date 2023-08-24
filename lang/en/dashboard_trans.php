@@ -158,4 +158,5 @@ return array (
   'ticket participants' => 'ticket participants',
   'available' => 'available',
   'closed' => 'closed',
+  'purchase tickets' => 'purchase tickets',
 );

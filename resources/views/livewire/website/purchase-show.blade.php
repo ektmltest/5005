@@ -25,7 +25,7 @@
                             </div>
                         </ul>
                         <p class='mt-3 wordsBreaker'>{{__('tickets_trans.you have bought a project')}} - {{$purchase->project->name}}</p>
-                        <p class='mt-3 wordsBreaker'>{{__('tickets_trans.with price')}} {{$purchase->full_price}}</p>
+                        <p class='mt-3 wordsBreaker'>{{__('tickets_trans.with price')}} {{$purchase->full_price}} {{__('home_trans.SAR')}}</p>
                         <p class='mt-3 wordsBreaker'>
                             @forelse ($purchase->addons as $addon)
                                 @if ($loop->first)

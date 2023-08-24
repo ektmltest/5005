@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Repositories\Purchases\PurchaseRepository;
 use App\Repositories\TicketAttachmentRepository;
 use App\Repositories\TicketRepository;
 use Livewire\Component;
@@ -15,11 +16,11 @@ class Ticket extends Component
     protected $tickets;
 
     private $ticketRepository;
-    private $ticketAttachmentRepository;
+    private $purchaseRepository;
 
     public function __construct() {
-        $this->ticketAttachmentRepository = new TicketAttachmentRepository;
-        $this->ticketRepository = new TicketRepository($this->ticketAttachmentRepository);
+        $this->ticketRepository = TicketRepository::instance();
+        $this->purchaseRepository = PurchaseRepository::instance();
     }
 
     public function changeStatus(string $status) {
@@ -27,9 +28,18 @@ class Ticket extends Component
         $this->resetPage();
     }
 
+    private function initVariables() {
+        if ($this->current_status == 'available')
+            $this->tickets = $this->ticketRepository->getAllAvailableTickets(auth: false, paginate: true);
+        elseif ($this->current_status == 'closed')
+            $this->tickets = $this->ticketRepository->getAllClosedTickets(auth: false, paginate: true);
+        else
+            $this->tickets = $this->purchaseRepository->getAll(paginate: true);
+    }
+
     public function render()
     {
-        $this->tickets = ($this->current_status == 'available') ? $this->ticketRepository->getAllAvailableTickets(auth: false, paginate: true) : $this->ticketRepository->getAllClosedTickets(auth: false, paginate: true);
+        $this->initVariables();
         $this->dispatchBrowserEvent('my:loaded');
         return view('livewire.admin.tickets', [
             'tickets' => $this->tickets

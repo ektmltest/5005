@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Website;
 use App\Http\Requests\TicketStoreRequest;
 use App\Models\Purchase;
 use App\Models\Ticket as ModelsTicket;
+use App\Repositories\Purchases\PurchaseRepository;
 use App\Repositories\TicketAttachmentRepository;
 use Livewire\Component;
 use Illuminate\Http\Request;
@@ -28,18 +29,20 @@ class Ticket extends Component
     protected $ticketTypeRepository;
     protected $ticketRepository;
     protected $ticketAttachmentRepository;
+    protected $purchaseRepository;
 
     public function __construct()
     {
         $this->ticketTypeRepository = new TicketTypeRepository;
-        $this->ticketRepository = new TicketRepository(new TicketAttachmentRepository);
+        $this->ticketRepository = TicketRepository::instance();
         $this->ticketAttachmentRepository = new TicketAttachmentRepository;
         $this->ticket = new ModelsTicket;
+        $this->purchaseRepository = PurchaseRepository::instance();
 
         $this->ticketTypes = $this->ticketTypeRepository->getAllTicketTypes();
         $this->availableTickets = $this->ticketRepository->getAllAvailableTickets();
         $this->closedTickets = $this->ticketRepository->getAllClosedTickets();
-        $this->purchases = Purchase::where('user_id', auth()->user()->id)->get();
+        $this->purchases = $this->purchaseRepository->getAll(auth: true);
     }
 
     // * to define rules for all post requests comming to this component

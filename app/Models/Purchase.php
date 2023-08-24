@@ -23,8 +23,16 @@ class Purchase extends Model
         return $this->belongsToMany(Addon::class, 'purchase_addons');
     }
 
-    public function replies() {
-        return $this->hasMany(PurchaseReply::class);
+    public function replies($limit = null, $ordered = null) {
+        $query = $this->hasMany(PurchaseReply::class);
+
+        if ($ordered)
+            $query = $query->orderBy('created_at', $ordered);
+
+        if ($limit)
+            $query = $query->limit($limit);
+
+        return $query;
     }
 
     // functions

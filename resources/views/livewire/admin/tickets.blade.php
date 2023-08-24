@@ -39,6 +39,12 @@
                                                 wire:click="changeStatus('closed')">{{__('dashboard_trans.closed tickets')}}</a>
                                             </th>
                                         </tr>
+                                        <tr>
+                                            <th>
+                                                <a onclick="topbar.show()" class="{{$current_status != 'purchase' ? 'text-secondary' : ''}}" style="cursor: pointer;" class="waves-effect"
+                                                wire:click="changeStatus('purchase')">{{__('tickets_trans.purchase_tickets')}}</a>
+                                            </th>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -60,6 +66,22 @@
 
                                 <tbody>
                                 @foreach($tickets as $ticket)
+                                    @if ($current_status == 'purchase')
+                                    <tr>
+                                        <td>{{$ticket->id}}</td>
+                                        <td>
+                                            <a href="{{route('admin.purchases.show', $ticket->id)}}">
+                                                {{ $ticket->user->full_name }}
+                                                <br>
+                                                <span class="text-secondary">{{$ticket->project->name}}</span>
+                                                <br>
+                                                <span class="text-secondary">{{\Str::limit($ticket->project->description, 20, '...')}}</span>
+                                            </a>
+                                        </td>
+                                        <td><span class="bg-info text-light rounded p-1 badge">{{__('tickets_trans.purchases')}}</span></td>
+                                        <td>{{ $ticket->created_at->diffForHumans() }}</td>
+                                    </tr>
+                                    @else
                                     <tr>
                                         <td>{{$ticket->id}}</td>
                                         <td>
@@ -74,6 +96,7 @@
                                         <td><span class="bg-info text-light rounded p-1 badge">{{ $ticket->type->name }}</span></td>
                                         <td>{{ $ticket->created_at->diffForHumans() }}</td>
                                     </tr>
+                                    @endif
                                 @endforeach
                                 </tbody>
 
