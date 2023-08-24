@@ -153,4 +153,9 @@ return array (
   'progress' => 'progress',
   'project state' => 'project state',
   'project settings' => 'project settings',
+  'id' => 'id',
+  'main info' => 'main information',
+  'ticket participants' => 'ticket participants',
+  'available' => 'available',
+  'closed' => 'closed',
 );

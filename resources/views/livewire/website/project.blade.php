@@ -237,7 +237,6 @@
     </div>
 
     <script>
-        console.log(document.getElementById('buy-btn'));
         document.getElementById('buy-btn').addEventListener('click', () => {
             Swal.fire({
                 title: "{{ucwords(__('messages.are you sure?'))}}",

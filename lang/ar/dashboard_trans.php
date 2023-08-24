@@ -155,4 +155,9 @@ return array (
   'progress' => 'التقدم',
   'project state' => 'حالة المشروع',
   'project settings' => 'اعدادات المشروع',
+  'id' => 'الرقم المرجعي',
+  'main info' => 'المعلومات الرئيسية',
+  'ticket participants' => 'المشاركين في التذكرة',
+  'available' => 'متاحة',
+  'closed' => 'مغلقة',
 );

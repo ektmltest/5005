@@ -62,7 +62,15 @@
                                 @foreach($tickets as $ticket)
                                     <tr>
                                         <td>{{$ticket->id}}</td>
-                                        <td><a href="#">{{ $ticket->user->full_name }}<br><span class="text-secondary">{{$ticket->title}}</span><br><span class="text-secondary">{{\Str::limit($ticket->description, 20, '...')}}</span></a></td>
+                                        <td>
+                                            <a href="{{route('admin.tickets.show', $ticket->id)}}">
+                                                {{ $ticket->user->full_name }}
+                                                <br>
+                                                <span class="text-secondary">{{$ticket->title}}</span>
+                                                <br>
+                                                <span class="text-secondary">{{\Str::limit($ticket->description, 20, '...')}}</span>
+                                            </a>
+                                        </td>
                                         <td><span class="bg-info text-light rounded p-1 badge">{{ $ticket->type->name }}</span></td>
                                         <td>{{ $ticket->created_at->diffForHumans() }}</td>
                                     </tr>

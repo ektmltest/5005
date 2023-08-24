@@ -10,6 +10,10 @@ class TicketRepository implements TicketRepositoryInterface {
 
     protected $ticketAttachmentRepository;
 
+    public static function instance() {
+        return new self(new TicketAttachmentRepository);
+    }
+
     public function __construct(TicketAttachmentRepositoryInterface $ticketAttachmentRepository) {
         $this->ticketAttachmentRepository = $ticketAttachmentRepository;
     }

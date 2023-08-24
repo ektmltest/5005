@@ -21,8 +21,16 @@ class Ticket extends Model
         return $this->belongsTo(TicketType::class, 'ticket_type_id');
     }
 
-    public function replies() {
-        return $this->hasMany(TicketReply::class);
+    public function replies($limit = null, $ordered = null) {
+        $query = $this->hasMany(TicketReply::class);
+
+        if ($ordered)
+            $query = $query->orderBy('created_at', $ordered);
+
+        if ($limit)
+            $query = $query->limit($limit);
+
+        return $query;
     }
 
     public function attachments() {

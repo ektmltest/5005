@@ -19,16 +19,9 @@ class PurchaseShow extends Component
     public $message;
     public $files = array();
 
-    // protected $ticketRepository;
-    // protected $ticketReplyRepository;
-    // protected $ticketReplyAttachmentRepository;
     protected $purchaseReplyRepository;
 
-
     public function __construct() {
-        // $this->ticketRepository = new TicketRepository(new TicketAttachmentRepository);
-        // $this->ticketReplyAttachmentRepository = new TicketReplyAttachmentRepository;
-        // $this->ticketReplyRepository = new TicketReplyRepository($this->ticketReplyAttachmentRepository);
         $this->purchaseReplyRepository = new PurchaseReplyRepository;
     }
 
@@ -63,7 +56,8 @@ class PurchaseShow extends Component
 
             $this->reset(['message', 'files']);
             $this->resetValidation();
-            session('message', __('messages.done'));
+
+            $this->dispatchBrowserEvent('my:message.success', ['message' => __('messages.done')]);
 
         } catch (\Throwable $th) {
 

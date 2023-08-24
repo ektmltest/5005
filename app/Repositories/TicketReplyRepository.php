@@ -9,6 +9,10 @@ use App\Models\TicketReply;
 class TicketReplyRepository implements TicketReplyRepositoryInterface {
     protected $ticketReplyAttachmentRepository;
 
+    public static function instance() {
+        return new self(new TicketReplyAttachmentRepository);
+    }
+
     public function __construct(TicketReplyAttachmentRepositoryInterface $ticketReplyAttachmentRepository) {
         $this->ticketReplyAttachmentRepository = $ticketReplyAttachmentRepository;
     }

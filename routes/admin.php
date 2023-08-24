@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
         // ? TICKET SYSTEM
         Route::middleware('check.permission:manage-tickets')->get('tickets', fn() => view('admin.tickets.index'))->name('tickets.index');
         Route::middleware('check.permission:manage-tickets-types')->get('tickets/types', fn() => view('admin.tickets.types'))->name('tickets.types');
+        Route::middleware('check.permission:manage-tickets')->get('tickets/{id}', fn($id) => view('admin.tickets.show', compact('id')))->name('admin.tickets.show');
 
         // ? USER
         Route::middleware('check.permission:manage-users')->get('users', fn() => view('admin.users.manage'))->name('users.index');
