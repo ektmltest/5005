@@ -158,6 +158,10 @@ class User extends Authenticatable
         return $coupon ? $coupon->token : false;
     }
 
+    public function isMarketer() {
+        return $this->marketingLevel ? true : false;
+    }
+
     //////* Attributes *//////
     public function getFullNameAttribute() {
         return $this->fname . ' ' . $this->lname;

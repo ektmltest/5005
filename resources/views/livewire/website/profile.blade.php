@@ -15,18 +15,21 @@
                                         <p class="text-{{$user->rank->type->color}} mb-1">
                                             {{$user->rank->name}}
                                         </p>
-                                        @if ($user->hasPromotionToken())
-                                        <div class="copy-clipboard p-0 d-inline-block btn">
-                                            <span class="d-none">
-                                                {{route('affiliate.store', $user->promotion_token)}}
-                                            </span>
-                                            {{__('profile_trans.click to copy promotion url')}}
-                                            <i class="bx bx-clipboard btn btn-light rounded-circle p-1"></i>
-                                        </div>
-                                        @else
-                                        <a class="bttn btn-purple createPromoCode mt-2 text-light btn" onclick="">
-                                            {{ __('profile_trans.Create Promotion Url') }} <i class="bx bx-wallet"></i>
-                                        </a>
+                                        
+                                        @if ($user->isMarketer())
+                                            @if ($user->hasPromotionToken())
+                                            <div class="copy-clipboard p-0 d-inline-block btn">
+                                                <span class="d-none">
+                                                    {{route('affiliate.store', $user->promotion_token)}}
+                                                </span>
+                                                {{__('profile_trans.click to copy promotion url')}}
+                                                <i class="bx bx-clipboard btn btn-light rounded-circle p-1"></i>
+                                            </div>
+                                            @else
+                                            <a class="bttn btn-purple createPromoCode mt-2 text-light btn" onclick="topbar.show()" wire:click='createPromotionToken'>
+                                                {{ __('profile_trans.Create Promotion Url') }} <i class="bx bx-wallet"></i>
+                                            </a>
+                                            @endif
                                         @endif
                                     </div>
                                 </div>

@@ -113,6 +113,10 @@ class Project extends Component
         }
     }
 
+    public function createPromotionToken() {
+        return auth()->user()->promotion_token;
+    }
+
     private function setupPurchaseProcess(): Purchase {
         $purchase = $this->purchaseRepository->storeAndAttachAddons(
             $this->project->id,

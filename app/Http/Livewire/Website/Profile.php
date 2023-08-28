@@ -272,6 +272,10 @@ class Profile extends Component
         return isset($this->charge['file']);
     }
 
+    public function createPromotionToken() {
+        return auth()->user()->promotion_token;
+    }
+
     private function resetAll() {
         $this->resetExcept('status');
         $this->resetPage();

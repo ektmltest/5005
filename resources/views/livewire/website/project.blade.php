@@ -139,6 +139,8 @@
                         </div>
                     </div>
 
+                    @auth
+                    @if (auth()->user()->isMarketer())
                     <div class="sidebox sidebox-style">
                         <h5><i class="bx bx-share-alt"></i>{{ __('project_trans.Affiliate Marketing') }}</h5>
                         <div class="sidebox-inner txt-widget">
@@ -147,23 +149,24 @@
                                 {{ __('project_trans.Your commission is') }} ( {{ $project->marketing_commission }} {{
                                 __('project_trans.SAR') }}) {{ __('project_trans.per purchase') }}
                             </p>
-                            @auth
-                                @if (auth()->user()->hasPromotionToken())
-                                <div class="copy-clipboard p-0 d-inline-block btn">
-                                    <span class="d-none">
-                                        {{route('affiliate.project', [auth()->user()->promotion_token, $project->id])}}
-                                    </span>
-                                    {{__('profile_trans.click to copy promotion url')}}
-                                    <i class="bx bx-clipboard btn btn-light rounded-circle p-1"></i>
-                                </div>
-                                @else
-                                <a class="bttn btn-purple createPromoCode mt-2 text-light btn" onclick="">
-                                    {{ __('profile_trans.Create Promotion Url') }} <i class="bx bx-wallet"></i>
-                                </a>
-                                @endif
-                            @endauth
+
+                            @if (auth()->user()->hasPromotionToken())
+                            <div class="copy-clipboard p-0 d-inline-block btn">
+                                <span class="d-none">
+                                    {{route('affiliate.project', [auth()->user()->promotion_token, $project->id])}}
+                                </span>
+                                {{__('profile_trans.click to copy promotion url')}}
+                                <i class="bx bx-clipboard btn btn-light rounded-circle p-1"></i>
+                            </div>
+                            @else
+                            <a class="bttn btn-purple createPromoCode mt-2 text-light btn" onclick="topbar.show()" wire:click='createPromotionToken'>
+                                {{ __('profile_trans.Create Promotion Url') }} <i class="bx bx-wallet"></i>
+                            </a>
+                            @endif
                         </div>
                     </div>
+                    @endif
+                    @endauth
 
                     <div class="sidebox sidebox-style gallery-container">
                         <h5><i class="bx bx-images"></i>{{__('project_trans.Projects Gallery')}}</h5>
