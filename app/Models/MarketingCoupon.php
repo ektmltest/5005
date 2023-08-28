@@ -11,13 +11,9 @@ class MarketingCoupon extends Model
 
     protected $guarded = [];
 
-    public function readyProject() {
-        return $this->belongsTo(ReadyProject::class);
-    }
-
     public function user() {
         return $this->belongsTo(User::class);
     }
 
-    
+
 }

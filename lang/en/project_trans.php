@@ -28,4 +28,5 @@ return array (
   'Project Price Without Offers' => 'Project Price Without Offers',
   'show example' => 'show exmaple',
   'no facilities for this project' => 'No facilities available for this project.',
+  'Project Price Without Coupon' => 'Project Price Without Coupon',
 );

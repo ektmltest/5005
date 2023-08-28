@@ -85,10 +85,7 @@ class DatabaseSeeder extends Seeder
 
             $users = User::factory()
                 ->count(99)
-                ->create()
-                ->each(function ($user) use ($marketLevels) {
-                    $user->marketingLevels()->attach($marketLevels->random(1)->first()->id);
-                });
+                ->create();
 
             $users->push(User::factory()->create([
                 'rank_id' => Rank::where('priority', 9999)->first()->id
@@ -171,7 +168,7 @@ class DatabaseSeeder extends Seeder
             UserBankCard::factory()->count(150)->create();
             Withdrawal::factory()->count(150)->create();
 
-            MarketingCoupon::factory()->count(50)->create();
+            // MarketingCoupon::factory()->count(50)->create();
 
             Opinion::factory()->count(300)->create();
 

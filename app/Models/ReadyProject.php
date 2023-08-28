@@ -188,11 +188,39 @@ class ReadyProject extends Model
         return round($this->attributes['price'], 2);
     }
 
-    public function getMarketingCommissionAttribute() {
+    // ? affiliate system
+    public function getMarketingDiscountAttribute() {
         return round($this->price * $this->attributes['marketing_discount_ratio'] / 100, 2);
     }
 
+    public function getMarketingCommissionAttribute() {
+        if (!auth()->check())
+            return 0;
+        $benefit_ratio = auth()->user()->marketingLevel->benefit_ratio / 100;
+        return round($this->marketing_discount * $benefit_ratio, 2);
+    }
+
+    public function getMarketingCommissionUsingTokenAttribute() {
+        $token = request()->route('token') ?? null;
+        if (!$token)    return 0;
+
+        $coupon = MarketingCoupon::where('token' , $token)->first();
+        $benefit_ratio = $coupon->user->marketingLevel->benefit_ratio / 100;
+
+        return round($this->marketing_discount * $benefit_ratio, 2);
+    }
+
+    public function getFinalDiscountForClientAttribute() {
+        return $this->marketing_discount - $this->marketing_commission_using_token;
+    }
+
     public function getPriceAfterCommissionAttribute() {
-        return round($this->price - $this->marketing_commission, 2);
+        return round($this->price - $this->final_discount_for_client, 2);
+
+        // ? testing
+        // return $this->marketing_discount;
+        // return $this->attributes['marketing_discount_ratio'];
+        // return $this->price;
+        // return $this->marketing_discount - $this->marketing_commission_using_token;
     }
 }

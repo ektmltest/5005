@@ -10,6 +10,8 @@ class Store extends Component
     public $ready_projects;
     public $active = 0;
     public $max_count = null;
+    public $token;
+
     protected $readyProjectDepartmentRepository;
     protected $readyProjectRepository;
 
@@ -19,6 +21,20 @@ class Store extends Component
 
         if (!session()->has('loaded'))
             session()->put('loaded', config('globals.store_pagination'));
+    }
+
+    public function mount($token=null) {
+        $this->token = $token;
+    }
+
+    public function isAffiliate() {
+        return is_null($this->token) ? false : true;
+    }
+
+    public function prepareProjectRoute($project_id) {
+        return $this->isAffiliate() ?
+            route('affiliate.project', [$this->token, $project_id]) :
+            route('project', $project_id);
     }
 
     public function activate($id) {

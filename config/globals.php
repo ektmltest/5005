@@ -10,4 +10,5 @@ return [
     'home_news' => 2,
     'max_replies' => 5,
     'max_file_size' => 5120,
+    'length_of_affiliate_token' => 32,
 ];

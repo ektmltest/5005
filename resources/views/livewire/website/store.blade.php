@@ -17,15 +17,22 @@
                 <div class="item prj-{{$project->department->id}} col-md-4 col-12 mb-4" style="max-height: 400px">
                     <div class="post-item">
                         <div class="post-img">
-                            <img class="img-fluid" mu-open mu-link="{{ route('project', $project->id) }}" style="border-radius: 16px; cursor: pointer; width:100%;
-                            height:200px;
-                            object-fit:cover;
-                            object-position:50% 50%;" src="{{ $project->image }}" alt>
+                            <img class="img-fluid"
+                                mu-open
+                                mu-link="{{ $this->prepareProjectRoute($project->id) }}"
+                                style="border-radius: 16px; cursor: pointer; width:100%;
+                                    height:200px;
+                                    object-fit:cover;
+                                    object-position:50% 50%;"
+                                src="{{ $project->image }}" alt>
                         </div>
 
                         <div class="post-txt">
                             <div class="">
-                                <a class="post-title" href="{{ route('project', $project->id) }}">{{ $project->name }}</a>
+                                <a class="post-title"
+                                    href="{{ $this->prepareProjectRoute($project->id) }}">
+                                    {{ $project->name }}
+                                </a>
                                 @if ($project->isOffered())
                                 <a id="offered-badge" class="post-title badge text-light bg-danger font-weight-bolder">{{ucwords(__('store_trans.offered'))}}!</a>
                                 @endif
@@ -39,11 +46,11 @@
                             <div class="footer-post">
                                 <div class="tags">
                                     @if ($project->isOffered())
-                                    <a href="{{ route('project', $project->id) }}">
+                                    <a href="{{ $this->prepareProjectRoute($project->id) }}">
                                         <s>{{ $project->original_price }}</s> {{ $project->price }} {{ __('home_trans.SAR') }}
                                     </a>
                                     @else
-                                    <a href="{{ route('project', $project->id) }}">
+                                    <a href="{{ $this->prepareProjectRoute($project->id) }}">
                                         {{ $project->price }} {{ __('home_trans.SAR') }}
                                     </a>
                                     @endif

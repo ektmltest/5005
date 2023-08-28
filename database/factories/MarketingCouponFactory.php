@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\ReadyProject;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\MarketingCoupon>
@@ -19,9 +20,8 @@ class MarketingCouponFactory extends Factory
     public function definition(): array
     {
         return [
-            'key' => fake()->unique()->randomNumber(),
+            'token' => Str::random(32),
             'num_of_transactions' => fake()->numberBetween(1, 500),
-            'ready_project_id' => ReadyProject::inRandomOrder()->first()->id,
             'user_id' => User::inRandomOrder()->first()->id,
         ];
     }

@@ -14,7 +14,7 @@
     ])
 
     {{session()->put('loaded', config('globals.store_pagination'))}}
-    <livewire:website.store />
+    <livewire:website.store :token="$token ?? null" />
 
     @component('layouts.components.rtl-links-js')
     @endcomponent

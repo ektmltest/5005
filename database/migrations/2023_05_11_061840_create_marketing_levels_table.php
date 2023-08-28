@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('priority');
             $table->integer('max_transactions');
+            $table->double('benefit_ratio', places: 2)->default(0);
             $table->timestamps();
         });
     }

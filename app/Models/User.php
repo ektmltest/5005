@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -69,8 +70,8 @@ class User extends Authenticatable
         return $this->hasMany(Payment::class);
     }
 
-    public function marketingLevels() {
-        return $this->belongsToMany(MarketingLevel::class, 'user_marketing_levels');
+    public function marketingLevel() {
+        return $this->belongsTo(MarketingLevel::class);
     }
 
     public function tickets() {
@@ -152,6 +153,11 @@ class User extends Authenticatable
             return false;
     }
 
+    public function hasPromotionToken() {
+        $coupon = $this->marketingCoupons->first();
+        return $coupon ? $coupon->token : false;
+    }
+
     //////* Attributes *//////
     public function getFullNameAttribute() {
         return $this->fname . ' ' . $this->lname;
@@ -177,6 +183,16 @@ class User extends Authenticatable
 
     public function setBalanceAttribute($balance) {
         $this->attributes['balance'] = round($balance, 2);
+    }
+
+    public function getPromotionTokenAttribute() {
+        $token = $this->hasPromotionToken();
+        if ($token)
+            return $token;
+        else
+            return $this->marketingCoupons()->create([
+                'token' => Str::random(config('globals.length_of_affiliate_token')),
+            ])->token;
     }
 
     // public function getSearchFieldAttribute() {

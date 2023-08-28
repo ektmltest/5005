@@ -51,4 +51,5 @@ return array (
   'no transactions yet' => 'no transactions yet.',
   'bank transfer' => 'bank transfer',
   'online payment' => 'online payment',
+  'click to copy promotion url' => 'Click to copy promotion URL',
 );

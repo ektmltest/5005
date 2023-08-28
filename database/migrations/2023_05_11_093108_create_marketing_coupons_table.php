@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('marketing_coupons', function (Blueprint $table) {
             $table->id();
-            $table->string('key')->unique();
+            $table->string('token')->unique();
             $table->integer('num_of_transactions')->default(0);
             $table->timestamps();
 
             // foreign keys
-            $table->foreignId('ready_project_id')->constrained('ready_projects')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }

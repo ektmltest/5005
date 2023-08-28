@@ -1,5 +1,7 @@
 <?php
 namespace Database\Factories;
+
+use App\Models\MarketingLevel;
 use App\Models\Rank;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
@@ -21,6 +23,7 @@ class UserFactory extends Factory
             'rank_id' => Rank::inRandomOrder()->first()->id,
             'avatar' => fake()->imageUrl(),
             'balance' => fake()->randomFloat(min: 500, max: 10000),
+            'marketing_level_id' => fake()->randomElement([null, MarketingLevel::inRandomOrder()->first()->id]),
         ];
     }
 

@@ -25,6 +25,7 @@ class Project extends Component
     public $socials;
     public $price;
     public $addons_ids = array();
+    public $token;
 
     protected $readyProjectRepository;
     protected $galleryProjectRepository;
@@ -46,11 +47,14 @@ class Project extends Component
         $this->socials = $this->socialMediaRepository->getAll();
     }
 
-    public function mount($id) {
+    public function mount($id, $token) {
         $this->project = $this->readyProjectRepository->findById($id, with: ['facilities', 'addons']);
         $this->next = $this->readyProjectRepository->getNextId($id);
         $this->previous = $this->readyProjectRepository->getPreviousId($id);
-        $this->price = $this->project->price;
+        $this->price = request()->route('token') ? $this->project->price_after_commission : $this->project->price;
+
+        // ? affiliate
+        $this->token = $token;
     }
 
     public function toggleLike($ready_project)

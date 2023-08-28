@@ -28,4 +28,5 @@ return array (
   'Project Price Without Offers' => 'سعر المشروع بدون عروض',
   'show example' => 'عرض مثال',
   'no facilities for this project' => 'لا توجد ميزات متاحة لهذا المشروع.',
+  'Project Price Without Coupon' => 'سعر المشروع بدون الكوبون',
 );

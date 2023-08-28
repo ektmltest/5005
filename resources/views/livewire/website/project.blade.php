@@ -65,6 +65,19 @@
                             </div>
                             @endif
 
+                            @if (request()->route('token'))
+                            <div class="mb-3">
+                                <h5 class="text-danger">
+                                    {{ __('project_trans.Project Price Without Coupon') }}
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-1" style="transform: scaleX(-1); fill: #dc3545" height="0.75em" viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M350 334.5c3.8 8.8 2 19-4.6 26l-136 144c-4.5 4.8-10.8 7.5-17.4 7.5s-12.9-2.7-17.4-7.5l-136-144c-6.6-7-8.4-17.2-4.6-26s12.5-14.5 22-14.5h88l0-192c0-17.7-14.3-32-32-32H32C14.3 96 0 81.7 0 64V32C0 14.3 14.3 0 32 0l80 0c70.7 0 128 57.3 128 128l0 192h88c9.6 0 18.2 5.7 22 14.5z"/></svg>
+                                </h5>
+
+                                <h5 class="text-danger">
+                                    <s class="pCost">{{ $project->price }} {{ __('project_trans.SAR') }}</s>
+                                </h5>
+                            </div>
+                            @endif
+
                             <div class="mb-3">
                                 <h5>
                                     {{ __('project_trans.Project Price') }}
@@ -134,9 +147,21 @@
                                 {{ __('project_trans.Your commission is') }} ( {{ $project->marketing_commission }} {{
                                 __('project_trans.SAR') }}) {{ __('project_trans.per purchase') }}
                             </p>
-                            <a class="bttn btn-purple createProjectPromo" mu-id="3" mu-notlogged="true" href>{{
-                                __("profile_trans.Create Promotion Url") }}<i class="bx bx-money"></i>
-                            </a>
+                            @auth
+                                @if (auth()->user()->hasPromotionToken())
+                                <div class="copy-clipboard p-0 d-inline-block btn">
+                                    <span class="d-none">
+                                        {{route('affiliate.project', [auth()->user()->promotion_token, $project->id])}}
+                                    </span>
+                                    {{__('profile_trans.click to copy promotion url')}}
+                                    <i class="bx bx-clipboard btn btn-light rounded-circle p-1"></i>
+                                </div>
+                                @else
+                                <a class="bttn btn-purple createPromoCode mt-2 text-light btn" onclick="">
+                                    {{ __('profile_trans.Create Promotion Url') }} <i class="bx bx-wallet"></i>
+                                </a>
+                                @endif
+                            @endauth
                         </div>
                     </div>
 

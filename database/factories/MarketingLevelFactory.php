@@ -19,6 +19,7 @@ class MarketingLevelFactory extends Factory
         return [
             'priority' => fake()->numberBetween(1, 1000),
             'max_transactions' => fake()->numberBetween(5, 25),
+            'benefit_ratio' => fake()->randomFloat(nbMaxDecimals: 2, min: 10, max: 100),
         ];
     }
 }

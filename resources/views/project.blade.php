@@ -13,7 +13,7 @@
     'header_body' => $project->description,
     ])
 
-    <livewire:website.project :id="$project->id" />
+    <livewire:website.project :id="$project->id" :token="$token ?? null" />
 
     @component('layouts.components.rtl-links-js')
     @endcomponent

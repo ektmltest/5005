@@ -12,6 +12,6 @@ class MarketingLevel extends Model
     protected $guarded = [];
 
     public function users() {
-        return $this->belongsToMany(MarketingLevel::class, 'user_marketing_levels');
+        return $this->hasMany(User::class);
     }
 }

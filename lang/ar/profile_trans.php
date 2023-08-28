@@ -51,4 +51,5 @@ return array (
   'no transactions yet' => 'لا توجد معاملات حتى الآن.',
   'bank transfer' => 'التحويل المصرفي',
   'online payment' => 'الدفع الالكتروني',
+  'click to copy promotion url' => 'إنقر لنسخ رابط التسويق',
 );

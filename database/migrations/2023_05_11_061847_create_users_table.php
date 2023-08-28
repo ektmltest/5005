@@ -25,6 +25,7 @@ return new class extends Migration
 
             // foreign keys
             $table->foreignId('rank_id')->constrained('ranks')->cascadeOnUpdate();
+            $table->foreignId('marketing_level_id')->nullable()->constrained('marketing_levels')->cascadeOnUpdate()->cascadeOnUpdate();
         });
     }
 
