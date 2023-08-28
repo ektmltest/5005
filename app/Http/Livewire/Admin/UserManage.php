@@ -2,13 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Repositories\ProjectAttachmentRepository;
-use App\Repositories\ProjectCategoryRepository;
-use App\Repositories\ProjectReplyAttachmentRepository;
-use App\Repositories\ProjectReplyRepository;
-use App\Repositories\ProjectRepository;
 use App\Repositories\UserRepository;
-use App\Repositories\VerifyEmailRepository;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -19,6 +13,7 @@ class UserManage extends Component
     protected $paginationTheme = 'bootstrap';
 
     public $filter = 'none';
+    public $search = null;
 
     protected $users;
 
@@ -26,8 +21,7 @@ class UserManage extends Component
     protected $projectRepository;
 
     public function __construct() {
-        $this->userRepository = (new UserRepository(new VerifyEmailRepository));
-        // $this->projectRepository = (new ProjectRepository(new ProjectAttachmentRepository, new ProjectCategoryRepository, new ProjectReplyRepository(new ProjectReplyAttachmentRepository)));
+        $this->userRepository = UserRepository::instance();
 
         $this->users = $this->userRepository->getAll(paginate: true);
     }
@@ -90,13 +84,42 @@ class UserManage extends Component
     }
 
     public function filterAction() {
+        $filter = $this->filter;
+        $this->resetPage();
+        $this->filter = $filter;
+
+        $this->search = null;
+        $this->render();
+    }
+
+    public function searchAction() {
+        $search = $this->search;
+        $this->resetPage();
+        $this->search = $search;
+
+        $this->filter = 'none';
         $this->render();
     }
 
     public function render()
     {
-        $users = $this->userRepository->getAll(paginate: true, state: $this->filter == 'none' ? null : $this->filter);
         $this->dispatchBrowserEvent('my:loaded');
+
+        if ($this->filter != 'none') {
+            $users = $this->userRepository->getAll(paginate: true, state: $this->filter);
+            return view('livewire.admin.user-manage', [
+                'users' => $users,
+            ]);
+        }
+
+        if ($this->search) {
+            $users = $this->userRepository->getAll(paginate: true, needle: $this->search);
+            return view('livewire.admin.user-manage', [
+                'users' => $users,
+            ]);
+        }
+
+        $users = $this->userRepository->getAll(paginate: true);
         return view('livewire.admin.user-manage', [
             'users' => $users,
         ]);

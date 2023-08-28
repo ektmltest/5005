@@ -178,4 +178,8 @@ class User extends Authenticatable
     public function setBalanceAttribute($balance) {
         $this->attributes['balance'] = round($balance, 2);
     }
+
+    // public function getSearchFieldAttribute() {
+    //     return '' . $this->fname . $this->lname . $this->email . $this->country_code . $this->phone;
+    // }
 }

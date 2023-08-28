@@ -9,6 +9,7 @@ use App\Http\Requests\UserUpdateRequest;
 use App\Interfaces\UserRepositoryInterface;
 use App\Interfaces\VerifyEmailRepositoryInterface;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserRepository implements UserRepositoryInterface {
@@ -18,6 +19,10 @@ class UserRepository implements UserRepositoryInterface {
 
     public function __construct(VerifyEmailRepositoryInterface $verifyEmailRepository) {
         $this->verifyEmailRepository = $verifyEmailRepository;
+    }
+
+    public static function instance() {
+        return new self(VerifyEmailRepository::instance());
     }
 
     public function store(RegisterRequest $request) {
@@ -125,12 +130,18 @@ class UserRepository implements UserRepositoryInterface {
         return $user;
     }
 
-    public function getAll($max = null, $paginate = false, $num = 10, $state = null) {
-        if ($paginate)
+    public function getAll($max = null, $paginate = false, $num = 10, $state = null, $needle = null) {
+        if ($paginate) {
+            if ($needle)
+                return User::from('users AS a')
+                    ->where(DB::raw("(SELECT CONCAT(`fname`, ' ', `lname`, `email`, `country_code`, `phone`) AS `field` FROM `users` AS b WHERE b.`id` = a.`id`)"), 'LIKE', '%' . $needle . '%')
+                    ->paginate($num);
+
             if ($state)
                 return User::where('state', $state)->orderBy('created_at')->paginate($num);
-            else
-                return User::orderBy('created_at')->paginate($num);
+
+            return User::orderBy('created_at')->paginate($num);
+        }
 
         if (is_int($max))
             if ($state)

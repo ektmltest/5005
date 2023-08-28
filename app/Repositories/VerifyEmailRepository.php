@@ -7,6 +7,10 @@ use Illuminate\Support\Str;
 
 class VerifyEmailRepository implements VerifyEmailRepositoryInterface {
 
+    public static function instance() {
+        return new self();
+    }
+
     public function find($email, $token) {
         return VerifyEmail::where('email', $email)
             ->where('token', $token)

@@ -54,10 +54,18 @@
 
                             <div class="row justify-content-between mt-3 mb-3">
                                 <div class="col-6">
-                                    <input type="text" class="form-control" placeholder="{{__('dashboard_trans.Search')}}" wire:keydown='searchFilter' wire:model='search'>
+                                    <input type="text"
+                                        class="form-control"
+                                        placeholder="{{__('dashboard_trans.Search')}}"
+                                        wire:keydown='searchFilter'
+                                        wire:model='search'
+                                        onkeydown="topbar.show()">
                                 </div>
                                 <div class="col-6" dir="{{app()->getLocale() == 'ar' ? 'ltr' : 'rtl'}}">
-                                    <select wire:change='selectFilter' wire:model='select' class="h-100">
+                                    <select class="h-100"
+                                        wire:change='selectFilter'
+                                        wire:model='select'
+                                        onchange="topbar.show()">
                                         <option value="none">-- {{__('dashboard_trans.TYPE')}} --</option>
                                         <option value="activated">{{__('dashboard_trans.activated')}}</option>
                                         <option value="deactivated">{{__('dashboard_trans.deactivated')}}</option>
@@ -128,9 +136,12 @@
                                                             <button class="btn btn-secondary" data-bs-dismiss="modal">{{
                                                                 __('dashboard_trans.Cancel')
                                                                 }}</button>
-                                                            <button class="btn btn-danger" data-bs-dismiss="modal"
-                                                                wire:click='deletePermission({{$permission->id}})'>{{
-                                                                __('dashboard_trans.block') }}</button>
+                                                            <button class="btn btn-danger"
+                                                                data-bs-dismiss="modal"
+                                                                wire:click='deletePermission({{$permission->id}})'
+                                                                onclick="topbar.show()">
+                                                                {{ __('dashboard_trans.block') }}
+                                                            </button>
                                                         </div>
                                                     </div>
 
@@ -162,9 +173,12 @@
                                                             <button class="btn btn-secondary" data-bs-dismiss="modal">{{
                                                                 __('dashboard_trans.Cancel')
                                                                 }}</button>
-                                                            <button class="btn btn-success" data-bs-dismiss="modal"
-                                                                wire:click='addPermission({{$permission->id}})'>{{
-                                                                __('dashboard_trans.activate') }}</button>
+                                                            <button class="btn btn-success"
+                                                                data-bs-dismiss="modal"
+                                                                wire:click='addPermission({{$permission->id}})'
+                                                                onclick="topbar.show()">
+                                                                {{ __('dashboard_trans.activate') }}
+                                                            </button>
                                                         </div>
                                                     </div>
 
@@ -210,8 +224,12 @@
                         <button class="btn btn-secondary" data-bs-dismiss="modal">{{
                             __('dashboard_trans.Cancel')
                             }}</button>
-                        <button class="btn btn-danger" data-bs-dismiss="modal" wire:click='deleteAllPermissions'>{{
-                            __('dashboard_trans.block') }}</button>
+                        <button class="btn btn-danger"
+                            data-bs-dismiss="modal"
+                            wire:click='deleteAllPermissions'
+                            onclick="topbar.show()">
+                            {{ __('dashboard_trans.block') }}
+                        </button>
                     </div>
                 </div>
 
@@ -241,8 +259,12 @@
                         <button class="btn btn-secondary" data-bs-dismiss="modal">{{
                             __('dashboard_trans.Cancel')
                             }}</button>
-                        <button class="btn btn-success" data-bs-dismiss="modal" wire:click='addAllPermissions'>{{
-                            __('dashboard_trans.activate') }}</button>
+                        <button class="btn btn-success"
+                            data-bs-dismiss="modal"
+                            wire:click='addAllPermissions'
+                            onclick="topbar.show()">
+                            {{ __('dashboard_trans.activate') }}
+                        </button>
                     </div>
                 </div>
 

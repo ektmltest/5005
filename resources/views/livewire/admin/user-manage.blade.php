@@ -41,8 +41,15 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="row justify-content-between">
-                                <h4 class="card-title mb-4 col-6">{{ __('dashboard_trans.LAST 10 PROJECTS') }}</h4>
+                            <div class="row justify-content-between mb-3">
+                                <div class="col-6">
+                                    <input type="text"
+                                        class="form-control"
+                                        placeholder="{{__('dashboard_trans.Search')}} ({{__('dashboard_trans.FULL NAME') . ', ' . __('dashboard_trans.EMAIL') . ', ' . __('dashboard_trans.PHONE')}})"
+                                        wire:keydown='searchAction'
+                                        wire:model='search'
+                                        onkeydown="topbar.show()">
+                                </div>
                                 <div class="col-6" dir="ltr">
                                     <select name="" id="" wire:change='filterAction' wire:model='filter'>
                                         <option value="none">
