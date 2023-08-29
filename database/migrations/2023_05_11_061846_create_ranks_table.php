@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('ranks', function (Blueprint $table) {
             $table->id();
             $table->json('name');
+            $table->string('key')->unique();
             $table->integer('priority');
             $table->timestamps();
 

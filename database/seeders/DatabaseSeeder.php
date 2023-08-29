@@ -47,6 +47,10 @@ use Illuminate\Support\Facades\DB;
 class DatabaseSeeder extends Seeder
 {
     use File;
+
+    public const NO_PERMISSIONS = 26;
+    public const NO_RANKS = 19;
+
     /**
      * Seed the application's database.
      */
@@ -60,6 +64,8 @@ class DatabaseSeeder extends Seeder
             $this->deleteFilesInFolder('projects/replies');
             $this->deleteFilesInFolder('tickets');
             $this->deleteFilesInFolder('tickets/replies');
+            $this->deleteFilesInFolder('purchases');
+            $this->deleteFilesInFolder('purchases/replies');
             $this->deleteFilesInFolder('users');
             $this->deleteFilesInFolder('transactions/charges');
             $this->deleteFilesInFolder('admin/store/projects');
@@ -68,19 +74,20 @@ class DatabaseSeeder extends Seeder
 
             RankType::factory()->count(4)->create();
 
-            $permissions = Permission::factory()->count(26)->create();
+            $permissions = Permission::factory()->count(self::NO_PERMISSIONS)->create();
 
-            Rank::factory()->count(1)->hasAttached($permissions)->create([
-                'name' => ['ar' => 'المؤسس', 'en' => 'founder'],
-                'priority' => 9999,
-            ]);
-
-            $ranks = Rank::factory()->count(18)->create()->each(function ($rank) use ($permissions) {
-                $rank->permissions()->attach($permissions->random(rand(1, 25)));
-            });
+            $ranks = Rank::factory()
+                ->count(self::NO_RANKS)
+                ->create()
+                ->each(function ($rank) use ($permissions) {
+                    if ($rank->key == 'founder')
+                        $rank->permissions()->attach($permissions);
+                    else
+                        $rank->permissions()->attach($permissions->random(rand(1, self::NO_PERMISSIONS)));
+                });
 
             $marketLevels = MarketingLevel::factory()
-                ->count(50)
+                ->count(3)
                 ->create();
 
             $users = User::factory()
@@ -88,7 +95,7 @@ class DatabaseSeeder extends Seeder
                 ->create();
 
             $users->push(User::factory()->create([
-                'rank_id' => Rank::where('priority', 9999)->first()->id
+                'rank_id' => Rank::where('key', 'founder')->first()->id
             ]));
 
             GalleryProjectType::factory()->count(15)->create();

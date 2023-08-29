@@ -203,6 +203,16 @@
                                 </div>
 
                                 <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">{{strtoupper(__('dashboard_trans.Key'))}}</label>
+                                            <input type="number" class="form-control" wire:model="data.key">
+                                            @error("data.key") <span class="error">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
                                     <div class="col-lg-3 mb-3 mt-3 mt-lg-0">
                                         <button type="submit"
                                             class="btn btn-success form-control">{{__('dashboard_trans.ADD')}}</button>

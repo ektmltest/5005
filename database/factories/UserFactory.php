@@ -11,6 +11,7 @@ class UserFactory extends Factory
 {
     public function definition(): array
     {
+        $random_rank = Rank::inRandomOrder()->first();
         return [
             'fname' => fake()->name(),
             'lname' => fake()->name(),
@@ -20,10 +21,10 @@ class UserFactory extends Factory
             'password' => Hash::make('123456789'), // 123456789
             'remember_token' => Str::random(10),
             'state' => fake()->randomElement(['pending', 'activated', 'blocked']),
-            'rank_id' => Rank::inRandomOrder()->first()->id,
+            'rank_id' => $random_rank->id,
             'avatar' => fake()->imageUrl(),
             'balance' => fake()->randomFloat(min: 500, max: 10000),
-            'marketing_level_id' => fake()->randomElement([null, MarketingLevel::inRandomOrder()->first()->id]),
+            'marketing_level_id' => \Str::contains($random_rank->key, 'market') ? MarketingLevel::inRandomOrder()->first()->id : null,
         ];
     }
 

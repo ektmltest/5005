@@ -11,4 +11,6 @@ return [
     'max_replies' => 5,
     'max_file_size' => 5120,
     'length_of_affiliate_token' => 32,
+    'num_of_permissions_in_the_system' => 26,
+    'num_of_ranks_in_the_system' => 19,
 ];

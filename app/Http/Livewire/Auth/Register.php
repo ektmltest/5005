@@ -1,5 +1,7 @@
 <?php
 namespace App\Http\Livewire\Auth;
+
+use App\Models\Rank;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -47,7 +49,7 @@ class Register extends Component
                     'phone' => $this->phone,
                     'country_code' => '+20',
                     'state' => 'pending',
-                    'rank_id' => 1,
+                    'rank_id' => Rank::where('key', 'default-user')->firstOrFail()->id,
                 ]);
 
                 $user->incrementVisits();

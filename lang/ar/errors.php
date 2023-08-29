@@ -11,4 +11,5 @@ return array (
   'It will be as simple as Occidental in fact, it will be Occidental' => 'سيكون الأمر بسيطًا مثل الخطأ في الواقع ، سيكون خطأ',
   'Back to Dashboard' => 'رجوع إلى لوحة القيادة',
   'complete the form and follow the instructions' => 'خطأ! أكمل المدخلات واتبع التعليمات أدناه.',
+  'this coupon has exceed the maximum number of transactions' => 'لقد تجاوزت هذه القسيمة الحد الأقصى لعدد المعاملات. حاول مرة أخرى لاحقًا أو اتصل بالمسوق.',
 );

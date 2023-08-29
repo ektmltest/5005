@@ -14,11 +14,13 @@
     @if (Session::has('error'))
         <div id="alert" class="w-100" style="position: absolute; z-index: 99999; text-align: center; top: 65px">
             <div class="alert alert-danger m-auto w-50">
-                {{Session::get('error')}} <span id="alert-counter"></span>
+                {{-- {{Session::get('error')}} <span id="alert-counter"></span> --}}
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{Session::get('error')}}
             </div>
         </div>
 
-        <script>
+        {{-- <script>
             var i = 5;
             var id = setInterval(() => {
                 var counter = document.getElementById('alert-counter');
@@ -30,7 +32,7 @@
                 alert.style.display = 'none';
                 clearInterval(id);
             }, 5000);
-        </script>
+        </script> --}}
 
         {{-- * this part is working as well --}}
         {{-- @push('custom-scripts')

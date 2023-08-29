@@ -23,6 +23,7 @@ class RankRepository implements RankRepositoryInterface {
                 'en' => $data['name_en'],
                 'ar' => $data['name_ar']
             ],
+            'key' => $data['key'],
             'priority' => $data['priority'],
             'rank_type_id' => $data['type'],
         ]);

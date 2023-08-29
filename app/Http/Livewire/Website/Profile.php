@@ -273,6 +273,7 @@ class Profile extends Component
     }
 
     public function createPromotionToken() {
+        $this->redirect(route('myProfile'));
         return auth()->user()->promotion_token;
     }
 

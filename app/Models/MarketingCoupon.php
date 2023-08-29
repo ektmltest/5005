@@ -15,5 +15,9 @@ class MarketingCoupon extends Model
         return $this->belongsTo(User::class);
     }
 
-
+    // * functions
+    public function incrementNumOfTransactionsAndSave() {
+        $this->num_of_transactions += 1;
+        $this->save();
+    }
 }

@@ -2,6 +2,7 @@
 namespace App\Http\Livewire\Website;
 
 use App\Models\Addon;
+use App\Models\MarketingCoupon;
 use App\Models\Purchase;
 use App\Models\ReadyProject;
 use App\Repositories\GallaryProjectRepository;
@@ -114,6 +115,7 @@ class Project extends Component
     }
 
     public function createPromotionToken() {
+        $this->redirect(route('project', $this->project->id));
         return auth()->user()->promotion_token;
     }
 
@@ -124,6 +126,12 @@ class Project extends Component
         );
 
         $this->project = $this->readyProjectRepository->incrementNumOfPurchasesAndSave($this->project);
+
+        if ($this->token) {
+            MarketingCoupon::where('token', $this->token)
+                ->first()
+                ->incrementNumOfTransactionsAndSave();
+        }
 
         return $purchase;
     }
