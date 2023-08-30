@@ -43,6 +43,7 @@ class PermissionFactory extends Factory
             'manage-posts' => ['ar' => 'ادارة المنشورات', 'en' => 'manage posts'],
             'create-posts' => ['ar' => 'انشاء منشورات', 'en' => 'create posts'],
             'edit-posts' => ['ar' => 'تعديل المنشورات', 'en' => 'edit posts'],
+            'affiliate-manage-users' => ['ar' => 'ادارة مستخدمين نظام التسويق', 'en' => 'manage affiliate users'],
         ];
 
         $key = $this->faker->unique()->randomElement(array_keys($names));

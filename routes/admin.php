@@ -73,7 +73,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::middleware('check.permission:edit-posts')->get('posts/{id}/edit', fn ($id) => view('admin.posts.edit', ['id' => $id]))->name('posts.edit');
 
         // ? AFFILIATE
-        Route::get('affiliate/users', fn () => view('admin.affiliate.users-manage'))->name('affiliate.users');
+        Route::middleware('check.permission:affiliate-manage-users')->get('affiliate/users', fn () => view('admin.affiliate.users-manage'))->name('admin.affiliate.users');
 
         //? This route for any invalid request ;)
         Route::any('{any}', function () {

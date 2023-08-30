@@ -194,12 +194,14 @@
                 @endif
 
                 <li class="menu-title text-primary">{{ __('dashboard_trans.AFFILIATE SYSTEM') }}</li>
+                @if (auth()->user()->hasPermission('affiliate-manage-users'))
                 <li>
-                    <a href="file-manager.html" class=" waves-effect">
-                        <i class="fa fa-solid fa-wrench"></i>
+                    <a href="{{route('admin.affiliate.users')}}" class=" waves-effect">
+                        <i class="fa fa-solid fa-user-shield"></i>
                         <span>{{ __('dashboard_trans.Users Management') }}</span>
                     </a>
                 </li>
+                @endif
 
                 <li class="menu-title text-primary">{{ __('dashboard_trans.SITE DETAILS') }}</li>
                 @if (auth()->user()->hasPermission('manage-settings'))
