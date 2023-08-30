@@ -161,4 +161,8 @@ return array (
   'available' => 'متاحة',
   'closed' => 'مغلقة',
   'purchase tickets' => 'تذاكر المشتريات',
+  'AFFILIATE SYSTEM' => 'نظام التسويق بالعمولة',
+  'MARKETING LEVEL' => 'مستوى التسويق',
+  'set' => 'تعيين',
+  'CURRENT MARKETERS' => 'عدد المسوقين',
 );

@@ -60,17 +60,20 @@ Route::group(['middleware' => 'auth'], function () {
         Route::middleware('check.permission:manage-qas-types')->get('qas/types', fn() => view('admin.qas.types'))->name('qas.types');
         Route::middleware('check.permission:manage-qas')->get('qas', fn() => view('admin.qas.index'))->name('qas.index');
 
-        // ? questions
+        // ? PLATFORMS
         Route::middleware('check.permission:manage-platforms')->get('platforms', fn() => view('admin.platforms.index'))->name('platforms.index');
 
-        // ? transactions
+        // ? TRANSACTIONS
         Route::middleware('check.permission:manage-charges')->get('charges', fn() => view('admin.transactions.charges'))->name('transactions.charges');
         Route::middleware('check.permission:manage-withdrawals')->get('withdrawals', fn() => view('admin.transactions.withdrawals'))->name('transactions.withdrawals');
 
-        // ? news
+        // ? NEWS
         Route::middleware('check.permission:manage-posts')->get('posts', fn () => view('admin.posts.manage'))->name('posts.manage');
         Route::middleware('check.permission:create-posts')->get('posts/create', fn () => view('admin.posts.create'))->name('posts.create');
         Route::middleware('check.permission:edit-posts')->get('posts/{id}/edit', fn ($id) => view('admin.posts.edit', ['id' => $id]))->name('posts.edit');
+
+        // ? AFFILIATE
+        Route::get('affiliate/users', fn () => view('admin.affiliate.users-manage'))->name('affiliate.users');
 
         //? This route for any invalid request ;)
         Route::any('{any}', function () {

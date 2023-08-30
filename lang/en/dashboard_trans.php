@@ -159,4 +159,8 @@ return array (
   'available' => 'available',
   'closed' => 'closed',
   'purchase tickets' => 'purchase tickets',
+  'AFFILIATE SYSTEM' => 'AFFILIATE SYSTEM',
+  'MARKETING LEVEL' => 'MARKETING LEVEL',
+  'set' => 'set',
+  'CURRENT MARKETERS' => 'CURRENT MARKETERS',
 );

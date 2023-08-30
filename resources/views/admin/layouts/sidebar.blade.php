@@ -193,6 +193,13 @@
                 </li>
                 @endif
 
+                <li class="menu-title text-primary">{{ __('dashboard_trans.AFFILIATE SYSTEM') }}</li>
+                <li>
+                    <a href="file-manager.html" class=" waves-effect">
+                        <i class="fa fa-solid fa-wrench"></i>
+                        <span>{{ __('dashboard_trans.Users Management') }}</span>
+                    </a>
+                </li>
 
                 <li class="menu-title text-primary">{{ __('dashboard_trans.SITE DETAILS') }}</li>
                 @if (auth()->user()->hasPermission('manage-settings'))

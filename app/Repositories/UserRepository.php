@@ -130,29 +130,11 @@ class UserRepository implements UserRepositoryInterface {
         return $user;
     }
 
-    public function getAll($max = null, $paginate = false, $num = 10, $state = null, $needle = null) {
-        if ($paginate) {
-            if ($needle)
-                return User::from('users AS a')
-                    ->where(DB::raw("(SELECT CONCAT(`fname`, ' ', `lname`, `email`, `country_code`, `phone`) AS `field` FROM `users` AS b WHERE b.`id` = a.`id`)"), 'LIKE', '%' . $needle . '%')
-                    ->paginate($num);
-
-            if ($state)
-                return User::where('state', $state)->orderBy('created_at')->paginate($num);
-
-            return User::orderBy('created_at')->paginate($num);
-        }
-
-        if (is_int($max))
-            if ($state)
-                return User::where('state', $state)->orderBy('created_at')->take($max)->get();
-            else
-                return User::orderBy('created_at')->take($max)->get();
+    public function getAll($max = null, $paginate = false, $num = 10, $state = null, $needle = null, $sortField = null) {
+        if ($sortField)
+            return $this->getAllWithSort($max, $paginate, $num, $state, $needle, $sortField);
         else
-            if ($state)
-                return User::where('state', $state)->get();
-            else
-                return User::all();
+            return $this->getAllWithoutSort($max, $paginate, $num, $state, $needle);
     }
 
     public function findById($id) {
@@ -181,5 +163,56 @@ class UserRepository implements UserRepositoryInterface {
         $user->balance -= $amount;
 
         $user->save();
+    }
+
+    private function getAllWithoutSort($max, $paginate, $num, $state, $needle) {
+        if ($paginate) {
+            if ($needle)
+                return User::from('users AS a')
+                    ->where(DB::raw("(SELECT CONCAT(`fname`, ' ', `lname`, `email`, `country_code`, `phone`) AS `field` FROM `users` AS b WHERE b.`id` = a.`id`)"), 'LIKE', '%' . $needle . '%')
+                    ->paginate($num);
+
+            if ($state)
+                return User::where('state', $state)->orderBy('created_at')->paginate($num);
+
+            return User::orderBy('created_at')->paginate($num);
+        }
+
+        if (is_int($max))
+            if ($state)
+                return User::where('state', $state)->orderBy('created_at')->take($max)->get();
+            else
+                return User::orderBy('created_at')->take($max)->get();
+        else
+            if ($state)
+                return User::where('state', $state)->get();
+            else
+                return User::all();
+    }
+
+    private function getAllWithSort($max, $paginate, $num, $state, $needle, $sortField) {
+        if ($paginate) {
+            if ($needle)
+                return User::from('users AS a')
+                    ->where(DB::raw("(SELECT CONCAT(`fname`, ' ', `lname`, `email`, `country_code`, `phone`) AS `field` FROM `users` AS b WHERE b.`id` = a.`id`)"), 'LIKE', '%' . $needle . '%')
+                    ->orderBy($sortField, 'DESC')
+                    ->paginate($num);
+
+            if ($state)
+                return User::where('state', $state)->orderBy($sortField, 'DESC')->paginate($num);
+
+            return User::orderBy($sortField, 'DESC')->paginate($num);
+        }
+
+        if (is_int($max))
+            if ($state)
+                return User::where('state', $state)->orderBy($sortField, 'DESC')->take($max)->get();
+            else
+                return User::orderBy($sortField, 'DESC')->take($max)->get();
+        else
+            if ($state)
+                return User::where('state', $state)->orderBy($sortField, 'DESC')->get();
+            else
+                return User::orderBy($sortField, 'DESC')->get();
     }
 }

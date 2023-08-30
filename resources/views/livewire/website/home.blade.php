@@ -127,9 +127,9 @@
                         <div class="post-item">
                             <div class="post-img">
                                 <img class="img-fluid" mu-open mu-link="{{ route('project', $project->id) }}" style="border-radius: 16px; cursor: pointer; width:100%;
-                                height:200px;
-                                object-fit:cover;
-                                object-position:50% 50%;"
+                                    height:200px;
+                                    object-fit:cover;
+                                    object-position:50% 50%;"
                                     src="{{ $project->image }}" alt>
                             </div>
 
