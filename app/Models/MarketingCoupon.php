@@ -20,4 +20,8 @@ class MarketingCoupon extends Model
         $this->num_of_transactions += 1;
         $this->save();
     }
+
+    public function verifyNumOfTransactions() {
+        return $this->num_of_transactions < $this->user->marketingLevel->max_transactions;
+    }
 }

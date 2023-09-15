@@ -27,14 +27,15 @@ class PurchaseRepository {
         return Purchase::find($id);
     }
 
-    public function storeAndAttachAddons($ready_project_id, $addons_ids): Purchase {
-        $purchase = $this->store($ready_project_id);
+    public function storeAndAttachAddons($ready_project_id, $amount, $addons_ids): Purchase {
+        $purchase = $this->store($ready_project_id, $amount);
         $purchase->attachToAddons($addons_ids);
         return $purchase;
     }
 
-    public function store($ready_project_id): Purchase {
+    public function store($ready_project_id, $amount): Purchase {
         return Purchase::create([
+            'amount' => $amount,
             'ready_project_id' => $ready_project_id,
             'user_id' => auth()->user()->id,
         ]);

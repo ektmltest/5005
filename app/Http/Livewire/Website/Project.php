@@ -28,6 +28,7 @@ class Project extends Component
     public $addons_ids = array();
     public $token;
 
+    protected $coupon;
     protected $readyProjectRepository;
     protected $galleryProjectRepository;
     protected $socialMediaRepository;
@@ -52,7 +53,7 @@ class Project extends Component
         $this->project = $this->readyProjectRepository->findById($id, with: ['facilities', 'addons']);
         $this->next = $this->readyProjectRepository->getNextId($id);
         $this->previous = $this->readyProjectRepository->getPreviousId($id);
-        $this->price = request()->route('token') ? $this->project->price_after_commission : $this->project->price;
+        $this->price = $token ? $this->project->price_after_commission : $this->project->price;
 
         // ? affiliate
         $this->token = $token;
@@ -86,6 +87,8 @@ class Project extends Component
     }
 
     public function buy() {
+        if (!$this->validateNumOfTransactions())
+            return redirect()->route('home')->with('error', __('errors.this coupon has exceed the maximum number of transactions'));
 
         DB::beginTransaction();
         try {
@@ -122,6 +125,7 @@ class Project extends Component
     private function setupPurchaseProcess(): Purchase {
         $purchase = $this->purchaseRepository->storeAndAttachAddons(
             $this->project->id,
+            $this->price,
             array_keys($this->addons_ids)
         );
 
@@ -152,6 +156,14 @@ class Project extends Component
             return false;
         }
         return true;
+    }
+
+    private function validateNumOfTransactions() {
+        $coupon = MarketingCoupon::where('token', $this->token)->first();
+        if ($coupon)
+            return $coupon->verifyNumOfTransactions();
+        else
+            return true;
     }
 
     public function render()

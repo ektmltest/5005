@@ -19,7 +19,7 @@ class AffiliateTokenVerified
     {
         $coupon = MarketingCoupon::where('token', $request->route('token'))->first();
         if ($coupon)
-            if ($coupon->num_of_transactions < $coupon->user->marketingLevel->max_transactions)
+            if ($coupon->verifyNumOfTransactions())
                 return $next($request);
             else
                 return redirect()->route('home')->with('error', __('errors.this coupon has exceed the maximum number of transactions'));

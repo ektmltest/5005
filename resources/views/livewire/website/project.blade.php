@@ -65,7 +65,7 @@
                             </div>
                             @endif
 
-                            @if (request()->route('token'))
+                            @if ($token)
                             <div class="mb-3">
                                 <h5 class="text-danger">
                                     {{ __('project_trans.Project Price Without Coupon') }}

@@ -42,6 +42,6 @@ class Purchase extends Model
 
     // attributes
     public function getFullPriceAttribute() {
-        return round($this->project->price + $this->addons->sum('price'), 2);
+        return round($this->amount, 2);
     }
 }
